@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/135xyq.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/135xyq.github.io/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/135xyq.github.io/images/favicon.ico">
+  <link rel="mask-icon" href="/135xyq.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/135xyq.github.io/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"135xyq.github.io","root":"/135xyq.github.io/","images":"/135xyq.github.io/images","scheme":"Pisces","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/135xyq.github.io/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/135xyq.github.io/js/config.js"></script>
+<meta name="description" content="uniapp开发环境和项目的搭建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="uniapp开发规范">
+<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/2022/04/02/uniapp-uniapp%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/index.html">
+<meta property="og:site_name" content="筱">
+<meta property="og:description" content="uniapp开发环境和项目的搭建">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://135xyq.github.io/images/uniapp/008i3skNly1gselljycn2j31hc0joq3c-16487011449324.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gselm265sdj30na0g3di5.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gselmb4wf0j61hc0sywev02.jpg">
+<meta property="og:image" content="https://135xyq.github.io/images/uniapp/008i3skNly1gsn7079jy3j313q0u0dkk.jpg">
+<meta property="og:image" content="https://135xyq.github.io/images/uniapp/008i3skNly1gselrjw91dj31hc0n7q3v.jpg">
+<meta property="og:image" content="https://135xyq.github.io/images/uniapp/008i3skNly1gsels176jwj31hc0lpab2.jpg">
+<meta property="og:image" content="https://135xyq.github.io/images/uniapp/008i3skNly1gselum0va7j30tw0nywg0.jpg">
+<meta property="og:image" content="https://135xyq.github.io/images/uniapp/008i3skNly1gselv7wqqrj31hc0s8go0.jpg">
+<meta property="og:image" content="https://135xyq.github.io/images/uniapp/008i3skNly1gselvryapfj31hc0sygmn.jpg">
+<meta property="article:published_time" content="2022-04-02T13:46:47.000Z">
+<meta property="article:modified_time" content="2022-04-03T13:06:46.080Z">
+<meta property="article:author" content="筱">
+<meta property="article:tag" content="uniapp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://135xyq.github.io/images/uniapp/008i3skNly1gselljycn2j31hc0joq3c-16487011449324.jpg">
+
+
+<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/2022/04/02/uniapp-uniapp%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://135xyq.github.io/135xyq.github.io/2022/04/02/uniapp-uniapp%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/","path":"2022/04/02/uniapp-uniapp开发规范/","title":"uniapp开发规范"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>uniapp开发规范 | 筱</title>
+  
+
+  <script src="/135xyq.github.io/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?4301d11b48139d9c6adb4611ed1fc576"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/135xyq.github.io/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/135xyq.github.io/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">筱</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/135xyq.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/135xyq.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/135xyq.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">41</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/135xyq.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">33</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/135xyq.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">86</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#uniapp%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83"><span class="nav-number">1.</span> <span class="nav-text">uniapp开发规范</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#uniapp%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-number">1.1.</span> <span class="nav-text">uniapp开发环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="nav-number">1.1.1.</span> <span class="nav-text">开发工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD-HBuilderX"><span class="nav-number">1.1.2.</span> <span class="nav-text">下载 HBuilderX</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E7%A8%8B%E6%90%AD%E5%BB%BA"><span class="nav-number">1.2.</span> <span class="nav-text">工程搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E8%BF%90%E8%A1%8C"><span class="nav-number">1.3.</span> <span class="nav-text">项目运行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%90%E8%A1%8C"><span class="nav-number">1.3.1.</span> <span class="nav-text">浏览器运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C"><span class="nav-number">1.3.2.</span> <span class="nav-text">小程序运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#app%E7%9C%9F%E6%9C%BA%E8%BF%90%E8%A1%8C"><span class="nav-number">1.3.3.</span> <span class="nav-text">app真机运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IOS%E6%A8%A1%E6%8B%9F%E5%99%A8%E8%BF%90%E8%A1%8C"><span class="nav-number">1.3.4.</span> <span class="nav-text">IOS模拟器运行</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="筱"
+      src="/135xyq.github.io/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">筱</p>
+  <div class="site-description" itemprop="description">筱的博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/135xyq.github.io/archives/">
+          <span class="site-state-item-count">86</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/135xyq.github.io/categories/">
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/135xyq.github.io/tags/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button site-overview-item animated">
+    <button><i class="fa fa-comment"></i>
+      Chat
+    </button>
+  </div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/135xyq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;135xyq" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xyq135@gmail.com" title="E-Mail → mailto:xyq135@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/%E7%AD%B1xyq" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;筱xyq" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/%E8%B0%A2%E6%B0%B8%E5%BC%BA" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;谢永强" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/135xyq" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://135xyq.github.io/135xyq.github.io/2022/04/02/uniapp-uniapp%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/135xyq.github.io/images/avatar.jpeg">
+      <meta itemprop="name" content="筱">
+      <meta itemprop="description" content="筱的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筱">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          uniapp开发规范
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-02 21:46:47" itemprop="dateCreated datePublished" datetime="2022-04-02T21:46:47+08:00">2022-04-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-04-03 21:06:46" itemprop="dateModified" datetime="2022-04-03T21:06:46+08:00">2022-04-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">前端学习笔记</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/uniapp/" itemprop="url" rel="index"><span itemprop="name">uniapp</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/135xyq.github.io/2022/04/02/uniapp-uniapp%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2022/04/02/uniapp-uniapp开发规范/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">uniapp开发环境和项目的搭建</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="uniapp开发规范"><a href="#uniapp开发规范" class="headerlink" title="uniapp开发规范"></a>uniapp开发规范</h1><ul>
+<li><p>页面文件遵循Vue单文件组件（SFC）规范</p>
+</li>
+<li><p>组件标签靠近小程序规范 =&gt;<a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/component/README">https://uniapp.dcloud.io/component/README</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;view&gt;</span><br><span class="line">		页面内容</span><br><span class="line">	&lt;/view&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	export default &#123;</span><br><span class="line">		data() &#123;</span><br><span class="line">			return &#123;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		methods: &#123;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>接口能力（JS API）靠近微信小程序规范 =&gt; <a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/api/README">https://uniapp.dcloud.io/api/README</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uni.getStorageInfoSync()</span><br></pre></td></tr></table></figure></li>
+<li><p>数据绑定事件处理同Vue.js规范</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;view @click=&quot;onClickFn&quot;&gt;</span><br><span class="line">      点击事件绑定</span><br><span class="line">  &lt;/view&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  methods: &#123;</span><br><span class="line">    onClickFn() &#123;</span><br><span class="line">      console.log(&#x27;click事件&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>兼容多端运行，使用flex布局进行开发</p>
+</li>
+</ul>
+<hr>
+<h2 id="uniapp开发环境"><a href="#uniapp开发环境" class="headerlink" title="uniapp开发环境"></a>uniapp开发环境</h2><h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>uni-app 官方推荐使用 <strong>HBuilderX</strong> 来开发 uni-app 类型的项目。主要好处：</p>
+<ul>
+<li>模板丰富</li>
+<li>完善的智能提示</li>
+<li>一键运行</li>
+</ul>
+<h3 id="下载-HBuilderX"><a href="#下载-HBuilderX" class="headerlink" title="下载 HBuilderX"></a>下载 HBuilderX</h3><ol>
+<li>访问 HBuilderX 的官网首页 <a target="_blank" rel="noopener" href="https://www.dcloud.io/hbuilderx.html">https://www.dcloud.io/hbuilderx.html</a></li>
+<li>点击首页的 <code>DOWNLOAD</code> 按钮</li>
+<li>选择下载 <code>正式版</code>/alpha -&gt; <code>App 开发版</code></li>
+<li>将下载的 <code>zip包</code> 进行解压缩</li>
+<li>将解压之后的文件夹，存放到<strong>纯英文</strong>的目录中（且不能包含括号等特殊字符）</li>
+<li>双击 <code>HBuilderX.exe</code> 即可启动 HBuilderX</li>
+<li>详细安装文档：=&gt; <a target="_blank" rel="noopener" href="https://hx.dcloud.net.cn/Tutorial/install/windows">https://hx.dcloud.net.cn/Tutorial/install/windows</a></li>
+</ol>
+<h2 id="工程搭建"><a href="#工程搭建" class="headerlink" title="工程搭建"></a>工程搭建</h2><ol>
+<li><p>文件 -&gt; 新建 -&gt; 项目</p>
+<p><img src="/images/uniapp/008i3skNly1gselljycn2j31hc0joq3c-16487011449324.jpg" alt="img"></p>
+</li>
+<li><p>填写项目基本信息</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gselm265sdj30na0g3di5.jpg" alt="img"></p>
+</li>
+<li><p>项目创建成功</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gselmb4wf0j61hc0sywev02.jpg" alt="img"></p>
+</li>
+</ol>
+<p>​    <strong>基本目录结构</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">项目名称</span><br><span class="line">----【pages】    内部存放所有页面</span><br><span class="line">----【static】   存放所有静态资源，比如图片，字体图标</span><br><span class="line">----【unpackage】存放所有打包生成后的文件</span><br><span class="line">----app<span class="selector-class">.vue</span>     应用配置，用来配置App全局样式以及监听 应用生命周期</span><br><span class="line">----<span class="selector-tag">main</span><span class="selector-class">.js</span>			Vue初始化入口文件</span><br><span class="line">----mainfast<span class="selector-class">.json</span>  配置应用名称、appid、logo、版本等打包信息</span><br><span class="line">----pages<span class="selector-class">.json</span>    配置页面路由、导航条、选项卡等页面类信息</span><br><span class="line">----uni<span class="selector-class">.scss</span>      用途是为了方便整体控制应用的风格。比如按钮颜色、边框风格，uni<span class="selector-class">.scss</span>文件里预置了一批scss变量预置。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="项目运行"><a href="#项目运行" class="headerlink" title="项目运行"></a>项目运行</h2><h3 id="浏览器运行"><a href="#浏览器运行" class="headerlink" title="浏览器运行"></a>浏览器运行</h3><ol>
+<li><img src="/images/uniapp/008i3skNly1gsn7079jy3j313q0u0dkk.jpg" alt="image-20210720101209233"></li>
+</ol>
+<h3 id="小程序运行"><a href="#小程序运行" class="headerlink" title="小程序运行"></a>小程序运行</h3><ol>
+<li><p>填写自己的微信小程序的 AppID：</p>
+<p><img src="/images/uniapp/008i3skNly1gselrjw91dj31hc0n7q3v.jpg" alt="img"></p>
+</li>
+<li><p>在 HBuilderX 中，配置“微信开发者工具”的<strong>安装路径</strong>：</p>
+<p><img src="/images/uniapp/008i3skNly1gsels176jwj31hc0lpab2.jpg" alt="img"></p>
+</li>
+<li><p>在微信开发者工具中，通过 <code>设置 -&gt; 安全设置</code> 面板，开启“微信开发者工具”的<strong>服务端口</strong>：</p>
+<p><img src="/images/uniapp/008i3skNly1gselum0va7j30tw0nywg0.jpg" alt="image-20210712235549929"></p>
+</li>
+<li><p>在 HBuilderX 中，点击菜单栏中的 <code>运行 -&gt; 运行到小程序模拟器 -&gt; 微信开发者工具</code>，将当前 uni-app 项目编译之后，自动运行到微信开发者工具中，从而方便查看项目效果与调试：</p>
+<p><img src="/images/uniapp/008i3skNly1gselv7wqqrj31hc0s8go0.jpg" alt="img"></p>
+</li>
+<li><p>初次运行成功之后的项目效果：</p>
+<p><img src="/images/uniapp/008i3skNly1gselvryapfj31hc0sygmn.jpg" alt="img"></p>
+</li>
+</ol>
+<h3 id="app真机运行"><a href="#app真机运行" class="headerlink" title="app真机运行"></a>app真机运行</h3><blockquote>
+<p>​    确保你的手机与电脑是在同一个局域网下面</p>
+</blockquote>
+<ol>
+<li>手机开启开发者模式</li>
+<li>选择数据管理</li>
+<li>hbuildeX选择真机运行</li>
+<li>等待基座安装</li>
+<li>安装完成手机运行项目</li>
+</ol>
+<h3 id="IOS模拟器运行"><a href="#IOS模拟器运行" class="headerlink" title="IOS模拟器运行"></a>IOS模拟器运行</h3><ol>
+<li> Xcode下载</li>
+<li>定义版本进行模拟器运行</li>
+</ol>
+<hr>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/135xyq.github.io/./images/wechatpay.png" alt="筱 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/135xyq.github.io/images/alipay.jpg" alt="筱 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/135xyq.github.io/images/wechat_channel.png">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/135xyq.github.io/tags/uniapp/" rel="tag"><i class="fa fa-tag"></i> uniapp</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/135xyq.github.io/2022/03/22/%E7%BD%91%E7%BB%9C-%E6%9C%8D%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2/" rel="prev" title="网站部署">
+                  <i class="fa fa-chevron-left"></i> 网站部署
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/135xyq.github.io/2022/04/02/uniapp-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="next" title="微信小程序相关">
+                  微信小程序相关 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">筱</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">412k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">6:14</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/135xyq.github.io/js/comments.js"></script><script src="/135xyq.github.io/js/utils.js"></script><script src="/135xyq.github.io/js/motion.js"></script><script src="/135xyq.github.io/js/next-boot.js"></script><script src="/135xyq.github.io/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/135xyq.github.io/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="chatra" type="application/json">{"enable":true,"async":true,"id":"ruWaHnsjKGdZQCSiC"}</script>
+<script src="/135xyq.github.io/js/third-party/chat/chatra.js"></script>
+<script async src="https://call.chatra.io/chatra.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/135xyq.github.io/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvS6KuDV","appkey":"48e71f62cb3f29222e2ee2c1f7abcc74"}</script>
+<script src="/135xyq.github.io/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

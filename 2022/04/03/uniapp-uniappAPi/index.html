@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/135xyq.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/135xyq.github.io/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/135xyq.github.io/images/favicon.ico">
+  <link rel="mask-icon" href="/135xyq.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/135xyq.github.io/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"135xyq.github.io","root":"/135xyq.github.io/","images":"/135xyq.github.io/images","scheme":"Pisces","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/135xyq.github.io/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/135xyq.github.io/js/config.js"></script>
+<meta name="description" content="uniapp基础Api和插件安装、生命周期">
+<meta property="og:type" content="article">
+<meta property="og:title" content="uniapp基础Api和插件安装">
+<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/2022/04/03/uniapp-uniappAPi/index.html">
+<meta property="og:site_name" content="筱">
+<meta property="og:description" content="uniapp基础Api和插件安装、生命周期">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gsek7g2i93j31tm0hk41p.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gsfadcxx6nj310a0u040t.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gsixua1hqdj316w0u0gpv.jpg">
+<meta property="article:published_time" content="2022-04-03T13:46:47.000Z">
+<meta property="article:modified_time" content="2022-04-03T13:00:51.216Z">
+<meta property="article:author" content="筱">
+<meta property="article:tag" content="uniapp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/008i3skNly1gsek7g2i93j31tm0hk41p.jpg">
+
+
+<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/2022/04/03/uniapp-uniappAPi/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://135xyq.github.io/135xyq.github.io/2022/04/03/uniapp-uniappAPi/","path":"2022/04/03/uniapp-uniappAPi/","title":"uniapp基础Api和插件安装"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>uniapp基础Api和插件安装 | 筱</title>
+  
+
+  <script src="/135xyq.github.io/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?4301d11b48139d9c6adb4611ed1fc576"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/135xyq.github.io/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/135xyq.github.io/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">筱</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/135xyq.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/135xyq.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/135xyq.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">41</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/135xyq.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">33</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/135xyq.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">86</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80API"><span class="nav-number">1.</span> <span class="nav-text">基础API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#API%E5%88%97%E8%A1%A8"><span class="nav-number">1.1.</span> <span class="nav-text">API列表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80%E7%9B%B8%E5%85%B3"><span class="nav-number">2.</span> <span class="nav-text">页面布局相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uniapp%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">3.</span> <span class="nav-text">uniapp生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">3.1.</span> <span class="nav-text">应用生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">3.2.</span> <span class="nav-text">页面生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">3.3.</span> <span class="nav-text">组件生命周期</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uniApp%E7%89%B9%E8%89%B2"><span class="nav-number">4.</span> <span class="nav-text">uniApp特色</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E7%BC%96%E8%AF%91"><span class="nav-number">4.1.</span> <span class="nav-text">条件编译</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="nav-number">4.1.1.</span> <span class="nav-text">插件安装</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="筱"
+      src="/135xyq.github.io/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">筱</p>
+  <div class="site-description" itemprop="description">筱的博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/135xyq.github.io/archives/">
+          <span class="site-state-item-count">86</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/135xyq.github.io/categories/">
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/135xyq.github.io/tags/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button site-overview-item animated">
+    <button><i class="fa fa-comment"></i>
+      Chat
+    </button>
+  </div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/135xyq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;135xyq" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xyq135@gmail.com" title="E-Mail → mailto:xyq135@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/%E7%AD%B1xyq" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;筱xyq" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/%E8%B0%A2%E6%B0%B8%E5%BC%BA" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;谢永强" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/135xyq" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://135xyq.github.io/135xyq.github.io/2022/04/03/uniapp-uniappAPi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/135xyq.github.io/images/avatar.jpeg">
+      <meta itemprop="name" content="筱">
+      <meta itemprop="description" content="筱的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筱">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          uniapp基础Api和插件安装
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-04-03 21:46:47 / 修改时间：21:00:51" itemprop="dateCreated datePublished" datetime="2022-04-03T21:46:47+08:00">2022-04-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">前端学习笔记</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/uniapp/" itemprop="url" rel="index"><span itemprop="name">uniapp</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/135xyq.github.io/2022/04/03/uniapp-uniappAPi/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2022/04/03/uniapp-uniappAPi/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">uniapp基础Api和插件安装、生命周期</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="基础API"><a href="#基础API" class="headerlink" title="基础API"></a>基础API</h2><p><strong>参考地址</strong>：<a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/api/README">https://uniapp.dcloud.net.cn/api/README</a></p>
+<h3 id="API列表"><a href="#API列表" class="headerlink" title="API列表"></a>API列表</h3><ul>
+<li><p><strong>网络请求</strong></p>
+<ul>
+<li><p>uni.request 发起网络请求</p>
+<blockquote>
+<p>为了解决uni.request网络请求API相对简单的问题，可使用@escook/request-miniprogram进行网路请求的处理</p>
+<p>参考地址：<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/@escook/request-miniprogram">https://www.npmjs.com/package/@escook/request-miniprogram</a></p>
+<p><strong>在小程序中，无法使用fetch及axios进行网络请求发送</strong></p>
+</blockquote>
+<p><strong>测试接口地址：<a target="_blank" rel="noopener" href="https://study.duyiedu.com/api/herolist">https://study.duyiedu.com/api/herolist</a></strong></p>
+</li>
+</ul>
+</li>
+<li><p>上传、下载</p>
+<ul>
+<li>uni.unloadFile 上传文件  =&gt; <a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/api/request/network-file">https://uniapp.dcloud.net.cn/api/request/network-file</a></li>
+<li>uni.downloadFile 下载文件</li>
+</ul>
+</li>
+<li><p>图片处理</p>
+<ul>
+<li>uni.chooseImage 从相册选择图片，或者拍照 =&gt;<a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/api/media/image?id=chooseimage">https://uniapp.dcloud.net.cn/api/media/image?id=chooseimage</a></li>
+<li>uni.previewImage 预览图片</li>
+<li>uni.getImageInfo 获取图片信息</li>
+</ul>
+</li>
+<li><p>数据缓存 =&gt; <a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/api/storage/storage?id=setstorage">https://uniapp.dcloud.net.cn/api/storage/storage?id=setstorage</a></p>
+<ul>
+<li>uni.getStorage 异步获取本地数据缓存</li>
+<li>uni.getStorageSync 同步获取本地数据缓存</li>
+<li>uni.setStorage 异步设置本地数据缓存</li>
+<li>uni.setStorageSync 同步设置本地数据缓存</li>
+<li>uni.removeStorage 异步删除本地数据缓存</li>
+<li>uni.reoveStorageSync 同步删除本地数据缓存</li>
+</ul>
+</li>
+<li><p>交互反馈 =&gt; <a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/api/ui/prompt?id=showtoast">https://uniapp.dcloud.net.cn/api/ui/prompt?id=showtoast</a></p>
+<ul>
+<li>uni.showToast 显示提示框</li>
+<li>uni.showLoading 显示加载提示框</li>
+<li>uni.hideToast 隐藏提示框</li>
+<li>uni.hideLoading 隐藏加载提示框</li>
+<li>uni.showModal 显示模态框</li>
+<li>uni.showActionSheet 显示菜单列表</li>
+</ul>
+</li>
+<li><p>路由</p>
+<ul>
+<li><p>uni.navigateTo 保留当前页面，跳转到应用内某个界面，使用uni.navigateBack 返回原页面</p>
+</li>
+<li><p>uni.redirectTo 关闭当前界面，跳转到应用内的某个界面</p>
+</li>
+<li><p>uni.reLaunch 关闭所有界面，打开应用内的某个界面</p>
+</li>
+<li><p>uni.switchTab 跳转到tab Bar页面</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="页面布局相关"><a href="#页面布局相关" class="headerlink" title="页面布局相关"></a>页面布局相关</h2><p><strong>page</strong></p>
+<blockquote>
+<p>页面容器css属性</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">page:&#123;</span><br><span class="line">  height:<span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">background-color</span>:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>尺寸单位</strong></p>
+<p>可使用单位：px rpx,upx, rem vh  vw</p>
+<p><strong>外部样式文件引入</strong></p>
+<p>同vue使用相同    </p>
+<h2 id="uniapp生命周期"><a href="#uniapp生命周期" class="headerlink" title="uniapp生命周期"></a>uniapp生命周期</h2><p><strong>参考地址：</strong><a target="_blank" rel="noopener" href="https://uniapp.dcloud.net.cn/collocation/frame/lifecycle?id=%E5%BA%94%E7%94%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">https://uniapp.dcloud.net.cn/collocation/frame/lifecycle?id=%e5%ba%94%e7%94%a8%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f</a></p>
+<h3 id="应用生命周期"><a href="#应用生命周期" class="headerlink" title="应用生命周期"></a>应用生命周期</h3><ul>
+<li><p>onLaunch 初始化完成时触发（全局🈯️触发一次）</p>
+</li>
+<li><p>onShow uni-app启动，或从后台进入前台显示</p>
+</li>
+<li><p>onHide 当uni-app 应用从前台进入后台</p>
+<blockquote>
+<p>只能在App.vue里面进行监听，在其他界面监听无效</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="页面生命周期"><a href="#页面生命周期" class="headerlink" title="页面生命周期"></a>页面生命周期</h3><ul>
+<li>onLoad 监听页面加载（可获取上个界面传递的参数）</li>
+<li>onShow 监听页面显示，每次出现在屏幕上都进行触发</li>
+<li>onReady 监听页面初次渲染完成</li>
+<li>onHide 监听页面隐藏</li>
+<li>onUnload 监听页面卸载</li>
+<li>onReachBottom 页面滚动到底部事件</li>
+</ul>
+<h3 id="组件生命周期"><a href="#组件生命周期" class="headerlink" title="组件生命周期"></a>组件生命周期</h3><ul>
+<li>beofreCreate </li>
+<li>created</li>
+<li>boforeMount</li>
+<li>mounted</li>
+<li>boforeDestroy</li>
+<li>destroyed</li>
+</ul>
+<hr>
+<h2 id="uniApp特色"><a href="#uniApp特色" class="headerlink" title="uniApp特色"></a>uniApp特色</h2><h3 id="条件编译"><a href="#条件编译" class="headerlink" title="条件编译"></a>条件编译</h3><blockquote>
+<p>条件编译是用特殊的注释作为标记，在编译时根据这些特殊的注释，将注释里面的代码编译到不同平台。</p>
+</blockquote>
+<p><strong>语法</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsek7g2i93j31tm0hk41p.jpg" alt="image-20210712225857698"></p>
+<p><strong>取值</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsfadcxx6nj310a0u040t.jpg" alt="image-20210712230042343"></p>
+<p><strong>条件编译支持的文件</strong></p>
+<ul>
+<li>.vue</li>
+<li>.js</li>
+<li>.css</li>
+<li>pages.json</li>
+<li>各预编译语言文件，如：.scss、.less、.stylus、.ts、.pug</li>
+</ul>
+<blockquote>
+<p>​        条件编译是利用注释实现的，在不同语法里注释写法不一样，js使用 <code>// 注释</code>、css 使用 <code>/* 注释 */</code>、vue/nvue 模板里使用 <code>&lt;!-- 注释 --&gt;</code>；</p>
+</blockquote>
+<h4 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h4><ol>
+<li><p>​    <strong>scss安装</strong></p>
+<blockquote>
+<p>可以使用多种预编译处理器进行安装使用，以scss文件为例</p>
+<p>下载地址：<strong><a target="_blank" rel="noopener" href="https://ext.dcloud.net.cn/plugin?name=compile-node-sass">https://ext.dcloud.net.cn/plugin?name=compile-node-sass</a></strong></p>
+</blockquote>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsixua1hqdj316w0u0gpv.jpg" alt="image-20210716175247652"></p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/135xyq.github.io/./images/wechatpay.png" alt="筱 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/135xyq.github.io/images/alipay.jpg" alt="筱 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/135xyq.github.io/images/wechat_channel.png">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/135xyq.github.io/tags/uniapp/" rel="tag"><i class="fa fa-tag"></i> uniapp</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/135xyq.github.io/2022/04/02/uniapp-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="prev" title="微信小程序相关">
+                  <i class="fa fa-chevron-left"></i> 微信小程序相关
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">筱</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">412k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">6:14</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/135xyq.github.io/js/comments.js"></script><script src="/135xyq.github.io/js/utils.js"></script><script src="/135xyq.github.io/js/motion.js"></script><script src="/135xyq.github.io/js/next-boot.js"></script><script src="/135xyq.github.io/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/135xyq.github.io/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="chatra" type="application/json">{"enable":true,"async":true,"id":"ruWaHnsjKGdZQCSiC"}</script>
+<script src="/135xyq.github.io/js/third-party/chat/chatra.js"></script>
+<script async src="https://call.chatra.io/chatra.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/135xyq.github.io/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvS6KuDV","appkey":"48e71f62cb3f29222e2ee2c1f7abcc74"}</script>
+<script src="/135xyq.github.io/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>
