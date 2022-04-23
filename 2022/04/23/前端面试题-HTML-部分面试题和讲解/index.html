@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/135xyq.github.io/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/135xyq.github.io/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/135xyq.github.io/images/favicon.ico">
+  <link rel="mask-icon" href="/135xyq.github.io/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/135xyq.github.io/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"135xyq.github.io","root":"/135xyq.github.io/","images":"/135xyq.github.io/images","scheme":"Pisces","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/135xyq.github.io/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/135xyq.github.io/js/config.js"></script>
+<meta name="description" content="前端面试题HTML中部分讲解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端面试题HTML中部分讲解">
+<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/2022/04/23/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-HTML-%E9%83%A8%E5%88%86%E9%9D%A2%E8%AF%95%E9%A2%98%E5%92%8C%E8%AE%B2%E8%A7%A3/index.html">
+<meta property="og:site_name" content="筱">
+<meta property="og:description" content="前端面试题HTML中部分讲解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-07-020539.png">
+<meta property="og:image" content="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-07-020626.png">
+<meta property="og:image" content="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-07-021238.png">
+<meta property="og:image" content="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-07-023423.png">
+<meta property="og:image" content="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-07-035904.png">
+<meta property="og:image" content="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-07-062515.png">
+<meta property="og:image" content="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-07-062552.png">
+<meta property="og:image" content="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-09-011259.png">
+<meta property="og:image" content="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-09-015133.png">
+<meta property="og:image" content="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-09-014911.png">
+<meta property="article:published_time" content="2022-04-23T06:25:21.000Z">
+<meta property="article:modified_time" content="2022-04-23T13:39:56.483Z">
+<meta property="article:author" content="筱">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="面试题">
+<meta property="article:tag" content="HTMl">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-07-020539.png">
+
+
+<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/2022/04/23/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-HTML-%E9%83%A8%E5%88%86%E9%9D%A2%E8%AF%95%E9%A2%98%E5%92%8C%E8%AE%B2%E8%A7%A3/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://135xyq.github.io/135xyq.github.io/2022/04/23/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-HTML-%E9%83%A8%E5%88%86%E9%9D%A2%E8%AF%95%E9%A2%98%E5%92%8C%E8%AE%B2%E8%A7%A3/","path":"2022/04/23/前端面试题-HTML-部分面试题和讲解/","title":"前端面试题HTML中部分讲解"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>前端面试题HTML中部分讲解 | 筱</title>
+  
+
+  <script src="/135xyq.github.io/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?4301d11b48139d9c6adb4611ed1fc576"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/135xyq.github.io/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/135xyq.github.io/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">筱</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/135xyq.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/135xyq.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/135xyq.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">42</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/135xyq.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">35</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/135xyq.github.io/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">88</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML%E7%9B%B8%E5%85%B3"><span class="nav-number">1.</span> <span class="nav-text">HTML相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E5%A3%B0%E6%98%8E"><span class="nav-number">1.1.</span> <span class="nav-text">文档声明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E7%9C%9F%E9%A2%98"><span class="nav-number">1.1.1.</span> <span class="nav-text">经典真题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E5%A3%B0%E6%98%8E%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.2.</span> <span class="nav-text">文档声明概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.1.3.</span> <span class="nav-text">渲染模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9C%9F%E9%A2%98%E8%A7%A3%E7%AD%94"><span class="nav-number">1.1.4.</span> <span class="nav-text">真题解答</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E4%B9%89%E5%8C%96"><span class="nav-number">1.2.</span> <span class="nav-text">语义化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E7%9C%9F%E9%A2%98-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">经典真题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%AF%AD%E4%B9%89%E5%85%83%E7%B4%A0%EF%BC%9F"><span class="nav-number">1.2.2.</span> <span class="nav-text">什么是语义元素？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%AF%AD%E4%B9%89%E5%8C%96%EF%BC%9F"><span class="nav-number">1.2.3.</span> <span class="nav-text">为什么要语义化？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML5-%E5%B8%B8%E7%94%A8%E7%9A%84%E8%AF%AD%E4%B9%89%E5%85%83%E7%B4%A0"><span class="nav-number">1.2.4.</span> <span class="nav-text">HTML5 常用的语义元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E9%9A%9C%E7%A2%8D%E7%BD%91%E9%A1%B5"><span class="nav-number">1.2.5.</span> <span class="nav-text">无障碍网页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9C%9F%E9%A2%98%E8%A7%A3%E7%AD%94-1"><span class="nav-number">1.2.6.</span> <span class="nav-text">真题解答</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#W3C-%E6%A0%87%E5%87%86%E7%BB%84%E7%BB%87"><span class="nav-number">1.3.</span> <span class="nav-text">W3C 标准组织</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E7%9C%9F%E9%A2%98-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">经典真题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-W3C"><span class="nav-number">1.3.2.</span> <span class="nav-text">什么是 W3C</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#W3C-%E6%98%AF%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E7%9A%84%EF%BC%9F"><span class="nav-number">1.3.3.</span> <span class="nav-text">W3C 是如何创建的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E5%8C%96-Web"><span class="nav-number">1.3.4.</span> <span class="nav-text">标准化 Web</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#W3C-%E6%88%90%E5%91%98"><span class="nav-number">1.3.5.</span> <span class="nav-text">W3C 成员</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#W3C-%E8%A7%84%E8%8C%83%E7%9A%84%E6%89%B9%E5%87%86%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.3.6.</span> <span class="nav-text">W3C 规范的批准步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9C%9F%E9%A2%98%E8%A7%A3%E7%AD%94-2"><span class="nav-number">1.3.7.</span> <span class="nav-text">真题解答</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SEO"><span class="nav-number">1.4.</span> <span class="nav-text">SEO</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E7%9C%9F%E9%A2%98-3"><span class="nav-number">1.4.1.</span> <span class="nav-text">经典真题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-SEO%EF%BC%9F"><span class="nav-number">1.4.2.</span> <span class="nav-text">什么是 SEO？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C-SEO-%E4%BC%98%E5%8C%96%E5%B7%A5%E4%BD%9C%EF%BC%9F"><span class="nav-number">1.4.3.</span> <span class="nav-text">如何进行 SEO 优化工作？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E9%83%A8%E4%BC%98%E5%8C%96"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">内部优化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%90%88%E7%90%86%E7%9A%84-title%E3%80%81description%E3%80%81keywords"><span class="nav-number">1.4.3.1.1.</span> <span class="nav-text">1. 合理的 title、description、keywords</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E8%AF%AD%E4%B9%89%E5%8C%96%E7%9A%84-HTML-%E4%BB%A3%E7%A0%81%EF%BC%8C%E7%AC%A6%E5%90%88-W3C-%E8%A7%84%E8%8C%83"><span class="nav-number">1.4.3.1.2.</span> <span class="nav-text">2. 语义化的 HTML 代码，符合 W3C 规范</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E9%9D%9E%E8%A3%85%E9%A5%B0%E6%80%A7%E5%9B%BE%E7%89%87%E5%BF%85%E9%A1%BB%E5%8A%A0-alt"><span class="nav-number">1.4.3.1.3.</span> <span class="nav-text">3. 非装饰性图片必须加 alt</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E5%AF%B9%E4%BA%8E%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%9A%84%E5%AF%B9%E8%B1%A1%E8%B0%A8%E6%85%8E%E4%BD%BF%E7%94%A8-display-none"><span class="nav-number">1.4.3.1.4.</span> <span class="nav-text">4. 对于不显示的对象谨慎使用 display:none</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E9%87%8D%E8%A6%81%E5%86%85%E5%AE%B9-HTML-%E4%BB%A3%E7%A0%81%E6%94%BE%E5%9C%A8%E6%9C%80%E5%89%8D"><span class="nav-number">1.4.3.1.5.</span> <span class="nav-text">5. 重要内容 HTML 代码放在最前</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-%E5%B0%91%E7%94%A8-iframe"><span class="nav-number">1.4.3.1.6.</span> <span class="nav-text">6. 少用 iframe</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%96%E9%83%A8%E4%BC%98%E5%8C%96"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">外部优化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9C%9F%E9%A2%98%E8%A7%A3%E7%AD%94-3"><span class="nav-number">1.4.4.</span> <span class="nav-text">真题解答</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iframe"><span class="nav-number">1.5.</span> <span class="nav-text">iframe</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E7%9C%9F%E9%A2%98-4"><span class="nav-number">1.5.1.</span> <span class="nav-text">经典真题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iframe-%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.5.2.</span> <span class="nav-text">iframe 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9C%9F%E9%A2%98%E8%A7%A3%E7%AD%94-4"><span class="nav-number">1.5.3.</span> <span class="nav-text">真题解答</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.6.</span> <span class="nav-text">微格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E7%9C%9F%E9%A2%98-5"><span class="nav-number">1.6.1.</span> <span class="nav-text">经典真题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AE%E6%A0%BC%E5%BC%8F%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.6.2.</span> <span class="nav-text">微格式介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9C%9F%E9%A2%98%E8%A7%A3%E7%AD%94-5"><span class="nav-number">1.6.3.</span> <span class="nav-text">真题解答</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2%E5%85%83%E7%B4%A0"><span class="nav-number">1.7.</span> <span class="nav-text">替换元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E7%9C%9F%E9%A2%98-6"><span class="nav-number">1.7.1.</span> <span class="nav-text">经典真题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%9B%BF%E6%8D%A2%E5%85%83%E7%B4%A0"><span class="nav-number">1.7.2.</span> <span class="nav-text">什么是替换元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E6%9B%BF%E6%8D%A2%E5%85%83%E7%B4%A0"><span class="nav-number">1.7.3.</span> <span class="nav-text">常见的替换元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9C%9F%E9%A2%98%E8%A7%A3%E7%AD%94-6"><span class="nav-number">1.7.4.</span> <span class="nav-text">真题解答</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="nav-number">1.8.</span> <span class="nav-text">页面可见性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E7%9C%9F%E9%A2%98-7"><span class="nav-number">1.8.1.</span> <span class="nav-text">经典真题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E5%8F%AF%E8%A7%81%E6%80%A7%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.8.2.</span> <span class="nav-text">页面可见性介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9C%9F%E9%A2%98%E8%A7%A3%E7%AD%94-7"><span class="nav-number">1.8.3.</span> <span class="nav-text">真题解答</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="筱"
+      src="/135xyq.github.io/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">筱</p>
+  <div class="site-description" itemprop="description">筱的博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/135xyq.github.io/archives/">
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/135xyq.github.io/categories/">
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/135xyq.github.io/tags/">
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button site-overview-item animated">
+    <button><i class="fa fa-comment"></i>
+      Chat
+    </button>
+  </div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/135xyq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;135xyq" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xyq135@gmail.com" title="E-Mail → mailto:xyq135@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/%E7%AD%B1xyq" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;筱xyq" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://plus.google.com/%E8%B0%A2%E6%B0%B8%E5%BC%BA" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;谢永强" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/135xyq" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://135xyq.github.io/135xyq.github.io/2022/04/23/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-HTML-%E9%83%A8%E5%88%86%E9%9D%A2%E8%AF%95%E9%A2%98%E5%92%8C%E8%AE%B2%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/135xyq.github.io/images/avatar.jpeg">
+      <meta itemprop="name" content="筱">
+      <meta itemprop="description" content="筱的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筱">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          前端面试题HTML中部分讲解
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-04-23 14:25:21 / 修改时间：21:39:56" itemprop="dateCreated datePublished" datetime="2022-04-23T14:25:21+08:00">2022-04-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/135xyq.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">面试题</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/135xyq.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/HTML/" itemprop="url" rel="index"><span itemprop="name">HTML</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/135xyq.github.io/2022/04/23/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-HTML-%E9%83%A8%E5%88%86%E9%9D%A2%E8%AF%95%E9%A2%98%E5%92%8C%E8%AE%B2%E8%A7%A3/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2022/04/23/前端面试题-HTML-部分面试题和讲解/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>18k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>16 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">前端面试题HTML中部分讲解</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="HTML相关"><a href="#HTML相关" class="headerlink" title="HTML相关"></a>HTML相关</h1><h2 id="文档声明"><a href="#文档声明" class="headerlink" title="文档声明"></a>文档声明</h2><h3 id="经典真题"><a href="#经典真题" class="headerlink" title="经典真题"></a>经典真题</h3><ul>
+<li>什么是<code>&lt;!DOCTYPE&gt;</code>？是否需要在 <em>HTML5</em> 中使用？</li>
+<li>什么是严格模式与混杂模式？</li>
+<li>列举几条怪异模式中的怪癖行为</li>
+</ul>
+<h3 id="文档声明概念"><a href="#文档声明概念" class="headerlink" title="文档声明概念"></a>文档声明概念</h3><p><em>HTML</em> 文档通常以文档声明开始，该声明的作用是帮助浏览器确定其尝试解析和显示的 <em>HTML</em> 文档类型。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>文档声明必须是 <em>HTML</em> 文档的第一行、且顶格显示，对大小写不敏感。因为任何放在 <em>DOCTYPE</em> 前面的东西，比如批注或 <em>XML</em> 声明，会令 <em>IE9</em> 或更早期的浏览器触发怪异模式（后面的渲染模式会介绍）</p>
+<p>文档声明并非一个 <em>HTML</em> 标签。它是一条“信息”，告知浏览器期望的文档类型。</p>
+<p>那么说到文档类型，我们首先有必要先了解一下 <em>HTML</em> 的发展历史。如下图所示：</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-07-020539.png" alt="image-20210907100539198" style="zoom:50%;" />
+
+
+
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-07-020626.png" alt="image-20210907100626110" style="zoom:50%;" />
+
+<p>可以看到，<em>HTML</em> 版本从最开始诞生到最新的 <em>HTML5</em>，中间经历了很多版本。</p>
+<p>那不同的版本有啥区别么？当然有区别，比如一个最显著的区别就是支持的 <em>HTML</em> 元素不同。例如：</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-07-021238.png" alt="image-20210907101237957" style="zoom:50%;" />
+
+
+
+<blockquote>
+<p>更多各版本所支持的不同 <em>HTML</em> 元素可以参阅：<em><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/html_ref_dtd.asp">https://www.w3school.com.cn/tags/html_ref_dtd.asp</a></em></p>
+</blockquote>
+<p>所以，你现在就知道为什么要书写文档声明了。原因是不同版本所支持的 <em>HTML</em> 元素类型是不同的，我需要告诉浏览器以哪一种文档类型方式来解析当前的这个 <em>HTML</em> 文件。</p>
+<p>那么，最新的 <em>HTML5</em> 的文档类型倒是很简单，前面我们已经看到了</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>那么稍微老一点的版本，例如 <em>HTML4</em> 或 <em>XHTML</em> 的文档类型声明长啥样呢？</p>
+<p>这里我们来看两个。</p>
+<p><em><strong>HTML 4.01 Strict</strong></em></p>
+<p>该 <em>DTD</em> 包含所有 <em>HTML</em> 元素和属性，但不包括展示性的和弃用的元素（比如 <em>font</em>）。不允许框架集（<em>Framesets</em>）。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//W3C//DTD HTML 4.01//EN&quot;</span> <span class="meta-string">&quot;http://www.w3.org/TR/html4/strict.dtd&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><em><strong>HTML 4.01 Transitional</strong></em></p>
+<p>该 <em>DTD</em> 包含所有 <em>HTML</em> 元素和属性，包括展示性的和弃用的元素（比如 <em>font</em>）。不允许框架集（<em>Framesets</em>）。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span> </span></span><br><span class="line"><span class="meta"><span class="meta-string">&quot;http://www.w3.org/TR/html4/loose.dtd&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>更多不同文档类型的声明写法可以参阅：<em><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tags/tag_doctype.asp">https://www.w3school.com.cn/tags/tag_doctype.asp</a></em></p>
+</blockquote>
+<p>首先，给我们的第一直观感受，就是声明写得很长。</p>
+<p>那么为什么会这么长呢？</p>
+<p>原因很简单，<em>HTML5</em> 不需要引入 <em>DTD</em> 文件，而其他类型的文档声明是需要引入 <em>DTD</em> 的。</p>
+<p>很好，一个新的名词出现了，<em>DTD</em>。</p>
+<p>在早期的 <em>HTML</em> 版本，例如 <em>HTML 4.01</em> 中，*&lt;!DOCTYPE&gt;* 声明之所以要引用 <em>DTD</em>，是因为 <em>HTML 4.01</em> 基于 <em>SGML</em>。而 <em>DTD</em> 规定的是标记语言的规则，这样浏览器才能正确地呈现内容。</p>
+<p>但是最新的 <em>HTML5</em> 不基于 <em>SGML</em>，所以不需要引用 <em>DTD</em>。</p>
+<p>到这里估计有的小伙伴要懵圈了，怎么又冒出来一个 <em>SGML</em> ？？</p>
+<p>是的，你没有看错，我们有：<em>SGML、HTML、XML、XHTML、HTML5</em></p>
+<p>从这五者的名字中，我们都可以看到 “<em>ML</em>” 这两个字母，所以我们先从 “<em>ML</em>” 说起。</p>
+<p>“<em>ML</em>”即 “<em>Markup language</em>(置标语言)”。</p>
+<p>根据维基百科对其的解释，“<em>Markup language</em>” 是用标准的标记来解释纯文本文档的内容，从而提供关于文档结构或文档该如何渲染的信息。置标语言的发展可以用下图来表示：</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-07-023423.png" alt="image-20210907103423285" style="zoom:50%;" />
+
+
+
+<p><em>GML</em> 是第一代置标语言，使文档能明确将标示和内容分开，所有文件使用同样的标示方法。</p>
+<p><em>SGML</em> 在 <em>GML</em> 的基础上进行整理，形成了一套非常严谨的文件描述方法。它的组成包括语法定义，<em>DTD</em>，文件实例三部分。<em>SGML</em> 因太严谨规范达 <em>500</em> 多页，故而不易学、不易用、难以实现，所以在它的基础上又发展出了其他的更易用的置标语言。</p>
+<p><em>HTML</em> 抛弃了<em>SGML</em> 复杂庞大的缺点，继承了 <em>SGML</em> 的很多优点。<em>HTML</em> 最大的特点是简单性和跨平台性。它只使用了 <em>SGML</em> 中很少的一部分标记，例如 <em>HTML 4.0</em> 中只定义了 <em>70</em> 余种标记。为了便于在计算机上实现，<em>HTML</em> 规定的标记是固定的，即 <em>HTML</em> 语法是不可扩展的。</p>
+<p>随着 <em>Web</em> 应用的不断发展，<em>HTML</em> 的局限性也越来越明显地显现了出来，如 <em>HTML</em> 无法描述数据、可读性差、搜索时间长等。人们又把目光转向 <em>SGML</em>，再次改造 <em>SGML</em> 使之适应现在的网络需求。<em>1998</em> 年 <em>2</em> 月 <em>10</em> 日，<em>W3C</em>(<em>World Wide Web Consortium</em>，万维网联盟)公布 <em>XML 1.0</em> 标准，<em>XML</em> 诞生了。很长一段时间，<em>XML</em> 都作为网络传输的标准数据格式。</p>
+<p><em>XHTML</em> 的出现是因为当时的 <em>HTML</em> 语法要求比较松散，这样对网页编写者来说，比较方便，但对于机器来说，语言的语法越松散，处理起来就越困难，对于传统的计算机来说，还有能力兼容松散语法，但对于许多其他设备，比如手机，难度就比较大。因此产生了由 <em>DTD</em> 定义规则，语法要求更加严格的 <em>XHTML</em>。</p>
+<blockquote>
+<p><em>DTD</em> 教程可以参阅：<em><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/dtd/index.asp">https://www.w3school.com.cn/dtd/index.asp</a></em></p>
+</blockquote>
+<p>最终，<em>HTML5</em> 是 <em>HTML</em> 的第五个修订版，该版本不在基于 <em>SGML</em> 了，所以也就不用再引入 <em>DTD</em> 声明了。</p>
+<p><em>HTML5</em> 的出现，其主要的目标是将互联网语义化，以便更好地被人类和机器阅读，并同时提供更好地支持各种媒体的嵌入。</p>
+<p>现在国内通常所说的 <em>H5</em> 开发，实际上是 <em>HTML5</em> 与 <em>CSS3</em> 及 <em>ES6</em> 的一个组合，大概可以用以下公式说明：<em>HTML5 ≈ HTML + CSS3 + ES6</em> </p>
+<h3 id="渲染模式"><a href="#渲染模式" class="headerlink" title="渲染模式"></a>渲染模式</h3><p>明白了文档类型声明的作用之后，接下来我们还需要看一个东西，那就是渲染模式。</p>
+<p>浏览器渲染模式分为 <em>3</em> 种：</p>
+<ul>
+<li>怪癖模式（混杂模式）[<em>Quirks mode</em>] </li>
+<li>严格模式（标准模式） [<em>Standars mode</em>]</li>
+<li>几乎标准模式 [<em>Almost standards mode</em>]</li>
+</ul>
+<blockquote>
+<p>之所以出现不同的渲染模式，是由于历史原因造成的。</p>
+<p>当年 <em>Netscape4</em>（网景公司早期的浏览器）和 <em>IE4</em>（微软公司早期的浏览器）实现 <em>CSS</em> 机制时，没有遵循 <em>W3C</em> 提出的标准。<em>Netscape4</em> 提供了糟糕的支持，而 <em>IE4</em> 虽然接近标准，但依旧未能完全正确的支持标准。</p>
+<p>所以，在 <em>W3C</em> 标准推出以前，浏览器在对页面的渲染上没有统一规范，产生了差异（<em>Quirks mode</em> 或者称为 <em>Compatibility Mode</em>）</p>
+<p>为了保障自己的网站在各个浏览器上显示正确，网页开发者们不得不依据各个浏览器自身的规范来使用 <em>CSS</em>，因此大部分网站的 <em>CSS</em> 实现并不符合 <em>W3C</em> 规范的标准。</p>
+<p><em>W3C</em> 标准推出后，浏览器渲染页面有了统一的标准（<em>Strict mode</em> 也有叫做 <em>Standars mode</em>）浏览器都开始采纳新标准，但存在一个问题就是如何保证旧的网页还能继续浏览，在标准出来以前，很多页面都是根据旧的渲染方法编写的，如果用的标准来渲染，将导致页面显示异常。</p>
+<p>为保持浏览器渲染的兼容性，使以前的页面能够正常浏览，浏览器都保留了旧的渲染方法（如：微软的 <em>IE</em>）。这样浏览器渲染上就产生了 <em>Quircks mode</em> 和 <em>Standars mode</em>，两种渲染方法共存在一个浏览器上。混杂模式服务于旧式规则，而严格模式服务于标准规则。</p>
+</blockquote>
+<p>对于 <em>HTML</em> 文档来说，浏览器使用文档开头的 <em>DOCTYPE</em> 来决定用怪异模式处理或标准模式处理。</p>
+<p>如果文档中没有 <em>DOCTYPE</em> 将触发文档的怪异模式。怪异模式最明显的影响是会触发怪异盒模型。</p>
+<p>在  <em>DOCTYPE</em>  声明中，没有使用 <em>DTD</em> 声明或者使用 <em>HTML4</em> 以下的 <em>DTD</em> 声明时，基本所有的浏览器都是使用 <em>Quirks mode</em> 呈现，其他的则使用 <em>Standars mode</em> 解析。</p>
+<p><strong>严格模式和怪异模式的部分渲染区别</strong></p>
+<ol>
+<li>盒模型的高宽包含内边距 <em>padding</em> 和边框 <em>border</em></li>
+</ol>
+<p><img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-07-035904.png" alt="img"></p>
+<p>在 <em>W3C</em> 标准中，如果设置一个元素的宽度和高度，指的是元素内容的宽度和高度，而在 <em>IE5.5</em> 及以下的浏览器及其他版本的 <em>Quirks</em> 模式下，<em>IE</em> 的宽度和高度还包含了 <em>padding</em> 和 <em>border</em>。</p>
+<ol start="2">
+<li>可以设置行内元素的高宽</li>
+</ol>
+<p> 在 <em>standards</em> 模式下，给 <em>span</em> 等行内元素设置 <em>wdith</em> 和 <em>height</em> 都不会生效，而在 <em>Quirks</em> 模式下，则会生效。</p>
+<ol start="3">
+<li>可设置百分比的高度</li>
+</ol>
+<p> 在 <em>standards</em> 模式下，一个元素的高度是由其包含的内容来决定的，如果父元素没有设置高度，子元素设置一个百分比的高度是无效的。</p>
+<ol start="4">
+<li>用 <em>margin:0 auto</em> 设置水平居中在 <em>IE</em> 下会失效</li>
+</ol>
+<p>使用 <em>margin:0 auto</em> 在 <em>standards</em> 模式下可以使元素水平居中，但在 <em>Quirks</em> 模式下却会失效，<em>Quirks</em> 模式下的解决办法，用 <em>text-align</em> 属性：<em>body{text-align:center};#content{text-align:left}</em></p>
+<ol start="5">
+<li><p><em>Quirks</em> 模式下设置图片的 <em>padding</em> 会失效</p>
+</li>
+<li><p><em>Quirks</em> 模式下 <em>Table</em> 中的字体属性不能继承上层的设置</p>
+</li>
+<li><p><em>Quirks</em> 模式下 <em>white-space:pre</em> 会失效</p>
+</li>
+</ol>
+<blockquote>
+<p>更多可以参阅 <em>MDN</em> 上对怪异模式和标准模式的解释：<em><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Quirks_Mode_and_Standards_Mode">https://developer.mozilla.org/zh-CN/docs/Web/HTML/Quirks_Mode_and_Standards_Mode</a></em></p>
+</blockquote>
+<blockquote>
+<p><em>MDN</em> 上还给出了不同模式在不同浏览器下的渲染区别（英文）：<em><a target="_blank" rel="noopener" href="https://hsivonen.fi/doctype/">https://hsivonen.fi/doctype/</a></em></p>
+</blockquote>
+<h3 id="真题解答"><a href="#真题解答" class="headerlink" title="真题解答"></a>真题解答</h3><ul>
+<li>什么是<code>&lt;!DOCTYPE&gt;</code>？是否需要在 <em>HTML5</em> 中使用？</li>
+</ul>
+<blockquote>
+<p>它是 <em>HTML</em> 的文档声明，通过它告诉浏览器，使用哪一个 <em>HTML</em> 版本标准解析文档。</p>
+<p>在浏览器发展的历史中，<em>HTML</em> 出现过很多个版本，不同版本在元素、属性等书写格式上略有差异，如果不预先告诉浏览器，浏览器就不知道我们的文档标准是什么，在这种情况下，大部分浏览器将开启最大兼容模式来解析网页，我们称之为怪异模式。这不仅会降低解析效率，而且会在解析过程中产生一些难以预知的 <em>bug</em>，所以文档声明是必须的。</p>
+<p>而文档声明有多种书写格式，对应不同的 <em>HTML</em> 版本，<code>&lt;!DOCTYPE&gt;</code>这种书写是告诉浏览器，整个文档使用 <em>HTML5</em> 的标准进行解析。</p>
+</blockquote>
+<ul>
+<li>什么是严格模式与混杂模式？</li>
+</ul>
+<blockquote>
+<p><strong>严格模式：</strong>又称标准模式，是指浏览器按照 <em>W3C</em> 标准解析代码。</p>
+<p><strong>混杂模式：</strong>又称怪异模式或兼容模式，是指浏览器用自己的方式解析代码。</p>
+<p><strong>如何区分：</strong>浏览器解析时到底使用严格模式还是混杂模式，与网页中的 <em>DTD</em> 直接相关。</p>
+<ol>
+<li>如果文档包含严格的 <em>DOCTYPE</em> ，那么它一般以严格模式呈现。<strong>（严格 <em>DTD</em> ——严格模式）</strong> </li>
+<li>包含过渡 <em>DTD</em> 和 <em>URI</em> 的 <em>DOCTYPE</em> ，也以严格模式呈现，但有过渡 <em>DTD</em> 而没有 <em>URI</em> （统一资源标识符，就是声明最后的地址）会导致页面以混杂模式呈现。<strong>（有 <em>URI</em> 的过渡 <em>DTD</em> ——严格模式；没有 <em>URI</em> 的过渡 <em>DTD</em> ——混杂模式）</strong> </li>
+<li><em>DOCTYPE</em> 不存在或形式不正确会导致文档以混杂模式呈现。<strong>（<em>DTD</em> 不存在或者格式不正确——混杂模式）</strong></li>
+<li><em>HTML5</em> 没有 <em>DTD</em> ，因此也就没有严格模式与混杂模式的区别，<em>HTML5</em> 有相对宽松的语法，实现时，已经尽可能大的实现了向后兼容。<strong>（ <em>HTML5</em> 没有严格和混杂之分）</strong></li>
+</ol>
+<p><strong>意义：</strong>严格模式与混杂模式存在的意义与其来源密切相关，如果说只存在严格模式，那么许多旧网站必然受到影响，如果只存在混杂模式，那么会回到当时浏览器大战时的混乱，每个浏览器都有自己的解析模式。</p>
+</blockquote>
+<ul>
+<li>列举几条怪异模式中的怪癖行为</li>
+</ul>
+<blockquote>
+<ol>
+<li>宽高的算法与 <em>W3C</em> 盒模型不同</li>
+<li>在表格中的字体样式不会继承</li>
+<li>怪异模式下可以设置行内元素宽高</li>
+<li>怪异模式下 <em>white-space:pre</em> 会失效</li>
+</ol>
+</blockquote>
+<h2 id="语义化"><a href="#语义化" class="headerlink" title="语义化"></a>语义化</h2><h3 id="经典真题-1"><a href="#经典真题-1" class="headerlink" title="经典真题"></a>经典真题</h3><ul>
+<li>说说对 <em>html</em> 语义化的理解</li>
+</ul>
+<h3 id="什么是语义元素？"><a href="#什么是语义元素？" class="headerlink" title="什么是语义元素？"></a>什么是语义元素？</h3><p>语义是指对一个词或者句子含义的正确解释。很多 <em>HTML</em> 标签也具有语义的意义，也就是说元素本身传达了关于标签所包含内容类型的一些信息。例如，当浏览器解析到<code>&lt;h1&gt;&lt;/h1&gt;</code>标签时，它将该标签解释为包含这一块内容的最重要的标题。<em>h1</em> 标签的语义就是用它来标识特定网页或部分最重要的标题。</p>
+<h3 id="为什么要语义化？"><a href="#为什么要语义化？" class="headerlink" title="为什么要语义化？"></a>为什么要语义化？</h3><ul>
+<li>代码结构：使页面没有css的情况下，也能够呈现出很好的内容结构</li>
+<li>有利于 <em>SEO</em>： 爬虫依赖标签来确定关键字的权重，因此可以和搜索引擎建立良好的沟通，帮助爬虫抓取更多的有效信息</li>
+<li>提升用户体验：例如 <em>title、alt</em> 可以用于解释名称或者解释图片信息，以及 <em>label</em> 标签的灵活运用。</li>
+<li>便于团队开发和维护：语义化使得代码更具有可读性，让其他开发人员更加理解你的 <em>html</em> 结构，减少差异化。</li>
+<li>方便其他设备解析：如屏幕阅读器、盲人阅读器、移动设备等，以有意义的方式来渲染网页。</li>
+</ul>
+<h3 id="HTML5-常用的语义元素"><a href="#HTML5-常用的语义元素" class="headerlink" title="HTML5 常用的语义元素"></a><em>HTML5</em> 常用的语义元素</h3><p><em>HTML5</em> 提供了新的语义元素来定义网页的不同部分，它们被称为“切片元素”，如图所示 ：</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-07-062515.png" alt="image-20210907142515375" style="zoom:50%;" />
+
+
+
+<ul>
+<li><em>header</em>：用于定义页面的头部区域，通常包括网站 <em>logo</em>、主导航、全站链接以及搜索框。</li>
+<li><em>nav</em>：定义页面的导航链接部分区域。</li>
+<li><em>main</em>：定义文档的主要内容，该内容在文档中应当是独一无二的</li>
+<li><em>article</em>：定义页面独立的内容，它可以有自己的 <em>header、footer、sections</em> 等，专注于单个主题的博客文章，报纸文章或网页文章。</li>
+<li><em>section</em>：表示文档中的一个区域（或节），比如，内容中的一个专题组。</li>
+<li><em>aside</em>：表示一个和其余页面内容几乎无关的部分，被认为是独立于该内容的一部分且可以被单独的拆分出来而不会影响整体。通常表现为侧边栏或嵌入内容。</li>
+<li><em>footer</em>：定义最近一个章节内容或者根节点元素的页脚。一个页脚通常包含该章节作者、版权数据或者与文档相关的链接等信息。</li>
+</ul>
+<p>大约有 <em>100</em> 多个 <em>HTML</em> 语义元素可供选择，以下是常用的语义元素：</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-07-062552.png" alt="image-20210907142551909" style="zoom:50%;" />
+
+
+
+<blockquote>
+<p>更多的语义化标签可以参阅：<em><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">https://developer.mozilla.org/en-US/docs/Web/HTML/Element</a></em></p>
+</blockquote>
+<h3 id="无障碍网页"><a href="#无障碍网页" class="headerlink" title="无障碍网页"></a>无障碍网页</h3><p><em>W3C</em> 在 <em>1997</em> 年发起了一项 <em>WAI</em>（<em>Web Accessibility Initiative</em>）的计划，该计划的目标是提升网站的易用性(<em>accessibility</em>)，而其中有一个很重要的指标，那就是能够被残障人士使用的网站才能称得上一个易用的（易访问的）网站。</p>
+<p><em>HTML5</em> 在无障碍方面进行了加强，加入了无障碍属性。</p>
+<p>所谓 <em>HTML5</em> 无障碍属性，主要针对的是视觉缺陷，失聪，行动不便的残疾人以及假装残疾的测试人员。尤其像盲人，眼睛看不到，其浏览网页则需要借助辅助设备，如屏幕阅读器，屏幕阅读机可以大声朗读或者输出盲文。</p>
+<p>而 <em>HTML5</em> 无障碍属性就是可以让屏幕阅读器准确识别网页中的内容，变化，状态的技术规范，可以让盲人这类用户也能无障碍阅读！</p>
+<blockquote>
+<p>关于无障碍的更多说明，可以参阅 <em>MDN</em>：<em><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/Accessibility">https://developer.mozilla.org/zh-CN/docs/Web/Accessibility</a></em></p>
+</blockquote>
+<p><strong>常见的无障碍属性</strong></p>
+<p><em>WAI-ARIA</em> 是 <em>W3C</em> 编写的规范，定义了一组可用于其他元素的 <em>HTML</em> 特性，用于提供额外的语义化以及改善缺乏的可访问性。以下是规范中三个主要的特性：</p>
+<ul>
+<li>角色：这定义了元素是干什么的。许多「标志性的角色」，其实重复了 <em>HTML5</em> 的结构元素的语义价值。例如 <em>role=”navigation”</em> (<em>nav</em>) 或者 <em>role=”complementary”</em> (<em>aside</em>)。</li>
+</ul>
+<ul>
+<li>属性：我们能通过定义一些属性给元素，让他们具备更多的语义。例如：<em>aria-required=”true”</em> 意味着元素在表单上是必填的。然而 <em>aria-labelledby=”label”</em> 允许在元素上设置一个 <em>ID</em>，用于 <em>labelledby</em> 引用作为屏幕阅读器指定的 <em>label</em> 内容 ，多个也可以。</li>
+</ul>
+<ul>
+<li>状态：用于表达元素当前的条件的特殊属性，例如 *aria-disabled=”true”*，屏幕阅读器就会这个表单禁止输入。状态和属性的差异之处就是：属性在应用的生命周期中不会改变，而状态可以，通常我们用编程的方法改变它，例如 <em>Javascript</em>。</li>
+</ul>
+<p>关于 <em>WAI-ARIA</em> 属性重要的一点是它不会对 <em>Web</em> 页面有任何影响，除了让更多的信息从浏览器暴露给 <em>accessibility APIs</em> (无障碍 <em>API</em>)，这也是屏幕阅读器这一类软件的信息源。<em>WAI-ARIA</em> 不会影响网页的结构，以及 <em>DOM</em> 等等，尽管这些属性可用于作为 <em>CSS</em> 选择器。</p>
+<blockquote>
+<p>更多无障碍属性可以参阅：<em><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Learn/Accessibility/WAI-ARIA_basics">https://developer.mozilla.org/zh-CN/docs/Learn/Accessibility/WAI-ARIA_basics</a></em></p>
+</blockquote>
+<h3 id="真题解答-1"><a href="#真题解答-1" class="headerlink" title="真题解答"></a>真题解答</h3><ul>
+<li>说说对 <em>html</em> 语义化的理解</li>
+</ul>
+<blockquote>
+<p>语义化的目的主要有以下几点：</p>
+<ol>
+<li>去掉或者丢失样式的时候能够让页面呈现出清晰的结构</li>
+<li>有利于 <em>SEO</em>：和搜索引擎建立良好沟通，有助于爬虫抓取更多的有效信息：爬虫依赖于标签来确定上下文和各个关键字的权重</li>
+<li>方便其他设备解析（如屏幕阅读器、盲人阅读器、移动设备）以意义的方式来渲染网页</li>
+<li>便于团队开发和维护，语义化更具可读性，是下一步吧网页的重要动向，遵循 <em>W3C</em> 标准的团队都遵循这个标准，可以减少差异化。<em>HTML5</em> 中新增加的很多标签，例如：<em>article、nav、header</em> 和 <em>footer</em> 等，就是基于语义化设计原则</li>
+</ol>
+</blockquote>
+<h2 id="W3C-标准组织"><a href="#W3C-标准组织" class="headerlink" title="W3C 标准组织"></a><em>W3C</em> 标准组织</h2><h3 id="经典真题-2"><a href="#经典真题-2" class="headerlink" title="经典真题"></a>经典真题</h3><ul>
+<li>对于 <em>WEB</em> 标准以及 <em>W3C</em> 的理解与认识问题</li>
+</ul>
+<h3 id="什么是-W3C"><a href="#什么是-W3C" class="headerlink" title="什么是 W3C"></a>什么是 <em>W3C</em></h3><ul>
+<li>W3C 指万维网联盟（<em>World Wide Web Consortium</em>）</li>
+<li>W3C 创建于<em>1994年10月</em></li>
+<li>W3C 由 <em>Tim Berners-Lee</em> 创建</li>
+<li>W3C 是一个<em>会员组织</em></li>
+<li>W3C 的工作是<em>对 web 进行标准化</em></li>
+<li>W3C 创建并维护 <em>WWW 标准</em></li>
+<li>W3C 标准被称为 <em>W3C 推荐（W3C 规范）</em></li>
+</ul>
+<h3 id="W3C-是如何创建的？"><a href="#W3C-是如何创建的？" class="headerlink" title="W3C 是如何创建的？"></a><em>W3C</em> 是如何创建的？</h3><p>万维网（<em>World Wide Web</em>）是作为欧洲核子研究组织的一个项目发展起来的，在那里 <em>Tim Berners-Lee</em> 开发出万维网的雏形。<em>Tim Berners-Lee</em> 是万维网的发明人，目前是万维网联盟的主任。</p>
+<p><em>W3C</em> 在 <em>1994</em> 年被创建，其创立目的是为了完成麻省理工学院（<em>MIT</em>）与欧洲粒子物理研究所（<em>CERN</em>）之间的协同工作，并得到了美国国防部高级研究计划局（<em>DARPA</em>）和欧洲委员会（<em>European Commission</em>）的支持。</p>
+<h3 id="标准化-Web"><a href="#标准化-Web" class="headerlink" title="标准化 Web"></a>标准化 <em>Web</em></h3><p><em>W3C</em> 致力于实现所有的用户都能够对 <em>Web</em> 加以利用（不论其文化教育背景、能力、财力以及其身体残疾）。</p>
+<p><em>W3C</em> 同时与其他标准化组织协同工作，比如 <em>Internet</em> 工程工作小组（<em>Internet Engineering Task Force</em>）、无线应用协议（<em>WAP</em>）以及 <em>Unicode</em> 联盟（<em>Unicode Consortium</em>）。</p>
+<p><em>W3C</em> 由美国麻省理工学院计算机科学和人工智能实验室 (<em>MIT CSAIL</em>)，总部位于法国的欧洲信息数学研究联盟(<em>ERCIM</em>) 和日本的庆应大学（<em>Keio University</em>）联合运作，并且在世界范围内拥有分支办事处。</p>
+<h3 id="W3C-成员"><a href="#W3C-成员" class="headerlink" title="W3C 成员"></a><em>W3C</em> 成员</h3><p>正因为 <em>Web</em> 是如此的重要（不论在其影响范围还是在投资方面），以至于不应由任何一家单独的组织来对它的未来进行控制，因此 <em>W3C</em> 扮演着一个会员组织的角色：</p>
+<p>一些知名的会员包括：</p>
+<ul>
+<li><em>IBM</em></li>
+<li><em>Microsoft</em></li>
+<li><em>America Online</em></li>
+<li><em>Apple</em></li>
+<li><em>Adobe</em></li>
+<li><em>Macromedia</em></li>
+<li><em>Sun Microsystems</em></li>
+</ul>
+<p><em>W3C</em> 的会员包括了：软件开发商、内容提供商、企业用户、通信公司、研究机构、研究实验室、标准化团体以及政府。</p>
+<h3 id="W3C-规范的批准步骤"><a href="#W3C-规范的批准步骤" class="headerlink" title="W3C 规范的批准步骤"></a><em>W3C</em> 规范的批准步骤</h3><p>在 <em>W3C</em> 发布某个新标准的过程中，规范是通过下面的严格程序由一个简单的理念逐步确立为推荐标准的：</p>
+<ul>
+<li><em>W3C</em> 收到一份提交</li>
+<li>由 <em>W3C</em> 发布一份记录</li>
+<li>由 <em>W3C</em> 创建一个工作组</li>
+<li>由 <em>W3C</em> 发布一份工作草案</li>
+<li>由 <em>W3C</em> 发布一份候选的推荐</li>
+<li>由 <em>W3C</em> 发布一份被提议的推荐</li>
+<li>由 <em>W3C</em> 发布推荐</li>
+</ul>
+<blockquote>
+<p>具体步骤可以参阅：<em><a target="_blank" rel="noopener" href="https://www.runoob.com/w3c/w3c-process.html">https://www.runoob.com/w3c/w3c-process.html</a></em></p>
+</blockquote>
+<h3 id="真题解答-2"><a href="#真题解答-2" class="headerlink" title="真题解答"></a>真题解答</h3><ul>
+<li>对于 <em>WEB</em> 标准以及 <em>W3C</em> 的理解与认识问题</li>
+</ul>
+<blockquote>
+<p>任何东西都需要一个标准，有了标准才能够更好的进行交流和推广。不同的标准，得出的便是不同的结果。因此，制定什么样的标准，如何确立标准，至关重要。</p>
+<p>正因为有了网页的标准，才能降低开发难度及开发成本，减少各种 <em>BUG</em>、安全问题， 提高网站易用性。</p>
+<p>就好比 <em>HTML</em> 在 <em>W3C</em> 组织推出标准之前，不同的浏览器厂商有一套自己的标准，这对于开发人员来讲是痛苦的，所以才会遗留下浏览器的标准模式和怪异模式这个历史问题。</p>
+<p><em>W3C</em> 就是一个推出标准的组织，被称之为万维网联盟，<em>W3C</em> 最重要的工作是发展 <em>Web</em> 规范。</p>
+</blockquote>
+<h2 id="SEO"><a href="#SEO" class="headerlink" title="SEO"></a><em>SEO</em></h2><h3 id="经典真题-3"><a href="#经典真题-3" class="headerlink" title="经典真题"></a>经典真题</h3><ul>
+<li>请描述下 <em>SEO</em> 中的 <em>TDK</em>？</li>
+</ul>
+<h3 id="什么是-SEO？"><a href="#什么是-SEO？" class="headerlink" title="什么是 SEO？"></a>什么是 <em>SEO</em>？</h3><p><em>SEO</em> 由英文 <em>Search Engine Optimization</em> 缩写而来，中文意译为“搜索引擎优化”。</p>
+<p>其实叫做针对搜索引擎优化更容易理解。它是指从自然搜索结果获得网站流量的技术和过程，是在了解搜索引擎自然排名机制的基础上，对网站进行内部及外部的调整优化，改进网站在搜索引擎中的关键词自然排名，获得更多流量，从而达成网站销售及品牌建设的目标。</p>
+<h3 id="如何进行-SEO-优化工作？"><a href="#如何进行-SEO-优化工作？" class="headerlink" title="如何进行 SEO 优化工作？"></a>如何进行 <em>SEO</em> 优化工作？</h3><p>有的同学第一反应：给钱。</p>
+<p>虽然，国内的百度搜索引擎，确实存在给钱就把你排在前面的情况，但是在不给钱的情况下，我们也能够通过一些优化手段来提升页面的权重，从而使我们的页面获取更多流量。</p>
+<p>下面就介绍一些常见的 <em>SEO</em> 优化手段。</p>
+<p>整个 <em>SEO</em> 工作大致可以分为<strong>内部优化</strong>和<strong>外部优化</strong>。</p>
+<h4 id="内部优化"><a href="#内部优化" class="headerlink" title="内部优化"></a>内部优化</h4><h5 id="1-合理的-title、description、keywords"><a href="#1-合理的-title、description、keywords" class="headerlink" title="1. 合理的 title、description、keywords"></a>1. 合理的 <em>title、description、keywords</em></h5><p>这个就是上面经典面试题中出现的 <em>TDK</em>，其实就是这 <em>3</em> 个单词的缩写。</p>
+<ul>
+<li><p><em>title</em>：浏览器上显示的那些内容，不仅用户能看到，也能被搜索引擎检索到，搜索引擎在抓取网页时，最先读取的就是网页标题，所以 <em>title</em> 是否正确设置极其重要。<em>title</em> 一般不超过 <em>80</em> 个字符，而且词语间要用英文 “-” 隔开，因为计算机只对英语的敏感性较高，对汉语的敏感性不高。</p>
+</li>
+<li><p><em>description</em>：也就是网页的内容摘要，这是对于一个网页的简要内容概况。<em>description</em> 一般不超过 <em>150</em> 个字符，描述内容要和页面内容相关。</p>
+</li>
+<li><p><em>keywords</em>：主要作用是告诉搜索引擎本页内容是围绕哪些词展开的。因此 <em>keywords</em> 的每个词都要能在内容中找到相应匹配，才有利于排名。<em>keywords</em> 一般不超过 <em>3</em> 个，每个关键词不宜过长，而且词语间要用英文 “,” 隔开，尽量将重要的关键字靠前放。</p>
+</li>
+</ul>
+<h5 id="2-语义化的-HTML-代码，符合-W3C-规范"><a href="#2-语义化的-HTML-代码，符合-W3C-规范" class="headerlink" title="2. 语义化的 HTML 代码，符合 W3C 规范"></a>2. 语义化的 <em>HTML</em> 代码，符合 <em>W3C</em> 规范</h5><p>语义化代码能够让搜索引擎容易理解网页，即使脱去了 <em>CSS</em> 这一层外衣，整个网页的结构也是清清楚楚的，无论是搜索引擎还是阅读者，都能够很容易的分辨网页的结构。</p>
+<p>关于语义化的具体内容，可以参阅《语义化》章节。</p>
+<h5 id="3-非装饰性图片必须加-alt"><a href="#3-非装饰性图片必须加-alt" class="headerlink" title="3. 非装饰性图片必须加 alt"></a>3. 非装饰性图片必须加 <em>alt</em></h5><p><em>img</em> 标签的 <em>alt</em> 属性指定了替代文本，用于在图像无法显示或者用户禁用图像显示时，代替图像显示在浏览器中的内容。</p>
+<p>例如：<code>&lt;img src=&quot;/xxx.jpg&quot; alt=&quot;海尔官网-双门冰箱&quot; /&gt;</code></p>
+<p><em>alt</em> 标签的作用：</p>
+<ul>
+<li>增强内容相关性：它是可以利用汉字介绍文章内容的，对于一些特定的企业产品，由于视觉的体验，它往往是少文字的。  </li>
+<li>提高关键词密度：在操作企业站的时候，我们经常遇到是站点首屏一个大的横幅 <em>banner</em>，几乎占用了首页的大部分页面，为了有效的提高首页核心关键词密度，我们只能利用一切办法增添关键词，比如：在图片的 <em>alt</em> 标签中添加。  </li>
+</ul>
+<h5 id="4-对于不显示的对象谨慎使用-display-none"><a href="#4-对于不显示的对象谨慎使用-display-none" class="headerlink" title="4. 对于不显示的对象谨慎使用 display:none"></a>4. 对于不显示的对象谨慎使用 <em>display:none</em></h5><p>对于不想显示的文字内容，应当设置 <em>z-index</em> 或设置到浏览器显示器之外。因为搜索引擎会过滤掉 <em>display:none</em> 其中的内容。</p>
+<h5 id="5-重要内容-HTML-代码放在最前"><a href="#5-重要内容-HTML-代码放在最前" class="headerlink" title="5. 重要内容 HTML 代码放在最前"></a>5. 重要内容 <em>HTML</em> 代码放在最前</h5><p>索引擎抓取 <em>HTML</em> 顺序是从上到下，所以我们尽量将重要的内容放在前面，保证重要内容一定会被抓取。</p>
+<h5 id="6-少用-iframe"><a href="#6-少用-iframe" class="headerlink" title="6. 少用 iframe"></a>6. 少用 <em>iframe</em></h5><p>少用或者尽量不用 <em>iframe</em>，因为搜索引擎不会抓取 <em>iframe</em> 中的内容</p>
+<p>优化的细节还有很多，更多细节可以参阅这篇博文：<em><a target="_blank" rel="noopener" href="https://blog.csdn.net/yanyihan16/article/details/89209436?utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.control">https://blog.csdn.net/yanyihan16/article/details/89209436?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.control</a></em></p>
+<h4 id="外部优化"><a href="#外部优化" class="headerlink" title="外部优化"></a>外部优化</h4><p>外部优化主要是指放友情链接和外链。好的友情链接可以快速的提高网站的权重，高质量的外链，会给你的网站提高源源不断的权重提升。另外，就是要向各大搜索引擎登陆入口提交尚未收录站点。</p>
+<h3 id="真题解答-3"><a href="#真题解答-3" class="headerlink" title="真题解答"></a>真题解答</h3><ul>
+<li>请描述下 <em>SEO</em> 中的 <em>TDK</em>？</li>
+</ul>
+<blockquote>
+<p>在 <em>SEO</em> 中，所谓的 <em>TDK</em> 其实就是 <em>title、description、keywords</em>。</p>
+<ul>
+<li><em>title</em>：浏览器上显示的那些内容，不仅用户能看到，也能被搜索引擎检索到，搜索引擎在抓取网页时，最先读取的就是网页标题，所以 <em>title</em> 是否正确设置极其重要。<em>title</em> 一般不超过 <em>80</em> 个字符，而且词语间要用英文 “-” 隔开，因为计算机只对英语的敏感性较高，对汉语的敏感性不高。</li>
+<li><em>description</em>：也就是网页的内容摘要，这是对于一个网页的简要内容概况。<em>description</em> 一般不超过 <em>150</em> 个字符，描述内容要和页面内容相关。</li>
+<li><em>keywords</em>：主要作用是告诉搜索引擎本页内容是围绕哪些词展开的。因此 <em>keywords</em> 的每个词都要能在内容中找到相应匹配，才有利于排名。<em>keywords</em> 一般不超过 <em>3</em> 个，每个关键词不宜过长，而且词语间要用英文 “,” 隔开，尽量将重要的关键字靠前放。</li>
+</ul>
+</blockquote>
+<h2 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a><em>iframe</em></h2><h3 id="经典真题-4"><a href="#经典真题-4" class="headerlink" title="经典真题"></a>经典真题</h3><ul>
+<li><em>iframe</em> 框架有哪些优缺点？</li>
+<li><em>iframe</em> 用来干什么的</li>
+</ul>
+<h3 id="iframe-介绍"><a href="#iframe-介绍" class="headerlink" title="iframe 介绍"></a><em>iframe</em> 介绍</h3><p><em>iframe</em> 称之为嵌入式框架，嵌入式框架可以把一个完整的网页内容嵌入到现有的网页中。</p>
+<p>下面是一个 <em>iframe</em> 的简单示例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>iframe 示例<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;https://juejin.cn/&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>效果：</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-09-011259.png" alt="image-20210909091258084" style="zoom:50%;" />
+
+
+
+<p>可以看到，在当前的网页，又嵌入了一个其他页面。</p>
+<p>那么这在实际开发中有啥意义呢？</p>
+<p>实际上，在早期的时候， <em>iframe</em> 在开发中用得很多。使用 <em>iframe</em> 可以很方便的制作一个页面的公共部分，例如导航栏。</p>
+<p>现在仍然能够找到使用 <em>iframe</em> 的网站（大多是旧的项目）</p>
+<p>例如 <em>W3C school</em>：</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-09-015133.png" alt="image-20210909095133166" style="zoom:50%;" />
+
+
+
+<p>再比如邮箱：</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-09-014911.png" alt="image-20210909094911187" style="zoom:50%;" />
+
+
+
+<p>但是随着 <em>Ajax</em> 的出现，<em>iframe</em> 用得越来越少了。现在在某些特定的场景还能见到，比如模拟窗口，邮箱或者 <em>HTML</em> 在线编辑器等。</p>
+<p>究其原因，是因为 <em>iframe</em> 有种种不便，比如一个直观的问题就是 <em>iframe</em> 的自适应高度，这是处理起来比较麻烦的问题，随便百度下都是一大串的代码。</p>
+<p>另外还有个重大的缺点，那就是搜索引擎的“爬虫”程序无法解读这种页面，当“爬虫”遇到多个页面嵌套的网页时只看到框架却找不到链接，然后认定此网站是死站点并离开。这对于 <em>SEO</em> 来讲无疑是毁灭性的打击。并且使用大量的 <em>iframe</em> 标签也会稀释你该页面的关键词密度并对其产生影响。</p>
+<h3 id="真题解答-4"><a href="#真题解答-4" class="headerlink" title="真题解答"></a>真题解答</h3><ul>
+<li><em>iframe</em> 用来干什么的？有哪些优缺点？</li>
+</ul>
+<blockquote>
+<p>参考答案：</p>
+<p><em>iframe</em> 也称作嵌入式框架，嵌入式框架和框架网页类似，它可以把一个网页的框架和内容嵌入在现有的网页中。</p>
+<p><strong>优点</strong></p>
+<ul>
+<li>重载页面时不需要重载整个页面，只需要重载页面中的一个框架页(减少了数据的传输，增加了网页下载速度)</li>
+<li>方便制作导航栏</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>会产生很多页面，不容易管理</li>
+<li>调用外部页面，需要额外调用 <em>CSS</em>，给页面带来额外的请求次数</li>
+<li>会阻塞页面的加载，<em>window</em> 的 <em>onload</em> 事件需要在所有 <em>iframe</em> 加载完毕后(包含里面的元素)才会触发</li>
+<li>浏览器的后退按钮无效</li>
+<li>无法被一些搜索引擎索引到</li>
+<li>多数小型的移动设备（<em>PDA</em> 手机）无法完全显示框架</li>
+</ul>
+<p>由于上面诸多缺点，因此不符合标准网页设计的理念，已经被标准网页设计抛弃，目前框架的所有优点完全可以使用 <em>Ajax</em> 实现，因此已经没有必要使用 <em>iframe</em> 框架了。</p>
+</blockquote>
+<h2 id="微格式"><a href="#微格式" class="headerlink" title="微格式"></a>微格式</h2><h3 id="经典真题-5"><a href="#经典真题-5" class="headerlink" title="经典真题"></a>经典真题</h3><ul>
+<li>知道什么是微格式吗？谈谈理解。在前端构建中应该考虑微格式吗？</li>
+</ul>
+<h3 id="微格式介绍"><a href="#微格式介绍" class="headerlink" title="微格式介绍"></a>微格式介绍</h3><p>所谓微格式，是建立在已有的、被广泛采用的标准基础之上的一组简单的、开放的数据格式。</p>
+<p>具体表现是把语义嵌入到 <em>HTML</em> 中，以便有助于分离式开发，并通过制定一些简单的约定，来兼顾 <em>HTML</em> 文档的人机可读性，相当于对 <em>Web</em> 网页进行了语义注解。</p>
+<p><em>talk is cheap，show me code</em></p>
+<p>以前我们是这样写一个链接到首页的代码的：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">”http://www.bbon.cn”</span>&gt;</span>Web Design Blog<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>而现在我们要为这个代码元素 <em>a</em> 加上 <em>rel</em> 属性：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">”http://www.bbon.cn“</span> <span class="attr">rel</span>=<span class="string">”homepage”</span>&gt;</span>Web Design Blog<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>通过上面的代码，我们可以发现，多了一个 <em>rel</em> 属性。这个 <em>rel=”home”</em> 属性显示链接的目标页面是该网站的首页。</p>
+<p>通过为已有的链接元素添加语义化属性，就为这个链接添加了具体的结构和意义。</p>
+<p>就这？</p>
+<p><em>No、No、No</em>，我们再去微格式的官网瞅一瞅：<em><a target="_blank" rel="noopener" href="https://microformats.org/">https://microformats.org/</a></em></p>
+<p>官网对微格式是这么介绍的：</p>
+<blockquote>
+<p><em>Microformats are based on simple markup conventions that enable you to add meaningful structure to your web content.</em></p>
+<p>微格式基于简单的标记约定，使您能够向web内容添加有意义的结构。</p>
+<p><em>One of the key principles of microformats, is to privilege human readable content. This means that you should think first and foremost of your content design being readable and accessible to web viewers.</em> </p>
+<p>微格式的一个关键原则是赋予人类可读内容特权。这意味着您应该首先考虑内容设计的可读性和可访问性。</p>
+<p><em>Using the most appropriate HTML elements and applying structured class names to your markup enables you to produce content that can be clearly understood by a human audience and also used in a structured way by automated programs and other online tools.</em> </p>
+<p>通过使用最合适的HTML元素并将结构化类名应用到标记中，您可以生成人类观众可以清楚理解的内容，并通过自动化程序和其他在线工具以结构化方式使用这些内容。</p>
+<p><em>But the point is that you shouldn’t have to go out of your way to produce such machine friendly markup - microformats make it easy to integrate this greater degree of structure into your websites, without the overhead of having to learn complicated new languages or formats.</em></p>
+<p>但关键是，你不应该不遗余力地制作这样的机器友好型标记——微格式可以轻松地将这种更高程度的结构集成到你的网站中，而无需学习复杂的新语言或格式。</p>
+</blockquote>
+<p>正如前面所介绍的，微格式就是为了兼顾 <em>HTML</em> 文档的人机可读性，在标签中添加的语义注解。</p>
+<p>那好，那么我们以后书写所有的 <em>HTML</em> 代码，都要这样书写注解么？</p>
+<p>并不是，否则人都傻了。微格式一般用于标记人员、组织、事件、地点、博客帖子、产品、评论、简历、食谱等的 <em>HTML</em>。</p>
+<p>例如：</p>
+<blockquote>
+<p><em>Mark-up your contact info with h-card, link to other profiles with rel=”me”</em></p>
+<p>使用 <em>h-card</em> 标记您的联系信息，使用 <em>rel=“me”</em> 链接到其他个人资料</p>
+<p><em>Mark-up your blog with h-entry.</em></p>
+<p>用 <em>h-entry</em> 标记你的博客。</p>
+</blockquote>
+<p>这里我们以  <em>h-card</em> 为例。</p>
+<p><em>h-card</em> 是一种微格式，用来发布个人，公司，组织，地点等详细的联系信息。 它可以使分析器（比如其他网站，<em>Firefox</em> 的 <em>Operator</em> 插件）获得详细的信息，并通过别的网站或者地图工具进行显示，或者载入到地址簿等其他程序。</p>
+<p>例如，没有加入 <em>h-card</em> 微格式时，我们的 <em>HTML</em> 结构如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>Joe Doe<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>The Example Company<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>604-555-1234<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://example.com/&quot;</span>&gt;</span>http://example.com/<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>加入微格式后，成为：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;vcard&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fn&quot;</span>&gt;</span>Joe Doe<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;org&quot;</span>&gt;</span>The Example Company<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tel&quot;</span>&gt;</span>604-555-1234<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;url&quot;</span> <span class="attr">href</span>=<span class="string">&quot;http://example.com/&quot;</span>&gt;</span>http://example.com/<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里，正式名称（<em>class=”fn”</em>），组织（<em>class=”org”</em>），电话号码（<em>class=”tel”</em>）和 <em>url</em>（<em>class=”url”</em>）分别用相应的 <em>class</em> 标示。</p>
+<p>同时，所有内容都包含在 <em>class=”vcard”</em> 里。</p>
+<p>再例如，我们用一个维基媒体基金会的联系方式，来作为 <em>h-card</em> 微格式实例。</p>
+<p>加入  <em>h-card</em> 微格式之前的信息内容如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Wikimedia Foundation Inc.</span><br><span class="line">200 2nd Ave. South #358</span><br><span class="line">St. Petersburg, FL 33701-4313</span><br><span class="line">USA</span><br><span class="line">Phone: +1-727-231-0101</span><br><span class="line">Email: info@wikimedia.org</span><br><span class="line">Fax: +1-727-258-0207</span><br></pre></td></tr></table></figure>
+
+<p>加入微格式后，成为：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;vcard&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fn org&quot;</span>&gt;</span>Wikimedia Foundation Inc.<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;adr&quot;</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;street-address&quot;</span>&gt;</span>200 2nd Ave. South #358<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;locality&quot;</span>&gt;</span>St. Petersburg<span class="tag">&lt;/<span class="name">span</span>&gt;</span>,</span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;region&quot;</span>&gt;</span>FL<span class="tag">&lt;/<span class="name">span</span>&gt;</span> <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;postal-code&quot;</span>&gt;</span>33701-4313<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;country-name&quot;</span>&gt;</span>USA<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>Phone: <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;tel&quot;</span>&gt;</span>+1-727-231-0101<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>Email: <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;email&quot;</span>&gt;</span>info@wikimedia.org<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;tel&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;type&quot;</span>&gt;</span>Fax<span class="tag">&lt;/<span class="name">span</span>&gt;</span>:</span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;value&quot;</span>&gt;</span>+1-727-258-0207<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，正式名称（<em>class=”fn”</em>）和组织（<em>class=”org”</em>）写在了一个属性中，表示这是一个组织，而不是个人。</p>
+<p>这个时候，有的小伙伴就要提问了，这些 <em>h-card</em> 里面的属性名是固定的么？</p>
+<p>没错，常用的  <em>h-card</em>  属性还包括：<em>bday</em>（生日）、<em>email</em>（邮箱）、<em>tel</em>（电话）、<em>nickname</em>（昵称）等。</p>
+<p>目前已具备完整规范的微格式还包括：<em>hCard、hCalendar、XOXO、XFN、VoteLinks</em> 和 <em>3</em> 个 “rel-” 的微格式：<em>rel- license、rel-nofollow</em> 和 <em>rel-tag</em>。</p>
+<p>至于每一种微格式的规范（里面有哪些属性）是什么，我们可以在官网进行查阅。</p>
+<p>例如：  <em>h-card</em>  的规范就可以参阅：<em><a target="_blank" rel="noopener" href="https://microformats.org/wiki/h-card">https://microformats.org/wiki/h-card</a></em></p>
+<h3 id="真题解答-5"><a href="#真题解答-5" class="headerlink" title="真题解答"></a>真题解答</h3><ul>
+<li>知道什么是微格式吗？谈谈理解。在前端构建中应该考虑微格式吗？</li>
+</ul>
+<blockquote>
+<p>参考答案：</p>
+<p>所谓微格式，是建立在已有的、被广泛采用的标准基础之上的一组简单的、开放的数据格式。</p>
+<p>具体表现是把语义嵌入到 <em>HTML</em> 中，以便有助于分离式开发，并通过制定一些简单的约定，来兼顾 <em>HTML</em> 文档的人机可读性，相当于对 <em>Web</em> 网页进行了语义注解。</p>
+<p>采用微格式的 <em>Web</em> 页面，在 <em>HTML</em> 文档中给一些标签增加一些属性，这些属性对信息的语义结构进行注解，有助于处理 <em>HTML</em> 文档的软件，更好的理解该 <em>HTML</em> 文档。</p>
+<p><strong>在前端构建中微格式的意义</strong></p>
+<p>微格式按照某种已有的被广泛应用的标准，通过对内容块的语义标记，可以让外部应用程序、聚合程序和搜索引擎能够做以下事情：</p>
+<ol>
+<li>在爬取 <em>Web</em> 内容时，能够更为准确地识别内容块的语义；</li>
+<li>对内容进行操作，包括提供访问、校对，还可以将其转化成其他的相关格式，提供给外部程序和Web服务使用。</li>
+</ol>
+<p>总结： 微格式可以对网站进行 <em>SEO</em> 优化，如果需要可以考虑。</p>
+</blockquote>
+<h2 id="替换元素"><a href="#替换元素" class="headerlink" title="替换元素"></a>替换元素</h2><h3 id="经典真题-6"><a href="#经典真题-6" class="headerlink" title="经典真题"></a>经典真题</h3><ul>
+<li>什么是可替换元素，什么是非可替换元素，它们各自有什么特点？</li>
+</ul>
+<h3 id="什么是替换元素"><a href="#什么是替换元素" class="headerlink" title="什么是替换元素"></a>什么是替换元素</h3><p>所谓可替换元素（<em>replaced element</em>），是指一些展现效果不由 <em>CSS</em> 来控制的元素。这些元素是一种外部对象，它们外观的渲染，是独立于 <em>CSS</em> 的。</p>
+<p>简单来说，它们的内容不受当前文档的样式的影响。<em>CSS</em> 可以影响可替换元素的位置，但不会影响到可替换元素自身的内容。某些可替换元素，例如 <code>&lt;iframe&gt;</code> 元素，可能具有自己的样式表，但它们不会继承父文档的样式。</p>
+<p>与替换元素相对应的，就是非替换元素，顾名思义就是那些样式完全由 <em>CSS</em> 来控制的元素，例如 <em>p，h1～h6</em> 等。</p>
+<blockquote>
+<p>更多可替换元素内容可以参阅 <em>MDN</em>：<em><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Replaced_element">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Replaced_element</a></em></p>
+</blockquote>
+<h3 id="常见的替换元素"><a href="#常见的替换元素" class="headerlink" title="常见的替换元素"></a>常见的替换元素</h3><ul>
+<li>图片标签 <em>img</em></li>
+<li>内联框架 <em>iframe</em></li>
+<li>音频视频标签</li>
+</ul>
+<h3 id="真题解答-6"><a href="#真题解答-6" class="headerlink" title="真题解答"></a>真题解答</h3><ul>
+<li>什么是可替换元素，什么是非可替换元素，它们各自有什么特点？</li>
+</ul>
+<blockquote>
+<p>可替换元素是指这样一种元素，它在页面中的大部分展现效果不由 <em>CSS</em> 决定。</p>
+<p>比如 <em>img</em> 元素就是一个可替换元素，它在页面中显示出的效果主要取决于你连接的是什么图片，图片是什么它就展示什么，<em>CSS</em> 虽然可以控制图片的尺寸位置，但永远无法控制图片本身。</p>
+<p>再比如，<em>select</em> 元素也是一个典型的可替换元素，它在页面上呈现的是用户操作系统上的下拉列表样式，因此，它的展现效果是由操作系统决定的。所以，同一个 <em>select</em> 元素，放到不同操作系统的电脑上会呈现不同的外观。</p>
+<p><em>img、video、audio</em>、大部分表单元素都属于可替换元素。</p>
+<p>非可替换元素就是指的普通元素，它具体在页面上呈现什么，完全由 <em>CSS</em> 来决定。</p>
+</blockquote>
+<h2 id="页面可见性"><a href="#页面可见性" class="headerlink" title="页面可见性"></a>页面可见性</h2><h3 id="经典真题-7"><a href="#经典真题-7" class="headerlink" title="经典真题"></a>经典真题</h3><ul>
+<li>页面可见性（<em>Page Visibility</em>）<em>API</em> 可以有哪些用途？</li>
+</ul>
+<h3 id="页面可见性介绍"><a href="#页面可见性介绍" class="headerlink" title="页面可见性介绍"></a>页面可见性介绍</h3><p>长期以来我们一直缺少一个判断用户是否正在浏览某个指定标签页的方法。</p>
+<p>用户是否去看别的网站了？他们切换回来了么？</p>
+<p>现在，<em>HTML5</em> 里页面可见性接口就提供给了程序员一个方法，让他们使用 <em>visibilitychange</em> 页面事件来判断当前页面可见性的状态，并针对性的执行某些任务。同时还有新的 <em>document.hidden</em> 属性可以使用。</p>
+<p>常用的 <em>API</em> 如下：</p>
+<ul>
+<li><em><strong>document.hidden</strong></em>：这个新出现的 <em>document.hidden</em> 属性，它显示页面是否为用户当前观看的页面，值为 <em>ture</em> 或 <em>false</em>。</li>
+</ul>
+<ul>
+<li><em><strong>document.visibilityState</strong></em>：<em>visibilityState</em> 的值要么是 <em>visible</em> ，表明页面为浏览器当前激活 <em>tab</em>，而且窗口不是最小化状态；要么是 <em>hidden</em> ，表示页面不是当前激活 <em>tab</em> 页面，或者窗口最小化了；或者 <em>prerender</em> ，表示页面在重新生成，对用户不可见。</li>
+</ul>
+<ul>
+<li><em><strong>visibilitychange</strong></em> 事件：监听页面可见性变化事件</li>
+</ul>
+<p>下面是一个页面可见性的具体示例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>页面可见性示例<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.addEventListener(<span class="string">&quot;visibilitychange&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span>(<span class="built_in">document</span>.visibilityState === <span class="string">&quot;hidden&quot;</span>)&#123;</span></span><br><span class="line"><span class="javascript">                <span class="built_in">document</span>.title = <span class="string">&quot;小样去哪儿了？快回来&quot;</span></span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span>(<span class="built_in">document</span>.visibilityState === <span class="string">&quot;visible&quot;</span>)&#123;</span></span><br><span class="line"><span class="javascript">                <span class="built_in">document</span>.title = <span class="string">&quot;页面可见性示例&quot;</span></span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">        &#125;);</span></span><br><span class="line"><span class="javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>更多有关页面可见性的内容可以参阅 <em>MDN</em>：<em><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Page_Visibility_API">https://developer.mozilla.org/zh-CN/docs/Web/API/Page_Visibility_API</a></em></p>
+</blockquote>
+<h3 id="真题解答-7"><a href="#真题解答-7" class="headerlink" title="真题解答"></a>真题解答</h3><ul>
+<li>页面可见性（<em>Page Visibility</em>）<em>API</em> 可以有哪些用途？</li>
+</ul>
+<blockquote>
+<p>所谓页面可见性，就是获取当前页面的可见状态。因为对于用户来讲可以打开好多标签页面来回切换，然而始终只有一个页面处于显示状态。所以我们可以通过页面可见性（<em>Page Visibility</em>）<em>API</em> 来判断当前页面是显示状态还是隐藏状态。</p>
+<p>常用的 <em>API</em> 有三个，<em>document.hidden</em> 返回一个布尔值，如果是 <em>true</em>，表示页面可见，<em>false</em> 则表示页面隐藏。不同页面之间来回切换，会触发 <em>visibilitychange</em> 事件，还有一个 <em>document.visibilityState</em>，表示页面所处的状态。</p>
+<p>常见的用途：</p>
+<ul>
+<li>网站有图片轮播效果，只有在用户观看轮播的时候，才会自动展示下一张幻灯片。</li>
+<li>显示信息仪表盘的应用程序不希望在页面不可见时轮询服务器进行更新。</li>
+<li>页面想要检测是否正在渲染，以便可以准确的计算网页浏览量</li>
+<li>当设备进入待机模式时，网站想要关闭设备声音（用户按下电源键关闭屏幕）</li>
+</ul>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/135xyq.github.io/./images/wechatpay.png" alt="筱 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/135xyq.github.io/images/alipay.jpg" alt="筱 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/135xyq.github.io/images/wechat_channel.png">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/135xyq.github.io/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/135xyq.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"><i class="fa fa-tag"></i> 面试题</a>
+              <a href="/135xyq.github.io/tags/HTMl/" rel="tag"><i class="fa fa-tag"></i> HTMl</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/135xyq.github.io/2022/04/03/uniapp-uniappAPi/" rel="prev" title="uniapp基础Api和插件安装">
+                  <i class="fa fa-chevron-left"></i> uniapp基础Api和插件安装
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/135xyq.github.io/2022/04/23/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-HTML-%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB/" rel="next" title="前端面试题HTML面试题汇总">
+                  前端面试题HTML面试题汇总 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">筱</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">444k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">6:44</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/135xyq.github.io/js/comments.js"></script><script src="/135xyq.github.io/js/utils.js"></script><script src="/135xyq.github.io/js/motion.js"></script><script src="/135xyq.github.io/js/next-boot.js"></script><script src="/135xyq.github.io/js/bookmark.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/135xyq.github.io/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="chatra" type="application/json">{"enable":true,"async":true,"id":"ruWaHnsjKGdZQCSiC"}</script>
+<script src="/135xyq.github.io/js/third-party/chat/chatra.js"></script>
+<script async src="https://call.chatra.io/chatra.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/135xyq.github.io/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvS6KuDV","appkey":"48e71f62cb3f29222e2ee2c1f7abcc74"}</script>
+<script src="/135xyq.github.io/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>
