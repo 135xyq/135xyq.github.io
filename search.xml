@@ -20629,4 +20629,60 @@ load,整个页面加载完才能触发    </li>
         <tag>react</tag>
       </tags>
   </entry>
+  <entry>
+    <title>JSX简介和语法</title>
+    <url>/135xyq.github.io/2022/05/16/react-react%E5%9F%BA%E7%A1%80-JSX%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<h1 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h1><h2 id="什么是-JSX"><a href="#什么是-JSX" class="headerlink" title="什么是 JSX"></a>什么是 JSX</h2><ul>
+<li>  Facebook 起草的 JS 扩展语法</li>
+<li>  本质是一个 JS 对象，会被 babel 编译，最终会被转换为 React.createElement</li>
+<li>每个 JSX 表达式，有且仅有一个根节点<ul>
+<li>  多个节点同级是可以使用 React.Fragment 或 &lt;&gt; 直接包裹</li>
+</ul>
+</li>
+<li>  每个 JSX 元素必须结束（XML 规范）</li>
+<li>  类名要写成className</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> h1 = (</span><br><span class="line">	<span class="xml"><span class="tag">&lt;<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">h1</span>&gt;</span> javascript <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">p</span>&gt;</span> 你好 <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;/<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> h1 = (</span><br><span class="line">	<span class="xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">h1</span>&gt;</span> javascript <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">p</span>&gt;</span> 你好 <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;/&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="在-JSX-中嵌入表达式"><a href="#在-JSX-中嵌入表达式" class="headerlink" title="在 JSX 中嵌入表达式"></a>在 JSX 中嵌入表达式</h2><p>使用 {} 包裹要放置的表达式</p>
+<ul>
+<li>  在 JSX 中使用注释: {/* 注释内容 */}</li>
+<li>将表达式作为内容的一部分<ul>
+<li>  null、undefined、false 不会显示在页面上，结构上会存在</li>
+<li>  普通对象，不可以作为子元素</li>
+<li>  可以放置 React 元素对象</li>
+<li>  可以放置数组（会遍历数组，将数组的每一项作为子元素添加进去）</li>
+</ul>
+</li>
+<li>  将表达式作为元素属性</li>
+<li>  属性使用小驼峰命名法</li>
+<li>防止注入攻击<ul>
+<li>  自动编码</li>
+<li>  dangerouslySetInnerHTML:来实现类似innerHTML的功能</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">1234</span>,  b = <span class="number">4321</span>;</span><br><span class="line"><span class="keyword">const</span> h1 = (</span><br><span class="line">	<span class="xml"><span class="tag">&lt;<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">			&#123;a&#125;*&#123;b&#125; = &#123;a * b&#125;</span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;/<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> imgClassName = <span class="string">&quot;image&quot;</span></span><br><span class="line"><span class="keyword">const</span> imgUrl= <span class="string">&quot;http://qzapp.qlogo.cn/qzapp/101983660/F61F6EEE51E483105E9C9686BFFF61A2/100&quot;</span></span><br><span class="line"><span class="keyword">const</span> h1 = (</span><br><span class="line">	<span class="xml"><span class="tag">&lt;<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&#123;imgUrl&#125;</span>  <span class="attr">className</span>=<span class="string">&#123;imgClassName&#125;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">			<span class="attr">marginLeft:</span>&#x27;<span class="attr">50px</span>&#x27;,</span></span></span><br><span class="line"><span class="tag"><span class="xml">			<span class="attr">width:</span>&quot;<span class="attr">220px</span>&quot;</span></span></span><br><span class="line"><span class="tag"><span class="xml">		&#125;&#125;/&gt;</span></span></span><br><span class="line"><span class="xml">	<span class="tag">&lt;/<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> divContent = <span class="string">&quot;&lt;h1&gt;测试dangerouslySetInnerHTML&lt;/h1&gt;&lt;p&gt;必须传入一个对象，将__html属性赋值为想要展示的html字符串&lt;/p&gt;&quot;</span></span><br><span class="line"><span class="keyword">const</span> div = (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">dangerouslySetInnerHTML</span>=<span class="string">&#123;&#123;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">__html:divContent</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">    &#125;&#125;&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="元素的不可变性"><a href="#元素的不可变性" class="headerlink" title="元素的不可变性"></a>元素的不可变性</h2><ul>
+<li>  虽然 JSX 元素是一个对象，但是该对象中的所有属性不可更改</li>
+<li>  如果确实需要更改元素的属性，需要重新创建 JSX 元素</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端学习笔记</category>
+        <category>react</category>
+        <category>react基础</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>react</tag>
+      </tags>
+  </entry>
 </search>
