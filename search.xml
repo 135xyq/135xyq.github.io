@@ -20879,4 +20879,56 @@ load,整个页面加载完才能触发    </li>
         <tag>马克思</tag>
       </tags>
   </entry>
+  <entry>
+    <title>react基础 react组件和组件属性</title>
+    <url>/135xyq.github.io/2022/05/18/react-react%E5%9F%BA%E7%A1%80-%E7%BB%84%E4%BB%B6%E5%92%8C%E7%BB%84%E4%BB%B6%E5%B1%9E%E6%80%A7/</url>
+    <content><![CDATA[<h1 id="组件和组件属性"><a href="#组件和组件属性" class="headerlink" title="组件和组件属性"></a>组件和组件属性</h1><p>包含内容、样式和功能的UI单元。</p>
+<h2 id="创建一个组件"><a href="#创建一个组件" class="headerlink" title="创建一个组件"></a>创建一个组件</h2><p><strong>组件的名称首字母必须大写</strong></p>
+<h3 id="函数组件"><a href="#函数组件" class="headerlink" title="函数组件"></a>函数组件</h3><p>返回一个React 元素</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyComponent</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>函数组件<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="类组件"><a href="#类组件" class="headerlink" title="类组件"></a>类组件</h3><p>类必须继承自React.Component</p>
+<p>必须包含一个render方法，用来渲染组件，返回React元素</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>类组件<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="组件的使用"><a href="#组件的使用" class="headerlink" title="组件的使用"></a>组件的使用</h2><ol>
+<li>当成一个普通函数调用</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&#123;MyComponent()&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>作为一个DOM元素</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&lt;MyComponent/&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="组件的属性"><a href="#组件的属性" class="headerlink" title="组件的属性"></a>组件的属性</h2><p>数据属于谁，谁才有权力改动</p>
+<p>使用小驼峰命名</p>
+<p>组件的属性不可以改变（只读属性）</p>
+<ol>
+<li>对于函数组件，属性会作为一个对象的一个属性，传递给函数的参数</li>
+<li>对于类组件，属性会作为一个对象的属性，传递给类的构造函数的参数(会在构造函数中自动调用super(props)),可以通过this.props[属性名]获取参数</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>类组件：&#123;this.props.str&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;ClassComponent str=<span class="string">&quot;类组件参数&quot;</span>&gt;&lt;/ClassComponent&gt;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyComponent</span>(<span class="params">props</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>函数组件:&#123;props.str&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;MyComponent str=<span class="string">&quot;函数参数&quot;</span>/&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>前端学习笔记</category>
+        <category>react</category>
+        <category>react基础</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>react</tag>
+      </tags>
+  </entry>
 </search>
