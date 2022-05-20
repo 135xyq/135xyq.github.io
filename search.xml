@@ -17088,7 +17088,7 @@ load,整个页面加载完才能触发    </li>
 <p>下面TestMain测试程序实现了语句覆盖。请将下面TestMain测试程序中的【代码】替换为Java测试代码，使测试程序运行正确。<br>文件TestMain.java如下：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.*;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestMain</span> </span>&#123;</span><br><span class="line">    @【代码<span class="number">1</span>】</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDelta1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Delta 【代码<span class="number">2</span>】=<span class="keyword">new</span> Delta();</span><br><span class="line">        assertEquals(<span class="keyword">true</span>,delta.delta(<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDelta2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Delta delta=<span class="keyword">new</span> Delta();</span><br><span class="line">        assertEquals(【代码<span class="number">3</span>】,delta.delta(<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">mport <span class="keyword">static</span> org.junit.Assert.*;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestMain</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDelta1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Delta delta=<span class="keyword">new</span> Delta();</span><br><span class="line">        assertEquals(<span class="keyword">true</span>,delta.delta(<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDelta2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Delta delta=<span class="keyword">new</span> Delta();</span><br><span class="line">        assertEquals(<span class="keyword">false</span>,delta.delta(<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.*;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestMain</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDelta1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Delta delta=<span class="keyword">new</span> Delta();</span><br><span class="line">        assertEquals(<span class="keyword">true</span>,delta.delta(<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDelta2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Delta delta=<span class="keyword">new</span> Delta();</span><br><span class="line">        assertEquals(<span class="keyword">false</span>,delta.delta(<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 <h2 id="第2题-填写代码-判断Calculator类加减法的语句覆盖测试-10分"><a href="#第2题-填写代码-判断Calculator类加减法的语句覆盖测试-10分" class="headerlink" title="第2题 填写代码.判断Calculator类加减法的语句覆盖测试(10分)"></a>第2题 填写代码.判断Calculator类加减法的语句覆盖测试(10分)</h2><p>此题的上机步骤是:</p>
@@ -17150,8 +17150,10 @@ load,整个页面加载完才能触发    </li>
 <li>建立一个测试类, 类的名称为TestMain。这一点非常重要；</li>
 <li>填代码；</li>
 <li>提交代码，注意题号要一致。</li>
-<li>注意只能修改【代码】之处,不能修改其它地方,否则以0分计<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 测试百度的租房搜索功能</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 1. 打开百度网页版http://www.baidu.com</span></span><br><span class="line"><span class="comment">* 2. 搜索框选择“湘潭大学”</span></span><br><span class="line"><span class="comment">* 3. 点击“百度一下”按钮</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></li>
+<li>注意只能修改【代码】之处,不能修改其它地方,否则以0分计</li>
 </ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 测试百度的租房搜索功能</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">* 1. 打开百度网页版http://www.baidu.com</span></span><br><span class="line"><span class="comment">* 2. 搜索框选择“湘潭大学”</span></span><br><span class="line"><span class="comment">* 3. 点击“百度一下”按钮</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
 <p>请将下面TestMain测试程序中的【代码】替换为Java测试代码，使测试程序运行正确。<br>文件TestMain.java如下：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.WebElement;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.chrome.ChromeDriver;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.chrome.ChromeOptions;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestMain</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        <span class="comment">// 配置chromedriver的驱动路径</span></span><br><span class="line">        System.setProperty(<span class="string">&quot;webdriver.chrome.driver&quot;</span>, <span class="string">&quot;【代码1】/chromedriver.exe&quot;</span>);</span><br><span class="line">        ChromeOptions options = <span class="keyword">new</span> ChromeOptions();</span><br><span class="line">        <span class="comment">// 设置chrome浏览器的 exe文件路径</span></span><br><span class="line">        【代码<span class="number">2</span>】.setBinary(<span class="string">&quot;C:\\Program Files\\Chrome\\Application\\chrome.exe&quot;</span>);</span><br><span class="line">        ChromeDriver 【代码<span class="number">3</span>】 = <span class="keyword">new</span> ChromeDriver(options);</span><br><span class="line">        <span class="comment">// 隐式等待时间</span></span><br><span class="line">        driver.manage().timeouts().implicitlyWait(<span class="number">5</span>, TimeUnit.SECONDS); <span class="comment">// 每次操作时长</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 运行Chrome浏览器并且打开“百度”网站</span></span><br><span class="line">        driver.get(<span class="string">&quot;http://www.baidu.com&quot;</span>);</span><br><span class="line">        <span class="comment">// 1. “百度”网站搜索内容输入文本框输入文字“湘潭大学”</span></span><br><span class="line">        WebElement e = driver.findElementByXPath(<span class="string">&quot;【代码4】&quot;</span>);<span class="comment">// 定位控件“搜索文本框”</span></span><br><span class="line">        CharSequence []cs=&#123;<span class="string">&quot;湘潭大学&quot;</span>&#125;;<span class="comment">//重点要求</span></span><br><span class="line">        e.【代码<span class="number">5</span>】(cs);<span class="comment">// “搜索文本框”中输入文字“湘潭大学”</span></span><br><span class="line">        <span class="comment">// 2. 单击“百度一下”按钮</span></span><br><span class="line">        e = driver.findElementByXPath(<span class="string">&quot;/html/body/div[1]/div[1]/div[5]/div/div/form/span[2]/input&quot;</span>);<span class="comment">// 定位“百度”</span></span><br><span class="line"></span><br><span class="line">按钮</span><br><span class="line">        e.click();<span class="comment">// 单击</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><a href="https://www.cnblogs.com/aaronthon/p/12739437.html">findElementByXPath</a></p>
@@ -17191,7 +17193,7 @@ load,整个页面加载完才能触发    </li>
 <li>提交测试代码，注意题号要一致。</li>
 </ol>
 <p>本题被测试类如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">say</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span>(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">say</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span>(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="答案-5"><a href="#答案-5" class="headerlink" title="答案"></a>答案</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestMain</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        HelloWorld h1 = <span class="keyword">new</span> HelloWorld();</span><br><span class="line">        assertEquals(<span class="string">&quot;Hello World!&quot;</span>,h1.say());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -17248,7 +17250,253 @@ load,整个页面加载完才能触发    </li>
 <p>本题被测试类如下：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Triangle</span> </span>&#123;</span><br><span class="line">    <span class="comment">//定义三角形的三边</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">long</span> lborderA = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">long</span> lborderB = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">long</span> lborderC = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//构造函数</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Triangle</span><span class="params">(<span class="keyword">long</span> lborderA,<span class="keyword">long</span> lborderB,<span class="keyword">long</span> lborderC)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">           <span class="keyword">this</span>.lborderA = lborderA;</span><br><span class="line">           <span class="keyword">this</span>.lborderB = lborderB;</span><br><span class="line">           <span class="keyword">this</span>.lborderC = lborderC;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断是否是三角形</span></span><br><span class="line"><span class="comment">     * 是返回true；不是返回false</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isTriangle</span><span class="params">(Triangle triangle)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">       <span class="keyword">boolean</span> isTrue = <span class="keyword">false</span>;</span><br><span class="line">       <span class="comment">//判断边界，大于0小于等于100，出界返回false</span></span><br><span class="line">       <span class="keyword">if</span>((triangle.lborderA&gt;<span class="number">0</span>&amp;&amp;triangle.lborderA&lt;=<span class="number">100</span>)</span><br><span class="line">          &amp;&amp;(triangle.lborderB&gt;<span class="number">0</span>&amp;&amp;triangle.lborderB&lt;=<span class="number">100</span>)</span><br><span class="line">          &amp;&amp;(triangle.lborderC&gt;<span class="number">0</span>&amp;&amp;triangle.lborderC&lt;=<span class="number">100</span>))</span><br><span class="line">       &#123;</span><br><span class="line">            <span class="comment">//判断两边之和大于第三边</span></span><br><span class="line">            <span class="keyword">if</span>((triangle.lborderA&lt;(triangle.lborderB+triangle.lborderC))</span><br><span class="line">             &amp;&amp;(triangle.lborderB&lt;(triangle.lborderA+triangle.lborderC))</span><br><span class="line">             &amp;&amp;(triangle.lborderC&lt;(triangle.lborderA+triangle.lborderB)))</span><br><span class="line">            isTrue = <span class="keyword">true</span>;</span><br><span class="line">       &#125;</span><br><span class="line">            <span class="keyword">return</span> isTrue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">      * 判断三角形类型</span></span><br><span class="line"><span class="comment">      * 等腰三角形返回字符串“等腰三角形”；</span></span><br><span class="line"><span class="comment">      * 等边三角形返回字符串“等边三角形”；</span></span><br><span class="line"><span class="comment">      * 其它三角形返回字符串“不等边三角形”；</span></span><br><span class="line"><span class="comment">      */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">isType</span><span class="params">(Triangle triangle)</span></span>&#123;</span><br><span class="line">        String strType = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="comment">// 判断是否是三角形            </span></span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.isTriangle(triangle))&#123;</span><br><span class="line">            <span class="comment">//判断是否是等边三角形                  </span></span><br><span class="line">            <span class="keyword">if</span>(triangle.lborderA==triangle.lborderB&amp;&amp;triangle.lborderB==triangle.lborderC)</span><br><span class="line">                strType = <span class="string">&quot;等边三角形&quot;</span>;</span><br><span class="line">                <span class="comment">//判断是否是不等边三角形</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>((triangle.lborderA!=triangle.lborderB)&amp;&amp;</span><br><span class="line">               (triangle.lborderB!=triangle.lborderC)&amp;&amp;</span><br><span class="line">               (triangle.lborderA!=triangle.lborderC))</span><br><span class="line">                strType = <span class="string">&quot;不等边三角形&quot;</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                strType=<span class="string">&quot;等腰三角形&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> strType;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO 自动生成方法存根</span></span><br><span class="line">        Triangle aTriangle;</span><br><span class="line">        aTriangle=<span class="keyword">new</span> Triangle(-<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>);</span><br><span class="line">        <span class="keyword">if</span>(!aTriangle.isTriangle(aTriangle))</span><br><span class="line">        System.out.println(<span class="string">&quot;不是三角形&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="答案-8"><a href="#答案-8" class="headerlink" title="答案"></a>答案</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="答案-8"><a href="#答案-8" class="headerlink" title="答案"></a>答案</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.BeforeClass;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestMain</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testIsTriangle1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Triangle triangle = <span class="keyword">new</span> Triangle(<span class="number">101</span>,<span class="number">3</span>,<span class="number">4</span>);</span><br><span class="line">		assertEquals(<span class="keyword">false</span>,triangle.isTriangle(triangle));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testIsTriangle2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Triangle triangle = <span class="keyword">new</span> Triangle(<span class="number">5</span>,<span class="number">3</span>,<span class="number">4</span>);</span><br><span class="line">		assertEquals(<span class="keyword">true</span>,triangle.isTriangle(triangle));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testIsTriangle3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Triangle triangle = <span class="keyword">new</span> Triangle(<span class="number">5</span>,<span class="number">3</span>,<span class="number">10</span>);</span><br><span class="line">		assertEquals(<span class="keyword">false</span>,triangle.isTriangle(triangle));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testIsType1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Triangle triangle = <span class="keyword">new</span> Triangle(<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>);</span><br><span class="line">		assertEquals(<span class="string">&quot;等边三角形&quot;</span>,triangle.isType(triangle));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testIsType2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Triangle triangle = <span class="keyword">new</span> Triangle(<span class="number">3</span>,<span class="number">3</span>,<span class="number">2</span>);</span><br><span class="line">		assertEquals(<span class="string">&quot;等腰三角形&quot;</span>,triangle.isType(triangle));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testIsType3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Triangle triangle = <span class="keyword">new</span> Triangle(<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line">		assertEquals(<span class="string">&quot;不等边三角形&quot;</span>,triangle.isType(triangle));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="第11题-单选题-16分）"><a href="#第11题-单选题-16分）" class="headerlink" title="第11题  单选题(16分）"></a>第11题  单选题(16分）</h2><ol>
+<li>软件生命周期由若干个阶段组成，下列（  ）阶段，如果在此阶段发现软件缺陷，则修复费用是最低的。<br>（A）需求分析（编制产品说明书）<br>（B）设计<br>（C）编码<br>（D）产品发布</li>
+<li>下列各项中（   ）不是一个测试计划所应包含的内容。<br>（A）测试资源、进度安排<br>（B）测试预期输出<br>（C）测试范围<br>（D）测试策略</li>
+<li>软件测试的目的是（  ）。<br>（A）试验性运行软件<br>（B）发现软件错误<br>（C）证明软件正确<br>（D）找出软件中全部错误</li>
+<li>软件测试是采用（   ）执行软件的活动。<br>（A）测试用例<br>（B）输入数据<br>（C）测试环境<br>（D）输入条件</li>
+<li>与设计测试用例无关的文档是（  ）。<br>（A）项目开发计划<br>（B）需求规格说明书<br>（C）设计说明书<br>（D）源程序</li>
+<li>下列项目中不属于测试文档的是（   ）<br>（A）测试计划<br>（B）测试用例<br>（C）程序流程图<br>（D）测试报告</li>
+<li>软件测试用例主要由输入数据和（  ）两部分组成。<br>（A）测试计划<br>（B）测试规则<br>（C）预期输出结果<br>（D）以往测试记录分析</li>
+<li>经验表明，在程序测试中，某模块与其他模块相比，若该模块已发现并改正的错误较多，<br>则该模块中残存的错误数目与其他模块相比，通常应该（  ）。<br>（A）较少<br>（B）较多<br>（C）相似<br>（D）不确定</li>
+</ol>
+<h3 id="答案-9"><a href="#答案-9" class="headerlink" title="答案"></a>答案</h3><ol>
+<li>A</li>
+<li>B</li>
+<li>B</li>
+<li>A</li>
+<li>A </li>
+<li>C</li>
+<li>C</li>
+<li>B</li>
+</ol>
+<h2 id="第16题-判断题-8分"><a href="#第16题-判断题-8分" class="headerlink" title="第16题  判断题(8分)"></a>第16题  判断题(8分)</h2><ol>
+<li>白盒测试不仅与程序内部结构有关，还要考虑程序的功能要求。（   ）</li>
+<li>白盒测试的“原子谓词覆盖”标准强于“路径覆盖”。（   ）</li>
+<li>白盒测试仅与程序的内部结构有关，完全可以不考虑程序的功能要求。（   ）</li>
+<li>白盒测试是从用户观点出发的测试。（   ）</li>
+<li>测试按照测试层次可以划分成为单元测试、集成测试和系统测试。（   ）</li>
+<li>测试是调试的一个部分。（   ）</li>
+<li>测试是可以穷尽的。（   ）</li>
+<li>测试是提高产品质量根本手段。（   ）</li>
+</ol>
+<h3 id="答案-10"><a href="#答案-10" class="headerlink" title="答案"></a>答案</h3><ol>
+<li>√</li>
+<li>×</li>
+<li>√</li>
+<li>×</li>
+<li>√</li>
+<li>×</li>
+<li>×</li>
+<li>×</li>
+</ol>
+<h2 id="学习通练习"><a href="#学习通练习" class="headerlink" title="学习通练习"></a>学习通练习</h2><h3 id="选择题"><a href="#选择题" class="headerlink" title="选择题"></a>选择题</h3><ol>
+<li>(单选题)软件生命周期由若干个阶段组成，下列（   ）阶段，如果发生软件缺陷，则修复费用是最低的。</li>
+</ol>
+<p>A. 编码<br>B. 需求分析（编制产品说明书）<br>C. 设计<br>D. 产品发布</p>
+<p>正确答案：B</p>
+<ol start="2">
+<li>(单选题)软件测试是采用（    ）执行软件的活动。<br>A. 输入数据<br>B. 测试用例<br>C. 测试环境<br>D. 输入条件</li>
+</ol>
+<p>正确答案: B</p>
+<ol start="3">
+<li>(单选题)下面说法正确的是（   ）。</li>
+</ol>
+<p>A. 成功的测试是发现了迄今尚未发现的错误的测试<br>B. 经过测试没有发现错误说明程序正确<br>C. 测试的目标是为了证明程序没有错误<br>D. 成功的测试是没有发现错误的测试</p>
+<p>正确答案: A</p>
+<ol start="4">
+<li>(单选题)下列可以作为软件测试对象的是（   ）。</li>
+<li>A. 源程序<br>B. 软件设计规格说明<br>C. 需求规格说明书<br>D. 以上全部</li>
+</ol>
+<p>正确答案: D</p>
+<ol start="5">
+<li>(单选题)以下那一种选项不属于软件缺陷（ ）.</li>
+</ol>
+<p>A. 软件实现了产品规格没有提到的功能<br>B. 软件实现了产品规格说明所要求的功能但因受性能限制而未考虑可移植性问题<br>C. 软件中出现了产品规格说明不应该出现的功能<br>D. 软件没有实现产品规格说明所要求的功能</p>
+<p>正确答案: B</p>
+<ol start="6">
+<li>(单选题)在边界值分析中，下列数据通常不用来做数据测试的是（   ）</li>
+<li>A. 等价类中的等价值<br>B. 正好等于边界的值<br>C. 刚刚大于边界的值<br>D. 刚刚小于边界的值</li>
+</ol>
+<p>正确答案: A</p>
+<ol start="7">
+<li>(单选题)测试ATM取款功能，已知取款数只能输入正整数，每次取款数要求是100的倍数且不能大于500，下面（  ）是正确的无效等价类</li>
+</ol>
+<p>A. （0，100）、（100，200）、（200，300）、（300，400）、（400，500）、（500，+∞）<br>B. （500，+∞）<br>C. （-∞，100）、（100，200）、（200，300）、（300，400）、（400，500）、（500，+∞）<br>D. （500，+∞）、任意大于0小于500的非100倍数的整数</p>
+<p>正确答案: D</p>
+<ol start="8">
+<li>(单选题)在某大学学籍管理信息系统中，假设学生年龄的输入范围为 16—40，则根据黑盒测试中的等价类划分技术，下面划分正确的是（  ）。</li>
+</ol>
+<p>A. 可划分为1个有效等价类，2个无效等价类<br>B. 可划分为 2 个有效等价类，2 个无效等价类<br>C. 可划分为 2 个有效等价类，1 个无效等价类<br>D. 可划分为 1 个有效等价类，1 个无效等价类</p>
+<p>正确答案: A</p>
+<ol start="9">
+<li>(单选题)单元测试中用来模拟被测模块调用者的模块称之为（      ）</li>
+</ol>
+<p>A. 驱动模块<br>B. 桩模块<br>C. 父模块<br>D. 子模块</p>
+<p>正确答案: A</p>
+<ol start="10">
+<li>(单选题)不属于单元测试内容的是（     ）</li>
+</ol>
+<p>A. 模块接口测试<br>B. 局部数据结构测试<br>C. 独立路径测试<br>D. 用户界面测试</p>
+<p>正确答案: D</p>
+<ol start="11">
+<li>(单选题)单元测试中设计测试用例的依据是（   ）</li>
+</ol>
+<p>A. 概要设计规格说明书<br>B. 详细设计规格说明书<br>C. 项目计划说明书<br>D. 用户需求规格说明书</p>
+<p>正确答案: B</p>
+<ol start="12">
+<li> 软件测试是软件质量保证的重要手段，下述（     ）是软件测试的最基础环节</li>
+</ol>
+<p>A. 单元测试<br>B. 结构测试<br>C. 功能测试<br>D. 验收测试</p>
+<p>正确答案: A</p>
+<ol start="13">
+<li>(单选题)进行全面的单元测试方法是（      ）</li>
+</ol>
+<p>A. 采用黑盒测试，辅之以白盒测试<br>B. 采用白盒测试，辅之以黑盒测试<br>C. 只使用黑盒测试<br>D. 只使用白盒测试</p>
+<p>正确答案: B</p>
+<ol start="14">
+<li>(单选题)下列各项中（    ）不是一个测试计划所应包含的内容。</li>
+</ol>
+<p>A. 测试资源、进度安排<br>B. 测试范围<br>C. 测试策略<br>D. 测试预期输出</p>
+<p>正确答案: D</p>
+<ol start="15">
+<li>(单选题)软件测试过程中的集成测试主要是为了发现（  ）阶段的错误。</li>
+</ol>
+<p>A. 需求分析<br>B. 概要设计<br>C. 详细设计<br>D. 编码</p>
+<p>正确答案: B</p>
+<ol start="16">
+<li>(单选题)集成测试计划应该在（    ）阶段末提交。</li>
+</ol>
+<p>A. 需求分析<br>B. 概要设计<br>C. 详细设计<br>D. 单元测试</p>
+<p>正确答案: B</p>
+<ol start="17">
+<li>(单选题)自底向上增量式集成测试中，下面（    ）描述是正确的。</li>
+</ol>
+<p>A. 父单元用测试过的子单元测试<br>B. 测试由桩模块控制<br>C. 最上面的模块最先测试<br>D. 包含树的深度优先或广度优先遍历过程</p>
+<p>正确答案: A</p>
+<ol start="18">
+<li>(单选题)( )方法需要考察模块间的接口和各模块之间的联系。</li>
+</ol>
+<p>A. 确认测试<br>B. 系统测试<br>C. 集成测试<br>D. 单元测试</p>
+<p>正确答案: C</p>
+<ol start="19">
+<li> (单选题)集成测试对系统内部的交互以及集成后系统功能检验了（  ）质量特性。</li>
+</ol>
+<p>A. 正确性<br>B. 可靠性<br>C. 可用性<br>D. 可维护性</p>
+<p>正确答案: A</p>
+<ol start="20">
+<li>(单选题)在自低向上测试中，要编写称为（   ）的模块来测验正在测试的模块。</li>
+</ol>
+<p>A. 测试存根<br>B. 底层模块<br>C. 驱动模块<br>D. 桩模块</p>
+<p>正确答案: C</p>
+<ol start="21">
+<li>(单选题)数据流覆盖关注的是程序中某个变量从其声明、赋值到引用的变化情况，它是下列哪一种覆盖的变种（  ）。</li>
+</ol>
+<p>A. 路径覆盖<br>B. 语句覆盖<br>C. 分支覆盖<br>D. 原子谓词覆盖</p>
+<p>正确答案: A</p>
+<h3 id="判断题"><a href="#判断题" class="headerlink" title="判断题"></a>判断题</h3><ol>
+<li>(判断题)等价类测试的标准等价类测试不如对应的健壮等价类测试的测试全面。</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 对</p>
+<ol start="2">
+<li>(判断题)等价类划分方法将所有可能的输入数据划分成若干部分，然后从每一部分中选取少数有代表性的数据作为测试用例。</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 对</p>
+<ol start="3">
+<li>(判断题)黑盒测试的测试用例是根据应用程序的功能需求设计的。</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 对</p>
+<ol start="4">
+<li>(判断题)黑盒测试往往会造成测试用例之间可能存在严重的冗余和未测试的功能漏洞。</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 对</p>
+<ol start="5">
+<li>(判断题)用黑盒法测试时，测试用例是根据程序内部逻辑设计的。</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 错</p>
+<ol start="6">
+<li>(判断题)有n个变量的函数的边界值分析会产生4n+1个测试用例</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 对</p>
+<ol start="7">
+<li>(判断题)有n个变量的函数的健壮性测试用例的个数为：5n+1。</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 错</p>
+<ol start="8">
+<li>(判断题)在所有的黑盒测试方法中，基于决策表的测试是最为严格、最具有逻辑性的测试方法。</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 对</p>
+<ol start="9">
+<li> (判断题)单元测试多采用白盒测试（结构性测试）技术。</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 对</p>
+<ol start="10">
+<li>(判断题)单元测试能发现约80%的软件缺陷。</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 对</p>
+<ol start="11">
+<li>(判断题)单元测试又称为模块测试，是针对软件测试的最小单位－程序模块进行正确性检验的测试工作。</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 对</p>
+<ol start="12">
+<li>单元测试通常由开发人员进行。</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 对</p>
+<ol start="13">
+<li>(判断题)集成测试计划在需求分析阶段末提交。</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 错</p>
+<ol start="14">
+<li>(判断题)集成测试是检验程序单元或部件的接口关系，逐步集成为符合概要设计要求的程序部件或整个系统。</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 对</p>
+<ol start="15">
+<li>(判断题)集成测试是为确定软件系统是否满足验收标准以及使客户决定是否接受而进行的正式测试。</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 错</p>
+<ol start="16">
+<li> (判断题)进行自底向上集成测试，需要为所测模块或子系统编制相应的驱动模块。</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 对</p>
+<ol start="17">
+<li>(判断题)进行自顶向下集成测试，需要为所测模块或子系统编制相应的驱动模块。</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 错</p>
+<ol start="18">
+<li> (判断题)集成测试是对已测试过的模块进行组装，进行集成测试的目的主要在于检验与软件设计相关的程序结构问题。</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 对</p>
+<ol start="19">
+<li>(判断题)集成测试一般通过黑盒测试方法来完成。</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 对</p>
+<ol start="20">
+<li>(判断题)单元测试是完成集成测试后开始的，它对开发工作初期制定的确认准则进行检验。</li>
+</ol>
+<p>A. 对<br>B. 错</p>
+<p>正确答案: 错</p>
 ]]></content>
       <categories>
         <category>课程学习</category>
