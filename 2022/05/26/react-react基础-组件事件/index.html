@@ -21,29 +21,29 @@
   <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"135xyq.github.io","root":"/135xyq.github.io/","images":"/135xyq.github.io/images","scheme":"Pisces","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/135xyq.github.io/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/135xyq.github.io/js/config.js"></script>
-<meta name="description" content="cookie和localStroage的使用">
+<meta name="description" content="react基础 react组件事件的使用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浏览器本地存储">
-<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/2022/01/20/js%E5%B7%A5%E5%85%B7%E5%BA%93-%E6%9C%AC%E5%9C%B0%E5%8C%96%E5%AD%98%E5%82%A8/index.html">
+<meta property="og:title" content="react基础 react组件事件">
+<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/2022/05/26/react-react%E5%9F%BA%E7%A1%80-%E7%BB%84%E4%BB%B6%E4%BA%8B%E4%BB%B6/index.html">
 <meta property="og:site_name" content="筱">
-<meta property="og:description" content="cookie和localStroage的使用">
+<meta property="og:description" content="react基础 react组件事件的使用">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-01-20T06:03:20.000Z">
-<meta property="article:modified_time" content="2022-01-20T06:06:31.363Z">
+<meta property="article:published_time" content="2022-05-26T03:24:47.000Z">
+<meta property="article:modified_time" content="2022-05-26T03:41:30.110Z">
 <meta property="article:author" content="筱">
 <meta property="article:tag" content="前端">
-<meta property="article:tag" content="本地化存储">
+<meta property="article:tag" content="react">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/2022/01/20/js%E5%B7%A5%E5%85%B7%E5%BA%93-%E6%9C%AC%E5%9C%B0%E5%8C%96%E5%AD%98%E5%82%A8/">
+<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/2022/05/26/react-react%E5%9F%BA%E7%A1%80-%E7%BB%84%E4%BB%B6%E4%BA%8B%E4%BB%B6/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://135xyq.github.io/135xyq.github.io/2022/01/20/js%E5%B7%A5%E5%85%B7%E5%BA%93-%E6%9C%AC%E5%9C%B0%E5%8C%96%E5%AD%98%E5%82%A8/","path":"2022/01/20/js工具库-本地化存储/","title":"浏览器本地存储"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://135xyq.github.io/135xyq.github.io/2022/05/26/react-react%E5%9F%BA%E7%A1%80-%E7%BB%84%E4%BB%B6%E4%BA%8B%E4%BB%B6/","path":"2022/05/26/react-react基础-组件事件/","title":"react基础 react组件事件"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>浏览器本地存储 | 筱</title>
+<title>react基础 react组件事件 | 筱</title>
   
 
   <script src="/135xyq.github.io/js/third-party/analytics/baidu-analytics.js"></script>
@@ -151,7 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%98%E5%82%A8"><span class="nav-number">1.</span> <span class="nav-text">存储</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie"><span class="nav-number">1.1.</span> <span class="nav-text">cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie%EF%BC%9A%E5%8F%AF%E8%AF%BB%E5%8F%AF%E5%86%99-%E4%BE%9D%E6%89%98%E4%B8%8Ehttp%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">cookie：可读可写,依托与http协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E8%AE%BE%E7%BD%AEcookie%EF%BC%9A"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">前端设置cookie：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie%E7%9A%84%E5%B1%9E%E6%80%A7%EF%BC%9A"><span class="nav-number">1.1.1.</span> <span class="nav-text">cookie的属性：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Storage%EF%BC%9A%E4%B8%8D%E4%BE%9D%E6%89%98%E4%BA%8Ehttp%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.2.</span> <span class="nav-text">Web Storage：不依托于http协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#localStorage%EF%BC%9A%E5%9C%A8%E6%89%80%E6%9C%89%E5%9F%9F%E5%90%8D%E4%B8%8B%E9%83%BD%E6%9C%89%E6%95%88%EF%BC%8C%E9%A1%B5%E9%9D%A2%E5%85%B3%E9%97%AD%E8%BF%98%E5%AD%98%E5%9C%A8"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">localStorage：在所有域名下都有效，页面关闭还存在</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sessionStorage%EF%BC%9A%E4%BB%85%E5%9C%A8%E5%BD%93%E5%89%8D%E7%AA%97%E5%8F%A3%E6%9C%89%E6%95%88%EF%BC%8C%E9%A1%B5%E9%9D%A2%E5%85%B3%E9%97%AD%E4%B8%8D%E5%AD%98%E5%9C%A8"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">sessionStorage：仅在当前窗口有效，页面关闭不存在</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">1.2.1.</span> <span class="nav-text">属性和方法：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#storage%E4%BA%8B%E4%BB%B6%EF%BC%9A"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">storage事件：</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E4%BA%8B%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">组件事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%BD%AE%E7%BB%84%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">内置组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">自定义组件</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -239,7 +239,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://135xyq.github.io/135xyq.github.io/2022/01/20/js%E5%B7%A5%E5%85%B7%E5%BA%93-%E6%9C%AC%E5%9C%B0%E5%8C%96%E5%AD%98%E5%82%A8/">
+    <link itemprop="mainEntityOfPage" href="https://135xyq.github.io/135xyq.github.io/2022/05/26/react-react%E5%9F%BA%E7%A1%80-%E7%BB%84%E4%BB%B6%E4%BA%8B%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/135xyq.github.io/images/avatar.jpeg">
@@ -252,7 +252,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          浏览器本地存储
+          react基础 react组件事件
         </h1>
 
         <div class="post-meta-container">
@@ -264,7 +264,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-01-20 14:03:20 / 修改时间：14:06:31" itemprop="dateCreated datePublished" datetime="2022-01-20T14:03:20+08:00">2022-01-20</time>
+      <time title="创建时间：2022-05-26 11:24:47 / 修改时间：11:41:30" itemprop="dateCreated datePublished" datetime="2022-05-26T11:24:47+08:00">2022-05-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -276,7 +276,11 @@
         </span>
           ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/" itemprop="url" rel="index"><span itemprop="name">本地存储</span></a>
+          <a href="/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/react/react%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">react基础</span></a>
         </span>
     </span>
 
@@ -290,8 +294,8 @@
       <span class="post-meta-item-text">Changyan：</span>
     
     
-      <a title="changyan" href="/135xyq.github.io/2022/01/20/js%E5%B7%A5%E5%85%B7%E5%BA%93-%E6%9C%AC%E5%9C%B0%E5%8C%96%E5%AD%98%E5%82%A8/#SOHUCS" itemprop="discussionUrl">
-        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2022/01/20/js工具库-本地化存储/" itemprop="commentCount"></span>
+      <a title="changyan" href="/135xyq.github.io/2022/05/26/react-react%E5%9F%BA%E7%A1%80-%E7%BB%84%E4%BB%B6%E4%BA%8B%E4%BB%B6/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2022/05/26/react-react基础-组件事件/" itemprop="commentCount"></span>
       </a>
     
   </span>
@@ -303,18 +307,18 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.2k</span>
+      <span>1.8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
-            <div class="post-description">cookie和localStroage的使用</div>
+            <div class="post-description">react基础 react组件事件的使用</div>
         </div>
       </header>
 
@@ -322,46 +326,27 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h1><hr>
-<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><h4 id="cookie：可读可写-依托与http协议"><a href="#cookie：可读可写-依托与http协议" class="headerlink" title="cookie：可读可写,依托与http协议"></a>cookie：可读可写,依托与http协议</h4><ol>
-<li>cookie不可跨域</li>
-<li>cookie存储在浏览器里面</li>
-<li>cookie有大小和数量的限制（超过部分删除）<ol>
-<li>数量在50个左右</li>
-<li>大小在4KB左右</li>
-<li>cookie的存储时间非常灵活</li>
-<li>cookie不光可以服务器设置，客户端也可以设置</li>
+        <h1 id="组件事件"><a href="#组件事件" class="headerlink" title="组件事件"></a>组件事件</h1><p>在 react 中，组件的事件本质上就是一个属性。</p>
+<p>会在特定的时间运行相对应的函数。</p>
+<p>如果没有特殊处理，在事件处理函数中，this 指向 undefined</p>
+<p>处理方法</p>
+<ol>
+<li>使用 bind 函数，绑定 this</li>
 </ol>
-</li>
-</ol>
-<h4 id="前端设置cookie："><a href="#前端设置cookie：" class="headerlink" title="前端设置cookie："></a>前端设置cookie：</h4><p>document.cookie (键值对形式)只能设置一次cookie</p>
-<h3 id="cookie的属性："><a href="#cookie的属性：" class="headerlink" title="cookie的属性："></a>cookie的属性：</h3><ol>
-<li>name：cookie的名字（唯一性）</li>
-<li>value: cookie的值（字符串）</li>
-<li>domain ： 设置cookie在哪个域下是有效的</li>
-<li>path ： cookie的路径</li>
-<li>expires : cookie的过期时间（默认是session在浏览器关闭时删除）具体时间点<br><code>document.cookie = &#39;margin = 20px;expires = &#39; + new Date(2021, 7, 3);</code></li>
-<li>max-age : cookie的有效期（以秒为单位的时间段），存活时间<br><code>document.cookie = &#39;margin = 20px;max-age = 10&#39;;  //存活时间为10秒</code></li>
-<li>HttpOnly ：有这个标记的cookie前端啊无法获取</li>
-<li>Secure : 设置cookie只能通过HTTPS协议传输</li>
-<li>SameSite ：设置cookie在跨域请求时不能被发送</li>
-</ol>
-<h2 id="Web-Storage：不依托于http协议"><a href="#Web-Storage：不依托于http协议" class="headerlink" title="Web Storage：不依托于http协议"></a>Web Storage：不依托于http协议</h2><p>不能跨域 </p>
-<h4 id="localStorage：在所有域名下都有效，页面关闭还存在"><a href="#localStorage：在所有域名下都有效，页面关闭还存在" class="headerlink" title="localStorage：在所有域名下都有效，页面关闭还存在"></a>localStorage：在所有域名下都有效，页面关闭还存在</h4><h4 id="sessionStorage：仅在当前窗口有效，页面关闭不存在"><a href="#sessionStorage：仅在当前窗口有效，页面关闭不存在" class="headerlink" title="sessionStorage：仅在当前窗口有效，页面关闭不存在"></a>sessionStorage：仅在当前窗口有效，页面关闭不存在</h4><p>localStorage和sessionStorage都继承自对象Storage</p>
-<h3 id="属性和方法："><a href="#属性和方法：" class="headerlink" title="属性和方法："></a>属性和方法：</h3><ol>
-<li>length：本地存储的数量</li>
-<li>key()：通过索引找到存储的数据，（排序不规范，和添加顺序不一样）</li>
-<li>getItem（）：通过键名取到本地存储的数据（取到的是一个字符串）<br><code>console.log(localStorage.getItem(&#39;color&#39;));</code></li>
-<li>setItem（）：设置一个本地存储数据</li>
-</ol>
-<p><code>localStorage.setItem(&#39;name&#39;, &#39;xyq&#39;);</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">var</span> color = &#123;</span><br><span class="line">            <span class="string">&quot;c1&quot;</span>: <span class="string">&quot;red&quot;</span>,</span><br><span class="line">            <span class="string">&quot;c2&quot;</span>: <span class="string">&quot;green&quot;</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="built_in">localStorage</span>.setItem(<span class="string">&#x27;color&#x27;</span>, <span class="built_in">JSON</span>.stringify(color));</span><br><span class="line">添加对象</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Tick number=&#123;<span class="number">10</span>&#125; onOver=&#123;<span class="built_in">this</span>.handleOver.bind(<span class="built_in">this</span>)&#125;&gt;&lt;/Tick&gt;</span><br></pre></td></tr></table></figure>
 
-<ol start="5">
-<li>removeItem（）：删除一个本地存储数据</li>
-<li>clearItem（）：清空本地存储<br><code>localStorage.clear();//全部清空</code></li>
+<ol start="2">
+<li>使用箭头函数</li>
 </ol>
-<h4 id="storage事件："><a href="#storage事件：" class="headerlink" title="storage事件："></a>storage事件：</h4><p>调用所有同域下其他窗口的storage事件，不过它本身触发storage即当前窗口是不会触发这个事件的`</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">handleOver = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">this</span>.setState(&#123;</span><br><span class="line">		<span class="attr">isOver</span>: <span class="literal">true</span>,</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">Tick</span> <span class="attr">number</span>=<span class="string">&#123;10&#125;</span> <span class="attr">onOver</span>=<span class="string">&#123;this.handleOver&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Tick</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="内置组件"><a href="#内置组件" class="headerlink" title="内置组件"></a>内置组件</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;button</span><br><span class="line">	onClick=&#123;<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">&quot;点击了!&quot;</span>);</span><br><span class="line">	&#125;&#125;</span><br><span class="line">&gt;</span><br><span class="line">	点我</span><br><span class="line">&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleClick</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;点击了!&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;button onClick=&#123;handleClick&#125;&gt;点我&lt;/button&gt;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义组件"><a href="#自定义组件" class="headerlink" title="自定义组件"></a>自定义组件</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 倒计时组件</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Tick</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">	<span class="comment">// // 初始化组件</span></span><br><span class="line">	<span class="comment">// state = &#123;</span></span><br><span class="line">	<span class="comment">// 	lastTime: this.props.number,</span></span><br><span class="line">	<span class="comment">// &#125;;</span></span><br><span class="line">	<span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">		<span class="built_in">super</span>(props);</span><br><span class="line">		<span class="comment">// 初始化组件</span></span><br><span class="line">		<span class="built_in">this</span>.state = &#123;</span><br><span class="line">			<span class="attr">lastTime</span>: props.number,</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="keyword">const</span> timer = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">			<span class="built_in">this</span>.setState(&#123;</span><br><span class="line">				<span class="attr">lastTime</span>: <span class="built_in">this</span>.state.lastTime - <span class="number">1</span>,</span><br><span class="line">			&#125;);</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">this</span>.state.lastTime === <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="built_in">clearInterval</span>(timer);</span><br><span class="line">				<span class="comment">//倒计时完成</span></span><br><span class="line">				<span class="built_in">this</span>.props.onOver &amp;&amp; <span class="built_in">this</span>.props.onOver(); <span class="comment">//结束事件</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;, <span class="number">1000</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>倒计时：&#123;this.state.lastTime&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> Tick <span class="keyword">from</span> <span class="string">&quot;./Tick&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">TickOver</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">	state = &#123;</span><br><span class="line">		<span class="attr">isOver</span>: <span class="literal">false</span>,</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="comment">// 处理倒计时结束的事件</span></span><br><span class="line">	<span class="function"><span class="title">handleOver</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.setState(&#123;</span><br><span class="line">			<span class="attr">isOver</span>: <span class="literal">true</span>,</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">		<span class="keyword">let</span> content = <span class="string">&quot;正在倒计时&quot;</span>;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">this</span>.state.isOver) &#123;</span><br><span class="line">			content = <span class="string">&quot;倒计时结束了&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> (</span><br><span class="line">			<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">Tick</span> <span class="attr">number</span>=<span class="string">&#123;10&#125;</span> <span class="attr">onOver</span>=<span class="string">&#123;this.handleOver.bind(this)&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Tick</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;content&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">		);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -407,21 +392,18 @@
 
           <div class="post-tags">
               <a href="/135xyq.github.io/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
-              <a href="/135xyq.github.io/tags/%E6%9C%AC%E5%9C%B0%E5%8C%96%E5%AD%98%E5%82%A8/" rel="tag"><i class="fa fa-tag"></i> 本地化存储</a>
+              <a href="/135xyq.github.io/tags/react/" rel="tag"><i class="fa fa-tag"></i> react</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/135xyq.github.io/2022/01/20/ES6-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="prev" title="ES6中的面向对象和面向过程的比较">
-                  <i class="fa fa-chevron-left"></i> ES6中的面向对象和面向过程的比较
+                <a href="/135xyq.github.io/2022/05/19/react-react%E5%9F%BA%E7%A1%80-%E7%BB%84%E4%BB%B6%E7%8A%B6%E6%80%81/" rel="prev" title="react基础 react组件状态">
+                  <i class="fa fa-chevron-left"></i> react基础 react组件状态
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/135xyq.github.io/2022/01/20/js%E5%B7%A5%E5%85%B7%E5%BA%93-moment%E7%9A%84%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/" rel="next" title="moment工具库的简单使用">
-                  moment工具库的简单使用 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
