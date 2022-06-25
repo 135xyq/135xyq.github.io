@@ -23472,4 +23472,53 @@ load,整个页面加载完才能触发    </li>
         <tag>react</tag>
       </tags>
   </entry>
+  <entry>
+    <title>react进阶 react渲染原理</title>
+    <url>/135xyq.github.io/2022/06/25/react-react%E8%BF%9B%E9%98%B6-react%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<h1 id="渲染原理"><a href="#渲染原理" class="headerlink" title="渲染原理"></a>渲染原理</h1><h2 id="React元素："><a href="#React元素：" class="headerlink" title="React元素："></a>React元素：</h2><p>React Element，通过React.createElement创建（语法糖：JSX）</p>
+<h2 id="React节点："><a href="#React节点：" class="headerlink" title="React节点："></a>React节点：</h2><p>专门用于渲染到UI界面的对象，React会通过React元素创建React节点<br>ReactDOM一定时通过React节点来进行渲染的</p>
+<h3 id="节点类型"><a href="#节点类型" class="headerlink" title="节点类型"></a>节点类型</h3><ul>
+<li>React DOM节点(ReactDOMComponent)：创建该节点的React元素是一个字符串</li>
+<li>React 组件节点：创建该节点的React元素类型是一个函数或是一个类</li>
+<li>React 文本节点：由字符串、数字创建</li>
+<li>React 空节点：由null、undefined、false、true创建</li>
+<li>React 数组节点：由一个数组创建</li>
+</ul>
+<h2 id="真实DOM"><a href="#真实DOM" class="headerlink" title="真实DOM"></a>真实DOM</h2><p>通过document.createElement创建的dom元素</p>
+<h2 id="首次渲染-新节点渲染"><a href="#首次渲染-新节点渲染" class="headerlink" title="首次渲染(新节点渲染)"></a>首次渲染(新节点渲染)</h2><ol>
+<li>根据参数的值创建节点</li>
+<li>不同节点的操作有异</li>
+</ol>
+<ul>
+<li>文本节点：通过<code>document.createTextNode</code>创建真实的文本节点</li>
+<li>空节点：什么都不做</li>
+<li>数组节点：遍历数组，将数组每一项递归创建节点</li>
+<li>DOM节点：通过<code>document.createElement</code>创建真实的DOM对象，然后立即设置该真实DOM元素的各种属性，遍历React元素的children属性，递归创建节点</li>
+<li>组件节点：<ul>
+<li>函数组件：调用函数（该函数必须返回一个可以生成节点的内容），将该函数的返回结果递归创建节点</li>
+<li>类组件：<ol>
+<li>创建该类的实例</li>
+<li>立即调用对象的生命周期方法：<code>static getDerivedStateFromProps</code></li>
+<li>运行该对象的render方法，拿到节点对象（递归创建节点）</li>
+<li>将该组件的<code>componentDidMount</code>加入到执行队列，在整个虚拟DOM树全部构建完毕，并且将真实的DOM对象加入到容器中后，执行该队列</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>生成出虚拟DOM树，将该树保存起来</li>
+<li>将之前生成的真实DOM对象加入到容器中</li>
+</ol>
+]]></content>
+      <categories>
+        <category>前端学习笔记</category>
+        <category>react</category>
+        <category>react进阶</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>react</tag>
+      </tags>
+  </entry>
 </search>
