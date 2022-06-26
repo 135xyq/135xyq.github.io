@@ -21,15 +21,15 @@
   <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"135xyq.github.io","root":"/135xyq.github.io/","images":"/135xyq.github.io/images","scheme":"Pisces","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/135xyq.github.io/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/135xyq.github.io/js/config.js"></script>
-<meta name="description" content="react渲染原理:首次渲染过程">
+<meta name="description" content="react渲染原理:首次渲染过程、更新过程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react进阶 react渲染原理">
 <meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/2022/06/25/react-react%E8%BF%9B%E9%98%B6-react%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="筱">
-<meta property="og:description" content="react渲染原理:首次渲染过程">
+<meta property="og:description" content="react渲染原理:首次渲染过程、更新过程">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-25T14:24:47.000Z">
-<meta property="article:modified_time" content="2022-06-25T14:32:13.413Z">
+<meta property="article:modified_time" content="2022-06-26T08:00:57.889Z">
 <meta property="article:author" content="筱">
 <meta property="article:tag" content="前端">
 <meta property="article:tag" content="react">
@@ -151,7 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">渲染原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#React%E5%85%83%E7%B4%A0%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">React元素：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React%E8%8A%82%E7%82%B9%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">React节点：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">节点类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9C%9F%E5%AE%9EDOM"><span class="nav-number">1.3.</span> <span class="nav-text">真实DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A6%96%E6%AC%A1%E6%B8%B2%E6%9F%93-%E6%96%B0%E8%8A%82%E7%82%B9%E6%B8%B2%E6%9F%93"><span class="nav-number">1.4.</span> <span class="nav-text">首次渲染(新节点渲染)</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">渲染原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#React%E5%85%83%E7%B4%A0%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">React元素：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React%E8%8A%82%E7%82%B9%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">React节点：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">节点类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9C%9F%E5%AE%9EDOM"><span class="nav-number">1.3.</span> <span class="nav-text">真实DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A6%96%E6%AC%A1%E6%B8%B2%E6%9F%93-%E6%96%B0%E8%8A%82%E7%82%B9%E6%B8%B2%E6%9F%93"><span class="nav-number">1.4.</span> <span class="nav-text">首次渲染(新节点渲染)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E8%8A%82%E7%82%B9"><span class="nav-number">1.5.</span> <span class="nav-text">更新节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E7%9A%84%E5%9C%BA%E6%99%AF"><span class="nav-number">1.5.1.</span> <span class="nav-text">更新的场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E7%9A%84%E6%9B%B4%E6%96%B0"><span class="nav-number">1.5.2.</span> <span class="nav-text">节点的更新</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E6%9B%B4%E6%96%B0"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">对比更新</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E5%88%B0%E4%BA%86%E5%AF%B9%E6%AF%94%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="nav-number">1.5.2.1.1.</span> <span class="nav-text">找到了对比的目标</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E8%8A%82%E7%82%B9%E7%B1%BB%E5%9E%8B%E6%98%AF%E5%90%A6%E4%B8%80%E8%87%B4"><span class="nav-number">1.5.2.1.1.1.</span> <span class="nav-text">判断节点类型是否一致</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B2%A1%E6%9C%89%E6%89%BE%E5%88%B0%E5%AF%B9%E6%AF%94%E7%9A%84%E7%9B%AE%E6%A0%87"><span class="nav-number">1.5.2.1.2.</span> <span class="nav-text">没有找到对比的目标</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -262,9 +262,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-06-25 22:24:47 / 修改时间：22:32:13" itemprop="dateCreated datePublished" datetime="2022-06-25T22:24:47+08:00">2022-06-25</time>
+      <time title="创建时间：2022-06-25 22:24:47" itemprop="dateCreated datePublished" datetime="2022-06-25T22:24:47+08:00">2022-06-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-06-26 16:00:57" itemprop="dateModified" datetime="2022-06-26T16:00:57+08:00">2022-06-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -307,18 +313,18 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>756</span>
+      <span>2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
-            <div class="post-description">react渲染原理:首次渲染过程</div>
+            <div class="post-description">react渲染原理:首次渲染过程、更新过程</div>
         </div>
       </header>
 
@@ -361,6 +367,99 @@
 <li>生成出虚拟DOM树，将该树保存起来</li>
 <li>将之前生成的真实DOM对象加入到容器中</li>
 </ol>
+<h2 id="更新节点"><a href="#更新节点" class="headerlink" title="更新节点"></a>更新节点</h2><h3 id="更新的场景"><a href="#更新的场景" class="headerlink" title="更新的场景"></a>更新的场景</h3><ol>
+<li>重新调用<code>ReactDOM.render</code>,完全重新生成节点树<ul>
+<li>触发根节点更新</li>
+</ul>
+</li>
+<li>在类组件的实例对象中调用<code>setSate</code> ，会导致该实例所在的节点更新</li>
+</ol>
+<h3 id="节点的更新"><a href="#节点的更新" class="headerlink" title="节点的更新"></a>节点的更新</h3><ul>
+<li>如果调用<code>ReactDOM.render</code>,进入根节点对比更新</li>
+<li>如果调用<code>setState</code><ol>
+<li>运行生命周期函数 <code>static getDerivedStateFromProps</code></li>
+<li>运行生命周期函数<code>shouldComponentUpdate</code>,如果该函数返回false，终止当前流程</li>
+<li>运行render得到一个新的节点，进入该新节点的对比更新</li>
+<li>将生命周期函数<code>getSnapshotBeforeUpdate</code>加入执行队列，等待将来执行</li>
+<li>将生命周期函数<code>componentDidUpdate</code>加入执行队列，等待将来执行</li>
+</ol>
+</li>
+</ul>
+<p>后续步骤：(两种情况都要执行)</p>
+<ol>
+<li>更新虚拟DOM树</li>
+<li>完成真实的DOM更新</li>
+<li>依次调用执行队列中的<code>componentDidMount</code>函数</li>
+<li>依次调用执行队列中的<code>getSnapshotBeforeUpdate</code>函数</li>
+<li>依次调用执行队列中的<code>componentDidUpdate</code>函数</li>
+</ol>
+<h4 id="对比更新"><a href="#对比更新" class="headerlink" title="对比更新"></a>对比更新</h4><p>将新产生的节点，对比之前虚拟DOM中的节点，发现差异，完成更新。</p>
+<p>React为了提高对比效率，做出如下假设</p>
+<ol>
+<li>假设节点不会出现层次的移动</li>
+<li>不同的节点类型会生成不同的结构<ul>
+<li>相同的节点类型：节点本身类型相同，如果由react元素生成，type值必须一致</li>
+</ul>
+</li>
+<li>多个兄弟节点通过唯一标识(key)来确定对比的新节点</li>
+</ol>
+<p>key值的作用：用于通过旧节点，找到对应的新节点，如果某个旧节点有key值，则其更新时，会寻找相同层级中相同key值的节点进行对比。</p>
+<p><strong>key值应该在一个范围内唯一（兄弟节点中），并且保持稳定</strong></p>
+<h5 id="找到了对比的目标"><a href="#找到了对比的目标" class="headerlink" title="找到了对比的目标"></a>找到了对比的目标</h5><h6 id="判断节点类型是否一致"><a href="#判断节点类型是否一致" class="headerlink" title="判断节点类型是否一致"></a>判断节点类型是否一致</h6><ul>
+<li><strong>一致</strong></li>
+</ul>
+<ol>
+<li>根据不同的节点做不同的事情<ul>
+<li>空节点：不做任何事</li>
+<li>DOM节点：<ol>
+<li>直接使用之前的真实DOM对象</li>
+<li>将其属性的变化记录下来，等待将来统一完成更新（现在不会做真正的变化）</li>
+<li>遍历该新React元素的子元素，递归对比更新</li>
+</ol>
+</li>
+<li>文本节点：<ol>
+<li>直接使用之前的真实DOM对象</li>
+<li>将其nodeValue的变化记录下来，等待将来统一完成更新（现在不会做真正的变化）</li>
+</ol>
+</li>
+<li>组件节点：<ul>
+<li>函数组件：直接重新调用函数，得到一个节点对象，进入递归对比更新</li>
+<li>类组价：<ol>
+<li>重用之前的实例</li>
+<li>调用生命周方法<code>getDerivedStateFromProps</code></li>
+<li>调用声明周期方法<code>shouldComponentUpdate</code>,若该方法返回false，终止</li>
+<li>运行render，得到新的节点对象，进入递归对比更新</li>
+<li>将该对象的<code>getSnapshotBeforeUpdate</code>加入队列</li>
+<li>将该对象的<code>componentDidUpdate</code>加入队列</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>数组节点：遍历数组，进行递归对比更新</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p><strong>不一致</strong><br>整体上，卸载旧的节点，全新创建新的节点<br>先完成挂载新节点，再卸载旧节点</p>
+<ul>
+<li><strong>创建新节点</strong>：<br>  进入新节点的挂载流程</li>
+<li><strong>卸载旧节点</strong>：<ol>
+<li><strong>文本节点、DOM节点、数组节点、空节点、函数组件节点</strong>：直接放弃该节点，如果节点有子节点，递归卸载节点</li>
+<li><strong>类组件节点</strong>：<ol>
+<li>直接放弃该节点</li>
+<li>调用该节点的<code>componentWillUnMount</code>函数</li>
+<li>递归卸载子节点</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="没有找到对比的目标"><a href="#没有找到对比的目标" class="headerlink" title="没有找到对比的目标"></a>没有找到对比的目标</h5><ul>
+<li>创建新加入的节点</li>
+<li>卸载多余的节点</li>
+</ul>
 
     </div>
 
@@ -451,14 +550,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">886k</span>
+    <span title="站点总字数">887k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">13:25</span>
+    <span title="站点阅读时长">13:27</span>
   </span>
 </div>
 
