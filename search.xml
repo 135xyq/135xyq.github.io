@@ -23698,4 +23698,48 @@ load,整个页面加载完才能触发    </li>
         <tag>react</tag>
       </tags>
   </entry>
+  <entry>
+    <title>react Hook Effect Hook</title>
+    <url>/135xyq.github.io/2022/06/27/react-Hook-Effect%20Hook/</url>
+    <content><![CDATA[<h1 id="Effect-Hook"><a href="#Effect-Hook" class="headerlink" title="Effect Hook"></a><a href="https://react.docschina.org/docs/hooks-effect.html">Effect Hook</a></h1><p>Effect Hook用于在函数组件中处理副作用。</p>
+<p>副作用：</p>
+<ol>
+<li>Ajax请求</li>
+<li>计时器</li>
+<li>其他异步操作</li>
+<li>更改真实DOM对象</li>
+<li>本地存储</li>
+<li>其他会对外部产生影响的操作</li>
+</ol>
+<p>useEffect：该函数接收一个函数作为参数，接收的函数就是需要副作用的函数。</p>
+<ol>
+<li>副作用函数运行时间：在页面完成真实的UI渲染之后，它的执行是异步的，不会阻塞浏览器<ul>
+<li>与类组件componentDidMount和componentDidUpdate的区别：componentDidMount和componentDidUpdate更改了真实DOM，但是用户还没有看到UI更新，是同步的；useEffect中副作用函数，更改了真实DOM，并且用户看到了UI更新，是异步的。</li>
+</ul>
+</li>
+<li>每个函数组件中可以多次使用useEffect，但不要放入循环和判断等代码块中</li>
+<li>useEffect中副作用函数，可以有返回值,返回值也必须是函数，该函数叫做清理函数<ul>
+<li>清理函数运行时间点：在每次运行副作用函数之前，首次渲染组件不会运行，组件被销毁时一定会运行</li>
+</ul>
+</li>
+<li>useEffect可以传递第二个参数<ul>
+<li>第二个参数是一个数组</li>
+<li>数组中记录该副作用的依赖数据</li>
+<li>当该组件重新渲染后，只有依赖数据与上一次不一样时，才会执行副作用</li>
+<li>当传递依赖数据后，如果数据没有发生变化，副作用仅在第一次渲染后运行，清理函数仅在卸载组件后运行</li>
+</ul>
+</li>
+<li>副作用函数中，如果使用了函数上下文中的变量，则由于闭包的影响，会导致副作用函数中变量不会实时变化。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useEffect &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">EffectHookTest</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> [n, setN] = useState(<span class="number">0</span>);</span><br><span class="line">    useEffect(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">document</span>.title = <span class="string">`计数器  <span class="subst">$&#123;n&#125;</span>`</span></span><br><span class="line">        <span class="keyword">return</span> <span class="function">()=&gt;</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;清理函数：在每次运行副作用函数之前，首次渲染组件不会运行，组件被销毁时一定会运行&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,[n]);<span class="comment">//数组记录该副作用的依赖数据,当该组件重新渲染后，只有依赖数据与上一次不一样时，才会执行副作用</span></span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">		<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">span</span>&gt;</span>计数器：<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="xml">			&#123;n&#125;</span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">button</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">				<span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="xml">					setN(n + 1);</span></span><br><span class="line"><span class="xml">				&#125;&#125;</span></span><br><span class="line"><span class="xml">			&gt;</span></span><br><span class="line"><span class="xml">				+</span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">	);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>前端学习笔记</category>
+        <category>react</category>
+        <category>Hook</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>react</tag>
+      </tags>
+  </entry>
 </search>

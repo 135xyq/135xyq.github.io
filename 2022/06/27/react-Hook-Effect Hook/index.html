@@ -21,26 +21,29 @@
   <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"135xyq.github.io","root":"/135xyq.github.io/","images":"/135xyq.github.io/images","scheme":"Pisces","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/135xyq.github.io/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/135xyq.github.io/js/config.js"></script>
-<meta name="description" content="筱的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="筱">
-<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/archives/2022/05/index.html">
+<meta name="description" content="Effect Hook">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react Hook Effect Hook">
+<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/2022/06/27/react-Hook-Effect%20Hook/index.html">
 <meta property="og:site_name" content="筱">
-<meta property="og:description" content="筱的博客">
+<meta property="og:description" content="Effect Hook">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-27T15:24:47.000Z">
+<meta property="article:modified_time" content="2022-06-27T15:42:42.618Z">
 <meta property="article:author" content="筱">
-<meta property="article:tag" content="筱的个人空间">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="react">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/archives/2022/05/">
+<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/2022/06/27/react-Hook-Effect%20Hook/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2022/05/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://135xyq.github.io/135xyq.github.io/2022/06/27/react-Hook-Effect%20Hook/","path":"2022/06/27/react-Hook-Effect Hook/","title":"react Hook Effect Hook"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | 筱</title>
+<title>react Hook Effect Hook | 筱</title>
   
 
   <script src="/135xyq.github.io/js/third-party/analytics/baidu-analytics.js"></script>
@@ -71,7 +74,7 @@
 
     <a href="/135xyq.github.io/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">筱</h1>
+      <p class="site-title">筱</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -135,7 +138,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -148,6 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Effect-Hook"><span class="nav-number">1.</span> <span class="nav-text">Effect Hook</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -224,234 +228,203 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        
-        <span class="collection-header">很好! 目前共计 118 篇日志。 继续努力。</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://135xyq.github.io/135xyq.github.io/2022/06/27/react-Hook-Effect%20Hook/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/135xyq.github.io/images/avatar.jpeg">
+      <meta itemprop="name" content="筱">
+      <meta itemprop="description" content="筱的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筱">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          react Hook Effect Hook
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+
+      <time title="创建时间：2022-06-27 23:24:47 / 修改时间：23:42:42" itemprop="dateCreated datePublished" datetime="2022-06-27T23:24:47+08:00">2022-06-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">前端学习笔记</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/react/Hook/" itemprop="url" rel="index"><span itemprop="name">Hook</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/135xyq.github.io/2022/06/27/react-Hook-Effect%20Hook/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2022/06/27/react-Hook-Effect Hook/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">Effect Hook</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Effect-Hook"><a href="#Effect-Hook" class="headerlink" title="Effect Hook"></a><a target="_blank" rel="noopener" href="https://react.docschina.org/docs/hooks-effect.html">Effect Hook</a></h1><p>Effect Hook用于在函数组件中处理副作用。</p>
+<p>副作用：</p>
+<ol>
+<li>Ajax请求</li>
+<li>计时器</li>
+<li>其他异步操作</li>
+<li>更改真实DOM对象</li>
+<li>本地存储</li>
+<li>其他会对外部产生影响的操作</li>
+</ol>
+<p>useEffect：该函数接收一个函数作为参数，接收的函数就是需要副作用的函数。</p>
+<ol>
+<li>副作用函数运行时间：在页面完成真实的UI渲染之后，它的执行是异步的，不会阻塞浏览器<ul>
+<li>与类组件componentDidMount和componentDidUpdate的区别：componentDidMount和componentDidUpdate更改了真实DOM，但是用户还没有看到UI更新，是同步的；useEffect中副作用函数，更改了真实DOM，并且用户看到了UI更新，是异步的。</li>
+</ul>
+</li>
+<li>每个函数组件中可以多次使用useEffect，但不要放入循环和判断等代码块中</li>
+<li>useEffect中副作用函数，可以有返回值,返回值也必须是函数，该函数叫做清理函数<ul>
+<li>清理函数运行时间点：在每次运行副作用函数之前，首次渲染组件不会运行，组件被销毁时一定会运行</li>
+</ul>
+</li>
+<li>useEffect可以传递第二个参数<ul>
+<li>第二个参数是一个数组</li>
+<li>数组中记录该副作用的依赖数据</li>
+<li>当该组件重新渲染后，只有依赖数据与上一次不一样时，才会执行副作用</li>
+<li>当传递依赖数据后，如果数据没有发生变化，副作用仅在第一次渲染后运行，清理函数仅在卸载组件后运行</li>
+</ul>
+</li>
+<li>副作用函数中，如果使用了函数上下文中的变量，则由于闭包的影响，会导致副作用函数中变量不会实时变化。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useEffect &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">EffectHookTest</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> [n, setN] = useState(<span class="number">0</span>);</span><br><span class="line">    useEffect(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">document</span>.title = <span class="string">`计数器  <span class="subst">$&#123;n&#125;</span>`</span></span><br><span class="line">        <span class="keyword">return</span> <span class="function">()=&gt;</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;清理函数：在每次运行副作用函数之前，首次渲染组件不会运行，组件被销毁时一定会运行&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,[n]);<span class="comment">//数组记录该副作用的依赖数据,当该组件重新渲染后，只有依赖数据与上一次不一样时，才会执行副作用</span></span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">		<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">span</span>&gt;</span>计数器：<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="xml">			&#123;n&#125;</span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">button</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">				<span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="xml">					setN(n + 1);</span></span><br><span class="line"><span class="xml">				&#125;&#125;</span></span><br><span class="line"><span class="xml">			&gt;</span></span><br><span class="line"><span class="xml">				+</span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">	);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-05-28T12:12:12+08:00"
-              content="2022-05-28">
-          05-28
-        </time>
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/135xyq.github.io/./images/wechatpay.png" alt="筱 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/135xyq.github.io/images/alipay.jpg" alt="筱 支付宝">
+        <span>支付宝</span>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/135xyq.github.io/2022/05/28/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%9F%E6%9C%AB%E6%80%BB%E7%BB%93/" itemprop="url">
-            <span itemprop="name">人工智能期末复习</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-05-26T11:24:47+08:00"
-              content="2022-05-26">
-          05-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/135xyq.github.io/2022/05/26/react-react%E5%9F%BA%E7%A1%80-%E7%BB%84%E4%BB%B6%E4%BA%8B%E4%BB%B6/" itemprop="url">
-            <span itemprop="name">react基础 react组件事件</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-05-19T22:24:47+08:00"
-              content="2022-05-19">
-          05-19
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/135xyq.github.io/2022/05/19/react-react%E5%9F%BA%E7%A1%80-%E7%BB%84%E4%BB%B6%E7%8A%B6%E6%80%81/" itemprop="url">
-            <span itemprop="name">react基础 react组件状态</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-05-18T22:24:47+08:00"
-              content="2022-05-18">
-          05-18
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/135xyq.github.io/2022/05/18/react-react%E5%9F%BA%E7%A1%80-%E7%BB%84%E4%BB%B6%E5%92%8C%E7%BB%84%E4%BB%B6%E5%B1%9E%E6%80%A7/" itemprop="url">
-            <span itemprop="name">react基础 react组件和组件属性</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-05-17T17:07:07+08:00"
-              content="2022-05-17">
-          05-17
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/135xyq.github.io/2022/05/17/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0-%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" itemprop="url">
-            <span itemprop="name">软件测试期末复习</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-05-16T16:24:47+08:00"
-              content="2022-05-16">
-          05-16
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/135xyq.github.io/2022/05/16/react-react%E5%9F%BA%E7%A1%80-JSX%E7%AE%80%E4%BB%8B/" itemprop="url">
-            <span itemprop="name">JSX简介和语法</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-05-15T17:24:47+08:00"
-              content="2022-05-15">
-          05-15
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/135xyq.github.io/2022/05/15/react-react%E5%9F%BA%E7%A1%80-CDN%E5%BC%95%E5%85%A5%E5%92%8C%E8%84%9A%E6%89%8B%E6%9E%B6%E6%90%AD%E5%BB%BA/" itemprop="url">
-            <span itemprop="name">react基础 react起步、使用CDN引入、脚手架搭建</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-05-10T13:45:21+08:00"
-              content="2022-05-10">
-          05-10
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/135xyq.github.io/2022/05/10/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%89%8B%E5%86%99%E9%A2%98-%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E4%B8%80/" itemprop="url">
-            <span itemprop="name">前端面试题手写题面试题汇总一</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-05-10T13:35:21+08:00"
-              content="2022-05-10">
-          05-10
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/135xyq.github.io/2022/05/10/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%9C%BA%E6%99%AF%E9%A2%98-%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E4%B8%80/" itemprop="url">
-            <span itemprop="name">前端面试题场景题面试题汇总一</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-05-05T23:35:21+08:00"
-              content="2022-05-05">
-          05-05
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/135xyq.github.io/2022/05/05/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%B7%A5%E7%A8%8B%E5%8C%96-%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E4%B8%80/" itemprop="url">
-            <span itemprop="name">前端面试题工程化面试题汇总一</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-
-    </div>
   </div>
-  
-  
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/135xyq.github.io/archives/2022/05/page/2/">2</a><a class="extend next" rel="next" href="/135xyq.github.io/archives/2022/05/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+</div>
 
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/135xyq.github.io/images/wechat_channel.png">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/135xyq.github.io/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/135xyq.github.io/tags/react/" rel="tag"><i class="fa fa-tag"></i> react</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/135xyq.github.io/2022/06/27/react-Hook-State%20Hook/" rel="prev" title="react Hook  State Hook">
+                  <i class="fa fa-chevron-left"></i> react Hook  State Hook
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS"></div>
 </div>
   </main>
 
