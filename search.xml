@@ -23742,4 +23742,93 @@ load,整个页面加载完才能触发    </li>
         <tag>react</tag>
       </tags>
   </entry>
+  <entry>
+    <title>react Hook 其他Hook</title>
+    <url>/135xyq.github.io/2022/06/29/react-Hook-State%20Hook%20copy/</url>
+    <content><![CDATA[<h1 id="其他-Hook"><a href="#其他-Hook" class="headerlink" title="其他 Hook"></a>其他 Hook</h1><h2 id="Reducer-Hook"><a href="#Reducer-Hook" class="headerlink" title="Reducer Hook"></a><a href="https://react.docschina.org/docs/hooks-reference.html#usereducer">Reducer Hook</a></h2><p>Flux：Facebook 出品的一个数据流框架</p>
+<ol>
+<li>规定了数据是单向流动的</li>
+<li>数据存储在数据仓库中（目前，可以认为 state 就是一个存储数据的仓库）</li>
+<li>action 是改变数据的唯一原因（本质上就是一个对象，action 有两个属性）<ol>
+<li>type：字符串，动作的类型</li>
+<li>payload：任意类型，动作发生后的附加信息</li>
+<li>例如，如果是添加一个学生，action 可以描述为：<ol>
+<li><code>&#123; type:&quot;addStudent&quot;, payload: &#123;学生对象的各种信息&#125; &#125;</code></li>
+</ol>
+</li>
+<li>例如，如果要删除一个学生，action 可以描述为：<ol>
+<li><code>&#123; type:&quot;deleteStudent&quot;, payload: 学生id &#125;</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>具体改变数据的是一个函数，该函数叫做 reducer<ol>
+<li>该函数接收两个参数<ol>
+<li>state：表示当前数据仓库中的数据</li>
+<li>action：描述了如何去改变数据，以及改变数据的一些附加信息</li>
+</ol>
+</li>
+<li>该函数必须有一个返回结果，用于表示数据仓库变化之后的数据<ol>
+<li>Flux 要求，对象是不可变的，如果返回对象，必须创建新的对象</li>
+</ol>
+</li>
+<li>reducer 必须是纯函数，不能有任何副作用</li>
+</ol>
+</li>
+<li>如果要触发 reducer，不可以直接调用，而是应该调用一个辅助函数 dispatch<ol>
+<li>该函数仅接收一个参数：action</li>
+<li>该函数会间接去调用 reducer，以达到改变数据的目的</li>
+</ol>
+</li>
+</ol>
+<h2 id="Context-Hook"><a href="#Context-Hook" class="headerlink" title="Context Hook"></a><a href="https://react.docschina.org/docs/hooks-reference.html#usecontext">Context Hook</a></h2><p>获取上下文数据</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> value = useContext(MyContext);</span><br></pre></td></tr></table></figure>
+
+<p>接收一个 context 对象（React.createContext 的返回值）并返回该 context 的当前值。当前的 context 值由上层组件中距离当前组件最近的 &lt;MyContext.Provider&gt; 的 value prop 决定。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useContext &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ctx = React.createContext();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> value = useContext(ctx);</span><br><span class="line">	<span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>上下文数据为：&#123;value&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">ContextHookTest</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">		<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">ctx.Provider</span> <span class="attr">value</span>=<span class="string">&quot;xyq&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">				<span class="tag">&lt;<span class="name">Test</span> /&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;/<span class="name">ctx.Provider</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">	);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Callback-Hook"><a href="#Callback-Hook" class="headerlink" title="Callback Hook"></a><a href="https://react.docschina.org/docs/hooks-reference.html#usecallback">Callback Hook</a></h2><p><code>useCallback</code></p>
+<p>用于得到一个固定引用值的函数，通常用来进行性能优化</p>
+<p>useCallback：</p>
+<p>该函数有两个参数：</p>
+<ol>
+<li>函数，useCallback 会固定该函数的引用，只要依赖项没有发生变化，则始终返回之前函数的地址</li>
+<li>数组，记录依赖项</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> memoizedCallback = useCallback(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">	doSomething(a, b);</span><br><span class="line">&#125;, [a, b]);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Memo-Hook"><a href="#Memo-Hook" class="headerlink" title="Memo Hook"></a><a href="https://react.docschina.org/docs/hooks-reference.html#usememo">Memo Hook</a></h2><p>用于保持一些比较稳定的数据，通常用于性能优化</p>
+<h2 id="Ref-Hook"><a href="#Ref-Hook" class="headerlink" title="Ref Hook"></a><a href="https://react.docschina.org/docs/hooks-reference.html#useref">Ref Hook</a></h2><p>useRef:</p>
+<ol>
+<li>一个参数：默认值</li>
+<li>返回值：一个固定的对象，<code>&#123;current:值&#125;</code>， r 变更 <code>.current </code>属性不会引发组件重新渲染。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useRef &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">RefHookTest</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> inputRef = useRef();</span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">		<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&#123;inputRef&#125;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">button</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">				<span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="xml">					console.log(inputRef.current.value);</span></span><br><span class="line"><span class="xml">				&#125;&#125;</span></span><br><span class="line"><span class="xml">			&gt;</span></span><br><span class="line"><span class="xml">				获取input数据</span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">	);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 将useRef当成一个固定对象使用</span></span><br><span class="line"><span class="keyword">import</span> React, &#123; useRef, useState, useEffect &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">RefHookTest</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> [n, setN] = useState(<span class="number">10</span>);</span><br><span class="line">	<span class="keyword">const</span> nRef = useRef(n);</span><br><span class="line">	useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">let</span> timer = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">			setN(nRef.current - <span class="number">1</span>);</span><br><span class="line">			nRef.current--;</span><br><span class="line">			<span class="keyword">if</span> (nRef.current === <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="built_in">clearInterval</span>(timer);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">				<span class="built_in">clearInterval</span>(timer);</span><br><span class="line">			&#125;;</span><br><span class="line">		&#125;, <span class="number">1000</span>);</span><br><span class="line">	&#125;, []);</span><br><span class="line">	<span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;n&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="ImperativeHandle-Hook"><a href="#ImperativeHandle-Hook" class="headerlink" title="ImperativeHandle Hook"></a><a href="https://react.docschina.org/docs/hooks-reference.html#useimperativehandle">ImperativeHandle Hook</a></h2><p>useImperativeHandle 可以让你在使用 ref 时自定义暴露给父组件的实例值</p>
+<p><code>useImperativeHandle(ref, createHandle, [deps])</code><br>参数一：Ref<br>参数二：一个函数，返回值可以通过ref获取<br>参数三：依赖列表，第一次运行之后，只有依赖项发生变化才会运行</p>
+<p>index.js</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useImperativeHandle &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ImperativeHandleHookTest</span>(<span class="params">props, ref</span>) </span>&#123;</span><br><span class="line">	useImperativeHandle(ref, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="attr">method</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">				<span class="built_in">console</span>.log(<span class="string">&quot;ImperativeHandleHookTest里面的method方法！&quot;</span>);</span><br><span class="line">			&#125;,</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;),[];</span><br><span class="line">	<span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>ImperativeHandleHookTest<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> React.forwardRef(ImperativeHandleHookTest);</span><br></pre></td></tr></table></figure>
+
+<p>test.js</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useRef &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> ImperativeHandleHookTest <span class="keyword">from</span> <span class="string">&quot;./index&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> componentRef = useRef();</span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">		<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">ImperativeHandleHookTest</span> <span class="attr">ref</span>=<span class="string">&#123;componentRef&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;<span class="name">button</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">				<span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="xml">					componentRef.current.method();</span></span><br><span class="line"><span class="xml">				&#125;&#125;</span></span><br><span class="line"><span class="xml">			&gt;</span></span><br><span class="line"><span class="xml">				调用ImperativeHandleHookTest里面的一个method方法</span></span><br><span class="line"><span class="xml">			<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">	);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="LayoutEffect-Hook"><a href="#LayoutEffect-Hook" class="headerlink" title="LayoutEffect Hook"></a><a href="https://react.docschina.org/docs/hooks-reference.html#uselayouteffect">LayoutEffect Hook</a></h2><p><code>useLayoutEffect</code><br>在浏览器渲染完之前运行，可能导致渲染阻塞</p>
+<p><code>useLayoutEffect</code> ：完成了DOM改动，但还没呈现给用户，与类组件的<code>componentDidMount</code>和<code>componentDidUpdate</code>时间点一致<br><code>useEffect</code> 会在浏览器渲染完成，用户看到新的渲染结果后</p>
+<p>应该尽量使用<code>useEffect</code>因为他不会导致渲染阻塞。</p>
+<h2 id="DebugValue-Hook"><a href="#DebugValue-Hook" class="headerlink" title="DebugValue Hook"></a><a href="https://react.docschina.org/docs/hooks-reference.html#usedebugvalue">DebugValue Hook</a></h2><p><code>usedebugvalue</code>：<br>用于将自定义Hook的关联数据显示到调试栏</p>
+]]></content>
+      <categories>
+        <category>前端学习笔记</category>
+        <category>react</category>
+        <category>Hook</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>react</tag>
+      </tags>
+  </entry>
 </search>
