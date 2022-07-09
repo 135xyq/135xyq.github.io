@@ -23872,4 +23872,65 @@ load,整个页面加载完才能触发    </li>
         <tag>react</tag>
       </tags>
   </entry>
+  <entry>
+    <title>redux redux的基础使用</title>
+    <url>/135xyq.github.io/2022/07/09/react-redux-%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="基础使用"><a href="#基础使用" class="headerlink" title="基础使用"></a>基础使用</h1><h2 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h2><ol>
+<li>action是一个plain-object（平面对象）<ol>
+<li>它的__proto__指向Object.prototype</li>
+</ol>
+</li>
+<li>通常，使用payload属性表示附加数据（没有强制要求）</li>
+<li>action中必须有type属性，该属性用于描述操作的类型<ol>
+<li>但是，没有对type的类型做出要求</li>
+</ol>
+</li>
+<li>在大型项目，由于操作类型非常多，为了避免硬编码（hard code），会将action的类型存放到一个或一些单独的文件中(样板代码)。</li>
+<li>为了方面传递action，通常会使用action创建函数(action creator)来创建action<ol>
+<li>action创建函数应为无副作用的纯函数<ol>
+<li>不能以任何形式改动参数</li>
+<li>不可以有异步</li>
+<li>不可以对外部环境中的数据造成影响</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>为了方便利用action创建函数来分发（触发）action，redux提供了一个函数<code>bindActionCreators</code>，该函数用于增强action创建函数的功能，使它不仅可以创建action，并且创建后会自动完成分发。</li>
+</ol>
+<blockquote>
+<p>actionTypes.js</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> INCRESE = <span class="built_in">Symbol</span>(<span class="string">&quot;increse&quot;</span>);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> DECREASE = <span class="built_in">Symbol</span>(<span class="string">&quot;descrease&quot;</span>);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> SET = <span class="built_in">Symbol</span>(<span class="string">&quot;set&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>actionCreate.js</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> actionTYpes <span class="keyword">from</span> <span class="string">&quot;./actionTypes&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * increase action的创建函数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns <span class="type">&#123;&#123;type: symbol&#125;</span></span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getIncreaseAction</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">type</span>:actionTYpes.INCRESE,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * decrease action的创建函数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns <span class="type">&#123;&#123;type: *&#125;</span></span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getDecreaseAction</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        <span class="attr">type</span>:actionTYpes.DECREASE,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * set action 的创建函数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="variable">newNumber</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns <span class="type">&#123;&#123;payload, type: *&#125;</span></span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getSetAction</span>(<span class="params">newNumber</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        <span class="attr">type</span>:actionTYpes.SET,</span><br><span class="line">        <span class="attr">payload</span>:newNumber</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>index.js</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;createStore,bindActionCreators&#125; <span class="keyword">from</span> <span class="string">&quot;redux&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> createActions <span class="keyword">from</span> <span class="string">&quot;./actionCreate&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> actionTypes <span class="keyword">from</span> <span class="string">&quot;./actionTypes&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * reducer本质上就是一个普通的函数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>state 之前仓库中的数据</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>action 描述要做什么的对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state,action</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 返回一个新的状态</span></span><br><span class="line">    <span class="keyword">if</span>(action.type === actionTypes.INCRESE)&#123;</span><br><span class="line">        <span class="keyword">return</span> state + <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (action.type === actionTypes.DECREASE)&#123;</span><br><span class="line">        <span class="keyword">return</span> state - <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(action.type === actionTypes.SET)&#123;</span><br><span class="line">        <span class="keyword">return</span> action.payload;</span><br><span class="line">    &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(reducer,<span class="number">10</span>);</span><br><span class="line"><span class="keyword">const</span> boundActions = bindActionCreators(createActions,store.dispatch);</span><br><span class="line"><span class="built_in">console</span>.log(store.getState()); <span class="comment">//10</span></span><br><span class="line"></span><br><span class="line">boundActions.getDecreaseAction()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(store.getState());<span class="comment">//9</span></span><br><span class="line"></span><br><span class="line">boundActions.getIncreaseAction();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(store.getState());<span class="comment">//10</span></span><br><span class="line"></span><br><span class="line">boundActions.getSetAction(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(store.getState());<span class="comment">//3</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h2><p>Store：用于保存数据</p>
+<p>通过createStore方法创建的对象。</p>
+<p>该对象的成员：</p>
+<ul>
+<li>dispatch：分发一个action</li>
+<li>getState：得到仓库中当前的状态</li>
+<li>replaceReducer：替换掉当前的reducer</li>
+<li>subscribe：注册一个监听器，监听器是一个无参函数，该分发一个action之后，会运行注册的监听器。该函数会返回一个函数，用于取消监听</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端学习笔记</category>
+        <category>react</category>
+        <category>redux</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>react</tag>
+      </tags>
+  </entry>
 </search>
