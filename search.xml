@@ -23933,4 +23933,68 @@ load,整个页面加载完才能触发    </li>
         <tag>react</tag>
       </tags>
   </entry>
+  <entry>
+    <title>redux redux中间件</title>
+    <url>/135xyq.github.io/2022/07/15/react-redux-%E4%B8%AD%E9%97%B4%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="Redux中间件（Middleware）"><a href="#Redux中间件（Middleware）" class="headerlink" title="Redux中间件（Middleware）"></a>Redux中间件（Middleware）</h1><h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><p>中间件：类似于插件，可以在不影响原本功能、并且不改动原本代码的基础上，对其功能进行增强。在Redux中，中间件主要用于增强dispatch函数。</p>
+<p>实现Redux中间件的基本原理，是更改仓库中的dispatch函数。</p>
+<p>Redux中间件书写：</p>
+<ul>
+<li>中间件本身是一个函数，该函数接收一个store参数，表示创建的仓库，该仓库并非一个完整的仓库对象，仅包含getState，dispatch。该函数运行的时间，是在仓库创建之后运行。<ul>
+<li>由于创建仓库后需要自动运行设置的中间件函数，因此，需要在创建仓库时，告诉仓库有哪些中间件</li>
+<li>需要调用applyMiddleware函数，将函数的返回结果作为createStore的第二或第三个参数。</li>
+</ul>
+</li>
+<li>中间件函数必须返回一个dispatch创建函数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *基础写法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>store 最终仓库</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns <span class="type">&#123;function(*): function(*): void&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">middleware1</span>(<span class="params">store</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;store&quot;</span>,store);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">next</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;next&quot;</span>,next);<span class="comment">//下一个中间件的dispatch</span></span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">action</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;中间件1&quot;</span>)</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;旧数据&quot;</span>,store.getState());</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;action&quot;</span>,action);</span><br><span class="line">            next(action);</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;新数据&quot;</span>,store.getState());</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 箭头函数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="variable">store</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns <span class="type">&#123;function(*): function(*): void&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> middleware2 = <span class="function"><span class="params">store</span>=&gt;</span><span class="function"><span class="params">next</span>=&gt;</span><span class="function"><span class="params">action</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;中间件2&quot;</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;旧数据&quot;</span>,store.getState());</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;action&quot;</span>,action);</span><br><span class="line">        next(action);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;新数据&quot;</span>,store.getState());</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>applyMiddleware函数，用于记录有哪些中间件，它会返回一个函数<ul>
+<li>该函数用于记录创建仓库的方法，然后又返回一个函数</li>
+</ul>
+</li>
+</ul>
+<p>应用中间件：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 参数一：reducer</span></span><br><span class="line"><span class="comment">// 参数二：仓库默认值</span></span><br><span class="line"><span class="comment">// 参数三：applyMiddleWare（中间件）</span></span><br><span class="line"><span class="keyword">const</span> store = createStore(reducer,<span class="number">10</span>,applyMiddleware(middleware1,middleware2));</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 第一个函数的参数是使用的中间件</span></span><br><span class="line"><span class="comment">// 第二个函数的参数是创建仓库的方式</span></span><br><span class="line"><span class="comment">// 第三个参数的参数是创建仓库需要的参数</span></span><br><span class="line"><span class="keyword">const</span> store = applyMiddleware(middleware1,middleware2)(createStore)(reducer,<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用中间件"><a href="#常用中间件" class="headerlink" title="常用中间件"></a>常用中间件</h2><h3 id="redux-logger"><a href="#redux-logger" class="headerlink" title="redux-logger"></a><a href="https://www.npmjs.com/package/redux-logger">redux-logger</a></h3><p>日志记录的中间件</p>
+<p>一般写在使用中间件中最后一个，防止其他中间件干扰action</p>
+<h3 id="redux-thunk"><a href="#redux-thunk" class="headerlink" title="redux-thunk"></a><a href="https://www.npmjs.com/package/redux-thunk">redux-thunk</a></h3><p>处理副作用</p>
+<p>thunk 允许action是一个带有副作用的函数，当action是一个函数被分发时，thunk会阻止action继续向后移交。</p>
+<p>thunk会传递三个参数：</p>
+<ol>
+<li>dispatch: 来自于store.dispatch</li>
+<li>getState: 来自于store.getState</li>
+<li>extra: 来自于用户设置的额外参数</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore, applyMiddleware &#125; <span class="keyword">from</span> <span class="string">&quot;redux&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> logger <span class="keyword">from</span> <span class="string">&quot;redux-logger&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> thunk <span class="keyword">from</span> <span class="string">&quot;redux-thunk&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state, action</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">&quot;add&quot;</span>:</span><br><span class="line">			<span class="keyword">return</span> state + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">&quot;del&quot;</span>:</span><br><span class="line">			<span class="keyword">return</span> state - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			<span class="keyword">return</span> state;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> action = &#123;</span><br><span class="line">    <span class="attr">type</span>:<span class="string">&quot;add&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setTimeoutTestAction</span>(<span class="params">dispatch,getState,extra</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;dispatch&quot;</span>,dispatch)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;getState&quot;</span>,getState)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;extra&quot;</span>,extra)</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">        dispatch(action);<span class="comment">//三秒后触发action</span></span><br><span class="line">    &#125;,<span class="number">3000</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(reducer, <span class="number">10</span>, applyMiddleware(thunk, logger));</span><br><span class="line"></span><br><span class="line">store.dispatch(setTimeoutTestAction)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//手写thunk </span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 返回一个thunk中间件</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>extra 额外参数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span>一个thunk中间件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createThunkMiddleWare</span>(<span class="params">extra</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">store</span>=&gt;</span><span class="function"><span class="params">next</span>=&gt;</span><span class="function"><span class="params">action</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> action === <span class="string">&quot;function&quot;</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> action(store.dispatch,store.getState,extra);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> next(action);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> thunk = createThunkMiddleWare();</span><br><span class="line">thunk.withExtraArgument = createThunkMiddleWare;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> thunk;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="redux-saga"><a href="#redux-saga" class="headerlink" title="redux-saga"></a><a href="https://redux-saga-in-chinese.js.org/index.html">redux-saga</a></h3><p>在saga任务中，如果yield了一个普通数据，saga不作任何处理，仅仅将数据传递给yield表达式（把得到的数据放到next的参数中），因此，在saga中，yield一个普通数据没什么意义。</p>
+<p>saga需要你在yield后面放上一些合适的saga指令（saga effects），如果放的是指令，saga中间件会根据不同的指令进行特殊处理，以控制整个任务的流程。</p>
+<p>每个指令本质上就是一个函数，该函数调用后，会返回一个指令对象，saga会接收到该指令对象，进行各种处理</p>
+<p><strong>一旦saga任务完成（生成器函数运行完成），则saga中间件一定结束</strong></p>
+<h4 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h4><ul>
+<li>take指令：【阻塞】监听某个action，如果action发生了，则会进行下一步处理，take指令仅监听一次。yield得到的是完整的action对象</li>
+<li>all指令：【阻塞】该函数传入一个数组，数组中放入生成器，saga会等待所有的生成器全部完成后才会进一步处理</li>
+<li>takeEvery指令：不断的监听某个action，当某个action到达之后，运行一个函数。takeEvery永远不会结束当前的生成器</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端学习笔记</category>
+        <category>react</category>
+        <category>redux</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>react</tag>
+      </tags>
+  </entry>
 </search>
