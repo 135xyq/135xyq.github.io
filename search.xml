@@ -23981,12 +23981,24 @@ load,整个页面加载完才能触发    </li>
 <p>saga需要你在yield后面放上一些合适的saga指令（saga effects），如果放的是指令，saga中间件会根据不同的指令进行特殊处理，以控制整个任务的流程。</p>
 <p>每个指令本质上就是一个函数，该函数调用后，会返回一个指令对象，saga会接收到该指令对象，进行各种处理</p>
 <p><strong>一旦saga任务完成（生成器函数运行完成），则saga中间件一定结束</strong></p>
-<h4 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h4><ul>
+<h4 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h4><p><strong>指令前面必须有yield,以确保该指令的返回结果被saga控制</strong></p>
+<ul>
 <li>take指令：【阻塞】监听某个action，如果action发生了，则会进行下一步处理，take指令仅监听一次。yield得到的是完整的action对象</li>
 <li>all指令：【阻塞】该函数传入一个数组，数组中放入生成器，saga会等待所有的生成器全部完成后才会进一步处理</li>
 <li>takeEvery指令：不断的监听某个action，当某个action到达之后，运行一个函数。takeEvery永远不会结束当前的生成器</li>
+<li>delay指令：【阻塞】阻塞指定的毫秒数</li>
+<li>put指令：用于重新触发action，相当于dispatch一个action</li>
+<li>call指令：【可能阻塞】用于副作用（通常是异步）函数调用</li>
+<li>apply指令：【可能阻塞】用于副作用（通常是异步）函数调用</li>
+<li>select指令：用于得到当前仓库中的数据</li>
+<li>cps指令：【可能阻塞】用于调用那些传统的回调方式的异步函数</li>
+<li>fork：用于开启一个新的任务，该任务不会阻塞，该函数需要传递一个生成器函数，fork返回了一个对象，类型为Task</li>
+<li>cancel：用于取消一个或多个任务，实际上，取消的实现原理，是利用generator.return。cancel可以不传递参数，如果不传递参数，则取消当前任务线。</li>
+<li>takeLastest：功能和takeEvery一致，只不过，会自动取消掉之前开启的任务</li>
+<li>cancelled：判断当前任务线是否被取消掉了</li>
+<li>race：【阻塞】竞赛，可以传递多个指令，当其中任何一个指令结束后，会直接结束，与Promise.race类似。返回的结果，是最先完成的指令结果。并且，该函数会自动取消其他的任务</li>
 </ul>
-]]></content>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; delay, put, take, takeEvery, &#125; <span class="keyword">from</span> <span class="string">&quot;redux-saga/effects&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; numberActionTypes ,decrease&#125; <span class="keyword">from</span> <span class="string">&quot;../action/number&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">testTakeEvery</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> delay(<span class="number">3000</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;延时3秒输出&quot;</span>)</span><br><span class="line">    <span class="keyword">yield</span> put(decrease());<span class="comment">//触发action</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>* <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> takeEvery(numberActionTypes.increase,testTakeEvery)</span><br><span class="line">    <span class="keyword">let</span> action2 = <span class="keyword">yield</span> take(numberActionTypes.decrease);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;decrease&quot;</span>,action2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>前端学习笔记</category>
         <category>react</category>
