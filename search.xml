@@ -24130,6 +24130,17 @@ load,整个页面加载完才能触发    </li>
 <li>键值对，冒号后需要加上空格</li>
 <li>如果某个属性有多个键或多个值，需要进行缩进（空格）</li>
 </ul>
+<h2 id="使用dva"><a href="#使用dva" class="headerlink" title="使用dva"></a>使用dva</h2><blockquote>
+<p>官方插件集 umi-plugin-react</p>
+</blockquote>
+<p>dva插件和umi整合后，将模型分为两种：</p>
+<ol>
+<li>全局模型：所有页面通用，工程一开始启动后，模型就会挂载到仓库</li>
+<li>局部模型：只能被某些页面使用，访问具体的页面时才会挂载到仓库</li>
+</ol>
+<h3 id="定义全局模型"><a href="#定义全局模型" class="headerlink" title="定义全局模型"></a>定义全局模型</h3><p>在<code>src/models</code>目录下定义的js文件都会被看作是全局模型，默认情况下，模型的命名空间和文件名一致。</p>
+<h3 id="定义局部模型"><a href="#定义局部模型" class="headerlink" title="定义局部模型"></a>定义局部模型</h3><p>局部模型定义在pages文件夹或其子文件夹中，在哪个文件夹定义的模型，会被该文件夹中的所有页面以及子页面、以及该文件夹的祖先文件夹中的页面所共享。</p>
+<p>局部模型的定义和全局模型的约定类似，需要创建一个models文件夹</p>
 ]]></content>
       <categories>
         <category>前端学习笔记</category>
