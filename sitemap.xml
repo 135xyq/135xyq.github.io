@@ -2,15 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://135xyq.github.io/135xyq.github.io/2022/08/12/test/</loc>
-    
-    <lastmod>2022-08-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://135xyq.github.io/135xyq.github.io/2022/08/04/react-%E6%8F%92%E4%BB%B6-umi/</loc>
     
     <lastmod>2022-08-04</lastmod>
@@ -1508,13 +1499,6 @@
     <priority>0.2</priority>
   </url>
   
-  <url>
-    <loc>https://135xyq.github.io/135xyq.github.io/tags/test/</loc>
-    <lastmod>2022-08-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
 
   
   <url>
@@ -1911,13 +1895,6 @@
   
   <url>
     <loc>https://135xyq.github.io/135xyq.github.io/categories/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E9%A9%AC%E5%85%8B%E6%80%9D/</loc>
-    <lastmod>2022-08-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://135xyq.github.io/135xyq.github.io/categories/test/</loc>
     <lastmod>2022-08-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
