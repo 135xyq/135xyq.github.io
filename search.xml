@@ -21234,11 +21234,11 @@ load,整个页面加载完才能触发    </li>
     <title>运动 正则表达式</title>
     <url>/135xyq.github.io/2021/02/13/JS-%E8%BF%90%E5%8A%A8_%E6%AD%A3%E5%88%99/</url>
     <content><![CDATA[<h1 id="运动-正则"><a href="#运动-正则" class="headerlink" title="运动 正则"></a>运动 正则</h1><hr>
-<h2 id="运动"><a href="#运动" class="headerlink" title="运动"></a>运动</h2><p>offsetLeft：当前位置距离左边界距离<br>多物体运动：要给每个物体单独设置自己的定时器<br>回调机制：执行完主题函数再</p>
+<h2 id="运动"><a href="#运动" class="headerlink" title="运动"></a>运动</h2><p>offsetLeft：当前位置距离左边界距离<br>多物体运动：要给每个物体单独设置自己的定时器<br>回调机制：执行完主体函数再执行</p>
 <p>JSON 是一种传输数据的格式（以对象为样板，本质上就是对象（json 的属性名要变成字符串样式），但用途有区别，对象就是本地用的，json 是用来传输的）</p>
 <h4 id="JSON-stringify-json-—-gt-string"><a href="#JSON-stringify-json-—-gt-string" class="headerlink" title="JSON.stringify(); json — &gt; string"></a>JSON.stringify(); json — &gt; string</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="string">&quot;xyq&quot;</span>,</span><br><span class="line">	<span class="attr">age</span>: <span class="number">20</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">JSON</span>.stringify(obj);</span><br><span class="line">返回结果为;</span><br><span class="line">(<span class="string">&#x27;&#123;&quot;name&quot;:&quot;xyq&quot;,&quot;age&quot;:20&#125;&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
-<h4 id="JSON-parse-string-—-gt-json"><a href="#JSON-parse-string-—-gt-json" class="headerlink" title="JSON.parse(); string — &gt; json"></a>JSON.parse(); string — &gt; json</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">        <span class="keyword">var</span> obj = &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;xyq&quot;</span>,</span><br><span class="line">            <span class="string">&quot;age&quot;</span>: <span class="number">20</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> json = <span class="built_in">JSON</span>.stringify(obj) </span><br><span class="line">        <span class="built_in">JSON</span>.parse(json)</span><br><span class="line">返回值为：</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">name</span>: <span class="string">&quot;xyq&quot;</span>,</span><br><span class="line">            <span class="attr">age</span>: <span class="number">20</span></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="JSON-parse-string-—-gt-json"><a href="#JSON-parse-string-—-gt-json" class="headerlink" title="JSON.parse(); string — &gt; json"></a>JSON.parse(); string — &gt; json</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;xyq&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span>: <span class="number">20</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> json = <span class="built_in">JSON</span>.stringify(obj) </span><br><span class="line"><span class="built_in">JSON</span>.parse(json)</span><br><span class="line"><span class="comment">// 返回值为：</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;xyq&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">20</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>dom 树深度优先原则</p>
 <h2 id="异步加载-JS"><a href="#异步加载-JS" class="headerlink" title="异步加载 JS"></a>异步加载 JS</h2><h3 id="js-加载的缺点："><a href="#js-加载的缺点：" class="headerlink" title="js 加载的缺点："></a>js 加载的缺点：</h3><ul>
@@ -21300,8 +21300,8 @@ load,整个页面加载完才能触发    </li>
 <p>\n : 与第 n 子表达式个完全一样的匹配条件（n 必须为具体的数字）</p>
 <p>var reg = /(\w)\1\1\1/g; //匹配 4 个完全一样的字符串（例如 “aaaa”）</p>
 <p>var reg = /(\w)\1(\w)\2/g; //可匹配 AABB 样式的字符串</p>
-<h4 id="方括号"><a href="#方括号" class="headerlink" title="方括号"></a>方括号</h4><p>方括号用于查找某个范围内的字符：<br>| 表达式 | 描述 |<br>| :— | :————— |<br>| [abc] | 查找方括号之间的任何字符。|<br>| [^abc] | 查找任何不在方括号之间的字符。|<br>| [0-9] | 查找任何从 0 至 9 的数字。|<br>| [a-z] | 查找任何从小写 a 到小写 z 的字符。|<br>| [A-Z] | 查找任何从大写 A 到大写 Z 的字符。|<br>| [A-z] | 查找任何从大写 A 到小写 z 的字符。|<br>| [adgk] | 查找给定集合内的任何字符。|<br>| [^adgk] | 查找给定集合外的任何字符。|<br>| (red|blue|green) | 查找任何指定的选项。|<br>|</p>
-<h4 id="元字符（Metacharacter）"><a href="#元字符（Metacharacter）" class="headerlink" title="元字符（Metacharacter）"></a>元字符（Metacharacter）</h4><p>是拥有特殊含义的字符：<br>| 元字符 | 描述 |<br>| :—- | :—- |<br>|.查找单个字符，除了换行和行结束符.<br>| \w | [ 0 - 9A-z_]查找单词字符。<br>| \W | 查找非单词字符。<br>| \d | [ 0 - 9]查找数字。<br>| \D | 查找非数字字符。<br>| \s | 查找空白字符。<br>| \S | 查找非空白字符。<br>| \b | 匹配单词边界。<br>| \B | 匹配非单词边界。<br>| \0 | 查找 NUL 字符。<br>| \n | 查找换行符。<br>| \f | 查找换页符。<br>| \r | 查找回车符。<br>| \t | 查找制表符。<br>| \v | 查找垂直制表符。<br>| \x | xx 查找以八进制数 xxx 规定的字符。<br>| \x | dd 查找以十六进制数 dd 规定的字符。<br>| \u | xxxx 查找以十六进制数 xxxx 规定的 Unicode 字符。<br>|</p>
+<h4 id="方括号"><a href="#方括号" class="headerlink" title="方括号"></a>方括号</h4><p>方括号用于查找某个范围内的字符：<br>| 表达式 | 描述 |<br>| :— | :—————: |<br>| [abc] | 查找方括号之间的任何字符。|<br>| [^abc] | 查找任何不在方括号之间的字符。|<br>| [0-9] | 查找任何从 0 至 9 的数字。|<br>| [a-z] | 查找任何从小写 a 到小写 z 的字符。|<br>| [A-Z] | 查找任何从大写 A 到大写 Z 的字符。|<br>| [A-z] | 查找任何从大写 A 到小写 z 的字符。|<br>| [adgk] | 查找给定集合内的任何字符。|<br>| [^adgk] | 查找给定集合外的任何字符。|<br>| (red|blue|green) | 查找任何指定的选项。|<br>|</p>
+<h4 id="元字符（Metacharacter）"><a href="#元字符（Metacharacter）" class="headerlink" title="元字符（Metacharacter）"></a>元字符（Metacharacter）</h4><p>是拥有特殊含义的字符：<br>| 元字符 | 描述 |<br>| :—- | :—-: |<br>|.查找单个字符，除了换行和行结束符.<br>| \w | [ 0 - 9A-z_]查找单词字符。<br>| \W | 查找非单词字符。<br>| \d | [ 0 - 9]查找数字。<br>| \D | 查找非数字字符。<br>| \s | 查找空白字符。<br>| \S | 查找非空白字符。<br>| \b | 匹配单词边界。<br>| \B | 匹配非单词边界。<br>| \0 | 查找 NUL 字符。<br>| \n | 查找换行符。<br>| \f | 查找换页符。<br>| \r | 查找回车符。<br>| \t | 查找制表符。<br>| \v | 查找垂直制表符。<br>| \x | xx 查找以八进制数 xxx 规定的字符。<br>| \x | dd 查找以十六进制数 dd 规定的字符。<br>| \u | xxxx 查找以十六进制数 xxxx 规定的 Unicode 字符。<br>|</p>
 <h4 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h4><table>
 <thead>
 <tr>
@@ -21350,7 +21350,6 @@ load,整个页面加载完才能触发    </li>
 <td align="left">匹配任何其后没有紧接指定字符串 n 的字符串。</td>
 </tr>
 </tbody></table>
-<p>|</p>
 <h4 id="RegExp-对象属性"><a href="#RegExp-对象属性" class="headerlink" title="RegExp 对象属性"></a>RegExp 对象属性</h4><table>
 <thead>
 <tr>
@@ -21391,7 +21390,6 @@ load,整个页面加载完才能触发    </li>
 <td>4</td>
 </tr>
 </tbody></table>
-<p>|</p>
 <h4 id="RegExp-对象方法"><a href="#RegExp-对象方法" class="headerlink" title="RegExp 对象方法"></a>RegExp 对象方法</h4><table>
 <thead>
 <tr>
@@ -21420,7 +21418,6 @@ load,整个页面加载完才能触发    </li>
 <td>4</td>
 </tr>
 </tbody></table>
-<p>|</p>
 <h4 id="支持正则表达式的-String-对象的方法"><a href="#支持正则表达式的-String-对象的方法" class="headerlink" title="支持正则表达式的 String 对象的方法"></a>支持正则表达式的 String 对象的方法</h4><table>
 <thead>
 <tr>
@@ -21455,7 +21452,6 @@ load,整个页面加载完才能触发    </li>
 <td>4</td>
 </tr>
 </tbody></table>
-<p>|</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aa&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.replace(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>));</span><br><span class="line">打印结果为ba;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aa&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/a/g</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.replace(reg, <span class="string">&quot;b&quot;</span>));</span><br><span class="line">打印结果为bb;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aabb&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w)\1(\w)\2/g</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.replace(reg, <span class="string">&quot;$2$2$1$1&quot;</span>)); <span class="comment">//可以通过 $n 获取第n 个子表达式的匹配条件</span></span><br><span class="line">打印结果为bbaa;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;the-first-name&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/-(\w)/g</span>;</span><br><span class="line"><span class="built_in">console</span>.log(</span><br><span class="line">	str.replace(reg, <span class="function"><span class="keyword">function</span> (<span class="params">$, $<span class="number">1</span></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> $<span class="number">1.</span>toUpperCase();</span><br><span class="line">	&#125;)</span><br><span class="line">);</span><br><span class="line">打印结果为theFirstName;</span><br></pre></td></tr></table></figure>
 
 <p>正则表达式默认为贪婪匹配（总是往最大的方向去匹配）<br>取消贪婪匹配（匹配最短）（在每个量词后面加上一个 ？）</p>
