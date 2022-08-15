@@ -22,27 +22,27 @@
 <script class="next-config" data-name="main" type="application/json">{"hostname":"135xyq.github.io","root":"/135xyq.github.io/","images":"/135xyq.github.io/images","scheme":"Pisces","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/135xyq.github.io/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/135xyq.github.io/js/config.js"></script>
 <meta name="description" content="CSS3 的各种选择器：关系选择器、属性选择器、伪类选择器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS3选择器">
-<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/2021/12/31/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/index.html">
+<meta property="og:title" content="CSS3选择器、border、background、flex">
+<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/2021/01/04/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/index.html">
 <meta property="og:site_name" content="Ethan">
 <meta property="og:description" content="CSS3 的各种选择器：关系选择器、属性选择器、伪类选择器">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-12-31T08:21:22.000Z">
-<meta property="article:modified_time" content="2022-01-01T06:35:11.683Z">
+<meta property="article:published_time" content="2021-01-04T08:21:22.000Z">
+<meta property="article:modified_time" content="2022-08-15T02:53:38.480Z">
 <meta property="article:author" content="Ethan">
 <meta property="article:tag" content="前端">
 <meta property="article:tag" content="CSS">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/2021/12/31/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/">
+<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/2021/01/04/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://135xyq.github.io/135xyq.github.io/2021/12/31/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/","path":"2021/12/31/CSS-选择器/","title":"CSS3选择器"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://135xyq.github.io/135xyq.github.io/2021/01/04/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/","path":"2021/01/04/CSS-选择器/","title":"CSS3选择器、border、background、flex"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>CSS3选择器 | Ethan</title>
+<title>CSS3选择器、border、background、flex | Ethan</title>
   
 
   <script src="/135xyq.github.io/js/third-party/analytics/baidu-analytics.js"></script>
@@ -152,7 +152,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">选择器：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">关系选择器：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">属性选择器：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%9A"><span class="nav-number">1.3.</span> <span class="nav-text">伪类选择器：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A6%81%E8%80%83%E8%99%91%E5%85%B6%E4%BB%96%E5%85%83%E7%B4%A0%EF%BC%88%E8%A6%81%E5%85%B3%E6%B3%A8%E5%85%B6%E4%BB%96%E5%85%83%E7%B4%A0%EF%BC%89%EF%BC%9A"><span class="nav-number">1.3.1.</span> <span class="nav-text">要考虑其他元素（要关注其他元素）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E7%94%A8%E8%80%83%E8%99%91%E5%85%B6%E4%BB%96%E5%85%83%E7%B4%A0-%E4%B8%8D%E5%85%B3%E6%B3%A8%E5%85%B6%E4%BB%96%E7%B1%BB%E5%9E%8B%E5%85%83%E7%B4%A0-%EF%BC%9A"><span class="nav-number">1.3.2.</span> <span class="nav-text">不用考虑其他元素(不关注其他类型元素)：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#border%EF%BC%9A"><span class="nav-number">1.3.3.</span> <span class="nav-text">border：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#border-radious"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">border-radious :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#box-shadow%EF%BC%9A"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">box-shadow：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#border-image%EF%BC%9A"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">border-image：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#background%EF%BC%9A"><span class="nav-number">1.3.3.4.</span> <span class="nav-text">background：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B8%90%E5%8F%98%E4%B8%A4%E7%A7%8D%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">1.3.3.4.1.</span> <span class="nav-text">渐变两种生成方法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#background"><span class="nav-number">1.3.3.4.2.</span> <span class="nav-text">background</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B8%90%E5%8F%98%EF%BC%9A"><span class="nav-number">1.3.3.5.</span> <span class="nav-text">渐变：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Text%EF%BC%9A"><span class="nav-number">1.3.3.6.</span> <span class="nav-text">Text：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#box"><span class="nav-number">1.3.3.7.</span> <span class="nav-text">box:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#overflow"><span class="nav-number">1.3.3.8.</span> <span class="nav-text">overflow:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#resize-%E5%BF%85%E9%A1%BB%E9%85%8D%E5%90%88overflow%E6%9D%A5%E4%BD%BF%E7%94%A8%EF%BC%8C%E4%B8%8D%E7%84%B6%E6%B2%A1%E6%95%88%E6%9E%9C"><span class="nav-number">1.3.3.9.</span> <span class="nav-text">resize: 必须配合overflow来使用，不然没效果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%B9%E6%80%A7%E7%9B%92%E6%A8%A1%E5%9E%8B%EF%BC%9Aflex"><span class="nav-number">1.3.4.</span> <span class="nav-text">弹性盒模型：flex</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%B9%E6%80%A7%E7%9B%92"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">弹性盒</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">选择器：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">关系选择器：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">属性选择器：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%9A"><span class="nav-number">1.3.</span> <span class="nav-text">伪类选择器：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A6%81%E8%80%83%E8%99%91%E5%85%B6%E4%BB%96%E5%85%83%E7%B4%A0%EF%BC%88%E8%A6%81%E5%85%B3%E6%B3%A8%E5%85%B6%E4%BB%96%E5%85%83%E7%B4%A0%EF%BC%89%EF%BC%9A"><span class="nav-number">1.3.1.</span> <span class="nav-text">要考虑其他元素（要关注其他元素）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E7%94%A8%E8%80%83%E8%99%91%E5%85%B6%E4%BB%96%E5%85%83%E7%B4%A0-%E4%B8%8D%E5%85%B3%E6%B3%A8%E5%85%B6%E4%BB%96%E7%B1%BB%E5%9E%8B%E5%85%83%E7%B4%A0-%EF%BC%9A"><span class="nav-number">1.3.2.</span> <span class="nav-text">不用考虑其他元素(不关注其他类型元素)：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#border%EF%BC%9A"><span class="nav-number">1.4.</span> <span class="nav-text">border：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#border-radious"><span class="nav-number">1.4.1.</span> <span class="nav-text">border-radious :</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#box-shadow%EF%BC%9A"><span class="nav-number">1.4.2.</span> <span class="nav-text">box-shadow：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#border-image%EF%BC%9A"><span class="nav-number">1.4.3.</span> <span class="nav-text">border-image：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#background%EF%BC%9A"><span class="nav-number">1.5.</span> <span class="nav-text">background：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%90%E5%8F%98%E4%B8%A4%E7%A7%8D%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">1.5.1.</span> <span class="nav-text">渐变两种生成方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7"><span class="nav-number">1.5.2.</span> <span class="nav-text">常用属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%90%E5%8F%98%EF%BC%9A"><span class="nav-number">1.6.</span> <span class="nav-text">渐变：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text%EF%BC%9A"><span class="nav-number">1.7.</span> <span class="nav-text">Text：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#box"><span class="nav-number">1.8.</span> <span class="nav-text">box:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#overflow"><span class="nav-number">1.9.</span> <span class="nav-text">overflow:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#resize-%E5%BF%85%E9%A1%BB%E9%85%8D%E5%90%88overflow%E6%9D%A5%E4%BD%BF%E7%94%A8%EF%BC%8C%E4%B8%8D%E7%84%B6%E6%B2%A1%E6%95%88%E6%9E%9C"><span class="nav-number">1.10.</span> <span class="nav-text">resize: 必须配合overflow来使用，不然没效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%B9%E6%80%A7%E7%9B%92%E6%A8%A1%E5%9E%8B%EF%BC%9Aflex"><span class="nav-number">1.11.</span> <span class="nav-text">弹性盒模型：flex</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%B9%E6%80%A7%E7%9B%92"><span class="nav-number">1.11.1.</span> <span class="nav-text">弹性盒</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -240,7 +240,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://135xyq.github.io/135xyq.github.io/2021/12/31/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/">
+    <link itemprop="mainEntityOfPage" href="https://135xyq.github.io/135xyq.github.io/2021/01/04/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/135xyq.github.io/images/avatar.jpeg">
@@ -253,7 +253,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          CSS3选择器
+          CSS3选择器、border、background、flex
         </h1>
 
         <div class="post-meta-container">
@@ -264,14 +264,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-12-31 16:21:22" itemprop="dateCreated datePublished" datetime="2021-12-31T16:21:22+08:00">2021-12-31</time>
+      <time title="创建时间：2021-01-04 16:21:22" itemprop="dateCreated datePublished" datetime="2021-01-04T16:21:22+08:00">2021-01-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-01-01 14:35:11" itemprop="dateModified" datetime="2022-01-01T14:35:11+08:00">2022-01-01</time>
+      <time title="修改时间：2022-08-15 10:53:38" itemprop="dateModified" datetime="2022-08-15T10:53:38+08:00">2022-08-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -304,8 +304,8 @@
       <span class="post-meta-item-text">Changyan：</span>
     
     
-      <a title="changyan" href="/135xyq.github.io/2021/12/31/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/#SOHUCS" itemprop="discussionUrl">
-        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2021/12/31/CSS-选择器/" itemprop="commentCount"></span>
+      <a title="changyan" href="/135xyq.github.io/2021/01/04/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2021/01/04/CSS-选择器/" itemprop="commentCount"></span>
       </a>
     
   </span>
@@ -345,7 +345,7 @@
 </ul>
 <h2 id="属性选择器："><a href="#属性选择器：" class="headerlink" title="属性选择器："></a>属性选择器：</h2><ul>
 <li>[attribute~=”value”] 选择器选取属性值包含指定词的元素。</li>
-<li>[attribute|=”value”] 选择器用于选取指定属性以指定值开头的元素。</li>
+<li>[attribute|=”value”] 选择器用于选取指定属性以指定值开头的元素,该值必须是一个完整的单词。</li>
 <li>[attribute^=”value”] 选择器用于选取指定属性以指定值开头的元素。</li>
 <li>[attribute$=”value”] 选择器用于选取指定属性以指定值结尾的元素。</li>
 <li>[attribute*=”value”] 选择器选取属性值包含指定词的元素。</li>
@@ -377,12 +377,12 @@
 <li>:ready-only  只能读,不能写的<br>:ready-write  可读可写的</li>
 </ul>
 <p>当给html和body设置高度为100%后，再给里面的元素高度设置100%可充满整个页面。</p>
-<h3 id="border："><a href="#border：" class="headerlink" title="border："></a>border：</h3><h4 id="border-radious"><a href="#border-radious" class="headerlink" title="border-radious :"></a>border-radious :</h4><p>(左上，右上，右下，左下)<br>（上，上，下，下 / 左，右，右，左）不常用 </p>
+<h2 id="border："><a href="#border：" class="headerlink" title="border："></a>border：</h2><h3 id="border-radious"><a href="#border-radious" class="headerlink" title="border-radious :"></a>border-radious :</h3><p>(左上，右上，右下，左下)<br>（上，上，下，下 / 左，右，右，左）不常用 </p>
 <p>可写为border-top-left-radious:左上角<br>用正方形画四分之一圆：一个角的值等于正方形的边长</p>
-<h4 id="box-shadow："><a href="#box-shadow：" class="headerlink" title="box-shadow："></a>box-shadow：</h4><p>普通写法：<br>（inset（内阴影默认为外阴影（不写）），水平偏移量（正是向右，负是向左），垂直偏移量（正值向下，负值向上），阴影模糊程度（基于原边框向两侧同时模糊），传播距离（可选）（在四个方向上同时增大阴影的大小），颜色）。</p>
+<h3 id="box-shadow："><a href="#box-shadow：" class="headerlink" title="box-shadow："></a>box-shadow：</h3><p>普通写法：<br>（inset（内阴影默认为外阴影（不写）），水平偏移量（正是向右，负是向左），垂直偏移量（正值向下，负值向上），阴影模糊程度（基于原边框向两侧同时模糊），传播距离（可选）（在四个方向上同时增大阴影的大小），颜色）。</p>
 <p>可设置多个box-shadow值，先写的在上面，重复的会加重颜色。</p>
 <p>阴影在背景颜色是上面，在文字的下面</p>
-<h4 id="border-image："><a href="#border-image：" class="headerlink" title="border-image："></a>border-image：</h4><p><code>border-image-source:url()  引入图片</code></p>
+<h3 id="border-image："><a href="#border-image：" class="headerlink" title="border-image："></a>border-image：</h3><p><code>border-image-source:url()  引入图片</code></p>
 <ul>
 <li>border-image-slice：(1-5个参数，前四个参数只能为数值，不能带px表示图片的分割方式，最后一个参数填上fill会把内容区也填充)</li>
 </ul>
@@ -393,11 +393,11 @@
 <li>round：与 repeat 关键字类似。不同在于，当背景图像不能以整数次平铺时，会根据情况缩放图像。</li>
 <li>space： 与 repeat 关键字类似。不同在于，当背景图像不能以整数次平铺时，会用空白间隙填充在图像周围。</li>
 </ul>
-<h4 id="background："><a href="#background：" class="headerlink" title="background："></a>background：</h4><h5 id="渐变两种生成方法："><a href="#渐变两种生成方法：" class="headerlink" title="渐变两种生成方法："></a>渐变两种生成方法：</h5><ul>
+<h2 id="background："><a href="#background：" class="headerlink" title="background："></a>background：</h2><h3 id="渐变两种生成方法："><a href="#渐变两种生成方法：" class="headerlink" title="渐变两种生成方法："></a>渐变两种生成方法：</h3><ul>
 <li>linear-gradient()线性渐变，</li>
 <li>radial-gradient()径向渐变，当成一个图片来看待</li>
 </ul>
-<h5 id="background"><a href="#background" class="headerlink" title="background"></a>background</h5><ul>
+<h3 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h3><ul>
 <li>background-image ： 可以添加多个背景图片，多url</li>
 <li>background-origin:图片的起始位置（结束位置无法确定），<ul>
 <li>border-box；从边框开始，</li>
@@ -429,10 +429,10 @@
 <li>background-size:</li>
 <li>background-position:定位开始位置参考图片的起始位置（background-origin）    </li>
 </ul>
-<h4 id="渐变："><a href="#渐变：" class="headerlink" title="渐变："></a>渐变：</h4><p><code>linear-gradient(方向(可选，默认为自下到上 to bottom,to top right ：到右上)，起始颜色，结束颜色)</code></p>
+<h2 id="渐变："><a href="#渐变：" class="headerlink" title="渐变："></a>渐变：</h2><p><code>linear-gradient(方向(可选，默认为自下到上 to bottom,to top right ：到右上)，起始颜色，结束颜色)</code></p>
 <p><a target="_blank" rel="noopener" href="http://css.doyoe.com/">参考</a></p>
 <p>border-color的默认值等于color         </p>
-<h4 id="Text："><a href="#Text：" class="headerlink" title="Text："></a>Text：</h4><ul>
+<h2 id="Text："><a href="#Text：" class="headerlink" title="Text："></a>Text：</h2><ul>
 <li>text-shadow：（水平偏移，垂直偏移，模糊值，颜色 ）</li>
 <li>-webkit-text-stroke:描边（宽度，颜色）</li>
 </ul>
@@ -440,19 +440,19 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@font-face</span>&#123;</span><br><span class="line"><span class="attribute">font-family</span>:  字体的名称;</span><br><span class="line"><span class="attribute">src</span>:<span class="built_in">url</span>() /*地址*/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><code>user-select: none; /*禁止文字被复制*/</code></p>
-<h4 id="box"><a href="#box" class="headerlink" title="box:"></a>box:</h4><p>IE6混杂模式的盒模型<br>box-width = width;<br>触发方式：box-sizing = border-box;</p>
-<h4 id="overflow"><a href="#overflow" class="headerlink" title="overflow:"></a>overflow:</h4><ul>
+<h2 id="box"><a href="#box" class="headerlink" title="box:"></a>box:</h2><p>IE6混杂模式的盒模型<br>box-width = width;<br>触发方式：box-sizing = border-box;</p>
+<h2 id="overflow"><a href="#overflow" class="headerlink" title="overflow:"></a>overflow:</h2><ul>
 <li>hidden(溢出部分隐藏);</li>
 <li>scroll(溢出之后出现滚动条) ;</li>
 <li>auto(溢出之后出现滚动条，更标准)，<br>可单独设置x,y轴（overflow）</li>
 </ul>
-<h4 id="resize-必须配合overflow来使用，不然没效果"><a href="#resize-必须配合overflow来使用，不然没效果" class="headerlink" title="resize: 必须配合overflow来使用，不然没效果"></a>resize: 必须配合overflow来使用，不然没效果</h4><ul>
+<h2 id="resize-必须配合overflow来使用，不然没效果"><a href="#resize-必须配合overflow来使用，不然没效果" class="headerlink" title="resize: 必须配合overflow来使用，不然没效果"></a>resize: 必须配合overflow来使用，不然没效果</h2><ul>
 <li>none：不允许用户调整元素大小。</li>
 <li>both：用户可以调节元素的宽度和高度。</li>
 <li>horizontal：用户可以调节元素的宽度。</li>
 <li>vertical：用户可以调节元素的高度。</li>
 </ul>
-<h3 id="弹性盒模型：flex"><a href="#弹性盒模型：flex" class="headerlink" title="弹性盒模型：flex"></a>弹性盒模型：flex</h3><h4 id="弹性盒"><a href="#弹性盒" class="headerlink" title="弹性盒"></a>弹性盒</h4><p>flex-shrink:计算要计算加权，而且压缩的部分是盒子的内容区。</p>
+<h2 id="弹性盒模型：flex"><a href="#弹性盒模型：flex" class="headerlink" title="弹性盒模型：flex"></a>弹性盒模型：flex</h2><h3 id="弹性盒"><a href="#弹性盒" class="headerlink" title="弹性盒"></a>弹性盒</h3><p>flex-shrink:计算要计算加权，而且压缩的部分是盒子的内容区。</p>
 <p>压缩大小 = 自己真实内容区 * flex-shrink / 所有元素（真实内容区 * flex-shrink）的总和  * 要压缩的总范围。</p>
 <p>只设置 flex-basis 或flex-basis &gt; width代表元素的最小宽度，会随内容区增大；<br>设置width后，并且width &gt; flex-basis，width表示元素的最大宽度，则flex-basis &lt; realwidth &lt; width。</p>
 
@@ -517,12 +517,12 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/135xyq.github.io/2021/12/31/ES6-%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%B0%84/" rel="prev" title="代理和反射">
-                  <i class="fa fa-chevron-left"></i> 代理和反射
+                <a href="/135xyq.github.io/2021/01/03/HTML-canvas%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%E7%9B%B8%E5%85%B3/" rel="prev" title="canvas属性">
+                  <i class="fa fa-chevron-left"></i> canvas属性
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/135xyq.github.io/2021/12/31/CSS-%E5%8A%A8%E7%94%BB/" rel="next" title="CSS3动画">
+                <a href="/135xyq.github.io/2021/01/05/CSS-%E5%8A%A8%E7%94%BB/" rel="next" title="CSS3动画">
                   CSS3动画 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>

@@ -20173,29 +20173,35 @@
   </entry>
   <entry>
     <title>CSS3动画</title>
-    <url>/135xyq.github.io/2021/12/31/CSS-%E5%8A%A8%E7%94%BB/</url>
+    <url>/135xyq.github.io/2021/01/05/CSS-%E5%8A%A8%E7%94%BB/</url>
     <content><![CDATA[<h1 id="动画"><a href="#动画" class="headerlink" title="动画"></a><a href="http://css.doyoe.com/">动画</a></h1><hr>
 <h2 id="transition-过渡"><a href="#transition-过渡" class="headerlink" title="transition: 过渡"></a>transition: 过渡</h2><p>（过渡对象，持续时间，变化函数（可选），延迟时间（可选））</p>
-<h4 id="变化函数："><a href="#变化函数：" class="headerlink" title="变化函数："></a>变化函数：</h4><p>贝塞尔曲线cubic-bezier(<number>, <number>, <number>, <number>)：特定的贝塞尔曲线类型，1,3数值需在[0, 1]区间内</p>
-<p><img src="beisaier.png" alt="贝塞尔曲线"><br>输入的四个数为P1,P2的坐标点</p>
+<h4 id="变化函数："><a href="#变化函数：" class="headerlink" title="变化函数："></a>变化函数：</h4><p>贝塞尔曲线<code>cubic-bezier(&lt;number&gt;, &lt;number&gt;, &lt;number&gt;, &lt;number&gt;)</code>：特定的贝塞尔曲线类型，1,3数值需在[0, 1]区间内</p>
+<p>贝塞尔曲线<br>输入的四个数为P1,P2的坐标点</p>
 <h2 id="animations：动画"><a href="#animations：动画" class="headerlink" title="animations：动画"></a>animations：动画</h2><h3 id="八个属性值："><a href="#八个属性值：" class="headerlink" title="八个属性值："></a>八个属性值：</h3><ul>
-<li>&lt;’ animation-name ‘&gt;：<br>检索或设置对象所应用的动画名称</li>
-<li>&lt;’ animation-duration ‘&gt;：<br>检索或设置对象动画的持续时间</li>
-<li>&lt;’ animation-timing-function ‘&gt;：<br>检索或设置对象动画的过渡类型</li>
-<li>&lt;’ animation-delay ‘&gt;：<br>检索或设置对象动画延迟的时间</li>
-<li>&lt;’ animation-iteration-count ‘&gt;：<br>检索或设置对象动画的循环次数</li>
-<li>&lt;’ animation-direction ‘&gt;：<br>检索或设置对象动画在循环中是否反向运动</li>
-<li>&lt;’ animation-fill-mode ‘&gt;：<br>检索或设置对象动画时间之外的状态</li>
-<li>&lt;’ animation-play-state ‘&gt;：<br>检索或设置对象动画的状态。</li>
-</ul>
-<h3 id="关键帧定义："><a href="#关键帧定义：" class="headerlink" title="关键帧定义："></a>关键帧定义：</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@keyframes 自定义名字&#123;</span><br><span class="line">数字%（执行时间占比其中0%可变为from ，100%可变为to)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>steps（步数，start/ end）</li>
-<li>start:保留下一帧状态，直到这一段动画时间结束</li>
-<li>end:保留当前帧状态，直到这一段动画时间结束，最后一帧可能看不到，可加上forwords来弥补</li>
+<li><p>animation-name：<br>检索或设置对象所应用的动画名称</p>
+</li>
+<li><p>animation-duration：<br>检索或设置对象动画的持续时间</p>
+</li>
+<li><p>animation-timing-function：<br>检索或设置对象动画的过渡类型</p>
+</li>
+<li><p>steps（步数，start/ end）</p>
+</li>
+<li><p>start:保留下一帧状态，直到这一段动画时间结束</p>
+</li>
+<li><p>end:保留当前帧状态，直到这一段动画时间结束，最后一帧可能看不到，可加上forwords来弥补</p>
+</li>
 </ul>
 <p><code>steps(1,start) === step-start</code><br><code>steps(1,end) === step-end </code></p>
+<ul>
+<li>animation-delay：<br>检索或设置对象动画延迟的时间</li>
+<li>animation-iteration-count：<br>检索或设置对象动画的循环次数</li>
+<li>animation-direction：<br>检索或设置对象动画在循环中是否反向运动</li>
+<li>animation-fill-mode：<br>检索或设置对象动画时间之外的状态</li>
+<li>animation-play-state：<br>检索或设置对象动画的状态。</li>
+</ul>
+<h3 id="关键帧定义："><a href="#关键帧定义：" class="headerlink" title="关键帧定义："></a>关键帧定义：</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> 自定义名字&#123;</span><br><span class="line">数字%（执行时间占比其中<span class="number">0%</span>可变为<span class="selector-tag">from</span> ，<span class="number">100%</span>可变为<span class="selector-tag">to</span>)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="scale-伸缩"><a href="#scale-伸缩" class="headerlink" title="scale:伸缩"></a>scale:伸缩</h3><p>可3d变化</p>
 <p>伸缩的是此元素变化的坐标轴的刻度。可叠加操作<br>scale的坐标轴会随着旋转轴的旋转而旋转，但会保留影响，设置过的会保留效果。</p>
 <h3 id="skew-倾斜"><a href="#skew-倾斜" class="headerlink" title="skew:倾斜"></a>skew:倾斜</h3><p>2d变化<br>倾斜的是此元素变化的坐标轴，还会拉伸坐标轴</p>
@@ -20207,8 +20213,18 @@
 <p>transform-origin：旋转中心，可填三个值x , y, z</p>
 <p>matrix:矩阵，transform的强大属性，可以完成各种变换</p>
 <p><img src="/images/CSS3Images/%E5%8A%A8%E7%94%BB-%E8%BD%AC%E6%8D%A2%E7%9F%A9%E9%98%B5.jpg" alt="转换矩阵"></p>
-<p>浏览器渲染过程</p>
-<p>reflow:<br>改变窗口大小<br>改变文字大小<br>内容的改变，输入框输入文字<br>激活伪类，如:hover<br>操作class属性<br>脚本操作DOM<br>计算offsetWidth和offsetHeight<br>设置style属性<br>repaint：<br>repaint：如果只是改变某个元素的背景色、<br>文 字颜色、边框颜色，不影响它周围或内部布局的属性<br>repaint<br>repaint 速度快于 reflow  </p>
+<h2 id="浏览器渲染过程"><a href="#浏览器渲染过程" class="headerlink" title="浏览器渲染过程"></a>浏览器渲染过程</h2><h3 id="reflow"><a href="#reflow" class="headerlink" title="reflow:"></a>reflow:</h3><ul>
+<li>改变窗口大小</li>
+<li>改变文字大小</li>
+<li>内容的改变，输入框输入文字</li>
+<li>激活伪类，如:hover</li>
+<li>操作class属性</li>
+<li>脚本操作DOM</li>
+<li>计算offsetWidth和offsetHeight</li>
+<li>设置style属性</li>
+</ul>
+<h3 id="repaint："><a href="#repaint：" class="headerlink" title="repaint："></a>repaint：</h3><p>如果只是改变某个元素的背景色、文字颜色、边框颜色，不影响它周围或内部布局的属性</p>
+<p>repaint 速度快于 reflow</p>
 <p>像素里面有三个色点，三个在一个平面排列，里面每个像点代表三原色的每一个颜色，空间混色法</p>
 ]]></content>
       <categories>
@@ -20221,8 +20237,8 @@
       </tags>
   </entry>
   <entry>
-    <title>CSS3选择器</title>
-    <url>/135xyq.github.io/2021/12/31/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/</url>
+    <title>CSS3选择器、border、background、flex</title>
+    <url>/135xyq.github.io/2021/01/04/CSS-%E9%80%89%E6%8B%A9%E5%99%A8/</url>
     <content><![CDATA[<h1 id="选择器："><a href="#选择器：" class="headerlink" title="选择器："></a>选择器：</h1><hr>
 <h2 id="关系选择器："><a href="#关系选择器：" class="headerlink" title="关系选择器："></a>关系选择器：</h2><ul>
 <li><p> + ：下一个满足条件的兄弟元素节点。<br><code>div + P&#123;&#125;  //选出div的兄弟节点并且是p标签</code></p>
@@ -20232,7 +20248,7 @@
 </ul>
 <h2 id="属性选择器："><a href="#属性选择器：" class="headerlink" title="属性选择器："></a>属性选择器：</h2><ul>
 <li>[attribute~=”value”] 选择器选取属性值包含指定词的元素。</li>
-<li>[attribute|=”value”] 选择器用于选取指定属性以指定值开头的元素。</li>
+<li>[attribute|=”value”] 选择器用于选取指定属性以指定值开头的元素,该值必须是一个完整的单词。</li>
 <li>[attribute^=”value”] 选择器用于选取指定属性以指定值开头的元素。</li>
 <li>[attribute$=”value”] 选择器用于选取指定属性以指定值结尾的元素。</li>
 <li>[attribute*=”value”] 选择器选取属性值包含指定词的元素。</li>
@@ -20264,12 +20280,12 @@
 <li>:ready-only  只能读,不能写的<br>:ready-write  可读可写的</li>
 </ul>
 <p>当给html和body设置高度为100%后，再给里面的元素高度设置100%可充满整个页面。</p>
-<h3 id="border："><a href="#border：" class="headerlink" title="border："></a>border：</h3><h4 id="border-radious"><a href="#border-radious" class="headerlink" title="border-radious :"></a>border-radious :</h4><p>(左上，右上，右下，左下)<br>（上，上，下，下 / 左，右，右，左）不常用 </p>
+<h2 id="border："><a href="#border：" class="headerlink" title="border："></a>border：</h2><h3 id="border-radious"><a href="#border-radious" class="headerlink" title="border-radious :"></a>border-radious :</h3><p>(左上，右上，右下，左下)<br>（上，上，下，下 / 左，右，右，左）不常用 </p>
 <p>可写为border-top-left-radious:左上角<br>用正方形画四分之一圆：一个角的值等于正方形的边长</p>
-<h4 id="box-shadow："><a href="#box-shadow：" class="headerlink" title="box-shadow："></a>box-shadow：</h4><p>普通写法：<br>（inset（内阴影默认为外阴影（不写）），水平偏移量（正是向右，负是向左），垂直偏移量（正值向下，负值向上），阴影模糊程度（基于原边框向两侧同时模糊），传播距离（可选）（在四个方向上同时增大阴影的大小），颜色）。</p>
+<h3 id="box-shadow："><a href="#box-shadow：" class="headerlink" title="box-shadow："></a>box-shadow：</h3><p>普通写法：<br>（inset（内阴影默认为外阴影（不写）），水平偏移量（正是向右，负是向左），垂直偏移量（正值向下，负值向上），阴影模糊程度（基于原边框向两侧同时模糊），传播距离（可选）（在四个方向上同时增大阴影的大小），颜色）。</p>
 <p>可设置多个box-shadow值，先写的在上面，重复的会加重颜色。</p>
 <p>阴影在背景颜色是上面，在文字的下面</p>
-<h4 id="border-image："><a href="#border-image：" class="headerlink" title="border-image："></a>border-image：</h4><p><code>border-image-source:url()  引入图片</code></p>
+<h3 id="border-image："><a href="#border-image：" class="headerlink" title="border-image："></a>border-image：</h3><p><code>border-image-source:url()  引入图片</code></p>
 <ul>
 <li>border-image-slice：(1-5个参数，前四个参数只能为数值，不能带px表示图片的分割方式，最后一个参数填上fill会把内容区也填充)</li>
 </ul>
@@ -20280,11 +20296,11 @@
 <li>round：与 repeat 关键字类似。不同在于，当背景图像不能以整数次平铺时，会根据情况缩放图像。</li>
 <li>space： 与 repeat 关键字类似。不同在于，当背景图像不能以整数次平铺时，会用空白间隙填充在图像周围。</li>
 </ul>
-<h4 id="background："><a href="#background：" class="headerlink" title="background："></a>background：</h4><h5 id="渐变两种生成方法："><a href="#渐变两种生成方法：" class="headerlink" title="渐变两种生成方法："></a>渐变两种生成方法：</h5><ul>
+<h2 id="background："><a href="#background：" class="headerlink" title="background："></a>background：</h2><h3 id="渐变两种生成方法："><a href="#渐变两种生成方法：" class="headerlink" title="渐变两种生成方法："></a>渐变两种生成方法：</h3><ul>
 <li>linear-gradient()线性渐变，</li>
 <li>radial-gradient()径向渐变，当成一个图片来看待</li>
 </ul>
-<h5 id="background"><a href="#background" class="headerlink" title="background"></a>background</h5><ul>
+<h3 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h3><ul>
 <li>background-image ： 可以添加多个背景图片，多url</li>
 <li>background-origin:图片的起始位置（结束位置无法确定），<ul>
 <li>border-box；从边框开始，</li>
@@ -20316,10 +20332,10 @@
 <li>background-size:</li>
 <li>background-position:定位开始位置参考图片的起始位置（background-origin）    </li>
 </ul>
-<h4 id="渐变："><a href="#渐变：" class="headerlink" title="渐变："></a>渐变：</h4><p><code>linear-gradient(方向(可选，默认为自下到上 to bottom,to top right ：到右上)，起始颜色，结束颜色)</code></p>
+<h2 id="渐变："><a href="#渐变：" class="headerlink" title="渐变："></a>渐变：</h2><p><code>linear-gradient(方向(可选，默认为自下到上 to bottom,to top right ：到右上)，起始颜色，结束颜色)</code></p>
 <p><a href="http://css.doyoe.com/">参考</a></p>
 <p>border-color的默认值等于color         </p>
-<h4 id="Text："><a href="#Text：" class="headerlink" title="Text："></a>Text：</h4><ul>
+<h2 id="Text："><a href="#Text：" class="headerlink" title="Text："></a>Text：</h2><ul>
 <li>text-shadow：（水平偏移，垂直偏移，模糊值，颜色 ）</li>
 <li>-webkit-text-stroke:描边（宽度，颜色）</li>
 </ul>
@@ -20327,19 +20343,19 @@
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@font-face</span>&#123;</span><br><span class="line"><span class="attribute">font-family</span>:  字体的名称;</span><br><span class="line"><span class="attribute">src</span>:<span class="built_in">url</span>() /*地址*/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><code>user-select: none; /*禁止文字被复制*/</code></p>
-<h4 id="box"><a href="#box" class="headerlink" title="box:"></a>box:</h4><p>IE6混杂模式的盒模型<br>box-width = width;<br>触发方式：box-sizing = border-box;</p>
-<h4 id="overflow"><a href="#overflow" class="headerlink" title="overflow:"></a>overflow:</h4><ul>
+<h2 id="box"><a href="#box" class="headerlink" title="box:"></a>box:</h2><p>IE6混杂模式的盒模型<br>box-width = width;<br>触发方式：box-sizing = border-box;</p>
+<h2 id="overflow"><a href="#overflow" class="headerlink" title="overflow:"></a>overflow:</h2><ul>
 <li>hidden(溢出部分隐藏);</li>
 <li>scroll(溢出之后出现滚动条) ;</li>
 <li>auto(溢出之后出现滚动条，更标准)，<br>可单独设置x,y轴（overflow）</li>
 </ul>
-<h4 id="resize-必须配合overflow来使用，不然没效果"><a href="#resize-必须配合overflow来使用，不然没效果" class="headerlink" title="resize: 必须配合overflow来使用，不然没效果"></a>resize: 必须配合overflow来使用，不然没效果</h4><ul>
+<h2 id="resize-必须配合overflow来使用，不然没效果"><a href="#resize-必须配合overflow来使用，不然没效果" class="headerlink" title="resize: 必须配合overflow来使用，不然没效果"></a>resize: 必须配合overflow来使用，不然没效果</h2><ul>
 <li>none：不允许用户调整元素大小。</li>
 <li>both：用户可以调节元素的宽度和高度。</li>
 <li>horizontal：用户可以调节元素的宽度。</li>
 <li>vertical：用户可以调节元素的高度。</li>
 </ul>
-<h3 id="弹性盒模型：flex"><a href="#弹性盒模型：flex" class="headerlink" title="弹性盒模型：flex"></a>弹性盒模型：flex</h3><h4 id="弹性盒"><a href="#弹性盒" class="headerlink" title="弹性盒"></a>弹性盒</h4><p>flex-shrink:计算要计算加权，而且压缩的部分是盒子的内容区。</p>
+<h2 id="弹性盒模型：flex"><a href="#弹性盒模型：flex" class="headerlink" title="弹性盒模型：flex"></a>弹性盒模型：flex</h2><h3 id="弹性盒"><a href="#弹性盒" class="headerlink" title="弹性盒"></a>弹性盒</h3><p>flex-shrink:计算要计算加权，而且压缩的部分是盒子的内容区。</p>
 <p>压缩大小 = 自己真实内容区 * flex-shrink / 所有元素（真实内容区 * flex-shrink）的总和  * 要压缩的总范围。</p>
 <p>只设置 flex-basis 或flex-basis &gt; width代表元素的最小宽度，会随内容区增大；<br>设置width后，并且width &gt; flex-basis，width表示元素的最大宽度，则flex-basis &lt; realwidth &lt; width。</p>
 ]]></content>
