@@ -20671,7 +20671,7 @@
   </entry>
   <entry>
     <title>canvas属性</title>
-    <url>/135xyq.github.io/2021/12/31/HTML-canvas%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%E7%9B%B8%E5%85%B3/</url>
+    <url>/135xyq.github.io/2021/01/03/HTML-canvas%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%E7%9B%B8%E5%85%B3/</url>
     <content><![CDATA[<h1 id="CANVAS属性，方法"><a href="#CANVAS属性，方法" class="headerlink" title="CANVAS属性，方法"></a><a href="https://www.cnblogs.com/xinyouhunran/p/10968096.html">CANVAS属性，方法</a></h1><p><strong>基于：</strong><br>var canvas = document.getElementById(‘id’);<br>var ctx = canvas.getContext(‘2d’);</p>
 <p><strong>1.样式：</strong><br>ctx.fillStyle = ‘color’-填充色<br>ctx.strokeStyle = ‘color’-线色<br>ctx.lineWidth = ‘length’-线宽<br>lineCap = type-设置线条末端的外观。<br>lineJoin = type-设置线条相交的“角落”的外观。<br>miterLimit = value-当两条线以锐角连接时，建立一个斜接限制，以控制结的厚度。<br>getLineDash()-返回包含偶数个非负数的当前行虚线模式数组。<br>setLineDash(segments)-设置当前行虚线模式。<br>lineDashOffset = value-指定在一行上启动破折号数组的位置。</p>
 <p><strong>2.画矩形：</strong><br>ctx.fillRect(x, y, width, height)-填充矩形<br>ctx.strokeRect(x, y, width, height)-非填充矩形，只有边框<br>ctx.clearRect(x, y, width, height)-清除范围</p>
@@ -20760,7 +20760,7 @@
   </entry>
   <entry>
     <title>HTML5新增</title>
-    <url>/135xyq.github.io/2021/12/31/HTML-h5%E5%9F%BA%E7%A1%80/</url>
+    <url>/135xyq.github.io/2021/01/01/HTML-h5%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h1 id="HTML5-基础"><a href="#HTML5-基础" class="headerlink" title="HTML5 基础"></a>HTML5 基础</h1><hr>
 <h2 id="input："><a href="#input：" class="headerlink" title="input："></a>input：</h2><p>placeholder：输入框提示</p>
 <h3 id="type里面新增加的类型：（有兼容性问题，不推荐使用）"><a href="#type里面新增加的类型：（有兼容性问题，不推荐使用）" class="headerlink" title="type里面新增加的类型：（有兼容性问题，不推荐使用）"></a>type里面新增加的类型：（有兼容性问题，不推荐使用）</h3><ul>
@@ -20771,10 +20771,12 @@
 </ul>
 <h2 id="其他："><a href="#其他：" class="headerlink" title="其他："></a>其他：</h2><p><code>contenteditable=&quot;true&quot;</code> ：可修改元素的内容（可以继承）（没有兼容性问题）</p>
 <p><code>draggable = &quot;true&quot;</code> :元素可拖拽（大部分元素默认为false，其中a标签img标签默认为true） （只有Chrome和Safari支持）</p>
-<h3 id="拖拽周期：推拽开始，拖拽进行时，拖拽结束"><a href="#拖拽周期：推拽开始，拖拽进行时，拖拽结束" class="headerlink" title="拖拽周期：推拽开始，拖拽进行时，拖拽结束"></a>拖拽周期：推拽开始，拖拽进行时，拖拽结束</h3><h4 id="涉及事件："><a href="#涉及事件：" class="headerlink" title="涉及事件："></a>涉及事件：</h4><ul>
+<h3 id="拖拽周期：推拽开始，拖拽进行时，拖拽结束"><a href="#拖拽周期：推拽开始，拖拽进行时，拖拽结束" class="headerlink" title="拖拽周期：推拽开始，拖拽进行时，拖拽结束"></a>拖拽周期：推拽开始，拖拽进行时，拖拽结束</h3><h4 id="拖拽对象触发事件："><a href="#拖拽对象触发事件：" class="headerlink" title="拖拽对象触发事件："></a>拖拽对象触发事件：</h4><ul>
 <li>拖拽开始（dragstart）,按下物体的瞬间不会触发事件，必须移动</li>
 <li>拖拽移动事件（drag）,移动的时候触发</li>
-<li>拖拽结束时间（dragend），结束时间<h4 id="拖拽目标事件："><a href="#拖拽目标事件：" class="headerlink" title="拖拽目标事件："></a>拖拽目标事件：</h4></li>
+<li>拖拽结束时间（dragend），结束时间</li>
+</ul>
+<h4 id="拖拽目标触发事件："><a href="#拖拽目标触发事件：" class="headerlink" title="拖拽目标触发事件："></a>拖拽目标触发事件：</h4><ul>
 <li>dragenter：当拖拽进入目标区域时，不是元素图形进入触发，而是拖拽的鼠标进入才会触发</li>
 <li>dragover：在拖拽目标的范围内移动触发(想要阻止元素回到默认位置，必须在这设置阻止默认事件)</li>
 <li>dragleave：离开拖拽目标触发</li>
@@ -20786,19 +20788,7 @@
 <p><code>dataTransfer.dropEffect</code>:可以改变拖拽松手时指针的样式（必须写在drop里，兼容性不行）</p>
 <p><code>e.dataTransfer.dropEffect = 样式</code></p>
 <h2 id="canvas："><a href="#canvas：" class="headerlink" title="canvas："></a><a href="https://www.runoob.com/w3cnote/html5-canvas-intro.html">canvas</a>：</h2><p>canvas要在js中开始操作画图。<br>canvas设置画板的大小需要在行间设置</p>
-<h3 id="canvas中画笔方法："><a href="#canvas中画笔方法：" class="headerlink" title="canvas中画笔方法："></a>canvas中画笔方法：</h3><p><code>画板.getContext(&quot;2d&quot;) : 生成一个画笔</code><br>moveTo（x,y）:画笔开始的的位置<br>lineTo（x,y）：下一笔要到的地方<br>lineWidth：设置画笔画出来线条的宽度（每个画笔画出来的图形苦读一样）<br>beginPath ：开启一个新的路径<br>closePath ：自动闭合所画的图形（闭合当前这一个路径）<br>stroke ： 将画笔的轨迹写到画板上（即展示画的图形）<br>fill : 将图形的内容区填满（会自动闭合图形）<br>clearRect（起始X，起始Y，矩形的宽，矩形的高）:清除这个矩形框的内容（相当于橡皮擦）</p>
-<h3 id="canvas画矩形："><a href="#canvas画矩形：" class="headerlink" title="canvas画矩形："></a>canvas画矩形：</h3><ol>
-<li>一笔一笔的画</li>
-<li>rect（起始X，起始Y，矩形的宽，矩形的高）:一个矩形</li>
-<li>strokeRect(起始X，起始Y，矩形的宽，矩形的高):一个只有边框的矩形</li>
-<li>fillRect（起始X，起始Y，矩形的宽，矩形的高）：有填充内容的矩形</li>
-</ol>
-<h3 id="canvas画圆形，圆弧："><a href="#canvas画圆形，圆弧：" class="headerlink" title="canvas画圆形，圆弧："></a>canvas画圆形，圆弧：</h3><p>参数：圆心（x,y），半径(r)，弧度（开始弧度start，结束弧度end，必须以π（Math.PI）为单位 例 Math.PI* 2 : 360度），方向（顺时针，逆时针，顺时针写为0，逆时针为1）</p>
-<p>arc（x,y,r,开始弧度,结束弧度,方向）：方法</p>
-<h3 id="canvas画圆角矩形："><a href="#canvas画圆角矩形：" class="headerlink" title="canvas画圆角矩形："></a>canvas画圆角矩形：</h3><h4 id="画一条带弧的线："><a href="#画一条带弧的线：" class="headerlink" title="画一条带弧的线："></a>画一条带弧的线：</h4><p>参数：线直线部分的结束坐标（x,y），线的结束部分弧的方向（需填写一个坐标表示延伸方向，只提供方向参考），圆弧的大小</p>
-<p>arcTo（x,y，弧所延伸方向的坐标，圆弧的大小）：画出一条线</p>
-<p><strong>注意</strong>：四条线就可画出圆角矩形，画笔的起始位置应该为矩形的弧形大小预留出一定的位置</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">        <span class="comment">//画一个弧度为10px 起始位置位（100 100），宽高为100的圆角矩形</span></span><br><span class="line">ctx.moveTo(<span class="number">100</span>, <span class="number">110</span>);</span><br><span class="line">        ctx.arcTo(<span class="number">100</span>, <span class="number">200</span>, <span class="number">200</span>, <span class="number">200</span>, <span class="number">10</span>);</span><br><span class="line">        ctx.arcTo(<span class="number">200</span>, <span class="number">200</span>, <span class="number">200</span>, <span class="number">100</span>, <span class="number">10</span>);</span><br><span class="line">        ctx.arcTo(<span class="number">200</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">10</span>);</span><br><span class="line">        ctx.arcTo(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">10</span>);</span><br><span class="line">        ctx.stroke();</span><br></pre></td></tr></table></figure>
+<h3 id="canvas中画笔方法："><a href="#canvas中画笔方法：" class="headerlink" title="canvas中画笔方法："></a>canvas中画笔方法：</h3><figure class="highlight plaintext"><figcaption><span>: 生成一个画笔</span></figcaption><table><tr><td class="code"><pre><span class="line">```moveTo（x,y）```:画笔开始的的位置  </span><br><span class="line">```lineTo（x,y）```：下一笔要到的地方  </span><br><span class="line">```lineWidth```：设置画笔画出来线条的宽度（每个画笔画出来的图形苦读一样）  </span><br><span class="line">```beginPath``` ：开启一个新的路径  </span><br><span class="line">```closePath``` ：自动闭合所画的图形（闭合当前这一个路径）  </span><br><span class="line">```stroke``` ： 将画笔的轨迹写到画板上（即展示画的图形）  </span><br><span class="line">```fill``` : 将图形的内容区填满（会自动闭合图形）  </span><br><span class="line">```clearRect（起始X，起始Y，矩形的宽，矩形的高）```:清除这个矩形框的内容（相当于橡皮擦）</span><br><span class="line"></span><br><span class="line">### canvas画矩形：</span><br><span class="line">1. 一笔一笔的画</span><br><span class="line">2. rect（起始X，起始Y，矩形的宽，矩形的高）:一个矩形</span><br><span class="line">3. strokeRect(起始X，起始Y，矩形的宽，矩形的高):一个只有边框的矩形</span><br><span class="line">4. fillRect（起始X，起始Y，矩形的宽，矩形的高）：有填充内容的矩形</span><br><span class="line"></span><br><span class="line">### canvas画圆形，圆弧：</span><br><span class="line"></span><br><span class="line">参数：圆心（x,y），半径(r)，弧度（开始弧度start，结束弧度end，必须以π（Math.PI）为单位 例 Math.PI* 2 : 360度），方向（顺时针，逆时针，顺时针写为0，逆时针为1）</span><br><span class="line"></span><br><span class="line">arc（x,y,r,开始弧度,结束弧度,方向）：方法</span><br><span class="line"></span><br><span class="line">### canvas画圆角矩形：</span><br><span class="line"></span><br><span class="line">#### 画一条带弧的线：</span><br><span class="line">参数：线直线部分的结束坐标（x,y），线的结束部分弧的方向（需填写一个坐标表示延伸方向，只提供方向参考），圆弧的大小</span><br><span class="line"></span><br><span class="line">arcTo（x,y，弧所延伸方向的坐标，圆弧的大小）：画出一条线</span><br><span class="line"></span><br><span class="line">**注意**：四条线就可画出圆角矩形，画笔的起始位置应该为矩形的弧形大小预留出一定的位置</span><br><span class="line">```javascript</span><br><span class="line">        //画一个弧度为10px 起始位置位（100 100），宽高为100的圆角矩形</span><br><span class="line">        ctx.moveTo(100, 110);</span><br><span class="line">        ctx.arcTo(100, 200, 200, 200, 10);</span><br><span class="line">        ctx.arcTo(200, 200, 200, 100, 10);</span><br><span class="line">        ctx.arcTo(200, 100, 100, 100, 10);</span><br><span class="line">        ctx.arcTo(100, 100, 100, 200, 10);</span><br><span class="line">        ctx.stroke();</span><br></pre></td></tr></table></figure>
 <h3 id="贝塞尔曲线："><a href="#贝塞尔曲线：" class="headerlink" title="贝塞尔曲线："></a>贝塞尔曲线：</h3><p>二次贝塞尔曲线需提供三个点，做出两条辅助线<br>三次需要四个点，三条辅助线，<br>其他类推（第一个点为画笔的起始点） </p>
 <p>quadraticCurveTo（第二个点横坐标，第二个点纵坐标，第三个点横坐标，第三个点纵坐标）：二次贝塞尔曲线</p>
 <p>bezierCurveTo(第二个点横坐标，第二个点纵坐标，第三个点横坐标，第三个点纵坐标,第四个点横坐标，第四个点纵坐标)：三次贝塞尔曲线</p>
@@ -20820,10 +20810,10 @@
 <h2 id="svg"><a href="#svg" class="headerlink" title="svg:"></a><a href="https://www.runoob.com/svg/svg-tutorial.html">svg</a>:</h2><p>svg适合矢量图，放大不会失真，适合大面积的贴图，通常动画较简单（标签和CSS绘画）<br>canvas适合用于小面积的绘图，适合动画（JS去画）</p>
 <h3 id="画直线："><a href="#画直线：" class="headerlink" title="画直线："></a>画直线：</h3><p>在SVG标签里使用line标签有四个属性x1,y1,x2,y2分别代表开始位置坐标和结束位置坐标，画完之后要在css中为他们设置stroke属性</p>
 <h3 id="画矩形："><a href="#画矩形：" class="headerlink" title="画矩形："></a>画矩形：</h3><p>在SVG里用标签rect标签，属性width，height，x,y,rx,ry,分别表示矩形的宽，高，起始位置的横纵坐标，圆角的宽高</p>
-<h4 id="画圆："><a href="#画圆：" class="headerlink" title="画圆："></a>画圆：</h4><p>在SVG里用标签circle</p>
-<h4 id="画椭圆："><a href="#画椭圆：" class="headerlink" title="画椭圆："></a>画椭圆：</h4><p>在SVG里用ellipse标签</p>
-<h4 id="画折线："><a href="#画折线：" class="headerlink" title="画折线："></a>画折线：</h4><p>在SVG里用polyline标签，默认闭合<br>解决默认填充的可以在css中将fill值改为transparent</p>
-<h6 id=""><a href="#" class="headerlink" title=""></a></h6>]]></content>
+<h3 id="画圆："><a href="#画圆：" class="headerlink" title="画圆："></a>画圆：</h3><p>在SVG里用标签circle</p>
+<h3 id="画椭圆："><a href="#画椭圆：" class="headerlink" title="画椭圆："></a>画椭圆：</h3><p>在SVG里用ellipse标签</p>
+<h3 id="画折线："><a href="#画折线：" class="headerlink" title="画折线："></a>画折线：</h3><p>在SVG里用polyline标签，默认闭合<br>解决默认填充的可以在css中将fill值改为transparent</p>
+]]></content>
       <categories>
         <category>前端学习笔记</category>
         <category>HTML</category>
