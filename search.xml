@@ -21300,54 +21300,98 @@ load,整个页面加载完才能触发    </li>
 <p>\n : 与第 n 子表达式个完全一样的匹配条件（n 必须为具体的数字）</p>
 <p>var reg = /(\w)\1\1\1/g; //匹配 4 个完全一样的字符串（例如 “aaaa”）</p>
 <p>var reg = /(\w)\1(\w)\2/g; //可匹配 AABB 样式的字符串</p>
-<h4 id="方括号"><a href="#方括号" class="headerlink" title="方括号"></a>方括号</h4><p>方括号用于查找某个范围内的字符：<br>| 表达式 | 描述 |<br>| :— | :—————: |<br>| [abc] | 查找方括号之间的任何字符。|<br>| [^abc] | 查找任何不在方括号之间的字符。|<br>| [0-9] | 查找任何从 0 至 9 的数字。|<br>| [a-z] | 查找任何从小写 a 到小写 z 的字符。|<br>| [A-Z] | 查找任何从大写 A 到大写 Z 的字符。|<br>| [A-z] | 查找任何从大写 A 到小写 z 的字符。|<br>| [adgk] | 查找给定集合内的任何字符。|<br>| [^adgk] | 查找给定集合外的任何字符。|<br>| (red|blue|green) | 查找任何指定的选项。|<br>|</p>
-<h4 id="元字符（Metacharacter）"><a href="#元字符（Metacharacter）" class="headerlink" title="元字符（Metacharacter）"></a>元字符（Metacharacter）</h4><p>是拥有特殊含义的字符：<br>| 元字符 | 描述 |<br>| :—- | :—-: |<br>|.查找单个字符，除了换行和行结束符.<br>| \w | [ 0 - 9A-z_]查找单词字符。<br>| \W | 查找非单词字符。<br>| \d | [ 0 - 9]查找数字。<br>| \D | 查找非数字字符。<br>| \s | 查找空白字符。<br>| \S | 查找非空白字符。<br>| \b | 匹配单词边界。<br>| \B | 匹配非单词边界。<br>| \0 | 查找 NUL 字符。<br>| \n | 查找换行符。<br>| \f | 查找换页符。<br>| \r | 查找回车符。<br>| \t | 查找制表符。<br>| \v | 查找垂直制表符。<br>| \x | xx 查找以八进制数 xxx 规定的字符。<br>| \x | dd 查找以十六进制数 dd 规定的字符。<br>| \u | xxxx 查找以十六进制数 xxxx 规定的 Unicode 字符。<br>|</p>
+<h4 id="方括号"><a href="#方括号" class="headerlink" title="方括号"></a>方括号</h4><p>方括号用于查找某个范围内的字符：</p>
+<table>
+<thead>
+<tr>
+<th align="center">表达式</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">[abc]</td>
+<td align="center">查找方括号之间的任何字符。</td>
+</tr>
+<tr>
+<td align="center">[^abc]</td>
+<td align="center">查找任何不在方括号之间的字符。</td>
+</tr>
+<tr>
+<td align="center">[0-9]</td>
+<td align="center">查找任何从 0 至 9 的数字。</td>
+</tr>
+<tr>
+<td align="center">[a-z]</td>
+<td align="center">查找任何从小写 a 到小写 z 的字符。</td>
+</tr>
+<tr>
+<td align="center">[A-Z]</td>
+<td align="center">查找任何从大写 A 到大写 Z 的字符。</td>
+</tr>
+<tr>
+<td align="center">[A-z]</td>
+<td align="center">查找任何从大写 A 到小写 z 的字符。</td>
+</tr>
+<tr>
+<td align="center">[adgk]</td>
+<td align="center">查找给定集合内的任何字符。</td>
+</tr>
+<tr>
+<td align="center">[^adgk]</td>
+<td align="center">查找给定集合外的任何字符。</td>
+</tr>
+<tr>
+<td align="center">(red|blue|green)</td>
+<td align="center">查找任何指定的选项。</td>
+</tr>
+</tbody></table>
+<h4 id="元字符（Metacharacter）"><a href="#元字符（Metacharacter）" class="headerlink" title="元字符（Metacharacter）"></a>元字符（Metacharacter）</h4><p>是拥有特殊含义的字符：<br>| 元字符 | 描述 |<br>| :—- | :—-: |<br>|.|查找单个字符，除了换行和行结束符|<br>| \w | [ 0 - 9A-z_]查找单词字符|<br>| \W | 查找非单词字符|<br>| \d | [ 0 - 9]查找数字|<br>| \D | 查找非数字字符|<br>| \s | 查找空白字符|<br>| \S | 查找非空白字符|<br>| \b | 匹配单词边界|<br>| \B | 匹配非单词边界|<br>| \0 | 查找 NUL 字符|<br>| \n | 查找换行符|<br>| \f | 查找换页符|<br>| \r | 查找回车符|<br>| \t | 查找制表符|<br>| \v | 查找垂直制表符|<br>| \x | xx 查找以八进制数 xxx 规定的字符|<br>| \x | dd 查找以十六进制数 dd 规定的字符|<br>| \u | xxxx 查找以十六进制数 xxxx 规定的 Unicode 字符|</p>
 <h4 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h4><table>
 <thead>
 <tr>
 <th align="left">量词</th>
-<th align="left">描述</th>
+<th align="center">描述</th>
 </tr>
 </thead>
 <tbody><tr>
 <td align="left">n+</td>
-<td align="left">匹配任何包含至少一个 n 的字符串。</td>
+<td align="center">匹配任何包含至少一个 n 的字符串。</td>
 </tr>
 <tr>
 <td align="left">n*</td>
-<td align="left">匹配任何包含零个或多个 n 的字符串。</td>
+<td align="center">匹配任何包含零个或多个 n 的字符串。</td>
 </tr>
 <tr>
 <td align="left">n?</td>
-<td align="left">匹配任何包含零个或一个 n 的字符串。</td>
+<td align="center">匹配任何包含零个或一个 n 的字符串。</td>
 </tr>
 <tr>
 <td align="left">n{X}</td>
-<td align="left">匹配包含 X 个 n 的序列的字符串。</td>
+<td align="center">匹配包含 X 个 n 的序列的字符串。</td>
 </tr>
 <tr>
 <td align="left">n{X,Y}</td>
-<td align="left">匹配包含 X 至 Y 个 n 的序列的字符串。</td>
+<td align="center">匹配包含 X 至 Y 个 n 的序列的字符串。</td>
 </tr>
 <tr>
 <td align="left">n{X,}</td>
-<td align="left">匹配包含至少 X 个 n 的序列的字符串。</td>
+<td align="center">匹配包含至少 X 个 n 的序列的字符串。</td>
 </tr>
 <tr>
 <td align="left">n$</td>
-<td align="left">匹配任何结尾为 n 的字符串。</td>
+<td align="center">匹配任何结尾为 n 的字符串。</td>
 </tr>
 <tr>
 <td align="left">^n</td>
-<td align="left">匹配任何开头为 n 的字符串。</td>
+<td align="center">匹配任何开头为 n 的字符串。</td>
 </tr>
 <tr>
 <td align="left">?=n</td>
-<td align="left">匹配任何其后紧接指定字符串 n 的字符串。</td>
+<td align="center">匹配任何其后紧接指定字符串 n 的字符串。</td>
 </tr>
 <tr>
 <td align="left">?!n</td>
-<td align="left">匹配任何其后没有紧接指定字符串 n 的字符串。</td>
+<td align="center">匹配任何其后没有紧接指定字符串 n 的字符串。</td>
 </tr>
 </tbody></table>
 <h4 id="RegExp-对象属性"><a href="#RegExp-对象属性" class="headerlink" title="RegExp 对象属性"></a>RegExp 对象属性</h4><table>
