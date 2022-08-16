@@ -20746,230 +20746,6 @@
       </tags>
   </entry>
   <entry>
-    <title>document常用方法</title>
-    <url>/135xyq.github.io/2021/02/21/JS-documen%E9%87%8C%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="document里面的方法"><a href="#document里面的方法" class="headerlink" title="document里面的方法"></a>document里面的方法</h1><hr>
-<p>document：整个页面</p>
-<p>querySelector(‘选择器’)：可以按CSS的选择器选择方式（选出一个）</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">strong</span>&gt;</span><span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">strong</span> <span class="attr">class</span>=<span class="string">&quot;demo&quot;</span>&gt;</span>123<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> strong = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;div &gt; span strong&#x27;</span>)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 可以选择出有123的strong标签          --&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>querySelectorAll(‘选择器’):可以按CSS的选择器选择方式（选出一组）</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">strong</span>&gt;</span><span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">strong</span> <span class="attr">class</span>=<span class="string">&quot;demo&quot;</span>&gt;</span>123<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> strong = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;div &gt; span strong&#x27;</span>)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 可以选择出有123的一组strong标签    --&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>querySeclect 和querySelectAll是静态的，选择后不再更新（选出来的是副本）</p>
-<h3 id="遍历节点树：（包含所有节点）"><a href="#遍历节点树：（包含所有节点）" class="headerlink" title="遍历节点树：（包含所有节点）"></a>遍历节点树：（包含所有节点）</h3><ul>
-<li>parentNode:父节点</li>
-<li>childNodes：子节点集合</li>
-<li>firstChild：第一个子节点</li>
-<li>lastChild：最后一个子节点</li>
-<li>nextSibling：后一个兄弟节点</li>
-<li>previousSibling：前一个兄弟节点</li>
-</ul>
-<h3 id="遍历元素节点树：（只有元素节点）"><a href="#遍历元素节点树：（只有元素节点）" class="headerlink" title="遍历元素节点树：（只有元素节点）"></a>遍历元素节点树：（只有元素节点）</h3><ul>
-<li>parentElement：返回当前元素的父元素节点</li>
-<li>children：只返回当前元素的元素子节点</li>
-<li>node.childElementCount === node.children.length：当前元素节点的子元素个数</li>
-<li>firstElementChild：第一个元素节点</li>
-<li>lastElementChild：最后一个元素节点</li>
-<li>nextElementSibling：后一个兄弟元素节点</li>
-<li>previousElementSibling：前一个兄弟元素节点</li>
-</ul>
-<h3 id="节点的四个属性"><a href="#节点的四个属性" class="headerlink" title="节点的四个属性"></a>节点的四个属性</h3><ul>
-<li>nodeName：元素的标签名，以大些形式表示，只读</li>
-<li>nodeValue：Text节点或Comment节点的文本内容，可读写</li>
-<li>nodeType：该节点的类型，只读</li>
-<li>attributes：Element节点的属性集合</li>
-</ul>
-<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><ol>
-<li><p>getElementById方法定义在Document.prototype上，即Element节点上不能使用。</p>
-</li>
-<li><p>getElementsByName方法定义在HTMLDocument.prototype上，即非html中的document以外不能使用(xml document,Element)</p>
-</li>
-<li><p>getElementsByTagName方法定义在Document.prototype 和 Element.prototype上</p>
-</li>
-<li><p>HTMLDocument.prototype定义了一些常用的属性，body,head,分别指代HTML文档中的<body><head>标签。</p>
-</li>
-<li><p>Document.prototype上定义了documentElement属性，指代文档的根元素，在HTML文档中，他总是指代<html>元素</p>
-</li>
-<li><p>getElementsByClassName、querySelectorAll、querySelector在Document,Element类中均有定义</p>
-</li>
-</ol>
-<h3 id="dom的基本操作"><a href="#dom的基本操作" class="headerlink" title="dom的基本操作"></a>dom的基本操作</h3><h4 id="增"><a href="#增" class="headerlink" title="增"></a>增</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.createElement();增加元素节点</span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.createTextNode();增加文本节点</span><br><span class="line"><span class="keyword">var</span> text = <span class="built_in">document</span>.createTextNode(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.createComment();</span><br><span class="line"><span class="keyword">var</span> comment = <span class="built_in">document</span>.createComment(<span class="string">&quot;This is a Comment&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.createDocumentFragment();文档碎片节点</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="插"><a href="#插" class="headerlink" title="插"></a>插</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">PARENTNODE.appendChild();插入节点（剪切操作）</span><br><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">var</span> text = <span class="built_in">document</span>.createTextNode(<span class="string">&quot;这里在div中插入一个文本节点&quot;</span>);</span><br><span class="line">        <span class="keyword">var</span> span = <span class="built_in">document</span>.createElement(<span class="string">&#x27;span&#x27;</span>);</span><br><span class="line">        div.appendChild(text);</span><br><span class="line">        div.appendChild(span);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">PARENTNODE.insertBefore(a, b);在父集中将a插在b前面</span><br><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">var</span> strong = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;strong&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">var</span> span = <span class="built_in">document</span>.createElement(<span class="string">&#x27;span&#x27;</span>);</span><br><span class="line">        div.insertBefore(span, strong);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">var</span> strong = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;strong&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">var</span> text = <span class="built_in">document</span>.createTextNode(<span class="string">&quot;在strong前面插入一个文本节点&quot;</span>);</span><br><span class="line">        div.insertBefore(text, strong);</span><br></pre></td></tr></table></figure>
-
-<h4 id="删"><a href="#删" class="headerlink" title="删"></a>删</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">parent.removeChild();父节点调用方法删除子节点（剪切）</span><br><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">var</span> strong = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;strong&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        div.removeChild(strong);</span><br><span class="line">        删除div下面的strong标签</span><br><span class="line">parent.remove();子节点自己调用方法删除自己（销毁）</span><br><span class="line">        <span class="keyword">var</span> strong = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;strong&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        strong.remove()</span><br><span class="line">        删除div下面的strong标签</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">parent.replaceChild(<span class="keyword">new</span>, origin);（剪切）</span><br><span class="line">         <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">         <span class="keyword">var</span> strong = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;strong&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">         <span class="keyword">var</span> text = <span class="built_in">document</span>.createTextNode(<span class="string">&quot;将strong标签替换成为一个文本&quot;</span>);</span><br><span class="line">         div.replaceChild(text, strong);</span><br><span class="line">Element节点的一些属性</span><br><span class="line"></span><br><span class="line">innerHTML（取写HTML）</span><br><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        div.innerHTML;</span><br><span class="line">        将div里面的东西查找出来</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        div.innerHTML = <span class="string">&quot;将div原来的东西覆盖掉&quot;</span>;</span><br><span class="line">        将div里面的东西替换</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        div.innerHTML = <span class="string">&quot;将div原来的东西覆盖掉&quot;</span>;</span><br><span class="line">        div.innerHTML += <span class="string">&quot;再加一点东西！&quot;</span>;</span><br><span class="line">        在原来的div后面再添加一点东西</span><br><span class="line">innerText（取写文本，老版本火狐不支持（提供TextContent一样））</span><br><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        div.innerText;</span><br><span class="line">        将div里面的文本取出来</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        div.innerText = <span class="string">&quot;123&quot;</span>;</span><br><span class="line">        将div里面的所有东西替换成<span class="number">123</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Element节点的一些方法"><a href="#Element节点的一些方法" class="headerlink" title="Element节点的一些方法"></a>Element节点的一些方法</h3><h4 id="ele-setAttribute-设置属性"><a href="#ele-setAttribute-设置属性" class="headerlink" title="ele.setAttribute() ;设置属性"></a>ele.setAttribute() ;设置属性</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        div.setAttribute(<span class="string">&#x27;class&#x27;</span>, <span class="string">&#x27;class1&#x27;</span>);</span><br><span class="line">给div添加名为class1 的 <span class="class"><span class="keyword">class</span>属性</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">var</span> <span class="title">div</span> </span>= <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        div.setAttribute(<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;only&#x27;</span>);</span><br><span class="line">给div添加一个名为only的 id属性</span><br></pre></td></tr></table></figure>
-
-<h4 id="ele-getAttribute-获取属性"><a href="#ele-getAttribute-获取属性" class="headerlink" title="ele.getAttribute() ;获取属性"></a>ele.getAttribute() ;获取属性</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        div.getAttribute(<span class="string">&#x27;id&#x27;</span>);</span><br><span class="line">获取div的id</span><br></pre></td></tr></table></figure>
-<p>document.getElementsByTagName(*);可以把所有标签取出来</p>
-<h2 id="日期对象"><a href="#日期对象" class="headerlink" title="日期对象"></a>日期对象</h2><p>日期对象是系统提供好的。</p>
-<p><code>var date = new Date();</code></p>
-<p>setInterval(函数，时间间隔);循环执行（每隔一段时间执行函数），都会返回一个数字唯一标识</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">        <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;aaa&quot;</span>);</span><br><span class="line">        &#125;, <span class="number">1000</span>)</span><br><span class="line">每隔<span class="number">1000</span>毫秒执行一次<span class="function"><span class="keyword">function</span></span></span><br></pre></td></tr></table></figure>
-
-<p>setTimeout(函数，时间间隔);推迟一段时间在执行，仅执行一次</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">        <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;推迟1000毫秒执行，仅执行一次。&quot;</span>);</span><br><span class="line">        &#125;, <span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">clearInterval</span>(数字);停止执行</span><br><span class="line">        <span class="keyword">var</span> timer = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;aaa&quot;</span>);</span><br><span class="line">        &#125;, <span class="number">1000</span>)</span><br><span class="line">        <span class="built_in">clearInterval</span>(timer);</span><br><span class="line">        可以停止<span class="built_in">setInterval</span>的执行</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">clearTimeout</span>();</span><br><span class="line">        <span class="keyword">var</span> timer = <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;隔1000毫秒执行，仅执行一次。&quot;</span>);</span><br><span class="line">        &#125;, <span class="number">1000</span>)</span><br><span class="line">        <span class="built_in">clearTimeout</span>(timer);</span><br><span class="line">        清除<span class="built_in">setTimeout</span>的执行</span><br></pre></td></tr></table></figure>
-<p>全局对象window上的方法，内部函数this指向window</p>
-<h4 id="注意-："><a href="#注意-：" class="headerlink" title="注意 ："></a>注意 ：</h4><p>setInterval(“字符串”,1000);会每隔一段时间执行字符串里面的代码（当成js代码）</p>
-<h4 id="查看滚动条的滚动距离："><a href="#查看滚动条的滚动距离：" class="headerlink" title="查看滚动条的滚动距离："></a>查看滚动条的滚动距离：</h4><p>window.pageXOffset/pageYOffset<br>IE8及IE8以下不兼容</p>
-<p><code>document.body.scrollLeft/scrollTop</code><br><code>document.documentElement.scrollLeft/scrollTop</code></p>
-<p>兼容性比较混乱，用时取两个值相加，因为不可能存在两个同时有值。</p>
-<h3 id="查看视口的尺寸："><a href="#查看视口的尺寸：" class="headerlink" title="查看视口的尺寸："></a>查看视口的尺寸：</h3><p><code>window.innerWidth/innerHeight</code><br>IE8及IE8以下不兼容</p>
-<p><code>document.documentElement.clientWidth/clientHeight</code></p>
-<p>标准模式下，任意浏览器都兼容</p>
-<p><code>document.body.clientWidth/clientHeight</code></p>
-<p>适用于怪异模式下的浏览器</p>
-<h3 id="浏览器的渲染模式："><a href="#浏览器的渲染模式：" class="headerlink" title="浏览器的渲染模式："></a>浏览器的渲染模式：</h3><ol>
-<li>标准模式：</li>
-<li>怪异模式（混扎模式）：可支持老版本，启动方法（删除<!DOCTYPE html>）</li>
-</ol>
-<h4 id="查看元素的几何尺寸"><a href="#查看元素的几何尺寸" class="headerlink" title="查看元素的几何尺寸:"></a>查看元素的几何尺寸:</h4><p><code>domEle.getBoundingClientRect();</code></p>
-<p>兼容性很好。</p>
-<p>该方法返回一个对象，对象里面有left,top,right,bottom等属性。left和top代表该元素左上角的X和Y坐标，right和bottom代表元素右下角的X和Y坐标<br>height和width属性。<br>老版本IE并未实现。</p>
-<p>返回的结果并不是“实时的”。</p>
-<h4 id="查看元素的尺寸："><a href="#查看元素的尺寸：" class="headerlink" title="查看元素的尺寸："></a>查看元素的尺寸：</h4><p><code>dom.offsetWidth，dom.offsetHeight</code></p>
-<h4 id="查看元素的位置："><a href="#查看元素的位置：" class="headerlink" title="查看元素的位置："></a>查看元素的位置：</h4><p><code>dom.offsetLeft, dom.offsetTop</code></p>
-<p>对于无定位父级的元素，返回相对文档的坐标。对于有定位父级的元素，返回相对于最近的有定位的父级的坐标。</p>
-<p><code>dom.offsetParent</code></p>
-<p>返回最近的有定位的父级，如无，返回body, body.offsetParent 返回null</p>
-<h3 id="让滚动条滚动："><a href="#让滚动条滚动：" class="headerlink" title="让滚动条滚动："></a>让滚动条滚动：</h3><p>window上有三个方法</p>
-<ul>
-<li>scroll(),</li>
-<li>scrollTo(),</li>
-<li>scrollBy();</li>
-</ul>
-<p>三个方法功能类似，用法都是将x,y坐标传入。即实现让滚动轮滚动到当前位置。</p>
-<p>区别：scrollBy()会在之前的数据基础之上做累加。</p>
-<h3 id="脚本化CSS"><a href="#脚本化CSS" class="headerlink" title="脚本化CSS"></a>脚本化CSS</h3><p><code>dom.style.prop（获取的是行间样式表）</code></p>
-<p>可读写行间样式，没有兼容性问题，碰到float这样的关键字属性，前面应加css</p>
-<p><code>eg:float — &gt; cssFloat</code></p>
-<p>复合属性必须拆解，组合单词变成小驼峰式写法</p>
-<p>写入的值必须是字符串格式</p>
-<p>查询计算样式</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.getComputedStyle(ele,<span class="literal">null</span>);（展示的值和默认值）</span><br><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        <span class="built_in">window</span>.getComputedStyle(div,<span class="literal">null</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>计算样式只读</p>
-<p>返回的计算样式的值都是绝对值，没有相对单位 </p>
-<p>IE8 及 IE8以下不兼容<br>可以用getComputedStyle（ele,伪元素名）来获取伪元素的属性</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        <span class="built_in">window</span>.getComputedStyle(div, <span class="string">&quot;after&quot;</span>);</span><br></pre></td></tr></table></figure>
-<h4 id="查询样式"><a href="#查询样式" class="headerlink" title="查询样式"></a>查询样式</h4><p>ele.currentStyle</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        div.currentStyle.width;</span><br></pre></td></tr></table></figure>
-
-<p>计算样式只读</p>
-<p>返回的计算样式的值不是经过转换的绝对值</p>
-<p>IE独有的属性</p>
-<p>元素名.className = “class名”;可以改元素的class</p>
-<h3 id="事件："><a href="#事件：" class="headerlink" title="事件："></a>事件：</h3><h4 id="绑定事件："><a href="#绑定事件：" class="headerlink" title="绑定事件："></a>绑定事件：</h4><ol>
-<li><code>ele.onxxx = function (event) &#123;&#125;</code><br>兼容性很好，但是一个元素只能绑定一个处理程序</li>
-</ol>
-<p>基本等同于写在HTML行间上。（在行间不用写function直接写执行语句就行）<br>程序this指向是dom元素本身</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        div.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            </span><br><span class="line">            函数体</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li><code>obj.addEventListener(事件类型, 处理函数, false);</code></li>
-</ol>
-<p>IE9以下不兼容，可以为一个事件绑定多个处理程序。<br>程序this指向是dom元素本身</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        div.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        &#125;, <span class="literal">false</span>)</span><br><span class="line">        div.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">        &#125;, <span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span></span><br><span class="line"><span class="javascript"><span class="xml">    <span class="keyword">var</span> i = <span class="number">0</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="keyword">var</span> lis = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;li&#x27;</span>);</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; lis.length; i++) &#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">            (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">                lis[i].addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">                    <span class="built_in">console</span>.log(i + <span class="number">1</span>);</span></span></span><br><span class="line"><span class="javascript"><span class="xml">                &#125;, <span class="literal">false</span>)</span></span></span><br><span class="line"><span class="javascript"><span class="xml">            &#125;(i))</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="comment">//点击每个li展示其序号（注意闭包的应用）</span></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li><code>obj.attachEvent(‘on’ + type, fn);</code></li>
-</ol>
-<p>IE独有，一个事件同样可以绑定多个处理程序,IE 独有<br>程序this指向是window</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        div.attachEvent(<span class="string">&#x27;onclick&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="解除事件处理函数"><a href="#解除事件处理函数" class="headerlink" title="解除事件处理函数"></a>解除事件处理函数</h3><p><strong>注:若绑定匿名函数，则无法解除</strong></p>
-<ol>
-<li><p><code>ele.onclick = false/‘’/null;</code></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        div.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        div.onclick = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure></li>
-<li><p><code>ele.removeEventListener(type, fn, false)</code>;</p>
-</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        div.addEventListener(<span class="string">&#x27;click&#x27;</span>, f, <span class="literal">false</span>);</span><br><span class="line">        div.removeEventListener(<span class="string">&#x27;click&#x27;</span>, f, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">若为</span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        div.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        &#125;, <span class="literal">false</span>)</span><br><span class="line">则无法解除事件绑定</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li><code>ele.detachEvent(‘on’ + type, fn);</code></li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        div.attachEvent(<span class="string">&#x27;onclick&#x27;</span>, f);</span><br><span class="line">        div.detachEvent(<span class="string">&#x27;onclick&#x27;</span>, f);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="事件处理模-事件冒泡、捕获"><a href="#事件处理模-事件冒泡、捕获" class="headerlink" title="事件处理模: 事件冒泡、捕获"></a>事件处理模: 事件冒泡、捕获</h3><p>一个事件只能执行一个事件模型</p>
-<h4 id="事件冒泡："><a href="#事件冒泡：" class="headerlink" title="事件冒泡："></a>事件冒泡：</h4><p>结构上（非视觉上）嵌套关系的元素，会存在事件冒泡的功能，即同一事件，自子元素冒泡向父元素。（自底向上）（从子元素到父元素）</p>
-<h4 id="事件捕获："><a href="#事件捕获：" class="headerlink" title="事件捕获："></a>事件捕获：</h4><p>结构上（非视觉上）嵌套关系的元素，会存在事件捕获的功能，即同一事件，自父元素捕获至子元素（事件源元素）。（自顶向上）  </p>
-<h5 id="触发方式"><a href="#触发方式" class="headerlink" title="触发方式:"></a>触发方式:</h5><p>elem.addEventListeren(‘type’,function(){} ,true);<br>IE没有捕获事件</p>
-<p>触发顺序，先捕获，后冒泡</p>
-<p>focus，blur，change，submit，reset，select 等事件不冒泡</p>
-<p>取消冒泡和阻止默认事件：</p>
-<h4 id="取消冒泡："><a href="#取消冒泡：" class="headerlink" title="取消冒泡："></a>取消冒泡：</h4><p>W3C标准 </p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">event.stopPropagation();</span><br><span class="line">        <span class="built_in">document</span>.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;你正在点击整个文档！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        div.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123; <span class="comment">//可以加一个参数，代表当前事件的监听，是一个对象</span></span><br><span class="line">            e.stopPropagation();</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;点击div时不再冒泡！&quot;</span>);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<p>但不支持ie9以下版本</p>
-<p>IE独有 </p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">event.cancelBubble = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">document</span>.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;你正在点击整个文档！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">        div.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// e.stopPropagation();</span></span><br><span class="line">            e.cancelBubble = <span class="literal">true</span>;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&quot;点击div时不再冒泡！&quot;</span>);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="阻止默认事件"><a href="#阻止默认事件" class="headerlink" title="阻止默认事件:"></a>阻止默认事件:</h4><p>默认事件 — 表单提交，a标签跳转，右键菜单等</p>
-<ol>
-<li><p><code>return false;</code>  以对象属性的方式注册的事件才生效</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">        <span class="built_in">document</span>.oncontextmenu = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"> 可以阻止右键出菜单</span><br><span class="line"> </span><br><span class="line">       &lt;a href=<span class="string">&quot;javascript:void(false)&quot;</span>&gt;demo&lt;/a&gt;</span><br><span class="line">可以阻止a标签的跳转</span><br></pre></td></tr></table></figure></li>
-<li><p><code>event.preventDefault();</code> W3C标注，IE9以下不兼容</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">        <span class="built_in">document</span>.oncontextmenu = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">            e.preventDefault();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
-<li><p><code>event.returnValue = false;</code> 兼容IE</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">        <span class="built_in">document</span>.oncontextmenu = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">            e.returnValue = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="事件对象："><a href="#事件对象：" class="headerlink" title="事件对象："></a>事件对象：</h4><p>event || window.event 用于IE<br>事件<br>源对象:<br><code>event.target</code>火狐独有的</p>
-</li>
-</ol>
-<p><code>event.srcElement</code> IE独有的</p>
-<p>这俩chrome都有</p>
-<h4 id="事件委托："><a href="#事件委托：" class="headerlink" title="事件委托："></a>事件委托：</h4><p>利用事件冒泡，和事件源对象进行处理</p>
-<h5 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h5><ol>
-<li><p>性能 不需要循环所有的元素一个个绑定事件</p>
-</li>
-<li><p>灵活 当有新的子元素时不需要重新绑定事件</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">     &lt;ul&gt;</span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>5<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>6<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>7<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>8<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>9<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>10<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span></span><br><span class="line"><span class="javascript"><span class="xml">    <span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;ul&#x27;</span>)[<span class="number">0</span>];</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        ul.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span></span></span><br><span class="line"><span class="javascript"><span class="xml">            <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event; <span class="comment">//考虑事件的兼容性</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">            <span class="keyword">var</span> target = event.target || event.srcElement;<span class="comment">//考虑源事件的兼容性</span></span></span></span><br><span class="line"><span class="javascript"><span class="xml">            <span class="built_in">console</span>.log(target.innerText);</span></span></span><br><span class="line"><span class="javascript"><span class="xml">        &#125;</span></span></span><br><span class="line"><span class="javascript"><span class="xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">可以为所有的li添加事件，将li的事件委托给ul</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h4 id="鼠标事件："><a href="#鼠标事件：" class="headerlink" title="鼠标事件："></a>鼠标事件：</h4><ul>
-<li>click、鼠标点击（包括按下和弹起）</li>
-<li>mousedown、鼠标按下</li>
-<li>mousemove、鼠标移动</li>
-<li>mouseup、鼠标弹起</li>
-<li>contextmenu、鼠标右键产生菜单</li>
-<li>mouseover == mouseenter、鼠标进入区域</li>
-<li>mouseout == mouseleave、鼠标移出区域</li>
-</ul>
-<p>只有mouseup和mousedown能区分鼠标左右键<br>用button来区分鼠标的按键，0/1/2</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">        <span class="built_in">document</span>.onmousedown = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (e.button == <span class="number">2</span>) &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">&quot;按下的是鼠标右键！&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e.button == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">&quot;按下的是鼠标左键!&quot;</span>)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">&quot;按下的是中间滚动轮!&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>DOM3标准规定:click事件只能监听左键,只能通过mousedown 和 mouseup来判断鼠标键</p>
-<h4 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h4><ul>
-<li>keydown 按下</li>
-<li>keyup 弹开</li>
-<li>keypress</li>
-</ul>
-<p>触发顺序：keydown &gt; keypress &gt; keyup</p>
-<h5 id="keydown和keypress的区别"><a href="#keydown和keypress的区别" class="headerlink" title="keydown和keypress的区别"></a>keydown和keypress的区别</h5><p>keydown 可以响应任意键盘按键(charcode始终为0),     keypress只可以响应字符类键盘按键(charcode对应ACICC码)</p>
-<p>keypress返回ASCII码，可以转换成相应字符<br>操作型按键用keydown（可以使用which属性）<br>字符型按键用keypress</p>
-<h4 id="文本操作事件："><a href="#文本操作事件：" class="headerlink" title="文本操作事件："></a>文本操作事件：</h4><ul>
-<li>input,只要文本有变化就触发</li>
-<li>focus,聚焦时触发</li>
-<li>blur,失去焦点触发</li>
-<li>change，失去焦点比较前后两个状态，如果内容改变则触发，内容不变则不触发</li>
-</ul>
-<h4 id="窗体操作类-window上的事件"><a href="#窗体操作类-window上的事件" class="headerlink" title="窗体操作类(window上的事件)"></a>窗体操作类(window上的事件)</h4><ul>
-<li>scroll滚动条滚动<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">        <span class="built_in">window</span>.onscroll = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="built_in">this</span>.pageXOffset + <span class="string">&quot; &quot;</span> + <span class="built_in">this</span>.pageYOffset);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-load,整个页面加载完才能触发    </li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端学习笔记</category>
-        <category>js</category>
-      </categories>
-      <tags>
-        <tag>前端</tag>
-        <tag>DOM</tag>
-        <tag>js</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>js基本语法</title>
     <url>/135xyq.github.io/2021/02/02/JS-js%E7%9F%A5%E8%AF%86%E5%92%8C%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<h1 id="js-知识和基础语法"><a href="#js-知识和基础语法" class="headerlink" title="js 知识和基础语法"></a>js 知识和基础语法</h1><hr>
@@ -24333,6 +24109,259 @@ load,整个页面加载完才能触发    </li>
       </categories>
       <tags>
         <tag>前端</tag>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>document常用方法、事件、样式</title>
+    <url>/135xyq.github.io/2021/02/21/JS-documen%E9%87%8C%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95%E3%80%81%E4%BA%8B%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="document-里面的方法"><a href="#document-里面的方法" class="headerlink" title="document 里面的方法"></a>document 里面的方法</h1><hr>
+<p>document：整个页面</p>
+<p>querySelector(‘选择器’)：可以按 CSS 的选择器选择方式（选出一个）</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">strong</span>&gt;</span><span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">strong</span> <span class="attr">class</span>=<span class="string">&quot;demo&quot;</span>&gt;</span>123<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> strong = <span class="built_in">document</span>.querySelector(<span class="string">&quot;div &gt; span strong&quot;</span>);</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 可以选择出有123的strong标签          --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>querySelectorAll(‘选择器’):可以按 CSS 的选择器选择方式（选出一组）</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">strong</span>&gt;</span><span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">strong</span> <span class="attr">class</span>=<span class="string">&quot;demo&quot;</span>&gt;</span>123<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> strong = <span class="built_in">document</span>.querySelectorAll(<span class="string">&quot;div &gt; span strong&quot;</span>);</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 可以选择出有123的一组strong标签    --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>querySeclect 和 querySelectAll 是静态的，选择后更新DOM，选择结果不会更新（选出来的是副本）</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;box1&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">	<span class="built_in">console</span>.log(<span class="built_in">document</span>.querySelectorAll(<span class="string">&quot;#box1 p&quot;</span>));</span></span><br><span class="line"><span class="javascript">	<span class="built_in">console</span>.log(<span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;p&quot;</span>));</span></span><br><span class="line"><span class="javascript">	<span class="keyword">const</span> p = <span class="built_in">document</span>.createElement(<span class="string">&quot;p&quot;</span>);</span></span><br><span class="line"><span class="javascript">	p.innerHTML = <span class="string">&quot;2&quot;</span>;</span></span><br><span class="line"><span class="javascript">	box1.appendChild(p);</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 输出 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">0: p</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">和</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">0: p</span></span><br><span class="line"><span class="comment">1: p --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="遍历节点树：（包含所有节点）"><a href="#遍历节点树：（包含所有节点）" class="headerlink" title="遍历节点树：（包含所有节点）"></a>遍历节点树：（包含所有节点）</h3><ul>
+<li>  parentNode:父节点</li>
+<li>  childNodes：子节点集合</li>
+<li>  firstChild：第一个子节点</li>
+<li>  lastChild：最后一个子节点</li>
+<li>  nextSibling：后一个兄弟节点</li>
+<li>  previousSibling：前一个兄弟节点</li>
+</ul>
+<h3 id="遍历元素节点树：（只有元素节点）"><a href="#遍历元素节点树：（只有元素节点）" class="headerlink" title="遍历元素节点树：（只有元素节点）"></a>遍历元素节点树：（只有元素节点）</h3><ul>
+<li>  parentElement：返回当前元素的父元素节点</li>
+<li>  children：只返回当前元素的元素子节点</li>
+<li>  node.childElementCount === node.children.length：当前元素节点的子元素个数</li>
+<li>  firstElementChild：第一个元素节点</li>
+<li>  lastElementChild：最后一个元素节点</li>
+<li>  nextElementSibling：后一个兄弟元素节点</li>
+<li>  previousElementSibling：前一个兄弟元素节点</li>
+</ul>
+<h3 id="节点的四个属性"><a href="#节点的四个属性" class="headerlink" title="节点的四个属性"></a>节点的四个属性</h3><ul>
+<li>  nodeName：元素的标签名，以大些形式表示，只读</li>
+<li>  nodeValue：Text 节点或 Comment 节点的文本内容，可读写</li>
+<li>  nodeType：该节点的类型，只读</li>
+<li>  attributes：Element 节点的属性集合</li>
+</ul>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><ol>
+<li><p>getElementById 方法定义在 Document.prototype 上，即 Element 节点上不能使用。</p>
+</li>
+<li><p>getElementsByName 方法定义在 HTMLDocument.prototype 上，即非 html 中的 document 以外不能使用(xml document,Element)</p>
+</li>
+<li><p>getElementsByTagName 方法定义在 Document.prototype 和 Element.prototype 上</p>
+</li>
+<li><p>HTMLDocument.prototype 定义了一些常用的属性，body,head,分别指代 HTML 文档中的&lt;body&gt;&lt;head&gt;标签。</p>
+</li>
+<li><p>Document.prototype 上定义了 documentElement 属性，指代文档的根元素，在 HTML 文档中，他总是指代&lt;html&gt;元素</p>
+</li>
+<li><p>getElementsByClassName、querySelectorAll、querySelector 在 Document,Element 类中均有定义</p>
+</li>
+</ol>
+<h3 id="dom-的基本操作"><a href="#dom-的基本操作" class="headerlink" title="dom 的基本操作"></a>dom 的基本操作</h3><h4 id="增"><a href="#增" class="headerlink" title="增"></a>增</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 增加元素节点;</span></span><br><span class="line"><span class="built_in">document</span>.createElement();</span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">&quot;div&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 增加文本节点;</span></span><br><span class="line"><span class="built_in">document</span>.createTextNode();</span><br><span class="line"><span class="keyword">var</span> text = <span class="built_in">document</span>.createTextNode(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注释节点</span></span><br><span class="line"><span class="built_in">document</span>.createComment();</span><br><span class="line"><span class="keyword">var</span> comment = <span class="built_in">document</span>.createComment(<span class="string">&quot;This is a Comment&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 文档碎片节点;</span></span><br><span class="line"><span class="built_in">document</span>.createDocumentFragment();</span><br></pre></td></tr></table></figure>
+
+<h4 id="插"><a href="#插" class="headerlink" title="插"></a>插</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// PARENTNODE.appendChild();插入节点（剪切操作）</span></span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> text = <span class="built_in">document</span>.createTextNode(<span class="string">&quot;这里在div中插入一个文本节点&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> span = <span class="built_in">document</span>.createElement(<span class="string">&#x27;span&#x27;</span>);</span><br><span class="line">div.appendChild(text);</span><br><span class="line">div.appendChild(span);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// PARENTNODE.insertBefore(a, b);在父集中将a插在b前面</span></span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> strong = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;strong&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> span = <span class="built_in">document</span>.createElement(<span class="string">&#x27;span&#x27;</span>);</span><br><span class="line">div.insertBefore(span, strong);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> strong = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;strong&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> text = <span class="built_in">document</span>.createTextNode(<span class="string">&quot;在strong前面插入一个文本节点&quot;</span>);</span><br><span class="line">div.insertBefore(text, strong);</span><br></pre></td></tr></table></figure>
+
+<h4 id="删"><a href="#删" class="headerlink" title="删"></a>删</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// parent.removeChild();父节点调用方法删除子节点（剪切）</span></span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> strong = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;strong&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">div.removeChild(strong);</span><br><span class="line"><span class="comment">// 删除div下面的strong标签</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// parent.remove();子节点自己调用方法删除自己（销毁）</span></span><br><span class="line"><span class="keyword">var</span> strong = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;strong&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">strong.remove()</span><br><span class="line"><span class="comment">// 删除div下面的strong标签</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// parent.replaceChild(new, origin);（剪切）</span></span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> strong = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;strong&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> text = <span class="built_in">document</span>.createTextNode(<span class="string">&quot;将strong标签替换成为一个文本&quot;</span>);</span><br><span class="line">div.replaceChild(text, strong);</span><br><span class="line"><span class="comment">// Element节点的一些属性</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// innerHTML（取写HTML）</span></span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">div.innerHTML;</span><br><span class="line"><span class="comment">// 将div里面的东西查找出来</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">div.innerHTML = <span class="string">&quot;将div原来的东西覆盖掉&quot;</span>;</span><br><span class="line"><span class="comment">// 将div里面的东西替换</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">div.innerHTML = <span class="string">&quot;将div原来的东西覆盖掉&quot;</span>;</span><br><span class="line">div.innerHTML += <span class="string">&quot;再加一点东西！&quot;</span>;</span><br><span class="line"><span class="comment">// 在原来的div后面再添加一点东西</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// innerText（取写文本，老版本火狐不支持（提供TextContent一样））</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">div.innerText;</span><br><span class="line"><span class="comment">// 将div里面的文本取出来</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">div.innerText = <span class="string">&quot;123&quot;</span>;</span><br><span class="line"><span class="comment">// 将div里面的所有东西替换成123</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Element-节点的一些方法"><a href="#Element-节点的一些方法" class="headerlink" title="Element 节点的一些方法"></a>Element 节点的一些方法</h3><h4 id="ele-setAttribute-设置属性"><a href="#ele-setAttribute-设置属性" class="headerlink" title="ele.setAttribute() ;设置属性"></a>ele.setAttribute() ;设置属性</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">div.setAttribute(<span class="string">&#x27;class&#x27;</span>, <span class="string">&#x27;class1&#x27;</span>);</span><br><span class="line"><span class="comment">// 给div添加名为class1 的 class属性</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">div.setAttribute(<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;only&#x27;</span>);</span><br><span class="line"><span class="comment">// 给div添加一个名为only的 id属性</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="ele-getAttribute-获取属性"><a href="#ele-getAttribute-获取属性" class="headerlink" title="ele.getAttribute() ;获取属性"></a>ele.getAttribute() ;获取属性</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;div&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">div.getAttribute(<span class="string">&quot;id&quot;</span>);</span><br><span class="line"><span class="comment">// 获取div的id;</span></span><br></pre></td></tr></table></figure>
+
+<p>document.getElementsByTagName(*);可以把所有标签取出来</p>
+<h2 id="日期对象"><a href="#日期对象" class="headerlink" title="日期对象"></a>日期对象</h2><p>日期对象是系统提供好的。</p>
+<p><code>var date = new Date();</code></p>
+<p>setInterval(函数，时间间隔);循环执行（每隔一段时间执行函数），都会返回一个数字唯一标识</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;aaa&quot;</span>);</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 每隔1000毫秒执行一次function;</span></span><br></pre></td></tr></table></figure>
+
+<p>setTimeout(函数，时间间隔);推迟一段时间在执行，仅执行一次</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;推迟1000毫秒执行，仅执行一次。&quot;</span>);</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// clearInterval(数字); 停止执行;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> timer = <span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;aaa&quot;</span>);</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br><span class="line"><span class="built_in">clearInterval</span>(timer);</span><br><span class="line"><span class="comment">// 可以停止setInterval的执行;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// clearTimeout(数字); 停止执行;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> timer = <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;隔1000毫秒执行，仅执行一次。&quot;</span>);</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br><span class="line"><span class="built_in">clearTimeout</span>(timer);</span><br><span class="line"><span class="comment">// 清除setTimeout的执行;</span></span><br></pre></td></tr></table></figure>
+
+<p>全局对象 window 上的方法，内部函数 this 指向 window</p>
+<h4 id="注意-："><a href="#注意-：" class="headerlink" title="注意 ："></a>注意 ：</h4><p>setInterval(“字符串”,1000);会每隔一段时间执行字符串里面的代码（当成 js 代码）</p>
+<h2 id="浏览器窗口"><a href="#浏览器窗口" class="headerlink" title="浏览器窗口"></a>浏览器窗口</h2><h3 id="查看滚动条的滚动距离："><a href="#查看滚动条的滚动距离：" class="headerlink" title="查看滚动条的滚动距离："></a>查看滚动条的滚动距离：</h3><p><code>window.pageXOffset/pageYOffset</code><br>IE8 及 IE8 以下不兼容</p>
+<p><code>document.body.scrollLeft/scrollTop</code><br><code>document.documentElement.scrollLeft/scrollTop</code></p>
+<p>兼容性比较混乱，用时取两个值相加，因为不可能存在两个同时有值。</p>
+<h3 id="查看视口的尺寸："><a href="#查看视口的尺寸：" class="headerlink" title="查看视口的尺寸："></a>查看视口的尺寸：</h3><p><code>window.innerWidth/innerHeight</code><br>IE8 及 IE8 以下不兼容</p>
+<p><code>document.documentElement.clientWidth/clientHeight</code></p>
+<p>标准模式下，任意浏览器都兼容</p>
+<p><code>document.body.clientWidth/clientHeight</code></p>
+<p>适用于怪异模式下的浏览器</p>
+<h3 id="浏览器的渲染模式："><a href="#浏览器的渲染模式：" class="headerlink" title="浏览器的渲染模式："></a>浏览器的渲染模式：</h3><ol>
+<li>标准模式：</li>
+<li>怪异模式（混扎模式）：可支持老版本，启动方法（删除&lt;!DOCTYPE html&gt;）</li>
+</ol>
+<h3 id="查看元素的几何尺寸"><a href="#查看元素的几何尺寸" class="headerlink" title="查看元素的几何尺寸:"></a>查看元素的几何尺寸:</h3><p><code>domEle.getBoundingClientRect();</code></p>
+<p>兼容性很好。</p>
+<p>该方法返回一个对象，对象里面有 left,top,right,bottom 等属性。left 和 top 代表该元素左上角的 X 和 Y 坐标，right 和 bottom 代表元素右下角的 X 和 Y 坐标<br>height 和 width 属性。<br>老版本 IE 并未实现。</p>
+<p>返回的结果并不是“实时的”。</p>
+<h4 id="查看元素的尺寸："><a href="#查看元素的尺寸：" class="headerlink" title="查看元素的尺寸："></a>查看元素的尺寸：</h4><p><code>dom.offsetWidth，dom.offsetHeight</code></p>
+<h4 id="查看元素的位置："><a href="#查看元素的位置：" class="headerlink" title="查看元素的位置："></a>查看元素的位置：</h4><p><code>dom.offsetLeft, dom.offsetTop</code></p>
+<p>对于无定位父级的元素，返回相对文档的坐标。对于有定位父级的元素，返回相对于最近的有定位的父级的坐标。</p>
+<p><code>dom.offsetParent</code></p>
+<p>返回最近的有定位的父级，如无，返回 body, body.offsetParent 返回 null</p>
+<h3 id="让滚动条滚动："><a href="#让滚动条滚动：" class="headerlink" title="让滚动条滚动："></a>让滚动条滚动：</h3><p>window 上有三个方法</p>
+<ul>
+<li>  scroll(),</li>
+<li>  scrollTo(),</li>
+<li>  scrollBy();</li>
+</ul>
+<p>三个方法功能类似，用法都是将 x,y 坐标传入。即实现让滚动轮滚动到当前位置。</p>
+<p>区别：scrollBy()会在之前的数据基础之上做累加。</p>
+<h3 id="脚本化-CSS"><a href="#脚本化-CSS" class="headerlink" title="脚本化 CSS"></a>脚本化 CSS</h3><p><code>dom.style.prop（获取的是行间样式表）</code></p>
+<p>可读写行间样式，没有兼容性问题，碰到 float 这样的关键字属性，前面应加 css</p>
+<p><code>eg:float — &gt; cssFloat</code></p>
+<p>复合属性必须拆解，组合单词变成小驼峰式写法</p>
+<p>写入的值必须是字符串格式</p>
+<p>查询计算样式</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// window.getComputedStyle(ele,null);（展示的值和默认值）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="built_in">window</span>.getComputedStyle(div,<span class="literal">null</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>计算样式只读</p>
+<p>返回的计算样式的值都是绝对值，没有相对单位</p>
+<p>IE8 及 IE8 以下不兼容<br>可以用 <code>getComputedStyle（ele,伪元素名）</code>来获取伪元素的属性</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;div&quot;</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="built_in">window</span>.getComputedStyle(div, <span class="string">&quot;after&quot;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="查询样式"><a href="#查询样式" class="headerlink" title="查询样式"></a>查询样式</h4><p><code>ele.currentStyle</code></p>
+<ul>
+<li>计算样式只读</li>
+<li>返回的计算样式的值不是经过转换的绝对值</li>
+<li>IE 独有的属性</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;div&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">div.currentStyle.width;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>元素名.className = “class 名”;可以改元素的 class</p>
+<h3 id="事件："><a href="#事件：" class="headerlink" title="事件："></a>事件：</h3><h4 id="绑定事件："><a href="#绑定事件：" class="headerlink" title="绑定事件："></a>绑定事件：</h4><ol>
+<li><code>ele.onxxx = function (event) &#123;&#125;</code>  </li>
+</ol>
+<p>兼容性很好，但是一个元素只能绑定一个处理程序</p>
+<p>基本等同于写在 HTML 行间上。（在行间不用写 function 直接写执行语句就行）<br>程序 this 指向是 dom 元素本身</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;div&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">div.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	函数体;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><code>obj.addEventListener(事件类型, 处理函数, false);</code></li>
+</ol>
+<p>IE9 以下不兼容，可以为一个事件绑定多个处理程序。<br>程序 this 指向是 dom 元素本身</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>)[<span class="number">0</span>];</span><br><span class="line">div.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br><span class="line">div.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>a<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> i = <span class="number">0</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> lis = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;li&#x27;</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; lis.length; i++) &#123;</span></span><br><span class="line"><span class="javascript">        (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            lis[i].addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="built_in">console</span>.log(i + <span class="number">1</span>);</span></span><br><span class="line"><span class="javascript">            &#125;, <span class="literal">false</span>)</span></span><br><span class="line"><span class="javascript">        &#125;(i))</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 点击每个li展示其序号（注意闭包的应用） --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><code>obj.attachEvent(‘on’ + type, fn);</code></li>
+</ol>
+<p>IE 独有，一个事件同样可以绑定多个处理程序,IE 独有<br>程序 this 指向是 window</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;div&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">div.attachEvent(<span class="string">&quot;onclick&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="解除事件处理函数"><a href="#解除事件处理函数" class="headerlink" title="解除事件处理函数"></a>解除事件处理函数</h3><p><strong>注:若绑定匿名函数，则无法解除</strong></p>
+<ol>
+<li><code>ele.onclick = false/&#39;&#39;/null;</code></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;div&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">div.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line">div.onclick = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><code>ele.removeEventListener(type, fn, false)</code>;</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;div&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">div.addEventListener(<span class="string">&quot;click&quot;</span>, f, <span class="literal">false</span>);</span><br><span class="line">div.removeEventListener(<span class="string">&quot;click&quot;</span>, f, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 若为:</span></span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;div&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">div.addEventListener(</span><br><span class="line">	<span class="string">&quot;click&quot;</span>,</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="literal">false</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">// 则无法解除事件绑定;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><code>ele.detachEvent(‘on’ + type, fn);</code></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;div&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">div.attachEvent(<span class="string">&quot;onclick&quot;</span>, f);</span><br><span class="line">div.detachEvent(<span class="string">&quot;onclick&quot;</span>, f);</span><br></pre></td></tr></table></figure>
+
+<h3 id="事件处理模-事件冒泡、捕获"><a href="#事件处理模-事件冒泡、捕获" class="headerlink" title="事件处理模: 事件冒泡、捕获"></a>事件处理模: 事件冒泡、捕获</h3><p>一个事件只能执行一个事件模型</p>
+<h4 id="事件冒泡："><a href="#事件冒泡：" class="headerlink" title="事件冒泡："></a>事件冒泡：</h4><p>结构上（非视觉上）嵌套关系的元素，会存在事件冒泡的功能，即同一事件，自子元素冒泡向父元素。（自底向上）（从子元素到父元素）</p>
+<h4 id="事件捕获："><a href="#事件捕获：" class="headerlink" title="事件捕获："></a>事件捕获：</h4><p>结构上（非视觉上）嵌套关系的元素，会存在事件捕获的功能，即同一事件，自父元素捕获至子元素（事件源元素）。（自顶向下）</p>
+<h5 id="触发方式"><a href="#触发方式" class="headerlink" title="触发方式:"></a>触发方式:</h5><p>elem.addEventListeren(‘type’,function(){} ,true);<br>IE 没有捕获事件</p>
+<p>触发顺序，先捕获，后冒泡</p>
+<p>focus，blur，change，submit，reset，select 等事件不冒泡</p>
+<h4 id="取消冒泡和阻止默认事件："><a href="#取消冒泡和阻止默认事件：" class="headerlink" title="取消冒泡和阻止默认事件："></a>取消冒泡和阻止默认事件：</h4><h5 id="取消冒泡："><a href="#取消冒泡：" class="headerlink" title="取消冒泡："></a>取消冒泡：</h5><p><code>event.stopPropagation();</code></p>
+<p>W3C 标准</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">document</span>.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;你正在点击整个文档！&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;div&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">div.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">	<span class="comment">//可以加一个参数，代表当前事件的监听，是一个对象</span></span><br><span class="line">	e.stopPropagation();</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;点击div时不再冒泡！&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>但不支持 ie9 以下版本</p>
+<p>IE 独有<br><code>event.cancelBubble = true;</code></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;你正在点击整个文档！&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;div&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">div.onclick = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// e.stopPropagation();</span></span><br><span class="line">	e.cancelBubble = <span class="literal">true</span>;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;点击div时不再冒泡！&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="阻止默认事件"><a href="#阻止默认事件" class="headerlink" title="阻止默认事件:"></a>阻止默认事件:</h5><p>默认事件 — 表单提交，a 标签跳转，右键菜单等</p>
+<ol>
+<li><code>return false;</code> 以对象属性的方式注册的事件才生效</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.oncontextmenu = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 可以阻止右键出菜单</span></span><br><span class="line"></span><br><span class="line">&lt;a href=<span class="string">&quot;javascript:void(false)&quot;</span>&gt;demo&lt;/a&gt;</span><br><span class="line"><span class="comment">//  可以阻止a标签的跳转</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><code>event.preventDefault();</code> W3C 标注，IE9 以下不兼容</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.oncontextmenu = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">	e.preventDefault();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><code>event.returnValue = false;</code> 兼容 IE</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.oncontextmenu = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">	e.returnValue = <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="事件对象："><a href="#事件对象：" class="headerlink" title="事件对象："></a>事件对象：</h4><p>event || window.event 用于 IE<br>事件源对象:<br><code>event.target</code>火狐独有的</p>
+<p><code>event.srcElement</code> IE 独有的</p>
+<p>这俩 chrome 都有</p>
+<h4 id="事件委托："><a href="#事件委托：" class="headerlink" title="事件委托："></a>事件委托：</h4><p>利用事件冒泡，和事件源对象进行处理</p>
+<h5 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h5><ol>
+<li><p>性能 不需要循环所有的元素一个个绑定事件</p>
+</li>
+<li><p>灵活 当有新的子元素时不需要重新绑定事件</p>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span>5<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span>6<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span>7<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span>8<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span>9<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span>10<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;ul&#x27;</span>)[<span class="number">0</span>];</span></span><br><span class="line"><span class="javascript">    ul.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event; <span class="comment">//考虑事件的兼容性</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> target = event.target || event.srcElement;<span class="comment">//考虑源事件的兼容性</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(target.innerText);</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 可以为所有的li添加事件，将li的事件委托给ul --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="鼠标事件："><a href="#鼠标事件：" class="headerlink" title="鼠标事件："></a>鼠标事件：</h4><ul>
+<li>  click、鼠标点击（包括按下和弹起）</li>
+<li>  mousedown、鼠标按下</li>
+<li>  mousemove、鼠标移动</li>
+<li>  mouseup、鼠标弹起</li>
+<li>  contextmenu、鼠标右键产生菜单</li>
+<li>  mouseover == mouseenter、鼠标进入区域</li>
+<li>  mouseout == mouseleave、鼠标移出区域</li>
+</ul>
+<p>只有 mouseup 和 mousedown 能区分鼠标左右键<br>用 button 来区分鼠标的按键，0/1/2</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.onmousedown = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (e.button == <span class="number">2</span>) &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">&quot;按下的是鼠标右键！&quot;</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (e.button == <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">&quot;按下的是鼠标左键!&quot;</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">&quot;按下的是中间滚动轮!&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>DOM3 标准规定:click 事件只能监听左键,只能通过 mousedown 和 mouseup 来判断鼠标键</p>
+<h4 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h4><ul>
+<li>  keydown 按下</li>
+<li>  keyup 弹开</li>
+<li>  keypress</li>
+</ul>
+<p>触发顺序：keydown &gt; keypress &gt; keyup</p>
+<h5 id="keydown-和-keypress-的区别"><a href="#keydown-和-keypress-的区别" class="headerlink" title="keydown 和 keypress 的区别"></a>keydown 和 keypress 的区别</h5><p>keydown 可以响应任意键盘按键(charcode 始终为 0), keypress 只可以响应字符类键盘按键(charcode 对应 ACICC 码)</p>
+<p>keypress 返回 ASCII 码，可以转换成相应字符<br>操作型按键用 keydown（可以使用 which 属性）<br>字符型按键用 keypress</p>
+<h4 id="文本操作事件："><a href="#文本操作事件：" class="headerlink" title="文本操作事件："></a>文本操作事件：</h4><ul>
+<li>  input,只要文本有变化就触发</li>
+<li>  focus,聚焦时触发</li>
+<li>  blur,失去焦点触发</li>
+<li>  change，失去焦点比较前后两个状态，如果内容改变则触发，内容不变则不触发</li>
+</ul>
+<h4 id="窗体操作类-window-上的事件"><a href="#窗体操作类-window-上的事件" class="headerlink" title="窗体操作类(window 上的事件)"></a>窗体操作类(window 上的事件)</h4><ul>
+<li>  scroll 滚动条滚动</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">window</span>.onscroll = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="built_in">this</span>.pageXOffset + <span class="string">&quot; &quot;</span> + <span class="built_in">this</span>.pageYOffset);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>load,整个页面加载完才能触发</p>
+]]></content>
+      <categories>
+        <category>前端学习笔记</category>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>DOM</tag>
         <tag>js</tag>
       </tags>
   </entry>
