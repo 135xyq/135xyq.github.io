@@ -20,26 +20,29 @@
   <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"135xyq.github.io","root":"/135xyq.github.io/","images":"/135xyq.github.io/images","scheme":"Pisces","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/135xyq.github.io/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/135xyq.github.io/js/config.js"></script>
-<meta name="description" content="Ethan的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ethan">
-<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/archives/2021/12/page/2/index.html">
+<meta name="description" content="ES6中代理和反射的原理、作用；存取器的原理和使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代理和反射">
+<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/2021/03/30/ES6-%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%B0%84/index.html">
 <meta property="og:site_name" content="Ethan">
-<meta property="og:description" content="Ethan的博客">
+<meta property="og:description" content="ES6中代理和反射的原理、作用；存取器的原理和使用">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-30T08:21:22.000Z">
+<meta property="article:modified_time" content="2022-08-16T08:55:05.039Z">
 <meta property="article:author" content="Ethan">
-<meta property="article:tag" content="Ethan的个人空间">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="ES6">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/archives/2021/12/page/2/">
+<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/2021/03/30/ES6-%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%B0%84/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2021/12/page/2/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://135xyq.github.io/135xyq.github.io/2021/03/30/ES6-%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%B0%84/","path":"2021/03/30/ES6-代理和反射/","title":"代理和反射"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | Ethan</title>
+<title>代理和反射 | Ethan</title>
   
 
   <script src="/135xyq.github.io/js/third-party/analytics/baidu-analytics.js"></script>
@@ -70,7 +73,7 @@
 
     <a href="/135xyq.github.io/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Ethan</h1>
+      <p class="site-title">Ethan</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">生如芥子，心藏须弥</p>
@@ -136,7 +139,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -149,6 +152,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%B0%84"><span class="nav-number">1.</span> <span class="nav-text">代理和反射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="nav-number">1.1.</span> <span class="nav-text">属性描述符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%98%E5%8F%96%E5%99%A8%E5%B1%9E%E6%80%A7"><span class="nav-number">1.2.</span> <span class="nav-text">存取器属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reflect"><span class="nav-number">1.3.</span> <span class="nav-text">Reflect</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Reflect%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. Reflect是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AE%83%E5%8F%AF%E4%BB%A5%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 它可以做什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%BF%99%E4%BA%9B%E5%8A%9F%E8%83%BD%E4%B8%8D%E6%98%AF%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E4%BA%86%E5%90%97%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E9%9C%80%E8%A6%81%E7%94%A8Reflect%E5%AE%9E%E7%8E%B0%E4%B8%80%E6%AC%A1%EF%BC%9F"><span class="nav-number">1.3.3.</span> <span class="nav-text">3. 这些功能不是已经存在了吗？为什么还需要用Reflect实现一次？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%AE%83%E9%87%8C%E9%9D%A2%E5%88%B0%E5%BA%95%E6%8F%90%E4%BE%9B%E4%BA%86%E5%93%AA%E4%BA%9BAPI%E5%91%A2%EF%BC%9F"><span class="nav-number">1.3.4.</span> <span class="nav-text">4. 它里面到底提供了哪些API呢？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Proxy-%E4%BB%A3%E7%90%86"><span class="nav-number">1.4.</span> <span class="nav-text">Proxy 代理</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,94 +229,242 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        
-        <span class="collection-header">很好! 目前共计 124 篇日志。 继续努力。</span>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://135xyq.github.io/135xyq.github.io/2021/03/30/ES6-%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%B0%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/135xyq.github.io/images/avatar.jpeg">
+      <meta itemprop="name" content="Ethan">
+      <meta itemprop="description" content="Ethan的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          代理和反射
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-30 16:21:22" itemprop="dateCreated datePublished" datetime="2021-03-30T16:21:22+08:00">2021-03-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-08-16 16:55:05" itemprop="dateModified" datetime="2022-08-16T16:55:05+08:00">2022-08-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">前端学习笔记</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ES6/" itemprop="url" rel="index"><span itemprop="name">ES6</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/135xyq.github.io/2021/03/30/ES6-%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%B0%84/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2021/03/30/ES6-代理和反射/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">ES6中代理和反射的原理、作用；存取器的原理和使用</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="代理和反射"><a href="#代理和反射" class="headerlink" title="代理和反射"></a>代理和反射</h1><h2 id="属性描述符"><a href="#属性描述符" class="headerlink" title="属性描述符"></a>属性描述符</h2><p>Property Descriptor 属性描述符  是一个普通对象，用于描述一个属性的相关信息</p>
+<p>通过<code>Object.getOwnPropertyDescriptor(对象, 属性名)</code>可以得到一个对象的某个属性的属性描述符</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">b</span>: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyDescriptor(obj, <span class="string">&#x27;a&#x27;</span>))</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">&#123;<span class="attr">value</span>: <span class="number">1</span>, <span class="attr">writable</span>: <span class="literal">true</span>, <span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="attr">configurable</span>: <span class="literal">true</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>value：属性值</li>
+<li>configurable：该属性的描述符是否可以修改</li>
+<li>enumerable：该属性是否可以被枚举</li>
+<li>writable：该属性是否可以被重新赋值</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">const obj = &#123;</span><br><span class="line">    a: 1,</span><br><span class="line">    b: 2</span><br><span class="line">&#125;</span><br><span class="line">console.log(Object.getOwnPropertyDescriptors(obj))</span><br><span class="line"></span><br><span class="line">// 输出结果：</span><br><span class="line">// a: &#123;value: 1, writable: true, enumerable: true, configurable: true&#125;</span><br><span class="line">// b: &#123;value: 2, writable: true, enumerable: true, configurable: true&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果需要为某个对象添加属性时 或 修改属性时， 配置其属性描述符，可以使用下面的代码:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.defineProperty(对象, 属性名, 描述符);</span><br><span class="line"><span class="built_in">Object</span>.defineProperties(对象, 多个属性的描述符)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">b</span>: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">&#x27;b&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="number">7</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperties(obj, &#123;</span><br><span class="line">    <span class="attr">a</span>: &#123;</span><br><span class="line">        <span class="attr">value</span>: <span class="number">3</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">b</span>: &#123;</span><br><span class="line">        <span class="attr">value</span>: <span class="number">4</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="存取器属性"><a href="#存取器属性" class="headerlink" title="存取器属性"></a>存取器属性</h2><p>属性描述符中，如果配置了 get 和 set 中的任何一个，则该属性，不再是一个普通属性，而变成了存取器属性。</p>
+<p>get 和 set配置均为函数，如果一个属性是存取器属性，则读取该属性时，会运行get方法，将get方法得到的返回值作为属性值；如果给该属性赋值，则会运行set方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">&#x27;b&#x27;</span>, &#123;</span><br><span class="line">    <span class="function"><span class="title">get</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;调用了get方法!&quot;</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="title">set</span>(<span class="params">value</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;调用了set方法！&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">obj.b = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj.b)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结果：</span></span><br><span class="line"><span class="comment">// 调用了set方法！</span></span><br><span class="line"><span class="comment">// 调用了get方法!</span></span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 变成正常的属性（将值先存储到其他变量中）</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">&#x27;b&#x27;</span>, &#123;</span><br><span class="line">    <span class="function"><span class="title">get</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;调用了get方法!&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> obj._a;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="title">set</span>(<span class="params">value</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;调用了set方法！&quot;</span>)</span><br><span class="line">        obj._a = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">obj.b = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj.b)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结果：</span></span><br><span class="line"><span class="comment">// 调用了set方法！</span></span><br><span class="line"><span class="comment">// 调用了get方法!</span></span><br><span class="line"><span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>存取器属性最大的意义，在于可以控制属性的读取和赋值。</p>
+<h2 id="Reflect"><a href="#Reflect" class="headerlink" title="Reflect"></a>Reflect</h2><h3 id="1-Reflect是什么？"><a href="#1-Reflect是什么？" class="headerlink" title="1. Reflect是什么？"></a>1. Reflect是什么？</h3><p>Reflect是一个内置的JS对象，它提供了一系列方法，可以让开发者通过调用这些方法，访问一些JS底层功能</p>
+<p>由于它类似于其他语言的<strong>反射</strong>，因此取名为Reflect</p>
+<h3 id="2-它可以做什么？"><a href="#2-它可以做什么？" class="headerlink" title="2. 它可以做什么？"></a>2. 它可以做什么？</h3><p>使用Reflect可以实现诸如 属性的赋值与取值、调用普通函数、调用构造函数、判断属性是否存在与对象中  等等功能</p>
+<h3 id="3-这些功能不是已经存在了吗？为什么还需要用Reflect实现一次？"><a href="#3-这些功能不是已经存在了吗？为什么还需要用Reflect实现一次？" class="headerlink" title="3. 这些功能不是已经存在了吗？为什么还需要用Reflect实现一次？"></a>3. 这些功能不是已经存在了吗？为什么还需要用Reflect实现一次？</h3><p>有一个重要的理念，在ES5就被提出：减少魔法、让代码更加纯粹</p>
+<p>这种理念很大程度上是受到函数式编程的影响</p>
+<p>ES6进一步贯彻了这种理念，它认为，对属性内存的控制、原型链的修改、函数的调用等等，这些都属于底层实现，属于一种魔法，因此，需要将它们提取出来，形成一个正常的API，并高度聚合到某个对象中，于是，就造就了Reflect对象</p>
+<p>因此，你可以看到Reflect对象中有很多的API都可以使用过去的某种语法或其他API实现。</p>
+<h3 id="4-它里面到底提供了哪些API呢？"><a href="#4-它里面到底提供了哪些API呢？" class="headerlink" title="4. 它里面到底提供了哪些API呢？"></a>4. 它里面到底提供了哪些API呢？</h3><ul>
+<li>Reflect.set(target, propertyKey, value): 设置对象target的属性propertyKey的值为value，等同于给对象的属性赋值</li>
+<li>Reflect.get(target, propertyKey): 读取对象target的属性propertyKey，等同于读取对象的属性值</li>
+<li>Reflect.apply(target, thisArgument, argumentsList)：调用一个指定的函数，并绑定this和参数列表。等同于函数调用</li>
+<li>Reflect.deleteProperty(target, propertyKey)：删除一个对象的属性</li>
+<li>Reflect.defineProperty(target, propertyKey, attributes)：类似于Object.defineProperty，不同的是如果配置出现问题，返回false而不是报错</li>
+<li>Reflect.construct(target, argumentsList)：用构造函数的方式创建一个对象</li>
+<li>Reflect.has(target, propertyKey): 判断一个对象是否拥有一个属性</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect">其他API</a></li>
+</ul>
+<h2 id="Proxy-代理"><a href="#Proxy-代理" class="headerlink" title="Proxy 代理"></a>Proxy 代理</h2><p>代理：提供了修改底层实现的方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//代理一个目标对象</span></span><br><span class="line"><span class="comment">//target：目标对象</span></span><br><span class="line"><span class="comment">//handler：是一个普通对象，其中可以重写底层实现</span></span><br><span class="line"><span class="comment">//返回一个代理对象</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Proxy</span>(target, handler)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-12-30T18:57:00+08:00"
-              content="2021-12-30">
-          12-30
-        </time>
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/135xyq.github.io/./images/wechatpay.png" alt="Ethan 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/135xyq.github.io/images/alipay.jpg" alt="Ethan 支付宝">
+        <span>支付宝</span>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/135xyq.github.io/2021/12/30/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E6%9C%9F%E6%9C%AB%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" itemprop="url">
-            <span itemprop="name">网络编程期末知识点总结</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-12-30T18:53:02+08:00"
-              content="2021-12-30">
-          12-30
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/135xyq.github.io/2021/12/30/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0-Oracle%E6%9C%9F%E6%9C%AB%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" itemprop="url">
-            <span itemprop="name">Oracle期末知识点总结</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-12-30T18:50:45+08:00"
-              content="2021-12-30">
-          12-30
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/135xyq.github.io/2021/12/30/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0-Linux%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" itemprop="url">
-            <span itemprop="name">Linux期末知识点总结</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-
-    </div>
   </div>
-  
-  
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/135xyq.github.io/archives/2021/12/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/135xyq.github.io/archives/2021/12/">1</a><span class="page-number current">2</span>
-  </nav>
+</div>
 
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/yongqiangxie1">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/135xyq.github.io/images/wechat_channel.png">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/135xyq.github.io/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/135xyq.github.io/tags/ES6/" rel="tag"><i class="fa fa-tag"></i> ES6</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/135xyq.github.io/2021/03/23/ES6-%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/" rel="prev" title="迭代器和生成器">
+                  <i class="fa fa-chevron-left"></i> 迭代器和生成器
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/135xyq.github.io/2021/12/30/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0-Linux%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" rel="next" title="Linux期末知识点总结">
+                  Linux期末知识点总结 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS"></div>
 </div>
   </main>
 
