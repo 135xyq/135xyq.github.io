@@ -20751,10 +20751,10 @@
     <content><![CDATA[<h1 id="document里面的方法"><a href="#document里面的方法" class="headerlink" title="document里面的方法"></a>document里面的方法</h1><hr>
 <p>document：整个页面</p>
 <p>querySelector(‘选择器’)：可以按CSS的选择器选择方式（选出一个）</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">strong</span>&gt;</span><span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">strong</span> <span class="attr">class</span>=<span class="string">&quot;demo&quot;</span>&gt;</span>123<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> strong = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;div &gt; span strong&#x27;</span>)</span></span><br><span class="line"><span class="javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">可以选择出有123的strong标签         </span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">strong</span>&gt;</span><span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">strong</span> <span class="attr">class</span>=<span class="string">&quot;demo&quot;</span>&gt;</span>123<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> strong = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;div &gt; span strong&#x27;</span>)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 可以选择出有123的strong标签          --&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>querySelectorAll(‘选择器’):可以按CSS的选择器选择方式（选出一组）</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">strong</span>&gt;</span><span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">strong</span> <span class="attr">class</span>=<span class="string">&quot;demo&quot;</span>&gt;</span>123<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> strong = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;div &gt; span strong&#x27;</span>)</span></span><br><span class="line"><span class="javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">可以选择出有123的一组strong标签   </span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">strong</span>&gt;</span><span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">strong</span> <span class="attr">class</span>=<span class="string">&quot;demo&quot;</span>&gt;</span>123<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> strong = <span class="built_in">document</span>.querySelectorAll(<span class="string">&#x27;div &gt; span strong&#x27;</span>)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 可以选择出有123的一组strong标签    --&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>querySeclect 和querySelectAll是静态的，选择后不再更新（选出来的是副本）</p>
 <h3 id="遍历节点树：（包含所有节点）"><a href="#遍历节点树：（包含所有节点）" class="headerlink" title="遍历节点树：（包含所有节点）"></a>遍历节点树：（包含所有节点）</h3><ul>
@@ -21354,8 +21354,76 @@ load,整个页面加载完才能触发    </li>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">3</td>
+<td align="center">.</td>
 <td align="center">查找单个字符，除了换行和行结束符</td>
+</tr>
+<tr>
+<td align="center">\w</td>
+<td align="center">[ 0 - 9A-z_]查找单词字符</td>
+</tr>
+<tr>
+<td align="center">\W</td>
+<td align="center">查找非单词字符</td>
+</tr>
+<tr>
+<td align="center">\d</td>
+<td align="center">[ 0 - 9]查找数字</td>
+</tr>
+<tr>
+<td align="center">\D</td>
+<td align="center">查找非数字字符</td>
+</tr>
+<tr>
+<td align="center">\s</td>
+<td align="center">查找空白字符</td>
+</tr>
+<tr>
+<td align="center">\S</td>
+<td align="center">查找非空白字符</td>
+</tr>
+<tr>
+<td align="center">\b</td>
+<td align="center">匹配单词边界</td>
+</tr>
+<tr>
+<td align="center">\B</td>
+<td align="center">匹配非单词边界</td>
+</tr>
+<tr>
+<td align="center">\0</td>
+<td align="center">查找 NUL 字符</td>
+</tr>
+<tr>
+<td align="center">\n</td>
+<td align="center">查找换行符</td>
+</tr>
+<tr>
+<td align="center">\f</td>
+<td align="center">查找换页符</td>
+</tr>
+<tr>
+<td align="center">\r</td>
+<td align="center">查找回车符</td>
+</tr>
+<tr>
+<td align="center">\t</td>
+<td align="center">查找制表符</td>
+</tr>
+<tr>
+<td align="center">\v</td>
+<td align="center">查找垂直制表符</td>
+</tr>
+<tr>
+<td align="center">\x</td>
+<td align="center">xx 查找以八进制数 xxx 规定的字符</td>
+</tr>
+<tr>
+<td align="center">\x</td>
+<td align="center">dd 查找以十六进制数 dd 规定的字符</td>
+</tr>
+<tr>
+<td align="center">\u</td>
+<td align="center">xxxx 查找以十六进制数 xxxx 规定的 Unicode 字符</td>
 </tr>
 </tbody></table>
 <h4 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h4><table>
