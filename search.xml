@@ -21345,7 +21345,19 @@ load,整个页面加载完才能触发    </li>
 <td align="center">查找任何指定的选项。</td>
 </tr>
 </tbody></table>
-<h4 id="元字符（Metacharacter）"><a href="#元字符（Metacharacter）" class="headerlink" title="元字符（Metacharacter）"></a>元字符（Metacharacter）</h4><p>是拥有特殊含义的字符：<br>| 元字符 | 描述 |<br>|:——: |:——-:|<br>|3|查找单个字符，除了换行和行结束符|</p>
+<h4 id="元字符（Metacharacter）"><a href="#元字符（Metacharacter）" class="headerlink" title="元字符（Metacharacter）"></a>元字符（Metacharacter）</h4><p>是拥有特殊含义的字符：</p>
+<table>
+<thead>
+<tr>
+<th align="center">元字符</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">3</td>
+<td align="center">查找单个字符，除了换行和行结束符</td>
+</tr>
+</tbody></table>
 <h4 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h4><table>
 <thead>
 <tr>
