@@ -20747,7 +20747,7 @@
   </entry>
   <entry>
     <title>document常用方法</title>
-    <url>/135xyq.github.io/2021/12/31/JS-documen%E9%87%8C%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95/</url>
+    <url>/135xyq.github.io/2021/02/21/JS-documen%E9%87%8C%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<h1 id="document里面的方法"><a href="#document里面的方法" class="headerlink" title="document里面的方法"></a>document里面的方法</h1><hr>
 <p>document：整个页面</p>
 <p>querySelector(‘选择器’)：可以按CSS的选择器选择方式（选出一个）</p>
@@ -21345,7 +21345,7 @@ load,整个页面加载完才能触发    </li>
 <td align="center">查找任何指定的选项。</td>
 </tr>
 </tbody></table>
-<h4 id="元字符（Metacharacter）"><a href="#元字符（Metacharacter）" class="headerlink" title="元字符（Metacharacter）"></a>元字符（Metacharacter）</h4><p>是拥有特殊含义的字符：<br>| 元字符 | 描述 |<br>|:——: |:——-:|<br>|.|查找单个字符，除了换行和行结束符|<br>| \w | [ 0 - 9A-z_]查找单词字符|<br>| \W | 查找非单词字符|<br>| \d | [ 0 - 9]查找数字|<br>| \D | 查找非数字字符|<br>| \s | 查找空白字符|<br>| \S | 查找非空白字符|<br>| \b | 匹配单词边界|<br>| \B | 匹配非单词边界|<br>| \0 | 查找 NUL 字符|<br>| \n | 查找换行符|<br>| \f | 查找换页符|<br>| \r | 查找回车符|<br>| \t | 查找制表符|<br>| \v | 查找垂直制表符|<br>| \x | xx 查找以八进制数 xxx 规定的字符|<br>| \x | dd 查找以十六进制数 dd 规定的字符|<br>| \u | xxxx 查找以十六进制数 xxxx 规定的 Unicode 字符|</p>
+<h4 id="元字符（Metacharacter）"><a href="#元字符（Metacharacter）" class="headerlink" title="元字符（Metacharacter）"></a>元字符（Metacharacter）</h4><p>是拥有特殊含义的字符：<br>| 元字符 | 描述 |<br>|:——: |:——-:|<br>|3|查找单个字符，除了换行和行结束符|</p>
 <h4 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h4><table>
 <thead>
 <tr>
