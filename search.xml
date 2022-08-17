@@ -2577,52 +2577,8 @@
       </tags>
   </entry>
   <entry>
-    <title>vue2中的$listeners和v-module</title>
-    <url>/135xyq.github.io/2022/01/01/Vue-$listeners&amp;v-module/</url>
-    <content><![CDATA[<h1 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h1><p><strong>针对<code>dom</code>节点的原生事件</strong>，<code>vue</code>支持多种修饰符以简化代码</p>
-<p>详见：<a href="https://cn.vuejs.org/v2/guide/events.html#%E4%BA%8B%E4%BB%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6">事件修饰符、按键修饰符、系统修饰符</a></p>
-<h1 id="listeners"><a href="#listeners" class="headerlink" title="$listeners"></a>$listeners</h1><p><code>$listeners</code>是<code>vue</code>的一个实例属性，它用于获取父组件传过来的所有事件函数</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 父组件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Child</span> @<span class="attr">event1</span>=<span class="string">&quot;handleEvent1&quot;</span> @<span class="attr">event2</span>=<span class="string">&quot;handleEvent2&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 子组件</span></span><br><span class="line"><span class="built_in">this</span>.$listeners <span class="comment">// &#123; event1: handleEvent1, event2: handleEvent2 &#125;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>$emit</code>和<code>$listeners</code>通信的异同</p>
-<p>相同点：均可实现子组件向父组件传递消息</p>
-<p>差异点：</p>
-<ul>
-<li><code>$emit</code>更加符合单向数据流，子组件仅发出通知，由父组件监听做出改变；而<code>$listeners</code>则是在子组件中直接使用了父组件的方法。</li>
-<li>调试工具可以监听到子组件<code>$emit</code>的事件，但无法监听到<code>$listeners</code>中的方法调用。</li>
-<li>由于<code>$listeners</code>中可以获得传递过来的方法，因此调用方法可以得到其返回值。但<code>$emit</code>仅仅是向父组件发出通知，无法知晓父组件处理的结果</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>对于上述中的第三点，可以在<code>$emit</code>中传递回调函数来解决</p>
-<p>父组件：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">Child</span> @<span class="attr">click</span>=<span class="string">&quot;handleClick&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> Child <span class="keyword">from</span> <span class="string">&quot;./Child&quot;</span></span></span><br><span class="line"><span class="javascript">	<span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">    <span class="attr">components</span>:&#123;</span></span><br><span class="line"><span class="javascript">      Child</span></span><br><span class="line"><span class="javascript">    &#125;,</span></span><br><span class="line"><span class="javascript">    <span class="attr">methods</span>:&#123;</span></span><br><span class="line"><span class="javascript">      <span class="function"><span class="title">handleClick</span>(<span class="params">data, callback</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(data); <span class="comment">// 得到子组件事件中的数据</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span>&#123;</span></span><br><span class="line"><span class="javascript">          callback(<span class="number">1</span>); <span class="comment">// 一段时间后，调用子组件传递的回调函数</span></span></span><br><span class="line"><span class="javascript">        &#125;, <span class="number">3000</span>)</span></span><br><span class="line"><span class="javascript">      &#125;</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">  &#125;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>子组件：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;handleClick&quot;</span>&gt;</span></span><br><span class="line">    click</span><br><span class="line">  <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">	<span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">    <span class="attr">methods</span>:&#123;</span></span><br><span class="line"><span class="javascript">      <span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">this</span>.$emit(<span class="string">&quot;click&quot;</span>, <span class="number">123</span>, <span class="function">(<span class="params">data</span>)=&gt;</span>&#123;</span></span><br><span class="line"><span class="javascript">          <span class="built_in">console</span>.log(data); <span class="comment">// data为父组件处理完成后得到的数据</span></span></span><br><span class="line"><span class="javascript">        &#125;)</span></span><br><span class="line"><span class="javascript">      &#125;</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">  &#125;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="v-model"><a href="#v-model" class="headerlink" title="v-model"></a>v-model</h1><p><code>v-model</code>指令实质是一个语法糖，它是<code>value</code>属性和<code>input</code>事件的<em>结合体</em></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">:value</span>=<span class="string">&quot;data&quot;</span> @<span class="attr">input</span>=<span class="string">&quot;data=$event.target.value&quot;</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 等同于 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">&quot;data&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>详见：<a href="https://cn.vuejs.org/v2/guide/forms.html">表单输入绑定</a></p>
-]]></content>
-      <categories>
-        <category>前端学习笔记</category>
-        <category>vue</category>
-      </categories>
-      <tags>
-        <tag>前端</tag>
-        <tag>vue2</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>vue2中的动态路由</title>
-    <url>/135xyq.github.io/2022/01/01/Vue-%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1&amp;watch/</url>
+    <url>/135xyq.github.io/2021/10/01/Vue-%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1&amp;watch/</url>
     <content><![CDATA[<h1 id="文章列表页逻辑"><a href="#文章列表页逻辑" class="headerlink" title="文章列表页逻辑"></a>文章列表页逻辑</h1><h2 id="路由跳转逻辑"><a href="#路由跳转逻辑" class="headerlink" title="路由跳转逻辑"></a>路由跳转逻辑</h2><p><img src="/images/vue2/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1-%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E9%80%BB%E8%BE%91.jpg" alt="动态路由-路由跳转逻辑"></p>
 <h2 id="组件逻辑"><a href="#组件逻辑" class="headerlink" title="组件逻辑"></a>组件逻辑</h2><p><img src="/images/vue2/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1-%E7%BB%84%E4%BB%B6%E9%80%BB%E8%BE%91.jpg" alt="动态路由-组件逻辑"></p>
 <h3 id="BlogList"><a href="#BlogList" class="headerlink" title="BlogList"></a>BlogList</h3><p><img src="/images/vue2/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1-BlogList.jpg" alt="动态路由-BlogList"></p>
@@ -2663,7 +2619,7 @@
   </entry>
   <entry>
     <title>vue2中的v-model</title>
-    <url>/135xyq.github.io/2022/01/01/Vue-v-model/</url>
+    <url>/135xyq.github.io/2021/09/06/Vue-v-model/</url>
     <content><![CDATA[<p>面试题：请阐述一下 <code>v-model</code> 的原理</p>
 <p><code>v-model</code>即可以作用于表单元素，又可作用于自定义组件，无论是哪一种情况，它都是一个语法糖，最终会生成一个属性和一个事件</p>
 <p><strong>当其作用于表单元素时</strong>，<code>vue</code>会根据作用的表单元素类型而生成合适的属性和事件。例如，作用于普通文本框的时候，它会生成<code>value</code>属性和<code>input</code>事件，而当其作用于单选框或多选框时，它会生成<code>checked</code>属性和<code>change</code>事件。</p>
@@ -2736,37 +2692,8 @@
       </tags>
   </entry>
   <entry>
-    <title>vue2中的ref</title>
-    <url>/135xyq.github.io/2022/01/01/Vue-%E5%BC%B9%E5%87%BA%E6%B6%88%E6%81%AF/</url>
-    <content><![CDATA[<h1 id="使用css-module"><a href="#使用css-module" class="headerlink" title="使用css module"></a>使用css module</h1><p>需要将样式文件命名为<code>xxx.module.ooo</code></p>
-<p><code>xxx</code>为文件名</p>
-<p><code>ooo</code>为样式文件后缀名，可以是<code>css</code>、<code>less</code></p>
-<h1 id="得到组件渲染的Dom"><a href="#得到组件渲染的Dom" class="headerlink" title="得到组件渲染的Dom"></a>得到组件渲染的Dom</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">    获取某个组件渲染的Dom根元素</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getComponentRootDom</span>(<span class="params">comp, props</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> h(comp, &#123;props&#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">  vm.$mount();</span><br><span class="line">  <span class="keyword">return</span> vm.$el;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="扩展vue实例"><a href="#扩展vue实例" class="headerlink" title="扩展vue实例"></a>扩展vue实例</h1><p><img src="/images/vue2/%E5%BC%B9%E5%87%BA%E6%B6%88%E6%81%AF-1.jpg" alt="弹出消息"></p>
-<h1 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h1><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">ref</span>=<span class="string">&quot;para&quot;</span>&gt;</span>some paragraph<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ChildComp</span> <span class="attr">ref</span>=<span class="string">&quot;comp&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;handleClick&quot;</span>&gt;</span>查看所有引用<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> ChildComp <span class="keyword">from</span> <span class="string">&quot;./ChildComp&quot;</span></span></span><br><span class="line"><span class="javascript">	<span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">    <span class="attr">components</span>:&#123;</span></span><br><span class="line"><span class="javascript">      ChildComp</span></span><br><span class="line"><span class="javascript">    &#125;,</span></span><br><span class="line"><span class="javascript">    <span class="attr">methods</span>:&#123;</span></span><br><span class="line"><span class="javascript">      <span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 获取持有的所有引用</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="built_in">this</span>.$refs);</span></span><br><span class="line"><span class="javascript">        <span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="javascript">        &#123;</span></span></span><br><span class="line"><span class="comment"><span class="javascript">        	para: p元素（原生DOM）,</span></span></span><br><span class="line"><span class="comment"><span class="javascript">        	comp: ChildComp的组件实例</span></span></span><br><span class="line"><span class="comment"><span class="javascript">        &#125;</span></span></span><br><span class="line"><span class="comment"><span class="javascript">        */</span></span></span><br><span class="line"><span class="javascript">      &#125;</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">  &#125;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<blockquote>
-<p>通过<code>ref</code>可以直接操作<code>dom</code>元素，甚至可能直接改动子组件，这些都不符合<code>vue</code>的设计理念。</p>
-<p>除非迫不得已，否则不要使用<code>ref</code></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>前端学习笔记</category>
-        <category>vue</category>
-      </categories>
-      <tags>
-        <tag>前端</tag>
-        <tag>vue2</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>分析打包的结果</title>
-    <url>/135xyq.github.io/2022/01/01/Vue-%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96/</url>
+    <url>/135xyq.github.io/2021/10/25/Vue-%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<h1 id="分析打包结果"><a href="#分析打包结果" class="headerlink" title="分析打包结果"></a>分析打包结果</h1><p>由于<code>vue-cli</code>是利用<code>webpack</code>进行打包，我们仅需加入一个<code>webpack</code>插件<code>webpack-bundle-analyzer</code>即可分析打包结果</p>
 <p>为了避免在开发环境中启动<code>webpack-bundle-analyzer</code>，我们仅需使用以下代码即可</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> BundleAnalyzerPlugin = <span class="built_in">require</span>(<span class="string">&quot;webpack-bundle-analyzer&quot;</span>)</span><br><span class="line">    .BundleAnalyzerPlugin;</span><br><span class="line"><span class="comment">// vue.config.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">// 通过 configureWebpack 选项，可对 webpack 进行额外的配置</span></span><br><span class="line">  <span class="comment">// 该配置最终会和 vue-cli 的默认配置进行合并（webpack-merge）</span></span><br><span class="line">  <span class="attr">configureWebpack</span>: &#123;</span><br><span class="line">    <span class="attr">plugins</span>: [<span class="keyword">new</span> BundleAnalyzerPlugin()]</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -2825,17 +2752,18 @@
   </entry>
   <entry>
     <title>vue2中的插槽</title>
-    <url>/135xyq.github.io/2022/01/01/Vue-%E6%8F%92%E6%A7%BD/</url>
-    <content><![CDATA[<p>在某些组件的模板中，有一部分区域需要父组件来指定</p>
+    <url>/135xyq.github.io/2021/09/21/Vue-%E6%8F%92%E6%A7%BD/</url>
+    <content><![CDATA[<h1 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h1><hr>
+<p>在某些组件的模板中，有一部分区域需要父组件来指定</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- message组件：一个弹窗消息 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;message-container&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 这里是消息内容，可以是一个文本，也可能是一段html，具体是什么不知道，需要父组件指定 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span>&gt;</span>确定<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span>&gt;</span>关闭<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="插槽的简单用法"><a href="#插槽的简单用法" class="headerlink" title="插槽的简单用法"></a>插槽的简单用法</h1><p>此时，就需要使用插槽来定制组件的功能</p>
+<h2 id="插槽的简单用法"><a href="#插槽的简单用法" class="headerlink" title="插槽的简单用法"></a>插槽的简单用法</h2><p>此时，就需要使用插槽来定制组件的功能</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- message组件：一个弹窗消息 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;message-container&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- slot是vue的内置组件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span>&gt;</span>确定<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span>&gt;</span>关闭<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 父组件App --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Message</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;app-message&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>App Message<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&quot;</span>&gt;</span>detail<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Message</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 最终的结果 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;message-co r&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span> </span></span><br><span class="line"><span class="tag">    &lt;<span class="attr">div</span> <span class="attr">class</span>=<span class="string">&quot;app-message &gt;</span></span></span><br><span class="line"><span class="string"><span class="tag">    &lt;p&gt;App Message&lt;/p&gt;</span></span></span><br><span class="line"><span class="string"><span class="tag">      &lt;a href=&quot;</span>&quot;&gt;</span>detai </span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span>&gt;</span>确定<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span>&gt;</span>关闭<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="/images/vue2/%E6%8F%92%E6%A7%BD-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D.jpg" alt="插槽"></p>
-<h1 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h1><p>如果某个组件中需要父元素传递多个区域的内容，也就意味着需要提供多个插槽</p>
+<h2 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h2><p>如果某个组件中需要父元素传递多个区域的内容，也就意味着需要提供多个插槽</p>
 <p>为了避免冲突，就需要给不同的插槽赋予不同的名字</p>
-<p>父组件中要使用 v-slot 指令，简写为 #</p>
+<p>父组件中要使用 v-slot 指令，简写为<code>#</code></p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Layout 组件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;layout-container&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 我们希望把页头放这里，提供插槽，名为header --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">&quot;header&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">main</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 我们希望把主要内容放这里，提供插槽，名为default --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 我们希望把页脚放这里，提供插槽，名为footer --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">&quot;footer&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 父组件App --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">BaseLayout</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Here might be a page title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:default</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>A paragraph for the main content.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>And another one.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:default</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Here&#x27;s some contact info<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">BaseLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="/images/vue2/%E6%8F%92%E6%A7%BD-%E5%85%B7%E5%90%8D%E6%8F%92%E6%A7%BD.jpg" alt="具名插槽"></p>
@@ -2887,7 +2815,7 @@
   </entry>
   <entry>
     <title>用户登录的逻辑</title>
-    <url>/135xyq.github.io/2022/01/01/Vue-%E7%99%BB%E5%BD%95%E6%96%B9%E9%9D%A2%E7%9A%84%E7%9F%A5%E8%AF%86/</url>
+    <url>/135xyq.github.io/2021/10/19/Vue-%E7%99%BB%E5%BD%95%E6%96%B9%E9%9D%A2%E7%9A%84%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<h1 id="用户模块逻辑示意图"><a href="#用户模块逻辑示意图" class="headerlink" title="用户模块逻辑示意图"></a>用户模块逻辑示意图</h1><p>路由总体示意图</p>
 <p><img src="/images/vue2/%E7%99%BB%E5%BD%95%E6%96%B9%E9%9D%A2%E7%9A%84%E7%9F%A5%E8%AF%86-%E8%B7%AF%E7%94%B1%E6%80%BB%E4%BD%93%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg" alt="image-20210130141625925"></p>
 <p>鉴权守卫逻辑示意图</p>
@@ -2913,7 +2841,7 @@
   </entry>
   <entry>
     <title>vue2中的数据共享</title>
-    <url>/135xyq.github.io/2022/01/01/Vue-%E6%95%B0%E6%8D%AE%E5%85%B1%E4%BA%ABvuex/</url>
+    <url>/135xyq.github.io/2021/10/15/Vue-%E6%95%B0%E6%8D%AE%E5%85%B1%E4%BA%ABvuex/</url>
     <content><![CDATA[<p><img src="/images/vue2/vue%E6%95%B0%E6%8D%AE%E5%85%B1%E4%BA%AB-1.jpg" alt="image-20210126132906004"></p>
 <p>在<code>vue</code>中遇到<strong>共享数据</strong>，会带来下面的多个问题：</p>
 <ul>
@@ -2995,7 +2923,7 @@
   </entry>
   <entry>
     <title>vue2中混入和组件递归</title>
-    <url>/135xyq.github.io/2022/01/01/Vue-%E6%B7%B7%E5%85%A5%E5%92%8C%E7%BB%84%E4%BB%B6%E9%80%92%E5%BD%92/</url>
+    <url>/135xyq.github.io/2021/10/06/Vue-%E6%B7%B7%E5%85%A5%E5%92%8C%E7%BB%84%E4%BB%B6%E9%80%92%E5%BD%92/</url>
     <content><![CDATA[<h2 id="混入"><a href="#混入" class="headerlink" title="混入"></a>混入</h2><p>有的时候，许多组件有着类似的功能，这些功能代码分散在组件不同的配置中。</p>
 <p><img src="/images/vue2/%E6%B7%B7%E5%85%A5%E5%92%8C%E7%BB%84%E4%BB%B6%E9%80%92%E5%BD%92-%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg" alt="混入和组件递归-示意图"></p>
 <p>于是，我们可以把这些配置代码抽离出来，利用<strong>混入</strong>融合到组件中。</p>
@@ -3120,7 +3048,7 @@
   </entry>
   <entry>
     <title>vue2中响应式原理</title>
-    <url>/135xyq.github.io/2022/01/01/Vue-%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94/</url>
+    <url>/135xyq.github.io/2021/08/08/Vue-%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94/</url>
     <content><![CDATA[<blockquote>
 <p>面试题：请阐述<code>vue2</code>响应式原理</p>
 </blockquote>
@@ -3215,16 +3143,16 @@
   </entry>
   <entry>
     <title>vue2中的组件事件</title>
-    <url>/135xyq.github.io/2022/01/01/Vue-%E7%BB%84%E4%BB%B6%E4%BA%8B%E4%BB%B6/</url>
+    <url>/135xyq.github.io/2021/08/22/Vue-%E7%BB%84%E4%BB%B6%E4%BA%8B%E4%BB%B6/</url>
     <content><![CDATA[<p>在样式中可以用 ‘~@’定位到src目录<br>在script中用‘@’可定位到src目录</p>
 <ol>
-<li><p><strong>全局样式</strong></p>
-</li>
 <li><p><strong>v-if 和 v-show</strong></p>
 <h2 id=""><a href="#" class="headerlink" title=""></a><img src="/images/vue2/%E7%BB%84%E4%BB%B6%E4%BA%8B%E4%BB%B6-v-if&v-show.jpg" alt="image-20201113133827438"></h2><p><img src="/images/vue2/%E7%BB%84%E4%BB%B6%E4%BA%8B%E4%BB%B6-v-if&v-show1.jpg" alt="image-20201113134051281"><br><strong>面试题：v-if 和 v-show 有什么区别？</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">v-if能够控制是否生成vnode，也就间接控制了是否生成对应的dom。当v-if为true时，会生成对应的vnode，并生成对应的dom元素；当其为false时，不会生成对应的vnode，自然不会生成任何的dom元素。</span><br><span class="line">v-show始终会生成vnode，也就间接导致了始终生成dom。它只是控制dom的display属性，当v-show为true时，不做任何处理；当其为false时，生成的dom的display属性为none。</span><br><span class="line">使用v-if可以有效的减少树的节点和渲染量，但也会导致树的不稳定；而使用v-show可以保持树的稳定，但不能减少树的节点和渲染量。</span><br><span class="line">因此，在实际开发中，显示状态变化频繁的情况下应该使用v-show，以保持树的稳定；显示状态变化较少时应该使用v-if，以减少树的节点和渲染量。</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>组件事件</strong></p>
 </li>
+</ol>
+<p>v-if能够控制是否生成vnode，也就间接控制了是否生成对应的dom。当v-if为true时，会生成对应的vnode，并生成对应的dom元素；当其为false时，不会生成对应的vnode，自然不会生成任何的dom元素。<br>v-show始终会生成vnode，也就间接导致了始终生成dom。它只是控制dom的display属性，当v-show为true时，不做任何处理；当其为false时，生成的dom的display属性为none。<br>使用v-if可以有效的减少树的节点和渲染量，但也会导致树的不稳定；而使用v-show可以保持树的稳定，但不能减少树的节点和渲染量。<br>因此，在实际开发中，显示状态变化频繁的情况下应该使用v-show，以保持树的稳定；显示状态变化较少时应该使用v-if，以减少树的节点和渲染量。</p>
+<ol start="2">
+<li><strong>组件事件</strong></li>
 </ol>
 <p><img src="/images/vue2/vue2%E7%BB%84%E4%BB%B6%E4%BA%8B%E4%BB%B6-%E7%BB%84%E4%BB%B6%E4%BA%8B%E4%BB%B6.jpg" alt="vue2组件事件"><br>抛出事件：子组件在某个时候发生了一件事，但自身无法处理，于是通过事件的方式通知父组件处理</p>
 <p>事件参数：子组件抛出事件时，传递给父组件的数据</p>
@@ -3242,7 +3170,7 @@
   </entry>
   <entry>
     <title>vue2中的组件通信</title>
-    <url>/135xyq.github.io/2022/01/01/Vue-%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/</url>
+    <url>/135xyq.github.io/2021/08/25/Vue-%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/</url>
     <content><![CDATA[<p>面试题：vue组件之间有哪些通信方式？</p>
 <h1 id="父子组件通信"><a href="#父子组件通信" class="headerlink" title="父子组件通信"></a>父子组件通信</h1><blockquote>
 <p>绝大部分<code>vue</code>本身提供的通信方式，都是父子组件通信</p>
@@ -3252,10 +3180,10 @@
 <h2 id="style和class"><a href="#style和class" class="headerlink" title="style和class"></a><code>style</code>和<code>class</code></h2><p>父组件可以向子组件传递<code>style</code>和<code>class</code>，它们会合并到子组件的根元素中</p>
 <p><strong>示例</strong></p>
 <p>父组件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;HelloWorld</span><br><span class="line">      style=&quot;color:red&quot;</span><br><span class="line">      class=&quot;hello&quot;</span><br><span class="line">      msg=&quot;Welcome to Your Vue.js App&quot;</span><br><span class="line">    /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import HelloWorld from &quot;./components/HelloWorld.vue&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  components: &#123;</span><br><span class="line">    HelloWorld,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">HelloWorld</span></span></span><br><span class="line"><span class="tag">      <span class="attr">style</span>=<span class="string">&quot;color:red&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">&quot;hello&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">msg</span>=<span class="string">&quot;Welcome to Your Vue.js App&quot;</span></span></span><br><span class="line"><span class="tag">    /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> HelloWorld <span class="keyword">from</span> <span class="string">&quot;./components/HelloWorld.vue&quot;</span>;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">  <span class="attr">components</span>: &#123;</span></span><br><span class="line"><span class="javascript">    HelloWorld,</span></span><br><span class="line"><span class="javascript">  &#125;,</span></span><br><span class="line"><span class="javascript">&#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>子组件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;world&quot; style=&quot;text-align:center&quot;&gt;</span><br><span class="line">    &lt;h1&gt;&#123;&#123;msg&#125;&#125;&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;HelloWorld&quot;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    msg: String,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;world&quot;</span> <span class="attr">style</span>=<span class="string">&quot;text-align:center&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">  <span class="attr">name</span>: <span class="string">&quot;HelloWorld&quot;</span>,</span></span><br><span class="line"><span class="javascript">  <span class="attr">props</span>: &#123;</span></span><br><span class="line"><span class="javascript">    <span class="attr">msg</span>: <span class="built_in">String</span>,</span></span><br><span class="line"><span class="javascript">  &#125;,</span></span><br><span class="line"><span class="javascript">&#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>渲染结果：</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;hello world&quot;</span> <span class="attr">style</span>=<span class="string">&quot;color:red; text-aling:center&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Welcome to Your Vue.js App<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -3268,10 +3196,10 @@
 </blockquote>
 <p><strong>示例</strong></p>
 <p>父组件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;!-- 除 msg 外，其他均为 attribute --&gt;</span><br><span class="line">    &lt;HelloWorld</span><br><span class="line">      data-a=&quot;1&quot;</span><br><span class="line">      data-b=&quot;2&quot;</span><br><span class="line">      msg=&quot;Welcome to Your Vue.js App&quot;</span><br><span class="line">    /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import HelloWorld from &quot;./components/HelloWorld.vue&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  components: &#123;</span><br><span class="line">    HelloWorld,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 除 msg 外，其他均为 attribute --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">HelloWorld</span></span></span><br><span class="line"><span class="tag">      <span class="attr">data-a</span>=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">data-b</span>=<span class="string">&quot;2&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">msg</span>=<span class="string">&quot;Welcome to Your Vue.js App&quot;</span></span></span><br><span class="line"><span class="tag">    /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> HelloWorld <span class="keyword">from</span> <span class="string">&quot;./components/HelloWorld.vue&quot;</span>;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">  <span class="attr">components</span>: &#123;</span></span><br><span class="line"><span class="javascript">    HelloWorld,</span></span><br><span class="line"><span class="javascript">  &#125;,</span></span><br><span class="line"><span class="javascript">&#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>子组件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;&#123;&#123;msg&#125;&#125;&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;HelloWorld&quot;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    msg: String,</span><br><span class="line">  &#125;,</span><br><span class="line">  created() &#123;</span><br><span class="line">    console.log(this.$attrs); // 得到： &#123; &quot;data-a&quot;: &quot;1&quot;, &quot;data-b&quot;: &quot;2&quot; &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">  <span class="attr">name</span>: <span class="string">&quot;HelloWorld&quot;</span>,</span></span><br><span class="line"><span class="javascript">  <span class="attr">props</span>: &#123;</span></span><br><span class="line"><span class="javascript">    <span class="attr">msg</span>: <span class="built_in">String</span>,</span></span><br><span class="line"><span class="javascript">  &#125;,</span></span><br><span class="line"><span class="javascript">  <span class="function"><span class="title">created</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.$attrs); <span class="comment">// 得到： &#123; &quot;data-a&quot;: &quot;1&quot;, &quot;data-b&quot;: &quot;2&quot; &#125;</span></span></span><br><span class="line"><span class="javascript">  &#125;,</span></span><br><span class="line"><span class="javascript">&#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>渲染结果：</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">data-a</span>=<span class="string">&quot;1&quot;</span> <span class="attr">data-b</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Welcome to Your Vue.js App<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -3280,10 +3208,10 @@
 <h2 id="natvie修饰符"><a href="#natvie修饰符" class="headerlink" title="natvie修饰符"></a><code>natvie</code>修饰符</h2><p>在注册事件时，父组件可以使用<code>native</code>修饰符，将事件注册到子组件的根元素上</p>
 <p><strong>示例</strong></p>
 <p>父组件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;HelloWorld @click.native=&quot;handleClick&quot; /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import HelloWorld from &quot;./components/HelloWorld.vue&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  components: &#123;</span><br><span class="line">    HelloWorld,</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    handleClick() &#123;</span><br><span class="line">      console.log(1);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">HelloWorld</span> @<span class="attr">click.native</span>=<span class="string">&quot;handleClick&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> HelloWorld <span class="keyword">from</span> <span class="string">&quot;./components/HelloWorld.vue&quot;</span>;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">  <span class="attr">components</span>: &#123;</span></span><br><span class="line"><span class="javascript">    HelloWorld,</span></span><br><span class="line"><span class="javascript">  &#125;,</span></span><br><span class="line"><span class="javascript">  <span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="javascript">    <span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="number">1</span>);</span></span><br><span class="line"><span class="javascript">    &#125;,</span></span><br><span class="line"><span class="javascript">  &#125;,</span></span><br><span class="line"><span class="javascript">&#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>子组件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;Hello World&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>渲染结果</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 点击该 div，会输出 1 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -3292,16 +3220,16 @@
 <h2 id="v-model"><a href="#v-model" class="headerlink" title="v-model"></a><code>v-model</code></h2><h2 id="sync修饰符"><a href="#sync修饰符" class="headerlink" title="sync修饰符"></a><code>sync</code>修饰符</h2><p>和<code>v-model</code>的作用类似，用于双向绑定，不同点在于<code>v-model</code>只能针对一个数据进行双向绑定，而<code>sync</code>修饰符没有限制</p>
 <p>示例</p>
 <p>子组件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;button @click=&quot;$emit(`update:num1`, num1 - 1)&quot;&gt;-&lt;/button&gt;</span><br><span class="line">      &#123;&#123; num1 &#125;&#125;</span><br><span class="line">      &lt;button @click=&quot;$emit(`update:num1`, num1 + 1)&quot;&gt;+&lt;/button&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;button @click=&quot;$emit(`update:num2`, num2 - 1)&quot;&gt;-&lt;/button&gt;</span><br><span class="line">      &#123;&#123; num2 &#125;&#125;</span><br><span class="line">      &lt;button @click=&quot;$emit(`update:num2`, num2 + 1)&quot;&gt;+&lt;/button&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  props: [&quot;num1&quot;, &quot;num2&quot;],</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;$emit(`update:num1`, num1 - 1)&quot;</span>&gt;</span>-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">      &#123;&#123; num1 &#125;&#125;</span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;$emit(`update:num1`, num1 + 1)&quot;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;$emit(`update:num2`, num2 - 1)&quot;</span>&gt;</span>-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">      &#123;&#123; num2 &#125;&#125;</span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;$emit(`update:num2`, num2 + 1)&quot;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">  <span class="attr">props</span>: [<span class="string">&quot;num1&quot;</span>, <span class="string">&quot;num2&quot;</span>],</span></span><br><span class="line"><span class="javascript">&#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>父组件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;Numbers :num1.sync=&quot;n1&quot; :num2.sync=&quot;n2&quot; /&gt;</span><br><span class="line">    &lt;!-- 等同于 --&gt;</span><br><span class="line">    &lt;Numbers</span><br><span class="line">      :num1=&quot;n1&quot;</span><br><span class="line">      @update:num1=&quot;n1 = $event&quot;</span><br><span class="line">      :num2=&quot;n2&quot;</span><br><span class="line">      @update:num2=&quot;n2 = $event&quot;</span><br><span class="line">    /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import Numbers from &quot;./components/Numbers.vue&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  components: &#123;</span><br><span class="line">    Numbers,</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      n1: 0,</span><br><span class="line">      n2: 0,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Numbers</span> <span class="attr">:num1.sync</span>=<span class="string">&quot;n1&quot;</span> <span class="attr">:num2.sync</span>=<span class="string">&quot;n2&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 等同于 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Numbers</span></span></span><br><span class="line"><span class="tag">      <span class="attr">:num1</span>=<span class="string">&quot;n1&quot;</span></span></span><br><span class="line"><span class="tag">      @<span class="attr">update:num1</span>=<span class="string">&quot;n1 = $event&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">:num2</span>=<span class="string">&quot;n2&quot;</span></span></span><br><span class="line"><span class="tag">      @<span class="attr">update:num2</span>=<span class="string">&quot;n2 = $event&quot;</span></span></span><br><span class="line"><span class="tag">    /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> Numbers <span class="keyword">from</span> <span class="string">&quot;./components/Numbers.vue&quot;</span>;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">  <span class="attr">components</span>: &#123;</span></span><br><span class="line"><span class="javascript">    Numbers,</span></span><br><span class="line"><span class="javascript">  &#125;,</span></span><br><span class="line"><span class="javascript">  <span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">      <span class="attr">n1</span>: <span class="number">0</span>,</span></span><br><span class="line"><span class="javascript">      <span class="attr">n2</span>: <span class="number">0</span>,</span></span><br><span class="line"><span class="javascript">    &#125;;</span></span><br><span class="line"><span class="javascript">  &#125;,</span></span><br><span class="line"><span class="javascript">&#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="parent和-children"><a href="#parent和-children" class="headerlink" title="$parent和$children"></a><code>$parent</code>和<code>$children</code></h2><p>在组件内部，可以通过<code>$parent</code>和<code>$children</code>属性，分别得到当前组件的父组件和子组件实例</p>
 <h2 id="slots和-scopedSlots"><a href="#slots和-scopedSlots" class="headerlink" title="$slots和$scopedSlots"></a><code>$slots</code>和<code>$scopedSlots</code></h2><p>后续章节讲解</p>
 <h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a><code>ref</code></h2><p>父组件可以通过<code>ref</code>获取到子组件的实例</p>
 <h1 id="跨组件通信"><a href="#跨组件通信" class="headerlink" title="跨组件通信"></a>跨组件通信</h1><h2 id="Provide和Inject"><a href="#Provide和Inject" class="headerlink" title="Provide和Inject"></a><code>Provide</code>和<code>Inject</code></h2><p>示例</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 父级组件提供 &#x27;foo&#x27;</span></span><br><span class="line"><span class="keyword">var</span> Provider = &#123;</span><br><span class="line">  <span class="attr">provide</span>: &#123;</span><br><span class="line">    <span class="attr">foo</span>: <span class="string">&#x27;bar&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 组件注入 &#x27;foo&#x27;</span></span><br><span class="line"><span class="keyword">var</span> Child = &#123;</span><br><span class="line">  <span class="attr">inject</span>: [<span class="string">&#x27;foo&#x27;</span>],</span><br><span class="line">  created () &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.foo) <span class="comment">// =&gt; &quot;bar&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">// 父级组件提供 &#x27;foo&#x27;</span><br><span class="line">var Provider = &#123;</span><br><span class="line">  provide: &#123;</span><br><span class="line">    foo: &#x27;bar&#x27;</span><br><span class="line">  &#125;,</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 组件注入 &#x27;foo&#x27;</span><br><span class="line">var Child = &#123;</span><br><span class="line">  inject: [&#x27;foo&#x27;],</span><br><span class="line">  created () &#123;</span><br><span class="line">    console.log(this.foo) // =&gt; &quot;bar&quot;</span><br><span class="line">  &#125;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>详见：<a href="https://cn.vuejs.org/v2/api/#provide-inject">https://cn.vuejs.org/v2/api/?#provide-inject</a></p>
 <h2 id="router"><a href="#router" class="headerlink" title="router"></a><code>router</code></h2><p>如果一个组件改变了地址栏，所有监听地址栏的组件都会做出相应反应</p>
@@ -3325,61 +3253,8 @@
       </tags>
   </entry>
   <entry>
-    <title>定义指令</title>
-    <url>/135xyq.github.io/2022/01/01/Vue-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6/</url>
-    <content><![CDATA[<h1 id="定义指令"><a href="#定义指令" class="headerlink" title="定义指令"></a>定义指令</h1><h2 id="全局定义"><a href="#全局定义" class="headerlink" title="全局定义"></a>全局定义</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 指令名称为：mydirec1</span></span><br><span class="line">Vue.directive(<span class="string">&#x27;mydirec1&#x27;</span>, &#123;</span><br><span class="line">  <span class="comment">// 指令配置</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 指令名称为：mydirec2</span></span><br><span class="line">Vue.directive(<span class="string">&#x27;mydirec2&#x27;</span>, &#123;</span><br><span class="line">  <span class="comment">// 指令配置</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>之后，所有的组件均可以使用<code>mydirec1</code>和<code>mydirec2</code>指令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!-- 某个组件代码 --&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;MyComp v-mydirec1=&quot;js表达式&quot; /&gt;</span><br><span class="line">    &lt;div v-mydirec2=&quot;js表达式&quot;&gt;</span><br><span class="line">      ...</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;img v-mydirec1=&quot;js表达式&quot; /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="局部定义"><a href="#局部定义" class="headerlink" title="局部定义"></a>局部定义</h2><p>局部定义是指在某个组件中定义指令，和局部注册组件类似。</p>
-<p>定义的指令仅在该组件中有效。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!-- 某个组件代码 --&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;MyComp v-mydirec1=&quot;js表达式&quot; /&gt;</span><br><span class="line">    &lt;div v-mydirec2=&quot;js表达式&quot;&gt;</span><br><span class="line">      ...</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;img v-mydirec1=&quot;js表达式&quot; /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  // 定义指令</span><br><span class="line">  directives: &#123;</span><br><span class="line">    // 指令名称：mydirec1</span><br><span class="line">    mydirec1: &#123;</span><br><span class="line">      // 指令配置</span><br><span class="line">    &#125;,</span><br><span class="line">    // 指令名称：mydirec2</span><br><span class="line">    mydirec2: &#123;</span><br><span class="line">      // 指令配置</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>和全局注册组件一样，为了让指令更加通用，通常我们会把指令的配置提取到其他模块。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!-- 某个组件代码 --&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;MyComp v-mydirec1=&quot;js表达式&quot; /&gt;</span><br><span class="line">    &lt;div v-mydirec2=&quot;js表达式&quot;&gt;</span><br><span class="line">      ...</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;img v-mydirec1=&quot;js表达式&quot; /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  // 导入当前组件需要用到的指令配置对象</span><br><span class="line">  import mydirec1 from &quot;@/directives/mydirec1&quot;;</span><br><span class="line">  import mydirec2 from &quot;@/directives/mydirec2&quot;;</span><br><span class="line">	export default &#123;</span><br><span class="line">    // 定义指令</span><br><span class="line">    directives: &#123;</span><br><span class="line">      mydirec1,</span><br><span class="line">      mydirec2</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h1 id="指令配置对象"><a href="#指令配置对象" class="headerlink" title="指令配置对象"></a>指令配置对象</h1><p>没有配置的指令，就像没有配置的组件一样，毫无意义</p>
-<p><code>vue</code>支持在指令中配置一些<strong>钩子函数</strong>，在适当的时机，<code>vue</code>会调用这些钩子函数并传入适当的参数，以便开发者完成自己想做的事情。</p>
-<p>常用的钩子函数：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 指令配置对象</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="title">bind</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置。</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">inserted</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 被绑定元素插入父节点时调用。</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">update</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 所在组件的 VNode 更新时调用</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p> <a href="https://cn.vuejs.org/v2/guide/custom-directive.html#%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0">查看更多的钩子函数</a></p>
-</blockquote>
-<p>每个钩子函数在调用时，<code>vue</code>都会向其传递一些参数，其中最重要的是前两个参数</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 指令配置对象</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="title">bind</span>(<span class="params">el, binding</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// el 是被绑定元素对应的真实DOM</span></span><br><span class="line">    <span class="comment">// binding 是一个对象，描述了指令中提供的信息</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="binding-对象"><a href="#binding-对象" class="headerlink" title="binding 对象"></a>binding 对象</h2><p><img src="/images/vue2/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6-bingding%E5%AF%B9%E8%B1%A1.jpg" alt="自定义组件"></p>
-<blockquote>
-<p><a href="https://cn.vuejs.org/v2/guide/custom-directive.html#%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0">查看更多binding对象的属性</a></p>
-</blockquote>
-<h1 id="配置简化"><a href="#配置简化" class="headerlink" title="配置简化"></a>配置简化</h1><p>比较多的时候，在配置自定义指令时，我们都会配置两个钩子函数</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="title">bind</span>(<span class="params">el, bingding</span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">update</span>(<span class="params">el, bingding</span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样，在元素绑定和更新时，都能运行到钩子函数</p>
-<p>如果这两个钩子函数实现的功能相同，可以直接把指令配置简化为一个单独的函数：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">el, bingding</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 该函数会被同时设置到bind和update中</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<blockquote>
-<p>利用上述知识，可满足大部分自定义指令的需求</p>
-<p>更多的自定义指令用法见<a href="https://cn.vuejs.org/v2/guide/custom-directive.html">官网</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>前端学习笔记</category>
-        <category>vue</category>
-      </categories>
-      <tags>
-        <tag>前端</tag>
-        <tag>vue2</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>vue2中虚拟节点</title>
-    <url>/135xyq.github.io/2022/08/10/Vue-%E8%99%9A%E6%8B%9F%E8%8A%82%E7%82%B9/</url>
+    <url>/135xyq.github.io/2021/08/10/Vue-%E8%99%9A%E6%8B%9F%E8%8A%82%E7%82%B9/</url>
     <content><![CDATA[<p>面试题：请你阐述一下对vue虚拟dom的理解</p>
 <ol>
 <li><p>什么是虚拟dom？</p>
@@ -3428,7 +3303,7 @@
   </entry>
   <entry>
     <title>数据与跨域</title>
-    <url>/135xyq.github.io/2022/01/01/Vue-%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE/</url>
+    <url>/135xyq.github.io/2021/10/21/Vue-%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE/</url>
     <content><![CDATA[<blockquote>
 <p>vue cli: <a href="https://cli.vuejs.org/zh/">https://cli.vuejs.org/zh/</a></p>
 <p>axios: <a href="https://github.com/axios/axios">https://github.com/axios/axios</a></p>
@@ -3460,12 +3335,15 @@
   </entry>
   <entry>
     <title>vue2中计算属性</title>
-    <url>/135xyq.github.io/2022/01/01/Vue-%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7/</url>
+    <url>/135xyq.github.io/2021/09/01/Vue-%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7/</url>
     <content><![CDATA[<p>面试题：计算属性和方法有什么区别？</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">计算属性本质上是包含getter和setter的方法</span><br><span class="line">当获取计算属性时，实际上是在调用计算属性的getter方法。vue会收集计算属性的依赖，并缓存计算属性的返回结果。只有当依赖变化后才会重新进行计算。</span><br><span class="line">方法没有缓存，每次调用方法都会导致重新执行。</span><br><span class="line">计算属性的getter和setter参数固定，getter没有参数，setter只有一个参数。而方法的参数不限。</span><br><span class="line">由于有以上的这些区别，因此计算属性通常是根据已有数据得到其他数据，并在得到数据的过程中不建议使用异步、当前时间、随机数等副作用操作。</span><br><span class="line">实际上，他们最重要的区别是含义上的区别。计算属性含义上也是一个数据，可以读取也可以赋值；方法含义上是一个操作，用于处理一些事情。</span><br></pre></td></tr></table></figure>
-
-
-
+<ul>
+<li>计算属性本质上是包含getter和setter的方法</li>
+<li>当获取计算属性时，实际上是在调用计算属性的getter方法。vue会收集计算属性的依赖，并缓存计算属性的返回结果。只有当依赖变化后才会重新进行计算。</li>
+<li>方法没有缓存，每次调用方法都会导致重新执行。</li>
+<li>计算属性的getter和setter参数固定，getter没有参数，setter只有一个参数。而方法的参数不限。</li>
+</ul>
+<p>由于有以上的这些区别，因此计算属性通常是根据已有数据得到其他数据，并在得到数据的过程中不建议使用异步、当前时间、随机数等副作用操作。<br>实际上，他们最重要的区别是含义上的区别。计算属性含义上也是一个数据，可以读取也可以赋值；方法含义上是一个操作，用于处理一些事情。</p>
 <p>完整的计算属性书写：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  <span class="attr">propName</span>: &#123;</span><br><span class="line">    <span class="function"><span class="title">get</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="comment">// getter</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="title">set</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">      <span class="comment">// setter</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -3559,8 +3437,8 @@
   </entry>
   <entry>
     <title>vue2中的路由</title>
-    <url>/135xyq.github.io/2022/01/01/Vue-%E8%B7%AF%E7%94%B1/</url>
-    <content><![CDATA[<p>vue-router官网：<a href="https://router.vuejs.org/zh/">https://router.vuejs.org/zh/</a></p>
+    <url>/135xyq.github.io/2021/09/25/Vue-%E8%B7%AF%E7%94%B1/</url>
+    <content><![CDATA[<p>vue-router 官网：<a href="https://router.vuejs.org/zh/">https://router.vuejs.org/zh/</a></p>
 <p><img src="/images/vue2/%E8%B7%AF%E7%94%B1-1.jpg" alt="路由1"></p>
 <ol>
 <li><p><strong>如何根据地址中的路径选择不同的组件？</strong></p>
@@ -3575,13 +3453,9 @@
 <p>路由插件的使用</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> VueRouter <span class="keyword">from</span> <span class="string">&#x27;vue-router&#x27;</span></span><br><span class="line"></span><br><span class="line">Vue.use(VueRouter); <span class="comment">// Vue.use(插件)  在Vue中使用插件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  <span class="comment">// 路由配置</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  ...,</span><br><span class="line">  router</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h1 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 路由配置</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  <span class="attr">routes</span>: [ <span class="comment">// 路由规则</span></span><br><span class="line">    <span class="comment">// 当匹配到路径 /foo 时，渲染 Foo 组件</span></span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">&#x27;/foo&#x27;</span>, <span class="attr">component</span>: Foo &#125;,</span><br><span class="line">    <span class="comment">// 当匹配到路径 /bar 时，渲染 Bar 组件</span></span><br><span class="line">  	&#123; <span class="attr">path</span>: <span class="string">&#x27;/bar&#x27;</span>, <span class="attr">component</span>: Bar &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 路由配置</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">	<span class="attr">routes</span>: [</span><br><span class="line">		<span class="comment">// 路由规则</span></span><br><span class="line">		<span class="comment">// 当匹配到路径 /foo 时，渲染 Foo 组件</span></span><br><span class="line">		&#123; <span class="attr">path</span>: <span class="string">&quot;/foo&quot;</span>, <span class="attr">component</span>: Foo &#125;,</span><br><span class="line">		<span class="comment">// 当匹配到路径 /bar 时，渲染 Bar 组件</span></span><br><span class="line">		&#123; <span class="attr">path</span>: <span class="string">&quot;/bar&quot;</span>, <span class="attr">component</span>: Bar &#125;,</span><br><span class="line">	],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-
-
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- App.vue --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 公共区域 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 页面区域 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- vue-router 匹配到的组件会渲染到这里 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">RouterView</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- App.vue --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 公共区域 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 页面区域 --&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- vue-router 匹配到的组件会渲染到这里 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">RouterView</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h1 id="路由模式"><a href="#路由模式" class="headerlink" title="路由模式"></a>路由模式</h1><p>路由模式决定了：</p>
 <ol>
@@ -3590,23 +3464,22 @@
 </ol>
 <p><code>vue-router</code>提供了三种路由模式：</p>
 <ol>
-<li><p>hash：默认值。路由从浏览器地址栏中的hash部分获取路径，改变路径也是改变的hash部分。该模式兼容性最好。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://localhost:8081/#/blog  --&gt;  /blog</span><br><span class="line">http://localhost:8081/about#/blog  --&gt; /blog</span><br></pre></td></tr></table></figure></li>
-<li><p>history：路由从浏览器地址栏的<code>location.pathname</code>中获取路径，改变路径使用的H5的<code>history api</code>。该模式可以让地址栏最友好，但是需要浏览器支持<code>history api</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://localhost:8081/#/blog  --&gt;  /</span><br><span class="line">http://localhost:8081/about#/blog  --&gt; /about</span><br><span class="line">http://localhost:8081/blog  --&gt; /blog</span><br></pre></td></tr></table></figure></li>
+<li><p>hash：默认值。路由从浏览器地址栏中的 hash 部分获取路径，改变路径也是改变的 hash 部分。该模式兼容性最好。</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://localhost:8081/#/blog  --&gt;  /blog</span><br><span class="line">http://localhost:8081/about#/blog  --&gt; /blog</span><br></pre></td></tr></table></figure></li>
+<li><p>history：路由从浏览器地址栏的<code>location.pathname</code>中获取路径，改变路径使用的 H5 的<code>history api</code>。该模式可以让地址栏最友好，但是需要浏览器支持<code>history api</code></p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://localhost:8081/#/blog  --&gt;  /</span><br><span class="line">http://localhost:8081/about#/blog  --&gt; /about</span><br><span class="line">http://localhost:8081/blog  --&gt; /blog</span><br></pre></td></tr></table></figure></li>
 <li><p>abstract：路由从内存中获取路径，改变路径也只是改动内存中的值。这种模式通常应用到非浏览器环境中。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">内存： /			--&gt;   /</span><br><span class="line">内存： /about	--&gt; /about</span><br><span class="line">内存： /blog	  --&gt; /blog</span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">内存： /	    --&gt; /</span><br><span class="line">内存： /about	--&gt; /about</span><br><span class="line">内存： /blog	--&gt; /blog</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h1 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h1><p><code>vue-router</code>提供了全局的组件<code>RouterLink</code>，它的渲染结果是一个<code>a</code>元素</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">RouterLink</span> <span class="attr">to</span>=<span class="string">&quot;/blog&quot;</span>&gt;</span>文章<span class="tag">&lt;/<span class="name">RouterLink</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- mode:hash 生成 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#/blog&quot;</span>&gt;</span>文章<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- mode:history 生成 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 为了避免刷新页面，vue-router实际上为它添加了点击事件，并阻止了默认行为，在事件内部使用hitory api更改路径 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/blog&quot;</span>&gt;</span>文章<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 
 <p><img src="/images/vue2/%E8%B7%AF%E7%94%B1-3.jpg" alt="路由3"></p>
 <p><img src="/images/vue2/%E8%B7%AF%E7%94%B1-2.jpg" alt="路由2"></p>
 <h2 id="激活状态"><a href="#激活状态" class="headerlink" title="激活状态"></a>激活状态</h2><p>默认情况下，<code>vue-router</code>会用 <strong>当前路径</strong> 匹配 <strong>导航路径</strong> ：</p>
 <ul>
-<li>如果当前路径是以导航路径开头，则算作匹配，会为导航的a元素添加类名<code>router-link-active</code></li>
-<li>如果当前路径完全等于导航路径，则算作精确匹配，会为导航的a元素添加类名<code>router-link-exact-active</code></li>
+<li>  如果当前路径是以导航路径开头，则算作匹配，会为导航的 a 元素添加类名<code>router-link-active</code></li>
+<li>  如果当前路径完全等于导航路径，则算作精确匹配，会为导航的 a 元素添加类名<code>router-link-exact-active</code></li>
 </ul>
 <p>例如，当前访问的路径是<code>/blog</code>，则：</p>
 <table>
@@ -3622,7 +3495,7 @@
 </tr>
 <tr>
 <td>/blog</td>
-<td>router-link-active   router-link-exact-active</td>
+<td>router-link-active router-link-exact-active</td>
 </tr>
 <tr>
 <td>/about</td>
@@ -3633,7 +3506,7 @@
 <td>无</td>
 </tr>
 </tbody></table>
-<p>可以为组件<code>RouterLink</code>添加bool属性<code>exact</code>，将匹配规则改为：必须要精确匹配才能添加匹配类名<code>router-link-active</code></p>
+<p>可以为组件<code>RouterLink</code>添加 bool 属性<code>exact</code>，将匹配规则改为：必须要精确匹配才能添加匹配类名<code>router-link-active</code></p>
 <p>例如，当前访问的路径是<code>/blog</code>，则：</p>
 <table>
 <thead>
@@ -3651,7 +3524,7 @@
 <tr>
 <td>/blog</td>
 <td>false</td>
-<td>router-link-active   router-link-exact-active</td>
+<td>router-link-active router-link-exact-active</td>
 </tr>
 <tr>
 <td>/about</td>
@@ -3696,10 +3569,9 @@
 </tbody></table>
 <p>另外，可以通过<code>active-class</code>属性更改匹配的类名，通过<code>exact-active-class</code>更改精确匹配的类名</p>
 <h1 id="命名路由"><a href="#命名路由" class="headerlink" title="命名路由"></a>命名路由</h1><p>使用命名路由可以解除系统与路径之间的耦合</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 路由配置</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  <span class="attr">routes</span>: [ <span class="comment">// 路由规则</span></span><br><span class="line">    <span class="comment">// 当匹配到路径 /foo 时，渲染 Foo 组件</span></span><br><span class="line">    &#123; <span class="attr">name</span>:<span class="string">&quot;foo&quot;</span>, <span class="attr">path</span>: <span class="string">&#x27;/foo&#x27;</span>, <span class="attr">component</span>: Foo &#125;,</span><br><span class="line">    <span class="comment">// 当匹配到路径 /bar 时，渲染 Bar 组件</span></span><br><span class="line">  	&#123; <span class="attr">name</span>:<span class="string">&quot;bar&quot;</span>, <span class="attr">path</span>: <span class="string">&#x27;/bar&#x27;</span>, <span class="attr">component</span>: Bar &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 路由配置</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">	<span class="attr">routes</span>: [</span><br><span class="line">		<span class="comment">// 路由规则</span></span><br><span class="line">		<span class="comment">// 当匹配到路径 /foo 时，渲染 Foo 组件</span></span><br><span class="line">		&#123; <span class="attr">name</span>: <span class="string">&quot;foo&quot;</span>, <span class="attr">path</span>: <span class="string">&quot;/foo&quot;</span>, <span class="attr">component</span>: Foo &#125;,</span><br><span class="line">		<span class="comment">// 当匹配到路径 /bar 时，渲染 Bar 组件</span></span><br><span class="line">		&#123; <span class="attr">name</span>: <span class="string">&quot;bar&quot;</span>, <span class="attr">path</span>: <span class="string">&quot;/bar&quot;</span>, <span class="attr">component</span>: Bar &#125;,</span><br><span class="line">	],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 向to属性传递路由信息对象 RouterLink会根据你传递的信息以及路由配置生成对应的路径 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">RouterLink</span> <span class="attr">:to</span>=<span class="string">&quot;&#123; name:&#x27;foo&#x27; &#125;&quot;</span>&gt;</span>go to foo<span class="tag">&lt;/<span class="name">RouterLink</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 ]]></content>
       <categories>
         <category>前端学习笔记</category>
@@ -24839,6 +24711,127 @@
       <tags>
         <tag>课程学习</tag>
         <tag>马克思</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue2中的$listeners和v-model</title>
+    <url>/135xyq.github.io/2021/09/15/Vue-$listeners&amp;v-model/</url>
+    <content><![CDATA[<h1 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h1><p><strong>针对<code>dom</code>节点的原生事件</strong>，<code>vue</code>支持多种修饰符以简化代码</p>
+<p>详见：<a href="https://cn.vuejs.org/v2/guide/events.html#%E4%BA%8B%E4%BB%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6">事件修饰符、按键修饰符、系统修饰符</a></p>
+<h1 id="listeners"><a href="#listeners" class="headerlink" title="$listeners"></a>$listeners</h1><p><code>$listeners</code>是<code>vue</code>的一个实例属性，它用于获取父组件传过来的所有事件函数</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 父组件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Child</span> @<span class="attr">event1</span>=<span class="string">&quot;handleEvent1&quot;</span> @<span class="attr">event2</span>=<span class="string">&quot;handleEvent2&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 子组件</span></span><br><span class="line"><span class="built_in">this</span>.$listeners; <span class="comment">// &#123; event1: handleEvent1, event2: handleEvent2 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>$emit</code>和<code>$listeners</code>通信的异同</p>
+<p>相同点：均可实现子组件向父组件传递消息</p>
+<p>差异点：</p>
+<ul>
+<li>  <code>$emit</code>更加符合单向数据流，子组件仅发出通知，由父组件监听做出改变；而<code>$listeners</code>则是在子组件中直接使用了父组件的方法。</li>
+<li>  调试工具可以监听到子组件<code>$emit</code>的事件，但无法监听到<code>$listeners</code>中的方法调用。</li>
+<li>  由于<code>$listeners</code>中可以获得传递过来的方法，因此调用方法可以得到其返回值。但<code>$emit</code>仅仅是向父组件发出通知，无法知晓父组件处理的结果</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>对于上述中的第三点，可以在<code>$emit</code>中传递回调函数来解决</p>
+<p>父组件：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">Child</span> @<span class="attr">click</span>=<span class="string">&quot;handleClick&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">	<span class="keyword">import</span> Child <span class="keyword">from</span> <span class="string">&quot;./Child&quot;</span>;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">		<span class="attr">components</span>: &#123;</span></span><br><span class="line"><span class="javascript">			Child,</span></span><br><span class="line"><span class="javascript">		&#125;,</span></span><br><span class="line"><span class="javascript">		<span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="javascript">			<span class="function"><span class="title">handleClick</span>(<span class="params">data, callback</span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">				<span class="built_in">console</span>.log(data); <span class="comment">// 得到子组件事件中的数据</span></span></span><br><span class="line"><span class="javascript">				<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">					callback(<span class="number">1</span>); <span class="comment">// 一段时间后，调用子组件传递的回调函数</span></span></span><br><span class="line"><span class="javascript">				&#125;, <span class="number">3000</span>);</span></span><br><span class="line"><span class="javascript">			&#125;,</span></span><br><span class="line"><span class="javascript">		&#125;,</span></span><br><span class="line"><span class="javascript">	&#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>子组件：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;handleClick&quot;</span>&gt;</span>click<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">	<span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">		<span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="javascript">			<span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">				<span class="built_in">this</span>.$emit(<span class="string">&quot;click&quot;</span>, <span class="number">123</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">					<span class="built_in">console</span>.log(data); <span class="comment">// data为父组件处理完成后得到的数据</span></span></span><br><span class="line"><span class="javascript">				&#125;);</span></span><br><span class="line"><span class="javascript">			&#125;,</span></span><br><span class="line"><span class="javascript">		&#125;,</span></span><br><span class="line"><span class="javascript">	&#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="v-model"><a href="#v-model" class="headerlink" title="v-model"></a>v-model</h1><p><code>v-model</code>指令实质是一个语法糖，它是<code>value</code>属性和<code>input</code>事件的<em>结合体</em></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">:value</span>=<span class="string">&quot;data&quot;</span> @<span class="attr">input</span>=<span class="string">&quot;data=$event.target.value&quot;</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 等同于 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">&quot;data&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>详见：<a href="https://cn.vuejs.org/v2/guide/forms.html">表单输入绑定</a></p>
+]]></content>
+      <categories>
+        <category>前端学习笔记</category>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>vue2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue2  css module 和 ref</title>
+    <url>/135xyq.github.io/2021/09/03/Vue-css%20module%20%E5%92%8C%20ref/</url>
+    <content><![CDATA[<h1 id="使用-css-module"><a href="#使用-css-module" class="headerlink" title="使用 css module"></a>使用 css module</h1><p>需要将样式文件命名为<code>xxx.module.ooo</code></p>
+<p><code>xxx</code>为文件名</p>
+<p><code>ooo</code>为样式文件后缀名，可以是<code>css</code>、<code>less</code></p>
+<h1 id="得到组件渲染的-Dom"><a href="#得到组件渲染的-Dom" class="headerlink" title="得到组件渲染的 Dom"></a>得到组件渲染的 Dom</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    获取某个组件渲染的Dom根元素</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getComponentRootDom</span>(<span class="params">comp, props</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">		<span class="attr">render</span>: <span class="function">(<span class="params">h</span>) =&gt;</span> h(comp, &#123; props &#125;),</span><br><span class="line">	&#125;);</span><br><span class="line">	vm.$mount();</span><br><span class="line">	<span class="keyword">return</span> vm.$el;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="扩展-vue-实例"><a href="#扩展-vue-实例" class="headerlink" title="扩展 vue 实例"></a>扩展 vue 实例</h1><p><img src="/images/vue2/%E5%BC%B9%E5%87%BA%E6%B6%88%E6%81%AF-1.jpg" alt="弹出消息"></p>
+<h1 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h1><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span> <span class="attr">ref</span>=<span class="string">&quot;para&quot;</span>&gt;</span>some paragraph<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">ChildComp</span> <span class="attr">ref</span>=<span class="string">&quot;comp&quot;</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;handleClick&quot;</span>&gt;</span>查看所有引用<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">	<span class="keyword">import</span> ChildComp <span class="keyword">from</span> <span class="string">&quot;./ChildComp&quot;</span>;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">		<span class="attr">components</span>: &#123;</span></span><br><span class="line"><span class="javascript">			ChildComp,</span></span><br><span class="line"><span class="javascript">		&#125;,</span></span><br><span class="line"><span class="javascript">		<span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="javascript">			<span class="function"><span class="title">handleClick</span>(<span class="params"></span>)</span> &#123;</span></span><br><span class="line"><span class="javascript">				<span class="comment">// 获取持有的所有引用</span></span></span><br><span class="line"><span class="javascript">				<span class="built_in">console</span>.log(<span class="built_in">this</span>.$refs);</span></span><br><span class="line"><span class="javascript">				<span class="comment">/*</span></span></span><br><span class="line"><span class="comment"><span class="javascript">        &#123;</span></span></span><br><span class="line"><span class="comment"><span class="javascript">        	para: p元素（原生DOM）,</span></span></span><br><span class="line"><span class="comment"><span class="javascript">        	comp: ChildComp的组件实例</span></span></span><br><span class="line"><span class="comment"><span class="javascript">        &#125;</span></span></span><br><span class="line"><span class="comment"><span class="javascript">        */</span></span></span><br><span class="line"><span class="javascript">			&#125;,</span></span><br><span class="line"><span class="javascript">		&#125;,</span></span><br><span class="line"><span class="javascript">	&#125;;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>通过<code>ref</code>可以直接操作<code>dom</code>元素，甚至可能直接改动子组件，这些都不符合<code>vue</code>的设计理念。</p>
+<p>除非迫不得已，否则不要使用<code>ref</code></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>前端学习笔记</category>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>vue2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue2自定义指令</title>
+    <url>/135xyq.github.io/2021/08/30/Vue-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="定义指令"><a href="#定义指令" class="headerlink" title="定义指令"></a>定义指令</h1><h2 id="全局定义"><a href="#全局定义" class="headerlink" title="全局定义"></a>全局定义</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 指令名称为：mydirec1</span></span><br><span class="line">Vue.directive(<span class="string">&#x27;mydirec1&#x27;</span>, &#123;</span><br><span class="line">  <span class="comment">// 指令配置</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 指令名称为：mydirec2</span></span><br><span class="line">Vue.directive(<span class="string">&#x27;mydirec2&#x27;</span>, &#123;</span><br><span class="line">  <span class="comment">// 指令配置</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>之后，所有的组件均可以使用<code>mydirec1</code>和<code>mydirec2</code>指令</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 某个组件代码 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">MyComp</span> <span class="attr">v-mydirec1</span>=<span class="string">&quot;js表达式&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-mydirec2</span>=<span class="string">&quot;js表达式&quot;</span>&gt;</span></span><br><span class="line">      ...</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">v-mydirec1</span>=<span class="string">&quot;js表达式&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="局部定义"><a href="#局部定义" class="headerlink" title="局部定义"></a>局部定义</h2><p>局部定义是指在某个组件中定义指令，和局部注册组件类似。</p>
+<p>定义的指令仅在该组件中有效。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 某个组件代码 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">MyComp</span> <span class="attr">v-mydirec1</span>=<span class="string">&quot;js表达式&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-mydirec2</span>=<span class="string">&quot;js表达式&quot;</span>&gt;</span></span><br><span class="line">      ...</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">v-mydirec1</span>=<span class="string">&quot;js表达式&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">  <span class="comment">// 定义指令</span></span></span><br><span class="line"><span class="javascript">  <span class="attr">directives</span>: &#123;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 指令名称：mydirec1</span></span></span><br><span class="line"><span class="javascript">    <span class="attr">mydirec1</span>: &#123;</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 指令配置</span></span></span><br><span class="line"><span class="javascript">    &#125;,</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 指令名称：mydirec2</span></span></span><br><span class="line"><span class="javascript">    <span class="attr">mydirec2</span>: &#123;</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 指令配置</span></span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">  &#125;</span></span><br><span class="line"><span class="javascript">&#125;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>和全局注册组件一样，为了让指令更加通用，通常我们会把指令的配置提取到其他模块。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 某个组件代码 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">MyComp</span> <span class="attr">v-mydirec1</span>=<span class="string">&quot;js表达式&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-mydirec2</span>=<span class="string">&quot;js表达式&quot;</span>&gt;</span></span><br><span class="line">      ...</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">v-mydirec1</span>=<span class="string">&quot;js表达式&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 导入当前组件需要用到的指令配置对象</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> mydirec1 <span class="keyword">from</span> <span class="string">&quot;@/directives/mydirec1&quot;</span>;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> mydirec2 <span class="keyword">from</span> <span class="string">&quot;@/directives/mydirec2&quot;</span>;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 定义指令</span></span></span><br><span class="line"><span class="javascript">    <span class="attr">directives</span>: &#123;</span></span><br><span class="line"><span class="javascript">      mydirec1,</span></span><br><span class="line"><span class="javascript">      mydirec2</span></span><br><span class="line"><span class="javascript">    &#125;</span></span><br><span class="line"><span class="javascript">  &#125;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="指令配置对象"><a href="#指令配置对象" class="headerlink" title="指令配置对象"></a>指令配置对象</h1><p>没有配置的指令，就像没有配置的组件一样，毫无意义</p>
+<p>vue支持在指令中配置一些<strong>钩子函数</strong>，在适当的时机，vue会调用这些钩子函数并传入适当的参数，以便开发者完成自己想做的事情。</p>
+<p>常用的钩子函数：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 指令配置对象</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="title">bind</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置。</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">inserted</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 被绑定元素插入父节点时调用。</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">update</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 所在组件的 VNode 更新时调用</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> <a href="https://cn.vuejs.org/v2/guide/custom-directive.html#%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0">查看更多的钩子函数</a></p>
+</blockquote>
+<p>每个钩子函数在调用时，vue都会向其传递一些参数，其中最重要的是前两个参数</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 指令配置对象</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="title">bind</span>(<span class="params">el, binding</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// el 是被绑定元素对应的真实DOM</span></span><br><span class="line">    <span class="comment">// binding 是一个对象，描述了指令中提供的信息</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="binding-对象"><a href="#binding-对象" class="headerlink" title="binding 对象"></a>binding 对象</h2><p><img src="/images/vue2/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6-bingding%E5%AF%B9%E8%B1%A1.jpg" alt="自定义组件"></p>
+<blockquote>
+<p><a href="https://cn.vuejs.org/v2/guide/custom-directive.html#%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0">查看更多binding对象的属性</a></p>
+</blockquote>
+<h1 id="配置简化"><a href="#配置简化" class="headerlink" title="配置简化"></a>配置简化</h1><p>比较多的时候，在配置自定义指令时，我们都会配置两个钩子函数</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="title">bind</span>(<span class="params">el, bingding</span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">update</span>(<span class="params">el, bingding</span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样，在元素绑定和更新时，都能运行到钩子函数</p>
+<p>如果这两个钩子函数实现的功能相同，可以直接把指令配置简化为一个单独的函数：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">el, bingding</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 该函数会被同时设置到bind和update中</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p>更多的自定义指令用法见<a href="https://cn.vuejs.org/v2/guide/custom-directive.html">官网</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>前端学习笔记</category>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>vue2</tag>
       </tags>
   </entry>
 </search>
