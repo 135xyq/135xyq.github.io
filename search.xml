@@ -22392,44 +22392,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CommonJS</title>
-    <url>/135xyq.github.io/2021/12/31/%E5%B7%A5%E7%A8%8B%E5%8C%96-CommonJS/</url>
-    <content><![CDATA[<h1 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h1><blockquote>
-<p>标准类型：社区规范</p>
-<p>支持环境：node</p>
-<p>依赖类型：动态依赖</p>
-</blockquote>
-<h2 id="如何导出"><a href="#如何导出" class="headerlink" title="如何导出"></a>如何导出</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = 导出的值</span><br></pre></td></tr></table></figure>
-
-<h2 id="如何导入"><a href="#如何导入" class="headerlink" title="如何导入"></a>如何导入</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">&quot;模块路径&quot;</span>) <span class="comment">// 函数返回模块导出的值</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="ES-Module"><a href="#ES-Module" class="headerlink" title="ES Module"></a>ES Module</h1><blockquote>
-<p>标准类型：官方标准</p>
-<p>支持环境：node，浏览器</p>
-<p>依赖类型：静态依赖，动态依赖</p>
-</blockquote>
-<h2 id="如何导出-1"><a href="#如何导出-1" class="headerlink" title="如何导出"></a>如何导出</h2><p><strong>ES Module</strong>的导出</p>
-<p>ES Module分为两种导出方式：</p>
-<ul>
-<li>具名导出（普通导出），可以导出多个</li>
-<li>默认导出，只能导出一个</li>
-</ul>
-<p>一个模块可以同时存在两种导出方式，最终会合并为一个「对象」导出</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> a = <span class="number">1</span>; <span class="comment">// 具名，常用</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;&#125; <span class="comment">// 具名，常用</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> c = <span class="function">() =&gt;</span> &#123;&#125;  <span class="comment">// 具名，常用</span></span><br><span class="line"><span class="keyword">const</span> d = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">export</span> &#123; d &#125; <span class="comment">// 具名</span></span><br><span class="line"><span class="keyword">const</span> k = <span class="number">10</span></span><br><span class="line"><span class="keyword">export</span> &#123; k <span class="keyword">as</span> temp &#125; <span class="comment">// 具名</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// export default 3 // 默认，常用</span></span><br><span class="line"><span class="comment">// export default function() &#123;&#125; // 默认，常用</span></span><br><span class="line"><span class="comment">// const e = 4;</span></span><br><span class="line"><span class="comment">// export &#123; e as default &#125; // 默认</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> f = <span class="number">4</span>, g = <span class="number">5</span>, h = <span class="number">6</span></span><br><span class="line"><span class="keyword">export</span> &#123; f, g, h <span class="keyword">as</span> <span class="keyword">default</span>&#125; <span class="comment">// 基本 + 默认</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 以上代码将导出下面的对象</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">	a: 1,</span></span><br><span class="line"><span class="comment">	b: fn,</span></span><br><span class="line"><span class="comment">	c: fn,</span></span><br><span class="line"><span class="comment">	d: 2,</span></span><br><span class="line"><span class="comment">	temp: 10,</span></span><br><span class="line"><span class="comment">	f: 4,</span></span><br><span class="line"><span class="comment">	g: 5,</span></span><br><span class="line"><span class="comment">	default: 6</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>注意：导出代码必须为顶级代码，即不可放到代码块中</strong></p>
-<h2 id="如何导入-1"><a href="#如何导入-1" class="headerlink" title="如何导入"></a>如何导入</h2><p>针对具名导出和默认导出，有不同的导入语法</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 仅运行一次该模块，不导入任何内容</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;模块路径&quot;</span></span><br><span class="line"><span class="comment">// 常用，导入属性 a、b，放到变量a、b中。a-&gt;a, b-&gt;b</span></span><br><span class="line"><span class="keyword">import</span> &#123; a, b &#125; <span class="keyword">from</span> <span class="string">&quot;模块路径&quot;</span>   </span><br><span class="line"><span class="comment">// 常用，导入属性 default，放入变量c中。default-&gt;c</span></span><br><span class="line"><span class="keyword">import</span> c <span class="keyword">from</span> <span class="string">&quot;模块路径&quot;</span>  </span><br><span class="line"><span class="comment">// 常用，default-&gt;c，a-&gt;a, b-&gt;b</span></span><br><span class="line"><span class="keyword">import</span> c, &#123; a, b &#125; <span class="keyword">from</span> <span class="string">&quot;模块路径&quot;</span> </span><br><span class="line"><span class="comment">// 常用，将模块对象放入到变量obj中</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> obj <span class="keyword">from</span> <span class="string">&quot;模块路径&quot;</span> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入属性a、b，放到变量temp1、temp2 中</span></span><br><span class="line"><span class="keyword">import</span> &#123;a <span class="keyword">as</span> temp1, b <span class="keyword">as</span> temp2&#125; <span class="keyword">from</span> <span class="string">&quot;模块路径&quot;</span> </span><br><span class="line"><span class="comment">// 导入属性default，放入变量a中，default是关键字，不能作为变量名，必须定义别名</span></span><br><span class="line"><span class="keyword">import</span> &#123;<span class="keyword">default</span> <span class="keyword">as</span> a&#125; <span class="keyword">from</span> <span class="string">&quot;模块路径&quot;</span> </span><br><span class="line"><span class="comment">//导入属性default、b，放入变量a、b中</span></span><br><span class="line"><span class="keyword">import</span> &#123;<span class="keyword">default</span> <span class="keyword">as</span> a, b&#125; <span class="keyword">from</span> <span class="string">&quot;模块路径&quot;</span> </span><br><span class="line"><span class="comment">// 以上均为静态导入</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span>(<span class="string">&quot;模块路径&quot;</span>) <span class="comment">// 动态导入，返回一个Promise，完成时的数据为模块对象</span></span><br><span class="line">	/</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>前端学习笔记</category>
-        <category>前端工程化</category>
-      </categories>
-      <tags>
-        <tag>前端</tag>
-        <tag>CommonJS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>常用的git操作</title>
     <url>/135xyq.github.io/2021/04/15/%E5%B7%A5%E5%85%B7-git%E6%96%87%E6%A1%A3/</url>
     <content><![CDATA[<h1 id="git-常用命令。"><a href="#git-常用命令。" class="headerlink" title="git 常用命令。"></a>git 常用命令。</h1><h2 id="SSH-Key"><a href="#SSH-Key" class="headerlink" title="SSH Key"></a>SSH Key</h2><blockquote>
@@ -22860,20 +22822,15 @@
   </entry>
   <entry>
     <title>webpack的使用</title>
-    <url>/135xyq.github.io/2021/12/31/%E5%B7%A5%E7%A8%8B%E5%8C%96-webpack/</url>
-    <content><![CDATA[<p><img src="http://mdrs.yuanjin.tech/img/20210508151156.png" alt="技能树"></p>
-<blockquote>
+    <url>/135xyq.github.io/2021/06/09/%E5%B7%A5%E7%A8%8B%E5%8C%96-webpack/</url>
+    <content><![CDATA[<blockquote>
 <p><strong>工程化，为复杂应用而生</strong></p>
-<p>本文为保持简单，牺牲了某些语言的准确性</p>
 </blockquote>
 <h1 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h1><p><strong>webpack是用来搭建前端工程的</strong></p>
 <p>它运行在node环境中，它所做的事情，简单来说，就是<strong>打包</strong></p>
-<img src="http://mdrs.yuanjin.tech/img/20210508172954.png" alt="image-20210508172953979" style="zoom:50%;" />
-
 <p>具体来说，就是以某个模块作为入口，根据入口分析出所有模块的依赖关系，然后对各种模块进行合并、压缩，形成最终的打包结果</p>
 <p><strong>在webpack的世界中，一切皆是模块</strong></p>
 <h1 id="体验"><a href="#体验" class="headerlink" title="体验"></a>体验</h1><blockquote>
-<p>老师提供的工程，以<code>src/main.js</code>作为入口文件</p>
 <p>按照习惯，所有的模块均放置在<code>src</code>目录中</p>
 </blockquote>
 <ol>
@@ -22915,17 +22872,13 @@
 <p>该命令会让<code>webpack</code>启动一个<strong>开发服务器</strong>。</p>
 <p>在这个阶段，webpack并不会形成打包结果文件，而是把打包的内容放到内存中，当我们请求服务器时，服务器从内存中给予我们打包结果</p>
 <p>与此同时，当源码发生变动时，webpack会自动重新打包，同时刷新页面以访问到最新的打包结果</p>
-<p><img src="http://mdrs.yuanjin.tech/img/20210508194443.png" alt="image-20210508194442940"></p>
 <h1 id="文件缓存"><a href="#文件缓存" class="headerlink" title="文件缓存"></a>文件缓存</h1><p>可以看到，除了页面外，其他的资源在打包完成后，文件名多了一些奇奇怪怪的字符</p>
 <p>例如：<code>js/app-9ea93.js</code></p>
 <p>其中，<code>9ea93</code>这样的字符称之为<code>hash</code>，它会随着模块内容的变化而变化</p>
 <p><strong>源码内容不变，hash不变；源码内容变化，hash变化</strong></p>
 <p>之所以这样做，是因为生产环境中，浏览器会对除页面外的静态资源进行缓存</p>
 <p>如果不设置hash值，一旦代码更新，浏览器还会使用之前缓存的结果，无法使用最新的代码</p>
-<img src="http://mdrs.yuanjin.tech/img/20210508183135.png" alt="image-20210508183135487" style="zoom:50%;" />
-
 <p>有了hash值之后，即可解决此问题</p>
-<p><img src="http://mdrs.yuanjin.tech/img/20210508183454.png" alt="image-20210508183454385"></p>
 <p>webpack会在打包时自动处理hash值，并不会对我们写代码造成任何影响，但作为一个前端开发者，有必要了解这一点</p>
 <h1 id="资源路径"><a href="#资源路径" class="headerlink" title="资源路径"></a>资源路径</h1><p><strong>除代码和样式模块外，其他模块被视为资源模块</strong></p>
 <p>值得特别注意的是，<strong>资源模块在源代码中的路径和打包后的路径是不一样的</strong>，这就导致我们在编写代码的时候，根本无法知晓最终的路径</p>
@@ -22947,7 +22900,7 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./home&#x27;</span>; <span class="comment">// 若存在home.js，可省略js</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./movie&#x27;</span>; <span class="comment">// 若movie是一个目录，此次导入的是 ./movie/index.js</span></span><br></pre></td></tr></table></figure>
 
 <h1 id="路径别名"><a href="#路径别名" class="headerlink" title="路径别名"></a>路径别名</h1><p>随着体量的增长，不可避免的，会形成层级极深的目录</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">root</span><br><span class="line">	|- src</span><br><span class="line">		|- a</span><br><span class="line">				|- a1</span><br><span class="line">						|- a2</span><br><span class="line">							 |- index.js</span><br><span class="line">		|- b</span><br><span class="line">				|- b1</span><br><span class="line">						|- index.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">root</span><br><span class="line"> |- src</span><br><span class="line">	|- a</span><br><span class="line">	 |- a1</span><br><span class="line">		- a2</span><br><span class="line">		 |- index.js</span><br><span class="line">	|- b</span><br><span class="line">	 |- b1</span><br><span class="line">		 |- index.js</span><br></pre></td></tr></table></figure>
 
 <p>如果需要在<code>./src/a/a1/a2/index.js</code>中导入<code>./src/b/b1/index.js</code>，则可能产生下面特别恶心的代码</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;../../../b/b1/index.js&#x27;</span>;</span><br></pre></td></tr></table></figure>
@@ -23003,12 +22956,7 @@
 
 <h1 id="真正的webpack没有那么神奇"><a href="#真正的webpack没有那么神奇" class="headerlink" title="真正的webpack没有那么神奇"></a>真正的webpack没有那么神奇</h1><p>实际上，webpack没有做这么多事，我们不能把功劳（怨念）全归结于它</p>
 <p>它只是站在巨人（其他流氓）肩膀上而已</p>
-<p>下图可以看个热闹</p>
-<p><img src="http://mdrs.yuanjin.tech/img/20210508203658.png" alt="image-20210508203658298"></p>
 <p>webpack通过插件（plugin）和加载器（loader）将这些技术整合在一起</p>
-<p><code>上图的技术 + 乱七八糟一大堆其他技术 + 老师的配置 = 呈现给你的工程</code></p>
-<p>目前，你无须理解这一些，保持敬畏即可</p>
-<p>最后，说明一下工程中看不懂的文件：</p>
 <ul>
 <li><code>.browserslistrc</code>，表达适配的浏览器范围，会被工程化中的其他技术所使用</li>
 <li><code>babel.config.js</code>，<code>babel</code>的配置文件，做js降级处理</li>
@@ -23039,8 +22987,8 @@
   </entry>
   <entry>
     <title>npm简介</title>
-    <url>/135xyq.github.io/2022/01/20/%E5%B7%A5%E7%A8%8B%E5%8C%96-npm%E7%AE%80%E4%BB%8B/</url>
-    <content><![CDATA[<h2 id="包的安装"><a href="#包的安装" class="headerlink" title="包的安装"></a>包的安装</h2><blockquote>
+    <url>/135xyq.github.io/2021/06/20/%E5%B7%A5%E7%A8%8B%E5%8C%96-npm%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<h1 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h1><h2 id="包的安装"><a href="#包的安装" class="headerlink" title="包的安装"></a>包的安装</h2><blockquote>
 <p>安装（install）即下载包<br>由于 npm 的官方 registry 服务器位于国外，可能受网速影响导致下载缓慢或失败。因此，安装好 npm 之后，需要重新设置 registry 的地址为国内地址。目前，淘宝 <a href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a> 提供了国内的 registry 地址，先设置到该地址。设置方式为<code>npm config set registry https://registry.npm.taobao.org</code>。设置好后，通过命令<code>npm config get registry</code>进行检查</p>
 </blockquote>
 <p>npm 安装一个包，分为两种安装方式：</p>
@@ -23101,26 +23049,16 @@
 <li>devDependencies：仅开发环境的依赖包</li>
 </ul>
 <p>配置好依赖后，使用下面的命令即可安装依赖</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## 本地安装所有依赖 dependencies + devDependencies</span></span></span><br><span class="line">npm install</span><br><span class="line">npm i</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 仅安装生产环境的依赖 dependencies</span></span></span><br><span class="line">npm install --production</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">本地安装所有依赖 dependencies + devDependencies</span></span><br><span class="line">npm install</span><br><span class="line">npm i</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 仅安装生产环境的依赖 dependencies</span></span><br><span class="line">npm install --production</span><br></pre></td></tr></table></figure>
 
 <p>这样一来，代码移植就不是问题了，只需要移植源代码和package.json文件，不用移植node_modules目录，然后在移植之后通过命令即可重新恢复安装</p>
 <p>为了更加方便的添加依赖，npm支持在使用install命令时，加入一些额外的参数，用于将安装的依赖包保存到package.json文件中</p>
 <p>涉及的命令如下</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 安装依赖到生产环境</span></span></span><br><span class="line">npm i 包名</span><br><span class="line">npm i --save 包名</span><br><span class="line">npm i -S 包名</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 安装依赖到开发环境</span></span></span><br><span class="line">npm i --save-dev 包名</span><br><span class="line">npm i -D 包名</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装依赖到生产环境</span></span><br><span class="line">npm i 包名</span><br><span class="line">npm i --save 包名</span><br><span class="line">npm i -S 包名</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装依赖到开发环境</span></span><br><span class="line">npm i --save-dev 包名</span><br><span class="line">npm i -D 包名</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>自动保存的依赖版本，例如<code>^15.1.3</code>，这种书写方式叫做语义版本号（semver version），具体规则后续讲解</p>
 </blockquote>
-<h2 id="简易数据爬虫"><a href="#简易数据爬虫" class="headerlink" title="简易数据爬虫"></a>简易数据爬虫</h2><p>将豆瓣电影的电影数据抓取下来，保存到本地文件 movie.json 中</p>
-<p>需要用到的包：</p>
-<ol>
-<li>axios：专门用于在各种环境中发送网络请求，并获取到服务器响应结果</li>
-<li>cheerio：jquery的核心逻辑包，支持所有环境，可用于讲一个html字符串转换成为jquery对象，并通过jquery对象完成后续操作</li>
-<li>fs：node核心模块，专门用于文件处理<ul>
-<li>fs.writeFile(文件名, 数据)</li>
-</ul>
-</li>
-</ol>
 <h2 id="语义版本"><a href="#语义版本" class="headerlink" title="语义版本"></a>语义版本</h2><p>思考：如果你编写了一个包A，依赖另外一个包B，你在编写代码时，包B的版本是2.4.1，你是希望使用你包的人一定要安装包B，并且是2.4.1版本，还是希望他可以安装更高的版本，如果你希望它安装更高的版本，高的什么程度呢？</p>
 <p>回顾：版本号规则</p>
 <p>版本规范：主版本号.次版本号.补丁版本号</p>
@@ -23205,7 +23143,7 @@
 <p>而有的时候情况更加复杂，如果依赖包升级后，依赖也发生了变化，会有更多不确定的情况出现</p>
 <p>基于此，npm 在安装包的时候，会自动生成一个 package-lock.json 文件，该文件记录了安装包时的确切依赖关系</p>
 <p>当移植工程时，如果移植了 package-lock.json 文件，恢复安装时，会按照 package-lock.json 文件中的确切依赖进行安装，最大限度的避免了差异</p>
-<h2 id="扩展-npm的差异版本处理"><a href="#扩展-npm的差异版本处理" class="headerlink" title="[扩展]npm的差异版本处理"></a>[扩展]npm的差异版本处理</h2><p>如果两个包依赖同一个包的不同版本，如下图</p>
+<h2 id="npm的差异版本处理"><a href="#npm的差异版本处理" class="headerlink" title="npm的差异版本处理"></a>npm的差异版本处理</h2><p>如果两个包依赖同一个包的不同版本，如下图</p>
 <p><img src="/images/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/npm-%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E7%9A%84%E5%A4%84%E7%90%86.jpg"></p>
 <p>面对这种情况，在 node_modules 目录中，不会使用扁平的目录结构，而会形成嵌套的目录，如下图：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">├── node_modules</span><br><span class="line">│   ├── a </span><br><span class="line">│   │   ├── node_modules</span><br><span class="line">│   │   │   ├── c</span><br><span class="line">│   │   │   |   |—— c包的文件</span><br><span class="line">│   │   │── a包的文件     </span><br><span class="line">│   ├── b </span><br><span class="line">│   │   ├── node_modules</span><br><span class="line">│   │   │   ├── c</span><br><span class="line">│   │   │   |   |—— c包的文件</span><br><span class="line">│   │   │── b包的文件           </span><br></pre></td></tr></table></figure>
@@ -23255,8 +23193,7 @@
 </blockquote>
 <h3 id="在node中读取package-json"><a href="#在node中读取package-json" class="headerlink" title="在node中读取package.json"></a>在node中读取package.json</h3><p>有的时候，我们可能在 package.json 中配置一些自定义的字段，这些字段需要在node中读取</p>
 <p>在node 中，可以直接导入一个json格式的文件，它会自动将其转换为js对象</p>
-<h2 id="其他npm命令-ignore"><a href="#其他npm命令-ignore" class="headerlink" title="其他npm命令 {ignore}"></a>其他npm命令 {ignore}</h2><p>[toc]</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ol>
+<h2 id="其他npm命令"><a href="#其他npm命令" class="headerlink" title="其他npm命令"></a>其他npm命令</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ol>
 <li>精确安装最新版本</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install --save-exact 包名 </span><br><span class="line">npm install -E 包名</span><br></pre></td></tr></table></figure>
@@ -23274,12 +23211,12 @@
 <ol start="2">
 <li>查看包信息</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm view 包名 [子信息]</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># view aliases：v info show</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm view 包名 [子信息]</span><br><span class="line"><span class="meta">#</span><span class="bash"> view aliases：v info show</span></span><br></pre></td></tr></table></figure>
 
 <ol start="3">
 <li>查询安装包</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm list [-g] [--depth=依赖深度]</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># list aliases: ls  la  ll</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm list [-g] [--depth=依赖深度]</span><br><span class="line"><span class="meta">#</span><span class="bash"> list aliases: ls  la  ll</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><ol>
 <li>检查有哪些包需要更新</li>
@@ -23289,9 +23226,9 @@
 <ol start="2">
 <li>更新包</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm update [-g] [包名]</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># update 别名（aliases）：up、upgrade</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm update [-g] [包名]</span><br><span class="line"><span class="meta">#</span><span class="bash"> update 别名（aliases）：up、upgrade</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="卸载包"><a href="#卸载包" class="headerlink" title="卸载包"></a>卸载包</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm uninstall [-g] 包名</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># uninstall aliases: remove, rm, r, un, unlink</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="卸载包"><a href="#卸载包" class="headerlink" title="卸载包"></a>卸载包</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm uninstall [-g] 包名</span><br><span class="line"><span class="meta">#</span><span class="bash"> uninstall aliases: remove, rm, r, un, unlink</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="npm-配置"><a href="#npm-配置" class="headerlink" title="npm 配置"></a>npm 配置</h3><p>npm的配置会对其他命令产生或多或少的影响</p>
 <p>安装好npm之后，最终会产生两个配置文件，一个是用户配置，一个是系统配置，当两个文件的配置项有冲突的时候，用户配置会覆盖系统配置</p>
@@ -23346,10 +23283,9 @@
   </entry>
   <entry>
     <title>yarn简介</title>
-    <url>/135xyq.github.io/2022/01/20/%E5%B7%A5%E7%A8%8B%E5%8C%96-yarn%E7%AE%80%E4%BB%8B/</url>
-    <content><![CDATA[<h2 id="yarn-简介"><a href="#yarn-简介" class="headerlink" title="yarn 简介"></a>yarn 简介</h2><blockquote>
-<p>yarn 官网：<a href="https://www.yarnpkg.com/zh-Hans/">https://www.yarnpkg.com/zh-Hans/</a></p>
-</blockquote>
+    <url>/135xyq.github.io/2021/06/16/%E5%B7%A5%E7%A8%8B%E5%8C%96-yarn%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<h1 id="yarn"><a href="#yarn" class="headerlink" title="yarn"></a>yarn</h1><hr>
+<h2 id="yarn-简介"><a href="#yarn-简介" class="headerlink" title="yarn 简介"></a>yarn 简介</h2><p><strong><a href="https://www.yarnpkg.com/zh-Hans/">yarn 官网</a></strong></p>
 <p>yarn 是由Facebook、Google、Exponent 和 Tilde 联合推出了一个新的 JS 包管理工具，<strong>它仍然使用 npm 的registry</strong>，不过提供了全新 CLI 来对包进行管理</p>
 <p>过去，yarn 的出现极大的抢夺了 npm 的市场，甚至有人戏言，npm 只剩下一个 registry 了。</p>
 <p>之所以会出现这种情况，是因为在过去，npm 存在下面的问题：</p>
@@ -23369,7 +23305,7 @@
 <li>并行下载</li>
 <li>使用本地缓存</li>
 <li>控制台仅输出关键信息</li>
-<li>使用yanr-lock文件记录确切依赖</li>
+<li>使用yarn-lock文件记录确切依赖</li>
 </ul>
 <p>不仅如此，yarn还优化了以下内容：</p>
 <ul>
@@ -23390,7 +23326,6 @@
 </ul>
 <p><strong>总结</strong></p>
 <p>npm6 之后，可以说npm已经和yarn非常接近，甚至没有差距了。很多新的项目，又重新从yarn转回到npm。</p>
-<p>这两个包管理器是目前的主流，都必须要学习。</p>
 <h2 id="yarn-的核心命令"><a href="#yarn-的核心命令" class="headerlink" title="yarn 的核心命令"></a>yarn 的核心命令</h2><ol>
 <li><strong>初始化</strong></li>
 </ol>
@@ -24874,6 +24809,45 @@
       <tags>
         <tag>前端</tag>
         <tag>bom</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CommonJS、ES6 Module</title>
+    <url>/135xyq.github.io/2021/06/01/%E5%B7%A5%E7%A8%8B%E5%8C%96-CommonJS%E5%92%8CES6%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/</url>
+    <content><![CDATA[<h1 id="CommonJS、ES6-Module"><a href="#CommonJS、ES6-Module" class="headerlink" title="CommonJS、ES6 Module"></a>CommonJS、ES6 Module</h1><hr>
+<h2 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h2><blockquote>
+<p>标准类型：社区规范</p>
+<p>支持环境：node</p>
+<p>依赖类型：动态依赖</p>
+</blockquote>
+<h3 id="如何导出"><a href="#如何导出" class="headerlink" title="如何导出"></a>如何导出</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = 导出的值</span><br></pre></td></tr></table></figure>
+
+<h3 id="如何导入"><a href="#如何导入" class="headerlink" title="如何导入"></a>如何导入</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">&quot;模块路径&quot;</span>) <span class="comment">// 函数返回模块导出的值</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="ES-Module"><a href="#ES-Module" class="headerlink" title="ES Module"></a>ES Module</h2><blockquote>
+<p>标准类型：官方标准</p>
+<p>支持环境：node，浏览器</p>
+<p>依赖类型：静态依赖，动态依赖</p>
+</blockquote>
+<h3 id="如何导出-1"><a href="#如何导出-1" class="headerlink" title="如何导出"></a>如何导出</h3><p><strong>ES Module</strong>的导出</p>
+<p>ES Module分为两种导出方式：</p>
+<ul>
+<li>具名导出（普通导出），可以导出多个</li>
+<li>默认导出，只能导出一个</li>
+</ul>
+<p>一个模块可以同时存在两种导出方式，最终会合并为一个「对象」导出</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> a = <span class="number">1</span>; <span class="comment">// 具名，常用</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;&#125; <span class="comment">// 具名，常用</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> c = <span class="function">() =&gt;</span> &#123;&#125;  <span class="comment">// 具名，常用</span></span><br><span class="line"><span class="keyword">const</span> d = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">export</span> &#123; d &#125; <span class="comment">// 具名</span></span><br><span class="line"><span class="keyword">const</span> k = <span class="number">10</span></span><br><span class="line"><span class="keyword">export</span> &#123; k <span class="keyword">as</span> temp &#125; <span class="comment">// 具名</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// export default 3 // 默认，常用</span></span><br><span class="line"><span class="comment">// export default function() &#123;&#125; // 默认，常用</span></span><br><span class="line"><span class="comment">// const e = 4;</span></span><br><span class="line"><span class="comment">// export &#123; e as default &#125; // 默认</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> f = <span class="number">4</span>, g = <span class="number">5</span>, h = <span class="number">6</span></span><br><span class="line"><span class="keyword">export</span> &#123; f, g, h <span class="keyword">as</span> <span class="keyword">default</span>&#125; <span class="comment">// 基本 + 默认</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 以上代码将导出下面的对象</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">	a: 1,</span></span><br><span class="line"><span class="comment">	b: fn,</span></span><br><span class="line"><span class="comment">	c: fn,</span></span><br><span class="line"><span class="comment">	d: 2,</span></span><br><span class="line"><span class="comment">	temp: 10,</span></span><br><span class="line"><span class="comment">	f: 4,</span></span><br><span class="line"><span class="comment">	g: 5,</span></span><br><span class="line"><span class="comment">	default: 6</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：导出代码必须为顶级代码，即不可放到代码块中</strong></p>
+<h3 id="如何导入-1"><a href="#如何导入-1" class="headerlink" title="如何导入"></a>如何导入</h3><p>针对具名导出和默认导出，有不同的导入语法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 仅运行一次该模块，不导入任何内容</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;模块路径&quot;</span></span><br><span class="line"><span class="comment">// 常用，导入属性 a、b，放到变量a、b中。a-&gt;a, b-&gt;b</span></span><br><span class="line"><span class="keyword">import</span> &#123; a, b &#125; <span class="keyword">from</span> <span class="string">&quot;模块路径&quot;</span>   </span><br><span class="line"><span class="comment">// 常用，导入属性 default，放入变量c中。default-&gt;c</span></span><br><span class="line"><span class="keyword">import</span> c <span class="keyword">from</span> <span class="string">&quot;模块路径&quot;</span>  </span><br><span class="line"><span class="comment">// 常用，default-&gt;c，a-&gt;a, b-&gt;b</span></span><br><span class="line"><span class="keyword">import</span> c, &#123; a, b &#125; <span class="keyword">from</span> <span class="string">&quot;模块路径&quot;</span> </span><br><span class="line"><span class="comment">// 常用，将模块对象放入到变量obj中</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> obj <span class="keyword">from</span> <span class="string">&quot;模块路径&quot;</span> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入属性a、b，放到变量temp1、temp2 中</span></span><br><span class="line"><span class="keyword">import</span> &#123;a <span class="keyword">as</span> temp1, b <span class="keyword">as</span> temp2&#125; <span class="keyword">from</span> <span class="string">&quot;模块路径&quot;</span> </span><br><span class="line"><span class="comment">// 导入属性default，放入变量a中，default是关键字，不能作为变量名，必须定义别名</span></span><br><span class="line"><span class="keyword">import</span> &#123;<span class="keyword">default</span> <span class="keyword">as</span> a&#125; <span class="keyword">from</span> <span class="string">&quot;模块路径&quot;</span> </span><br><span class="line"><span class="comment">//导入属性default、b，放入变量a、b中</span></span><br><span class="line"><span class="keyword">import</span> &#123;<span class="keyword">default</span> <span class="keyword">as</span> a, b&#125; <span class="keyword">from</span> <span class="string">&quot;模块路径&quot;</span> </span><br><span class="line"><span class="comment">// 以上均为静态导入</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span>(<span class="string">&quot;模块路径&quot;</span>) <span class="comment">// 动态导入，返回一个Promise，完成时的数据为模块对象</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>前端学习笔记</category>
+        <category>前端工程化</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>CommonJS</tag>
       </tags>
   </entry>
 </search>

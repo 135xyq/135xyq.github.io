@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://135xyq.github.io/135xyq.github.io/135xyq.github.io/2021/06/20/%E5%B7%A5%E7%A8%8B%E5%8C%96-npm%E7%AE%80%E4%BB%8B/</loc>
+    <lastmod>2022-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://135xyq.github.io/135xyq.github.io/135xyq.github.io/2021/06/16/%E5%B7%A5%E7%A8%8B%E5%8C%96-yarn%E7%AE%80%E4%BB%8B/</loc>
+    <lastmod>2022-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://135xyq.github.io/135xyq.github.io/135xyq.github.io/2021/06/09/%E5%B7%A5%E7%A8%8B%E5%8C%96-webpack/</loc>
+    <lastmod>2022-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://135xyq.github.io/135xyq.github.io/135xyq.github.io/2021/06/01/%E5%B7%A5%E7%A8%8B%E5%8C%96-CommonJS%E5%92%8CES6%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/</loc>
+    <lastmod>2022-08-17</lastmod>
+  </url>
+  <url>
     <loc>https://135xyq.github.io/135xyq.github.io/135xyq.github.io/2021/05/05/%E6%A8%A1%E5%9D%97%E5%8C%96-ES6%E6%A8%A1%E5%9D%97%E5%8C%96/</loc>
     <lastmod>2022-08-17</lastmod>
   </url>
@@ -70,10 +86,6 @@
   </url>
   <url>
     <loc>https://135xyq.github.io/135xyq.github.io/135xyq.github.io/2021/03/06/ES6-%E6%96%B0%E5%A2%9E%E6%95%B0%E7%BB%84API/</loc>
-    <lastmod>2022-08-16</lastmod>
-  </url>
-  <url>
-    <loc>https://135xyq.github.io/135xyq.github.io/135xyq.github.io/2021/12/31/%E5%B7%A5%E7%A8%8B%E5%8C%96-CommonJS/</loc>
     <lastmod>2022-08-16</lastmod>
   </url>
   <url>
@@ -481,19 +493,7 @@
     <lastmod>2022-01-20</lastmod>
   </url>
   <url>
-    <loc>https://135xyq.github.io/135xyq.github.io/135xyq.github.io/2022/01/20/%E5%B7%A5%E7%A8%8B%E5%8C%96-npm%E7%AE%80%E4%BB%8B/</loc>
-    <lastmod>2022-01-20</lastmod>
-  </url>
-  <url>
-    <loc>https://135xyq.github.io/135xyq.github.io/135xyq.github.io/2022/01/20/%E5%B7%A5%E7%A8%8B%E5%8C%96-yarn%E7%AE%80%E4%BB%8B/</loc>
-    <lastmod>2022-01-20</lastmod>
-  </url>
-  <url>
     <loc>https://135xyq.github.io/135xyq.github.io/135xyq.github.io/2021/12/31/%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2022-01-01</lastmod>
-  </url>
-  <url>
-    <loc>https://135xyq.github.io/135xyq.github.io/135xyq.github.io/2021/12/31/%E5%B7%A5%E7%A8%8B%E5%8C%96-webpack/</loc>
     <lastmod>2022-01-01</lastmod>
   </url>
 </urlset> 
