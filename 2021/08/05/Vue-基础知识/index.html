@@ -20,32 +20,32 @@
   <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"135xyq.github.io","root":"/135xyq.github.io/","images":"/135xyq.github.io/images","scheme":"Pisces","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/135xyq.github.io/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/135xyq.github.io/js/config.js"></script>
-<meta name="description" content="vue2钩子函数的使用">
+<meta name="description" content="vue2中的页面渲染流程和原理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue2中的组件生命周期">
-<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/2022/01/01/Vue-%E7%BB%84%E4%BB%B6%E7%94%9F%E5%AD%98%E5%91%A8%E6%9C%9F/index.html">
+<meta property="og:title" content="vue2基础知识">
+<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/2021/08/05/Vue-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
 <meta property="og:site_name" content="Ethan">
-<meta property="og:description" content="vue2钩子函数的使用">
+<meta property="og:description" content="vue2中的页面渲染流程和原理">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://135xyq.github.io/images/vue2/%E7%BB%84%E4%BB%B6%E7%94%9F%E5%AD%98%E5%91%A8%E6%9C%9F-1.jpg">
-<meta property="og:image" content="https://135xyq.github.io/images/vue2/%E7%BB%84%E4%BB%B6%E7%94%9F%E5%AD%98%E5%91%A8%E6%9C%9F-2.jpg">
-<meta property="article:published_time" content="2022-01-01T06:13:47.000Z">
-<meta property="article:modified_time" content="2022-01-20T07:29:23.084Z">
+<meta property="og:image" content="https://135xyq.github.io/images/vue2/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%B3%A8%E5%85%A5.jpg">
+<meta property="og:image" content="https://135xyq.github.io/images/vue2/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%AE%8C%E6%95%B4%E9%80%BB%E8%BE%91.jpg">
+<meta property="article:published_time" content="2021-08-05T06:02:47.000Z">
+<meta property="article:modified_time" content="2022-08-17T06:54:34.560Z">
 <meta property="article:author" content="Ethan">
-<meta property="article:tag" content="vue2">
 <meta property="article:tag" content="前端">
+<meta property="article:tag" content="vue2">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://135xyq.github.io/images/vue2/%E7%BB%84%E4%BB%B6%E7%94%9F%E5%AD%98%E5%91%A8%E6%9C%9F-1.jpg">
+<meta name="twitter:image" content="https://135xyq.github.io/images/vue2/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%B3%A8%E5%85%A5.jpg">
 
 
-<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/2022/01/01/Vue-%E7%BB%84%E4%BB%B6%E7%94%9F%E5%AD%98%E5%91%A8%E6%9C%9F/">
+<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/2021/08/05/Vue-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://135xyq.github.io/135xyq.github.io/2022/01/01/Vue-%E7%BB%84%E4%BB%B6%E7%94%9F%E5%AD%98%E5%91%A8%E6%9C%9F/","path":"2022/01/01/Vue-组件生存周期/","title":"vue2中的组件生命周期"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://135xyq.github.io/135xyq.github.io/2021/08/05/Vue-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/","path":"2021/08/05/Vue-基础知识/","title":"vue2基础知识"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>vue2中的组件生命周期 | Ethan</title>
+<title>vue2基础知识 | Ethan</title>
   
 
   <script src="/135xyq.github.io/js/third-party/analytics/baidu-analytics.js"></script>
@@ -154,7 +154,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">1.</span> <span class="nav-text">组件生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%BA%94%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">常见应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E8%BF%9C%E7%A8%8B%E6%95%B0%E6%8D%AE"><span class="nav-number">2.1.</span> <span class="nav-text">加载远程数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E6%93%8D%E4%BD%9CDOM"><span class="nav-number">2.2.</span> <span class="nav-text">直接操作DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E5%92%8C%E6%B8%85%E9%99%A4%E8%AE%A1%E6%97%B6%E5%99%A8"><span class="nav-number">2.3.</span> <span class="nav-text">启动和清除计时器</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5"><span class="nav-number">1.</span> <span class="nav-text">注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%99%9A%E6%8B%9FDOM%E6%A0%91"><span class="nav-number">2.</span> <span class="nav-text">虚拟DOM树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%82%E8%BD%BD"><span class="nav-number">3.</span> <span class="nav-text">挂载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">完整流程</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -204,9 +204,6 @@
         <a href="https://plus.google.com/%E8%B0%A2%E6%B0%B8%E5%BC%BA" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;谢永强" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i></a>
       </span>
   </div>
-  <div class="cc-license site-overview-item animated" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
-  </div>
 
 
 
@@ -245,7 +242,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://135xyq.github.io/135xyq.github.io/2022/01/01/Vue-%E7%BB%84%E4%BB%B6%E7%94%9F%E5%AD%98%E5%91%A8%E6%9C%9F/">
+    <link itemprop="mainEntityOfPage" href="https://135xyq.github.io/135xyq.github.io/2021/08/05/Vue-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/135xyq.github.io/images/avatar.jpeg">
@@ -258,7 +255,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          vue2中的组件生命周期
+          vue2基础知识
         </h1>
 
         <div class="post-meta-container">
@@ -269,14 +266,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-01-01 14:13:47" itemprop="dateCreated datePublished" datetime="2022-01-01T14:13:47+08:00">2022-01-01</time>
+      <time title="创建时间：2021-08-05 14:02:47" itemprop="dateCreated datePublished" datetime="2021-08-05T14:02:47+08:00">2021-08-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-01-20 15:29:23" itemprop="dateModified" datetime="2022-01-20T15:29:23+08:00">2022-01-20</time>
+      <time title="修改时间：2022-08-17 14:54:34" itemprop="dateModified" datetime="2022-08-17T14:54:34+08:00">2022-08-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -309,8 +306,8 @@
       <span class="post-meta-item-text">Changyan：</span>
     
     
-      <a title="changyan" href="/135xyq.github.io/2022/01/01/Vue-%E7%BB%84%E4%BB%B6%E7%94%9F%E5%AD%98%E5%91%A8%E6%9C%9F/#SOHUCS" itemprop="discussionUrl">
-        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2022/01/01/Vue-组件生存周期/" itemprop="commentCount"></span>
+      <a title="changyan" href="/135xyq.github.io/2021/08/05/Vue-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2021/08/05/Vue-基础知识/" itemprop="commentCount"></span>
       </a>
     
   </span>
@@ -322,7 +319,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>638</span>
+      <span>1k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -333,7 +330,7 @@
     </span>
 </div>
 
-            <div class="post-description">vue2钩子函数的使用</div>
+            <div class="post-description">vue2中的页面渲染流程和原理</div>
         </div>
       </header>
 
@@ -341,17 +338,42 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="组件生命周期"><a href="#组件生命周期" class="headerlink" title="组件生命周期"></a>组件生命周期</h1><p><img src="/images/vue2/%E7%BB%84%E4%BB%B6%E7%94%9F%E5%AD%98%E5%91%A8%E6%9C%9F-1.jpg"></p>
-<p><img src="/images/vue2/%E7%BB%84%E4%BB%B6%E7%94%9F%E5%AD%98%E5%91%A8%E6%9C%9F-2.jpg"></p>
-<h1 id="常见应用"><a href="#常见应用" class="headerlink" title="常见应用"></a>常见应用</h1><blockquote>
-<p>不要死记硬背，要根据具体情况灵活处理</p>
+        <h2 id="注入"><a href="#注入" class="headerlink" title="注入"></a>注入</h2><p><img src="/images/vue2/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%B3%A8%E5%85%A5.jpg" alt="image-20201110163548294"></p>
+<p>vue会将以下配置注入到vue实例：</p>
+<ul>
+<li>data：和界面相关的数据</li>
+<li>computed：通过已有数据计算得来的数据，</li>
+<li>methods：方法</li>
+</ul>
+<blockquote>
+<p>模板中可以使用vue实例中的成员</p>
 </blockquote>
-<h2 id="加载远程数据"><a href="#加载远程数据" class="headerlink" title="加载远程数据"></a>加载远程数据</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="function"><span class="title">data</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">news</span>: []</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">async</span> <span class="function"><span class="title">created</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.news = <span class="keyword">await</span> getNews();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对象或数组默认值必须从一个工厂函数获取</p>
+<h2 id="虚拟DOM树"><a href="#虚拟DOM树" class="headerlink" title="虚拟DOM树"></a>虚拟DOM树</h2><p>直接操作真实的DOM会引发严重的效率问题，vue使用虚拟DOM（vnode）的方式来描述要渲染的内容</p>
+<p>vnode是一个<strong>普通的</strong>JS对象，用于描述界面上应该有什么，比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vnode = &#123;</span><br><span class="line">  <span class="attr">tag</span>: <span class="string">&quot;h1&quot;</span>,</span><br><span class="line">  <span class="attr">children</span>: [</span><br><span class="line">    &#123; <span class="attr">tag</span>: <span class="literal">undefined</span>, <span class="attr">text</span>: <span class="string">&quot;第一个vue应用：Hello World&quot;</span>&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="直接操作DOM"><a href="#直接操作DOM" class="headerlink" title="直接操作DOM"></a>直接操作DOM</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="function"><span class="title">data</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">containerWidth</span>:<span class="number">0</span>,</span><br><span class="line">    	<span class="attr">containerHeight</span>:<span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">mounted</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.containerWidth = <span class="built_in">this</span>.$refs.container.clientWidth;</span><br><span class="line">    <span class="built_in">this</span>.containerHeight = <span class="built_in">this</span>.$refs.container.containerHeight;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的对象描述了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">有一个标签名为h1的节点，它有一个子节点，该子节点是一个文本，内容为「第一个vue应用：Hello World」</span><br></pre></td></tr></table></figure>
 
-<h2 id="启动和清除计时器"><a href="#启动和清除计时器" class="headerlink" title="启动和清除计时器"></a>启动和清除计时器</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="function"><span class="title">data</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">timer</span>: <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">created</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.timer = <span class="built_in">setInterval</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">     ... </span><br><span class="line">    &#125;, <span class="number">1000</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">destroyed</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">clearInterval</span>(<span class="built_in">this</span>.timer);               </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>vue模板并不是真实的DOM，它会被编译为虚拟DOM</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>第一个vue应用：&#123;&#123;title&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>作者：&#123;&#123;author&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<p>上面的模板会被编译为类似下面结构的虚拟DOM</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">tag</span>: <span class="string">&quot;div&quot;</span>,</span><br><span class="line">  <span class="attr">children</span>: [</span><br><span class="line">    &#123; <span class="attr">tag</span>: <span class="string">&quot;h1&quot;</span>, <span class="attr">children</span>: [ &#123; <span class="attr">text</span>: <span class="string">&quot;第一个vue应用：Hello World&quot;</span> &#125; ] &#125;,</span><br><span class="line">    &#123; <span class="attr">tag</span>: <span class="string">&quot;p&quot;</span>, <span class="attr">children</span>: [ &#123; <span class="attr">text</span>: <span class="string">&quot;作者：谢&quot;</span> &#125; ] &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>虚拟DOM树会最终生成为真实的DOM树</p>
+<p>当数据变化后，将引发重新渲染，vue会比较新旧两棵vnode tree，找出差异，然后仅把差异部分应用到真实dom tree中</p>
+<p><strong>可见，在vue中，要得到最终的界面，必须要生成一个vnode tree</strong></p>
+<p>vue通过以下逻辑生成vnode tree：</p>
+<p><strong>注意：虚拟节点树必须是单根的</strong></p>
+<h2 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h2><p>将生成的真实DOM树，放置到某个元素位置，称之为<strong>挂载</strong></p>
+<p>挂载的方式：</p>
+<ol>
+<li>通过<code>el:&quot;css选择器&quot;</code>进行配置</li>
+<li>通过<code>vue实例.$mount(&quot;css选择器&quot;)</code>进行配置</li>
+</ol>
+<h2 id="完整流程"><a href="#完整流程" class="headerlink" title="完整流程"></a>完整流程</h2><p><img src="/images/vue2/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%AE%8C%E6%95%B4%E9%80%BB%E8%BE%91.jpg"></p>
 
     </div>
 
@@ -376,23 +398,6 @@
       </div>
 
   </div>
-</div>
-
-          
-
-<div class="post-copyright">
-<ul>
-  <li class="post-copyright-author">
-      <strong>本文作者： </strong>Ethan
-  </li>
-  <li class="post-copyright-link">
-      <strong>本文链接：</strong>
-      <a href="https://135xyq.github.io/135xyq.github.io/2022/01/01/Vue-%E7%BB%84%E4%BB%B6%E7%94%9F%E5%AD%98%E5%91%A8%E6%9C%9F/" title="vue2中的组件生命周期">https://135xyq.github.io/135xyq.github.io/2022/01/01/Vue-组件生存周期/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
 </div>
 
           <div class="followme">
@@ -423,21 +428,21 @@
 </div>
 
           <div class="post-tags">
-              <a href="/135xyq.github.io/tags/vue2/" rel="tag"><i class="fa fa-tag"></i> vue2</a>
               <a href="/135xyq.github.io/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/135xyq.github.io/tags/vue2/" rel="tag"><i class="fa fa-tag"></i> vue2</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/135xyq.github.io/2022/01/01/Vue-%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94/" rel="prev" title="vue2中响应式原理">
-                  <i class="fa fa-chevron-left"></i> vue2中响应式原理
+                <a href="/135xyq.github.io/2021/08/01/Vue-%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B/" rel="prev" title="vue2搭建工程">
+                  <i class="fa fa-chevron-left"></i> vue2搭建工程
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/135xyq.github.io/2022/01/01/Vue-%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7/" rel="next" title="vue2中计算属性">
-                  vue2中计算属性 <i class="fa fa-chevron-right"></i>
+                <a href="/135xyq.github.io/2021/08/10/Vue-%E7%BB%84%E4%BB%B6/" rel="next" title="vue2组件">
+                  vue2组件 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -987,5 +992,5 @@ darkmode.showWidget();
 <script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvS6KuDV","appkey":"48e71f62cb3f29222e2ee2c1f7abcc74"}</script>
 <script src="/135xyq.github.io/js/third-party/comments/changyan.js"></script>
 
-<script src="/135xyq.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</body>
 </html>

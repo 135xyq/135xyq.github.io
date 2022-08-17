@@ -23,25 +23,25 @@
 <meta name="description" content="vue2使用脚手架搭建工程的步骤">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue2搭建工程">
-<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/2022/01/01/Vue-%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B/index.html">
+<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/2021/08/01/Vue-%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Ethan">
 <meta property="og:description" content="vue2使用脚手架搭建工程的步骤">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://135xyq.github.io/images/vue2/vue2%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B-SFC.jpg">
-<meta property="article:published_time" content="2022-01-01T06:02:47.000Z">
-<meta property="article:modified_time" content="2022-01-26T08:49:43.432Z">
+<meta property="article:published_time" content="2021-08-01T06:02:47.000Z">
+<meta property="article:modified_time" content="2022-08-17T06:46:42.977Z">
 <meta property="article:author" content="Ethan">
-<meta property="article:tag" content="vue2">
 <meta property="article:tag" content="前端">
+<meta property="article:tag" content="vue2">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://135xyq.github.io/images/vue2/vue2%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B-SFC.jpg">
 
 
-<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/2022/01/01/Vue-%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B/">
+<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/2021/08/01/Vue-%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://135xyq.github.io/135xyq.github.io/2022/01/01/Vue-%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B/","path":"2022/01/01/Vue-搭建工程/","title":"vue2搭建工程"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://135xyq.github.io/135xyq.github.io/2021/08/01/Vue-%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B/","path":"2021/08/01/Vue-搭建工程/","title":"vue2搭建工程"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>vue2搭建工程 | Ethan</title>
@@ -153,7 +153,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-cli"><span class="nav-number">1.</span> <span class="nav-text">vue-cli</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SFC"><span class="nav-number">2.</span> <span class="nav-text">SFC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%84%E7%BC%96%E8%AF%91"><span class="nav-number">3.</span> <span class="nav-text">预编译</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%90%AD%E5%BB%BAvue2%E5%B7%A5%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">搭建vue2工程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-cli"><span class="nav-number">1.1.</span> <span class="nav-text">vue-cli</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SFC"><span class="nav-number">1.2.</span> <span class="nav-text">SFC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E7%BC%96%E8%AF%91"><span class="nav-number">1.3.</span> <span class="nav-text">预编译</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -203,9 +203,6 @@
         <a href="https://plus.google.com/%E8%B0%A2%E6%B0%B8%E5%BC%BA" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;谢永强" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i></a>
       </span>
   </div>
-  <div class="cc-license site-overview-item animated" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
-  </div>
 
 
 
@@ -244,7 +241,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://135xyq.github.io/135xyq.github.io/2022/01/01/Vue-%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://135xyq.github.io/135xyq.github.io/2021/08/01/Vue-%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/135xyq.github.io/images/avatar.jpeg">
@@ -268,14 +265,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-01-01 14:02:47" itemprop="dateCreated datePublished" datetime="2022-01-01T14:02:47+08:00">2022-01-01</time>
+      <time title="创建时间：2021-08-01 14:02:47" itemprop="dateCreated datePublished" datetime="2021-08-01T14:02:47+08:00">2021-08-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-01-26 16:49:43" itemprop="dateModified" datetime="2022-01-26T16:49:43+08:00">2022-01-26</time>
+      <time title="修改时间：2022-08-17 14:46:42" itemprop="dateModified" datetime="2022-08-17T14:46:42+08:00">2022-08-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -308,8 +305,8 @@
       <span class="post-meta-item-text">Changyan：</span>
     
     
-      <a title="changyan" href="/135xyq.github.io/2022/01/01/Vue-%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B/#SOHUCS" itemprop="discussionUrl">
-        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2022/01/01/Vue-搭建工程/" itemprop="commentCount"></span>
+      <a title="changyan" href="/135xyq.github.io/2021/08/01/Vue-%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2021/08/01/Vue-搭建工程/" itemprop="commentCount"></span>
       </a>
     
   </span>
@@ -321,7 +318,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>505</span>
+      <span>513</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -340,8 +337,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>vue-cli: <a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh/">https://cli.vuejs.org/zh/</a></p>
-<h1 id="vue-cli"><a href="#vue-cli" class="headerlink" title="vue-cli"></a>vue-cli</h1><p><code>vue-cli</code>是一个脚手架工具，用于搭建<code>vue</code>工程</p>
+        <h1 id="搭建vue2工程"><a href="#搭建vue2工程" class="headerlink" title="搭建vue2工程"></a>搭建vue2工程</h1><p>vue-cli: <a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh/">https://cli.vuejs.org/zh/</a></p>
+<h2 id="vue-cli"><a href="#vue-cli" class="headerlink" title="vue-cli"></a>vue-cli</h2><p><code>vue-cli</code>是一个脚手架工具，用于搭建<code>vue</code>工程</p>
 <p>它内部使用了<code>webpack</code>，并预置了诸多插件（<code>plugin</code>）和加载器（<code>loader</code>），以达到开箱即用的效果</p>
 <p>除了基本的插件和加载器外，<code>vue-cli</code>还预置了：</p>
 <ul>
@@ -351,12 +348,12 @@
 <li>postcss</li>
 <li>less-loader</li>
 </ul>
-<h1 id="SFC"><a href="#SFC" class="headerlink" title="SFC"></a>SFC</h1><p>单文件组件，Single File Component，即一个文件就包含了一个组件所需的全部代码</p>
+<h2 id="SFC"><a href="#SFC" class="headerlink" title="SFC"></a>SFC</h2><p>单文件组件，Single File Component，即一个文件就包含了一个组件所需的全部代码</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 组件模板代码 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">  <span class="comment">// 组件配置</span></span></span><br><span class="line"><span class="javascript">&#125;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">	<span class="comment">/* 组件样式 */</span></span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h1 id="预编译"><a href="#预编译" class="headerlink" title="预编译"></a>预编译</h1><p>当<code>vue-cli</code>进行<strong>打包</strong>时，会直接把组件中的模板转换为<code>render</code>函数，这叫做模板预编译</p>
+<h2 id="预编译"><a href="#预编译" class="headerlink" title="预编译"></a>预编译</h2><p>当<code>vue-cli</code>进行<strong>打包</strong>时，会直接把组件中的模板转换为<code>render</code>函数，这叫做模板预编译</p>
 <p>这样做的好处在于：</p>
 <ol>
 <li>运行时就不再需要编译模板了，提高了运行效率</li>
@@ -389,23 +386,6 @@
   </div>
 </div>
 
-          
-
-<div class="post-copyright">
-<ul>
-  <li class="post-copyright-author">
-      <strong>本文作者： </strong>Ethan
-  </li>
-  <li class="post-copyright-link">
-      <strong>本文链接：</strong>
-      <a href="https://135xyq.github.io/135xyq.github.io/2022/01/01/Vue-%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B/" title="vue2搭建工程">https://135xyq.github.io/135xyq.github.io/2022/01/01/Vue-搭建工程/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
           <div class="followme">
   <span>欢迎关注我的其它发布渠道</span>
 
@@ -434,21 +414,21 @@
 </div>
 
           <div class="post-tags">
-              <a href="/135xyq.github.io/tags/vue2/" rel="tag"><i class="fa fa-tag"></i> vue2</a>
               <a href="/135xyq.github.io/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/135xyq.github.io/tags/vue2/" rel="tag"><i class="fa fa-tag"></i> vue2</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/135xyq.github.io/2022/01/01/Vue-%E6%B7%B7%E5%85%A5%E5%92%8C%E7%BB%84%E4%BB%B6%E9%80%92%E5%BD%92/" rel="prev" title="vue2中混入和组件递归">
-                  <i class="fa fa-chevron-left"></i> vue2中混入和组件递归
+                <a href="/135xyq.github.io/2021/07/01/%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="prev" title="网络的基本知识">
+                  <i class="fa fa-chevron-left"></i> 网络的基本知识
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/135xyq.github.io/2022/01/01/Vue-%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1&watch/" rel="next" title="vue2中的动态路由">
-                  vue2中的动态路由 <i class="fa fa-chevron-right"></i>
+                <a href="/135xyq.github.io/2021/08/05/Vue-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="next" title="vue2基础知识">
+                  vue2基础知识 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -998,5 +978,5 @@ darkmode.showWidget();
 <script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvS6KuDV","appkey":"48e71f62cb3f29222e2ee2c1f7abcc74"}</script>
 <script src="/135xyq.github.io/js/third-party/comments/changyan.js"></script>
 
-<script src="/135xyq.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</body>
 </html>

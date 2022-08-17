@@ -20,33 +20,33 @@
   <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"135xyq.github.io","root":"/135xyq.github.io/","images":"/135xyq.github.io/images","scheme":"Pisces","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/135xyq.github.io/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/135xyq.github.io/js/config.js"></script>
-<meta name="description" content="vue2中的页面渲染流程和原理">
+<meta name="description" content="vue2中的虚拟dom的概念和使用原因">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue2中的注入">
-<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/2022/01/01/Vue-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:title" content="vue2中虚拟节点">
+<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/2022/08/10/Vue-%E8%99%9A%E6%8B%9F%E8%8A%82%E7%82%B9/index.html">
 <meta property="og:site_name" content="Ethan">
-<meta property="og:description" content="vue2中的页面渲染流程和原理">
+<meta property="og:description" content="vue2中的虚拟dom的概念和使用原因">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://135xyq.github.io/images/vue2/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%B3%A8%E5%85%A5.jpg">
-<meta property="og:image" content="https://135xyq.github.io/images/vue2/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E7%94%9F%E6%88%90dom%E6%A0%91.jpg">
-<meta property="og:image" content="https://135xyq.github.io/images/vue2/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%AE%8C%E6%95%B4%E9%80%BB%E8%BE%91.jpg">
-<meta property="article:published_time" content="2022-01-01T06:02:47.000Z">
-<meta property="article:modified_time" content="2022-01-20T07:18:42.241Z">
+<meta property="og:image" content="https://135xyq.github.io/images/vue2/%E8%99%9A%E6%8B%9F%E8%8A%82%E7%82%B9-%E8%99%9A%E6%8B%9FDOM.jpg">
+<meta property="og:image" content="https://135xyq.github.io/images/vue2/%E8%99%9A%E6%8B%9F%E8%8A%82%E7%82%B9-%E6%9B%B4%E6%96%B0.jpg">
+<meta property="article:published_time" content="2022-08-10T06:02:47.000Z">
+<meta property="article:modified_time" content="2022-08-17T06:52:21.725Z">
 <meta property="article:author" content="Ethan">
-<meta property="article:tag" content="vue2">
 <meta property="article:tag" content="前端">
+<meta property="article:tag" content="vue2">
+<meta property="article:tag" content="面试题">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://135xyq.github.io/images/vue2/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%B3%A8%E5%85%A5.jpg">
+<meta name="twitter:image" content="https://135xyq.github.io/images/vue2/%E8%99%9A%E6%8B%9F%E8%8A%82%E7%82%B9-%E8%99%9A%E6%8B%9FDOM.jpg">
 
 
-<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/2022/01/01/Vue-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/2022/08/10/Vue-%E8%99%9A%E6%8B%9F%E8%8A%82%E7%82%B9/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://135xyq.github.io/135xyq.github.io/2022/01/01/Vue-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/","path":"2022/01/01/Vue-基础知识/","title":"vue2中的注入"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://135xyq.github.io/135xyq.github.io/2022/08/10/Vue-%E8%99%9A%E6%8B%9F%E8%8A%82%E7%82%B9/","path":"2022/08/10/Vue-虚拟节点/","title":"vue2中虚拟节点"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>vue2中的注入 | Ethan</title>
+<title>vue2中虚拟节点 | Ethan</title>
   
 
   <script src="/135xyq.github.io/js/third-party/analytics/baidu-analytics.js"></script>
@@ -142,7 +142,7 @@
   </div>
 
   <aside class="sidebar">
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -155,7 +155,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5"><span class="nav-number">1.</span> <span class="nav-text">注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%99%9A%E6%8B%9FDOM%E6%A0%91"><span class="nav-number">2.</span> <span class="nav-text">虚拟DOM树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%82%E8%BD%BD"><span class="nav-number">3.</span> <span class="nav-text">挂载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">完整流程</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -205,9 +204,6 @@
         <a href="https://plus.google.com/%E8%B0%A2%E6%B0%B8%E5%BC%BA" title="Google → https:&#x2F;&#x2F;plus.google.com&#x2F;谢永强" rel="noopener" target="_blank"><i class="fab fa-google fa-fw"></i></a>
       </span>
   </div>
-  <div class="cc-license site-overview-item animated" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://unpkg.com/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
-  </div>
 
 
 
@@ -246,7 +242,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://135xyq.github.io/135xyq.github.io/2022/01/01/Vue-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+    <link itemprop="mainEntityOfPage" href="https://135xyq.github.io/135xyq.github.io/2022/08/10/Vue-%E8%99%9A%E6%8B%9F%E8%8A%82%E7%82%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/135xyq.github.io/images/avatar.jpeg">
@@ -259,7 +255,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          vue2中的注入
+          vue2中虚拟节点
         </h1>
 
         <div class="post-meta-container">
@@ -270,14 +266,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-01-01 14:02:47" itemprop="dateCreated datePublished" datetime="2022-01-01T14:02:47+08:00">2022-01-01</time>
+      <time title="创建时间：2022-08-10 14:02:47" itemprop="dateCreated datePublished" datetime="2022-08-10T14:02:47+08:00">2022-08-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-01-20 15:18:42" itemprop="dateModified" datetime="2022-01-20T15:18:42+08:00">2022-01-20</time>
+      <time title="修改时间：2022-08-17 14:52:21" itemprop="dateModified" datetime="2022-08-17T14:52:21+08:00">2022-08-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -310,8 +306,8 @@
       <span class="post-meta-item-text">Changyan：</span>
     
     
-      <a title="changyan" href="/135xyq.github.io/2022/01/01/Vue-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/#SOHUCS" itemprop="discussionUrl">
-        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2022/01/01/Vue-基础知识/" itemprop="commentCount"></span>
+      <a title="changyan" href="/135xyq.github.io/2022/08/10/Vue-%E8%99%9A%E6%8B%9F%E8%8A%82%E7%82%B9/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2022/08/10/Vue-虚拟节点/" itemprop="commentCount"></span>
       </a>
     
   </span>
@@ -323,7 +319,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1k</span>
+      <span>915</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -334,7 +330,7 @@
     </span>
 </div>
 
-            <div class="post-description">vue2中的页面渲染流程和原理</div>
+            <div class="post-description">vue2中的虚拟dom的概念和使用原因</div>
         </div>
       </header>
 
@@ -342,43 +338,41 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="注入"><a href="#注入" class="headerlink" title="注入"></a>注入</h2><p><img src="/images/vue2/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E6%B3%A8%E5%85%A5.jpg" alt="image-20201110163548294"></p>
-<p>vue会将以下配置注入到vue实例：</p>
-<ul>
-<li>data：和界面相关的数据</li>
-<li>computed：通过已有数据计算得来的数据，</li>
-<li>methods：方法</li>
-</ul>
-<blockquote>
-<p>模板中可以使用vue实例中的成员</p>
-</blockquote>
-<p> // 对象或数组默认值必须从一个工厂函数获取</p>
-<h2 id="虚拟DOM树"><a href="#虚拟DOM树" class="headerlink" title="虚拟DOM树"></a>虚拟DOM树</h2><p>直接操作真实的DOM会引发严重的效率问题，vue使用虚拟DOM（vnode）的方式来描述要渲染的内容</p>
-<p>vnode是一个<strong>普通的</strong>JS对象，用于描述界面上应该有什么，比如：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vnode = &#123;</span><br><span class="line">  <span class="attr">tag</span>: <span class="string">&quot;h1&quot;</span>,</span><br><span class="line">  <span class="attr">children</span>: [</span><br><span class="line">    &#123; <span class="attr">tag</span>: <span class="literal">undefined</span>, <span class="attr">text</span>: <span class="string">&quot;第一个vue应用：Hello World&quot;</span>&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面的对象描述了：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">有一个标签名为h1的节点，它有一个子节点，该子节点是一个文本，内容为「第一个vue应用：Hello World」</span><br></pre></td></tr></table></figure>
-
-<p><strong>vue模板并不是真实的DOM，它会被编译为虚拟DOM</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>第一个vue应用：&#123;&#123;title&#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>作者：&#123;&#123;author&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>上面的模板会被编译为类似下面结构的虚拟DOM</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">tag</span>: <span class="string">&quot;div&quot;</span>,</span><br><span class="line">  <span class="attr">children</span>: [</span><br><span class="line">    &#123; <span class="attr">tag</span>: <span class="string">&quot;h1&quot;</span>, <span class="attr">children</span>: [ &#123; <span class="attr">text</span>: <span class="string">&quot;第一个vue应用：Hello World&quot;</span> &#125; ] &#125;,</span><br><span class="line">    &#123; <span class="attr">tag</span>: <span class="string">&quot;p&quot;</span>, <span class="attr">children</span>: [ &#123; <span class="attr">text</span>: <span class="string">&quot;作者：袁&quot;</span> &#125; ] &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>虚拟DOM树会最终生成为真实的DOM树</p>
-<p>当数据变化后，将引发重新渲染，vue会比较新旧两棵vnode tree，找出差异，然后仅把差异部分应用到真实dom tree中</p>
-<p><img src="/images/vue2/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E7%94%9F%E6%88%90dom%E6%A0%91.jpg" alt="image-20201106145409844"></p>
-<p><strong>可见，在vue中，要得到最终的界面，必须要生成一个vnode tree</strong></p>
-<p>vue通过以下逻辑生成vnode tree：</p>
-<p><strong>注意：虚拟节点树必须是单根的</strong></p>
-<h2 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h2><p>将生成的真实DOM树，放置到某个元素位置，称之为<strong>挂载</strong></p>
-<p>挂载的方式：</p>
+        <p>面试题：请你阐述一下对vue虚拟dom的理解</p>
 <ol>
-<li>通过<code>el:&quot;css选择器&quot;</code>进行配置</li>
-<li>通过<code>vue实例.$mount(&quot;css选择器&quot;)</code>进行配置</li>
+<li><p>什么是虚拟dom？</p>
+<p>虚拟dom本质上就是一个普通的JS对象，用于描述视图的界面结构</p>
+<p>在vue中，每个组件都有一个<code>render</code>函数，每个<code>render</code>函数都会返回一个虚拟dom树，这也就意味着每个组件都对应一棵虚拟DOM树</p>
+</li>
 </ol>
-<h2 id="完整流程"><a href="#完整流程" class="headerlink" title="完整流程"></a>完整流程</h2><p><img src="/images/vue2/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%AE%8C%E6%95%B4%E9%80%BB%E8%BE%91.jpg"></p>
+<p><img src="/images/vue2/%E8%99%9A%E6%8B%9F%E8%8A%82%E7%82%B9-%E8%99%9A%E6%8B%9FDOM.jpg" alt="虚拟dom"></p>
+<ol start="2">
+<li><p>为什么需要虚拟dom？</p>
+<p>在<code>vue</code>中，渲染视图会调用<code>render</code>函数，这种渲染不仅发生在组件创建时，同时发生在视图依赖的数据更新时。如果在渲染时，直接使用真实<code>DOM</code>，由于真实<code>DOM</code>的创建、更新、插入等操作会带来大量的性能损耗，从而就会极大的降低渲染效率。</p>
+<p>因此，<code>vue</code>在渲染时，使用虚拟dom来替代真实dom，主要为解决渲染效率的问题。</p>
+</li>
+<li><p>虚拟dom是如何转换为真实dom的？</p>
+<p>在一个组件实例首次被渲染时，它先生成虚拟dom树，然后根据虚拟dom树创建真实dom，并把真实dom挂载到页面中合适的位置，此时，每个虚拟dom便会对应一个真实的dom。</p>
+<p>如果一个组件受响应式数据变化的影响，需要重新渲染时，它仍然会重新调用render函数，创建出一个新的虚拟dom树，用新树和旧树对比，通过对比，vue会找到最小更新量，然后更新必要的虚拟dom节点，最后，这些更新过的虚拟节点，会去修改它们对应的真实dom</p>
+<p>这样一来，就保证了对真实dom达到最小的改动。</p>
+</li>
+</ol>
+<p><img src="/images/vue2/%E8%99%9A%E6%8B%9F%E8%8A%82%E7%82%B9-%E6%9B%B4%E6%96%B0.jpg"></p>
+<ol start="4">
+<li><p>模板和虚拟dom的关系</p>
+<p>vue框架中有一个<code>compile</code>模块，它主要负责将模板转换为<code>render</code>函数，而<code>render</code>函数调用后将得到虚拟dom。</p>
+<p>编译的过程分两步：</p>
+<ol>
+<li>将模板字符串转换成为<code>AST</code></li>
+<li>将<code>AST</code>转换为<code>render</code>函数</li>
+</ol>
+<p>如果使用传统的引入方式，则编译时间发生在组件第一次加载时，这称之为运行时编译。</p>
+<p>如果是在<code>vue-cli</code>的默认配置下，编译发生在打包时，这称之为模板预编译。</p>
+<p>编译是一个极其耗费性能的操作，预编译可以有效的提高运行时的性能，而且，由于运行的时候已不需要编译，<code>vue-cli</code>在打包时会排除掉<code>vue</code>中的<code>compile</code>模块，以减少打包体积</p>
+<p>模板的存在，仅仅是为了让开发人员更加方便的书写界面代码</p>
+<p><strong>vue最终运行的时候，最终需要的是render函数，而不是模板，因此，模板中的各种语法，在虚拟dom中都是不存在的，它们都会变成虚拟dom的配置</strong></p>
+</li>
+</ol>
 
     </div>
 
@@ -403,23 +397,6 @@
       </div>
 
   </div>
-</div>
-
-          
-
-<div class="post-copyright">
-<ul>
-  <li class="post-copyright-author">
-      <strong>本文作者： </strong>Ethan
-  </li>
-  <li class="post-copyright-link">
-      <strong>本文链接：</strong>
-      <a href="https://135xyq.github.io/135xyq.github.io/2022/01/01/Vue-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="vue2中的注入">https://135xyq.github.io/135xyq.github.io/2022/01/01/Vue-基础知识/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
 </div>
 
           <div class="followme">
@@ -450,22 +427,20 @@
 </div>
 
           <div class="post-tags">
-              <a href="/135xyq.github.io/tags/vue2/" rel="tag"><i class="fa fa-tag"></i> vue2</a>
               <a href="/135xyq.github.io/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/135xyq.github.io/tags/vue2/" rel="tag"><i class="fa fa-tag"></i> vue2</a>
+              <a href="/135xyq.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"><i class="fa fa-tag"></i> 面试题</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/135xyq.github.io/2022/01/01/Vue-%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1&watch/" rel="prev" title="vue2中的动态路由">
-                  <i class="fa fa-chevron-left"></i> vue2中的动态路由
+                <a href="/135xyq.github.io/2022/08/04/react-%E6%8F%92%E4%BB%B6-umi/" rel="prev" title="react umi的使用">
+                  <i class="fa fa-chevron-left"></i> react umi的使用
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/135xyq.github.io/2022/01/01/Vue-%E5%BC%B9%E5%87%BA%E6%B6%88%E6%81%AF/" rel="next" title="vue2中的ref">
-                  vue2中的ref <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -1014,5 +989,5 @@ darkmode.showWidget();
 <script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvS6KuDV","appkey":"48e71f62cb3f29222e2ee2c1f7abcc74"}</script>
 <script src="/135xyq.github.io/js/third-party/comments/changyan.js"></script>
 
-<script src="/135xyq.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</body>
 </html>
