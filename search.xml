@@ -12508,9 +12508,9 @@
   </entry>
   <entry>
     <title>ES6模块化</title>
-    <url>/135xyq.github.io/2022/01/20/%E6%A8%A1%E5%9D%97%E5%8C%96-ES6%E6%A8%A1%E5%9D%97%E5%8C%96/</url>
-    <content><![CDATA[<h2 id="ES6模块化简介"><a href="#ES6模块化简介" class="headerlink" title="ES6模块化简介"></a>ES6模块化简介</h2><p>ECMA组织参考了众多社区模块化标准，终于在2015年，随着ES6发布了官方的模块化标准，后成为ES6模块化</p>
-<h3 id="ES6模块化具有以下的特点"><a href="#ES6模块化具有以下的特点" class="headerlink" title="ES6模块化具有以下的特点"></a>ES6模块化具有以下的特点</h3><ol>
+    <url>/135xyq.github.io/2021/05/05/%E6%A8%A1%E5%9D%97%E5%8C%96-ES6%E6%A8%A1%E5%9D%97%E5%8C%96/</url>
+    <content><![CDATA[<h1 id="ES6模块化简介"><a href="#ES6模块化简介" class="headerlink" title="ES6模块化简介"></a>ES6模块化简介</h1><p>ECMA组织参考了众多社区模块化标准，终于在2015年，随着ES6发布了官方的模块化标准，后成为ES6模块化</p>
+<h2 id="ES6模块化具有以下的特点"><a href="#ES6模块化具有以下的特点" class="headerlink" title="ES6模块化具有以下的特点"></a>ES6模块化具有以下的特点</h2><ol>
 <li>使用依赖<strong>预声明</strong>的方式导入模块<ol>
 <li>依赖延迟声明<ol>
 <li>优点：某些时候可以提高效率</li>
@@ -12613,7 +12613,7 @@
   </entry>
   <entry>
     <title>AMD和CMD</title>
-    <url>/135xyq.github.io/2022/01/20/%E6%A8%A1%E5%9D%97%E5%8C%96-AMD%E5%92%8CCMD/</url>
+    <url>/135xyq.github.io/2021/05/20/%E6%A8%A1%E5%9D%97%E5%8C%96-AMD%E5%92%8CCMD/</url>
     <content><![CDATA[<h2 id="浏览器端模块化的难题"><a href="#浏览器端模块化的难题" class="headerlink" title="浏览器端模块化的难题"></a>浏览器端模块化的难题</h2><p><strong>CommonJS的工作原理</strong></p>
 <p>当使用<code>require(模块路径)</code>导入一个模块时，node会做以下两件事情（不考虑模块缓存）：</p>
 <ol>
@@ -22431,7 +22431,7 @@
   </entry>
   <entry>
     <title>常用的git操作</title>
-    <url>/135xyq.github.io/2021/12/31/%E5%B7%A5%E5%85%B7-git%E6%96%87%E6%A1%A3/</url>
+    <url>/135xyq.github.io/2021/04/15/%E5%B7%A5%E5%85%B7-git%E6%96%87%E6%A1%A3/</url>
     <content><![CDATA[<h1 id="git-常用命令。"><a href="#git-常用命令。" class="headerlink" title="git 常用命令。"></a>git 常用命令。</h1><h2 id="SSH-Key"><a href="#SSH-Key" class="headerlink" title="SSH Key"></a>SSH Key</h2><blockquote>
 <p>创建SSH key</p>
 </blockquote>
@@ -22824,24 +22824,33 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git stash</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git stash pop</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="忽略文件配置（-gitignore"><a href="#忽略文件配置（-gitignore" class="headerlink" title="忽略文件配置（.gitignore)"></a>忽略文件配置（.gitignore)</h2><p>1、配置语法:</p>
-<blockquote>
-<p>以斜杠“/”开头表示目录；</p>
-<p>以星号“*”通配多个字符；</p>
-<p>以问号“?”通配单个字符</p>
-<p>以方括号“[]”包含单个字符的匹配列表；</p>
-<p>以叹号“!”表示不忽略(跟踪)匹配到的文件或目录；</p>
-</blockquote>
+<ul>
+<li><p>以斜杠“/”开头表示目录；</p>
+</li>
+<li><p>以星号“*”通配多个字符；</p>
+</li>
+<li><p>以问号“?”通配单个字符</p>
+</li>
+<li><p>以方括号“[]”包含单个字符的匹配列表；</p>
+</li>
+<li><p>以叹号“!”表示不忽略(跟踪)匹配到的文件或目录；</p>
+</li>
+</ul>
 <p>此外，git 对于 .ignore 配置文件是按行从上到下进行规则匹配的，意味着如果前面的规则匹配的范围更大，则后面的规则将不会生效；</p>
 <p>2、示例：</p>
-<p>　　（1）规则：fd1/*<br>　　　　  说明：忽略目录 fd1 下的全部内容；注意，不管是根目录下的 /fd1/ 目录，还是某个子目录 /child/fd1/ 目录，都会被忽略；</p>
-<p>　　（2）规则：/fd1/*<br>　　　　  说明：忽略根目录下的 /fd1/ 目录的全部内容；</p>
-<p>　　（3）规则：</p>
-<p>/*<br>!.gitignore<br>!/fw/bin/<br>!/fw/sf/</p>
+<ol>
+<li><p>规则：<code>fd1/*</code><br>说明：忽略目录 fd1 下的全部内容；注意，不管是根目录下的 /fd1/ 目录，还是某个子目录 /child/fd1/ 目录，都会被忽略；</p>
+</li>
+<li><p>规则：<code>/fd1/*</code><br>说明：忽略根目录下的 /fd1/ 目录的全部内容；</p>
+</li>
+<li><p>规则：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/*</span><br><span class="line">!.gitignore</span><br><span class="line">!/fw/bin/</span><br><span class="line">!/fw/sf/</span><br></pre></td></tr></table></figure></li>
+</ol>
 <p>说明：忽略全部内容，但是不忽略 .gitignore 文件、根目录下的 /fw/bin/ 和 /fw/sf/ 目录；</p>
 ]]></content>
       <categories>
         <category>前端学习笔记</category>
-        <category>工具类</category>
+        <category>工具</category>
       </categories>
       <tags>
         <tag>前端</tag>

@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://135xyq.github.io/135xyq.github.io/2021/05/05/%E6%A8%A1%E5%9D%97%E5%8C%96-ES6%E6%A8%A1%E5%9D%97%E5%8C%96/</loc>
+    
+    <lastmod>2022-08-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://135xyq.github.io/135xyq.github.io/2021/05/20/%E6%A8%A1%E5%9D%97%E5%8C%96-AMD%E5%92%8CCMD/</loc>
+    
+    <lastmod>2022-08-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://135xyq.github.io/135xyq.github.io/2021/04/15/%E5%B7%A5%E5%85%B7-git%E6%96%87%E6%A1%A3/</loc>
+    
+    <lastmod>2022-08-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://135xyq.github.io/135xyq.github.io/2021/04/12/BOM-BOM%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
     
     <lastmod>2022-08-17</lastmod>
@@ -1064,24 +1091,6 @@
   </url>
   
   <url>
-    <loc>https://135xyq.github.io/135xyq.github.io/2022/01/20/%E6%A8%A1%E5%9D%97%E5%8C%96-AMD%E5%92%8CCMD/</loc>
-    
-    <lastmod>2022-01-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://135xyq.github.io/135xyq.github.io/2022/01/20/%E6%A8%A1%E5%9D%97%E5%8C%96-ES6%E6%A8%A1%E5%9D%97%E5%8C%96/</loc>
-    
-    <lastmod>2022-01-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://135xyq.github.io/135xyq.github.io/2022/01/20/%E5%B7%A5%E7%A8%8B%E5%8C%96-npm%E7%AE%80%E4%BB%8B/</loc>
     
     <lastmod>2022-01-20</lastmod>
@@ -1110,15 +1119,6 @@
   
   <url>
     <loc>https://135xyq.github.io/135xyq.github.io/2021/12/31/%E5%B7%A5%E7%A8%8B%E5%8C%96-webpack/</loc>
-    
-    <lastmod>2022-01-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://135xyq.github.io/135xyq.github.io/2021/12/31/%E5%B7%A5%E5%85%B7-git%E6%96%87%E6%A1%A3/</loc>
     
     <lastmod>2022-01-01</lastmod>
     
@@ -1544,13 +1544,6 @@
   </url>
   
   <url>
-    <loc>https://135xyq.github.io/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%B7%A5%E5%85%B7%E7%B1%BB/</loc>
-    <lastmod>2022-08-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://135xyq.github.io/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/js%E5%B7%A5%E5%85%B7%E5%BA%93/</loc>
     <lastmod>2022-08-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -1895,6 +1888,13 @@
   
   <url>
     <loc>https://135xyq.github.io/135xyq.github.io/categories/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E9%A9%AC%E5%85%8B%E6%80%9D/</loc>
+    <lastmod>2022-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://135xyq.github.io/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2022-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

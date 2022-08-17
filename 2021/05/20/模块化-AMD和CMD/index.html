@@ -20,26 +20,29 @@
   <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"135xyq.github.io","root":"/135xyq.github.io/","images":"/135xyq.github.io/images","scheme":"Pisces","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/135xyq.github.io/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/135xyq.github.io/js/config.js"></script>
-<meta name="description" content="Ethan的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ethan">
-<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%B7%A5%E5%85%B7%E7%B1%BB/index.html">
+<meta name="description" content="AMD和CMD的介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AMD和CMD">
+<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/2021/05/20/%E6%A8%A1%E5%9D%97%E5%8C%96-AMD%E5%92%8CCMD/index.html">
 <meta property="og:site_name" content="Ethan">
-<meta property="og:description" content="Ethan的博客">
+<meta property="og:description" content="AMD和CMD的介绍">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-20T06:36:21.000Z">
+<meta property="article:modified_time" content="2022-08-17T03:03:48.445Z">
 <meta property="article:author" content="Ethan">
-<meta property="article:tag" content="Ethan的个人空间">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="模块化">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%B7%A5%E5%85%B7%E7%B1%BB/">
+<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/2021/05/20/%E6%A8%A1%E5%9D%97%E5%8C%96-AMD%E5%92%8CCMD/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"categories/前端学习笔记/工具类/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://135xyq.github.io/135xyq.github.io/2021/05/20/%E6%A8%A1%E5%9D%97%E5%8C%96-AMD%E5%92%8CCMD/","path":"2021/05/20/模块化-AMD和CMD/","title":"AMD和CMD"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>分类: 工具类 | Ethan</title>
+<title>AMD和CMD | Ethan</title>
   
 
   <script src="/135xyq.github.io/js/third-party/analytics/baidu-analytics.js"></script>
@@ -136,7 +139,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -149,6 +152,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E9%9A%BE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">浏览器端模块化的难题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AMD"><span class="nav-number">2.</span> <span class="nav-text">AMD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMD"><span class="nav-number">3.</span> <span class="nav-text">CMD</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,51 +229,227 @@
 </noscript>
 
 
-    <div class="main-inner category posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h1 class="collection-header">工具类
-          <small>分类</small>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://135xyq.github.io/135xyq.github.io/2021/05/20/%E6%A8%A1%E5%9D%97%E5%8C%96-AMD%E5%92%8CCMD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/135xyq.github.io/images/avatar.jpeg">
+      <meta itemprop="name" content="Ethan">
+      <meta itemprop="description" content="Ethan的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AMD和CMD
         </h1>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-20 14:36:21" itemprop="dateCreated datePublished" datetime="2021-05-20T14:36:21+08:00">2021-05-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-08-17 11:03:48" itemprop="dateModified" datetime="2022-08-17T11:03:48+08:00">2022-08-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">前端学习笔记</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%A8%A1%E5%9D%97%E5%8C%96/" itemprop="url" rel="index"><span itemprop="name">模块化</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/135xyq.github.io/2021/05/20/%E6%A8%A1%E5%9D%97%E5%8C%96-AMD%E5%92%8CCMD/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2021/05/20/模块化-AMD和CMD/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>916</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">AMD和CMD的介绍</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="浏览器端模块化的难题"><a href="#浏览器端模块化的难题" class="headerlink" title="浏览器端模块化的难题"></a>浏览器端模块化的难题</h2><p><strong>CommonJS的工作原理</strong></p>
+<p>当使用<code>require(模块路径)</code>导入一个模块时，node会做以下两件事情（不考虑模块缓存）：</p>
+<ol>
+<li>通过模块路径找到本机文件，并读取文件内容</li>
+<li>将文件中的代码放入到一个函数环境中执行，并将执行后module.exports的值作为require函数的返回结果</li>
+</ol>
+<p>正是这两个步骤，使得CommonJS在node端可以良好的被支持</p>
+<p>可以认为，<strong>CommonJS是同步的</strong>，必须要等到加载完文件并执行完代码后才能继续向后执行</p>
+<p><strong>当浏览器遇到CommonJS</strong></p>
+<p>当想要把CommonJS放到浏览器端时，就遇到了一些挑战</p>
+<ol>
+<li>浏览器要加载JS文件，需要远程从服务器读取，而网络传输的效率远远低于node环境中读取本地文件的效率。由于CommonJS是同步的，这会极大的降低运行性能</li>
+<li>如果需要读取JS文件内容并把它放入到一个环境中执行，需要浏览器厂商的支持，可是浏览器厂商不愿意提供支持，最大的原因是CommonJS属于社区标准，并非官方标准</li>
+</ol>
+<p><strong>新的规范</strong></p>
+<p>基于以上两点原因，浏览器无法支持模块化</p>
+<p>可这并不代表模块化不能在浏览器中实现</p>
+<p>要在浏览器中实现模块化，只要能解决上面的两个问题就行了</p>
+<p>解决办法其实很简单：</p>
+<ol>
+<li>远程加载JS浪费了时间？做成异步即可，加载完成后调用一个回调就行了</li>
+<li>模块中的代码需要放置到函数中执行？编写模块时，直接放函数中就行了</li>
+</ol>
+<p>基于这种简单有效的思路，出现了AMD和CMD规范，有效的解决了浏览器模块化的问题。</p>
+<h2 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h2><p>全称是Asynchronous Module Definition，即异步模块加载机制</p>
+<p>require.js实现了AMD规范</p>
+<p>在AMD中，导入和导出模块的代码，都必须放置在define函数中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">define([依赖的模块列表], <span class="function"><span class="keyword">function</span>(<span class="params">模块名称列表</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//模块内部的代码</span></span><br><span class="line">    <span class="keyword">return</span> 导出的内容</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h2><p>全称是Common Module Definition，公共模块定义规范</p>
+<p>sea.js实现了CMD规范</p>
+<p>在CMD中，导入和导出模块的代码，都必须放置在define函数中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params"><span class="built_in">require</span>, <span class="built_in">exports</span>, <span class="built_in">module</span></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//模块内部的代码</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-12-31T16:21:22+08:00"
-              content="2021-12-31">
-          12-31
-        </time>
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/135xyq.github.io/./images/wechatpay.png" alt="Ethan 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/135xyq.github.io/images/alipay.jpg" alt="Ethan 支付宝">
+        <span>支付宝</span>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/135xyq.github.io/2021/12/31/%E5%B7%A5%E5%85%B7-git%E6%96%87%E6%A1%A3/" itemprop="url">
-            <span itemprop="name">常用的git操作</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-    </div>
   </div>
-  
-  
-  
+</div>
 
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/yongqiangxie1">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/135xyq.github.io/images/wechat_channel.png">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/135xyq.github.io/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/135xyq.github.io/tags/%E6%A8%A1%E5%9D%97%E5%8C%96/" rel="tag"><i class="fa fa-tag"></i> 模块化</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/135xyq.github.io/2021/05/05/%E6%A8%A1%E5%9D%97%E5%8C%96-ES6%E6%A8%A1%E5%9D%97%E5%8C%96/" rel="prev" title="ES6模块化">
+                  <i class="fa fa-chevron-left"></i> ES6模块化
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/135xyq.github.io/2021/12/30/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0-Linux%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" rel="next" title="Linux期末知识点总结">
+                  Linux期末知识点总结 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS"></div>
 </div>
   </main>
 

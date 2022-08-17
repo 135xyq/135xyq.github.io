@@ -20,26 +20,33 @@
   <link rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"135xyq.github.io","root":"/135xyq.github.io/","images":"/135xyq.github.io/images","scheme":"Pisces","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/135xyq.github.io/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/135xyq.github.io/js/config.js"></script>
-<meta name="description" content="Ethan的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ethan">
-<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/archives/2022/page/10/index.html">
+<meta name="description" content="ES6模块化的介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6模块化">
+<meta property="og:url" content="https://135xyq.github.io/135xyq.github.io/2021/05/05/%E6%A8%A1%E5%9D%97%E5%8C%96-ES6%E6%A8%A1%E5%9D%97%E5%8C%96/index.html">
 <meta property="og:site_name" content="Ethan">
-<meta property="og:description" content="Ethan的博客">
+<meta property="og:description" content="ES6模块化的介绍">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://135xyq.github.io/images/%E6%A8%A1%E5%9D%97%E5%8C%96/ES6%E6%A8%A1%E5%9D%97%E5%8C%96-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA.jpg">
+<meta property="og:image" content="https://135xyq.github.io/images/%E6%A8%A1%E5%9D%97%E5%8C%96/ES6%E6%A8%A1%E5%9D%97%E5%8C%96-%E9%BB%98%E8%AE%A4%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA.jpg">
+<meta property="og:image" content="https://135xyq.github.io/images/%E6%A8%A1%E5%9D%97%E5%8C%96/ES6%E6%A8%A1%E5%9D%97%E5%8C%96-%E6%B7%B7%E5%90%88%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA.jpg">
+<meta property="article:published_time" content="2021-05-05T06:32:21.000Z">
+<meta property="article:modified_time" content="2022-08-17T03:04:21.153Z">
 <meta property="article:author" content="Ethan">
-<meta property="article:tag" content="Ethan的个人空间">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="模块化">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://135xyq.github.io/images/%E6%A8%A1%E5%9D%97%E5%8C%96/ES6%E6%A8%A1%E5%9D%97%E5%8C%96-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA.jpg">
 
 
-<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/archives/2022/page/10/">
+<link rel="canonical" href="https://135xyq.github.io/135xyq.github.io/2021/05/05/%E6%A8%A1%E5%9D%97%E5%8C%96-ES6%E6%A8%A1%E5%9D%97%E5%8C%96/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/2022/page/10/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://135xyq.github.io/135xyq.github.io/2021/05/05/%E6%A8%A1%E5%9D%97%E5%8C%96-ES6%E6%A8%A1%E5%9D%97%E5%8C%96/","path":"2021/05/05/模块化-ES6模块化/","title":"ES6模块化"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | Ethan</title>
+<title>ES6模块化 | Ethan</title>
   
 
   <script src="/135xyq.github.io/js/third-party/analytics/baidu-analytics.js"></script>
@@ -70,7 +77,7 @@
 
     <a href="/135xyq.github.io/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Ethan</h1>
+      <p class="site-title">Ethan</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">生如芥子，心藏须弥</p>
@@ -136,7 +143,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -149,6 +156,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6%E6%A8%A1%E5%9D%97%E5%8C%96%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">ES6模块化简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6%E6%A8%A1%E5%9D%97%E5%8C%96%E5%85%B7%E6%9C%89%E4%BB%A5%E4%B8%8B%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">1.1.</span> <span class="nav-text">ES6模块化具有以下的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA"><span class="nav-number">1.2.</span> <span class="nav-text">基本导入导出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97%E7%9A%84%E5%BC%95%E5%85%A5"><span class="nav-number">1.2.1.</span> <span class="nav-text">模块的引入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AF%BC%E5%87%BA%E5%92%8C%E5%AF%BC%E5%85%A5"><span class="nav-number">1.2.2.</span> <span class="nav-text">模块的基本导出和导入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%AF%BC%E5%87%BA"><span class="nav-number">1.2.3.</span> <span class="nav-text">基本导出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%AF%BC%E5%85%A5"><span class="nav-number">1.2.4.</span> <span class="nav-text">基本导入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA"><span class="nav-number">1.3.</span> <span class="nav-text">默认导入导出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E5%AF%BC%E5%87%BA"><span class="nav-number">1.3.1.</span> <span class="nav-text">默认导出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E5%AF%BC%E5%85%A5"><span class="nav-number">1.3.2.</span> <span class="nav-text">默认导入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E5%85%B6%E4%BB%96%E7%BB%86%E8%8A%82"><span class="nav-number">1.4.</span> <span class="nav-text">ES6模块化的其他细节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%B0%BD%E9%87%8F%E5%AF%BC%E5%87%BA%E4%B8%8D%E5%8F%AF%E5%8F%98%E5%80%BC"><span class="nav-number">1.4.1.</span> <span class="nav-text">1. 尽量导出不可变值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E6%97%A0%E7%BB%91%E5%AE%9A%E7%9A%84%E5%AF%BC%E5%85%A5%E7%94%A8%E4%BA%8E%E6%89%A7%E8%A1%8C%E4%B8%80%E4%BA%9B%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BB%A3%E7%A0%81"><span class="nav-number">1.4.2.</span> <span class="nav-text">2. 可以使用无绑定的导入用于执行一些初始化代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E7%BB%91%E5%AE%9A%E5%86%8D%E5%AF%BC%E5%87%BA%EF%BC%8C%E6%9D%A5%E9%87%8D%E6%96%B0%E5%AF%BC%E5%87%BA%E6%9D%A5%E8%87%AA%E5%8F%A6%E4%B8%80%E4%B8%AA%E6%A8%A1%E5%9D%97%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">1.4.3.</span> <span class="nav-text">3. 可以使用绑定再导出，来重新导出来自另一个模块的内容</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,74 +233,287 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        
-        <span class="collection-header">很好! 目前共计 124 篇日志。 继续努力。</span>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://135xyq.github.io/135xyq.github.io/2021/05/05/%E6%A8%A1%E5%9D%97%E5%8C%96-ES6%E6%A8%A1%E5%9D%97%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/135xyq.github.io/images/avatar.jpeg">
+      <meta itemprop="name" content="Ethan">
+      <meta itemprop="description" content="Ethan的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ethan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ES6模块化
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-05-05 14:32:21" itemprop="dateCreated datePublished" datetime="2021-05-05T14:32:21+08:00">2021-05-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-08-17 11:04:21" itemprop="dateModified" datetime="2022-08-17T11:04:21+08:00">2022-08-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">前端学习笔记</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/135xyq.github.io/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E6%A8%A1%E5%9D%97%E5%8C%96/" itemprop="url" rel="index"><span itemprop="name">模块化</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/135xyq.github.io/2021/05/05/%E6%A8%A1%E5%9D%97%E5%8C%96-ES6%E6%A8%A1%E5%9D%97%E5%8C%96/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2021/05/05/模块化-ES6模块化/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">ES6模块化的介绍</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="ES6模块化简介"><a href="#ES6模块化简介" class="headerlink" title="ES6模块化简介"></a>ES6模块化简介</h1><p>ECMA组织参考了众多社区模块化标准，终于在2015年，随着ES6发布了官方的模块化标准，后成为ES6模块化</p>
+<h2 id="ES6模块化具有以下的特点"><a href="#ES6模块化具有以下的特点" class="headerlink" title="ES6模块化具有以下的特点"></a>ES6模块化具有以下的特点</h2><ol>
+<li>使用依赖<strong>预声明</strong>的方式导入模块<ol>
+<li>依赖延迟声明<ol>
+<li>优点：某些时候可以提高效率</li>
+<li>缺点：无法在一开始确定模块依赖关系（比较模糊）</li>
+</ol>
+</li>
+<li>依赖预声明<ol>
+<li>优点：在一开始可以确定模块依赖关系</li>
+<li>缺点：某些时候效率较低</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>灵活的多种导入导出方式</li>
+<li>规范的路径表示法：所有路径必须以./或../开头</li>
+</ol>
+<h2 id="基本导入导出"><a href="#基本导入导出" class="headerlink" title="基本导入导出"></a>基本导入导出</h2><h3 id="模块的引入"><a href="#模块的引入" class="headerlink" title="模块的引入"></a>模块的引入</h3><p><strong>注意：这一部分非模块化标准</strong></p>
+<p>目前，浏览器使用以下方式引入一个ES6模块文件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;入口文件&quot;</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="模块的基本导出和导入"><a href="#模块的基本导出和导入" class="headerlink" title="模块的基本导出和导入"></a>模块的基本导出和导入</h3><p>ES6中的模块导入导出分为两种：</p>
+<ol>
+<li>基本导入导出</li>
+<li>默认导入导出</li>
+</ol>
+<p><img src="/images/%E6%A8%A1%E5%9D%97%E5%8C%96/ES6%E6%A8%A1%E5%9D%97%E5%8C%96-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA.jpg"></p>
+<h3 id="基本导出"><a href="#基本导出" class="headerlink" title="基本导出"></a>基本导出</h3><p>类似于 <code>exports.xxx = xxxx</code></p>
+<p>基本导出可以有多个，每个必须有名称</p>
+<p>基本导出的语法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> 声明表达式</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">例：</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> name = <span class="string">&quot;xie&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;message&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123;具名符号&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">例：</span><br><span class="line"><span class="keyword">const</span> a = <span class="number">123</span>;</span><br><span class="line"><span class="keyword">export</span> &#123; a &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>由于基本导出必须具有名称，所以要求导出内容必须跟上<strong>声明表达式</strong>或<strong>具名符号</strong></p>
+<h3 id="基本导入"><a href="#基本导入" class="headerlink" title="基本导入"></a>基本导入</h3><p>由于使用的是<strong>依赖预加载</strong>，因此，导入任何其他模块，导入代码必须放置到所有代码之前</p>
+<p>对于基本导出，如果要进行导入，使用下面的代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;导入的符号列表&#125; <span class="keyword">from</span> <span class="string">&quot;模块路径&quot;</span> </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">例：</span><br><span class="line"><span class="keyword">import</span> &#123; name, fn, fn1, a &#125; <span class="keyword">from</span> <span class="string">&quot;./until.js&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(name, a);</span><br><span class="line">fn();</span><br><span class="line">fn1();</span><br></pre></td></tr></table></figure>
+
+<p>注意以下细节：</p>
+<ul>
+<li>导入时，可以通过关键字<code>as</code>对导入的符号进行重命名</li>
+<li>导入时使用的符号是常量，不可修改</li>
+<li>可以使用*号导入所有的基本导出，形成一个对象</li>
+<li>如果仅仅只是想让某个模块的代码执行一遍不使用任何导出则可以使用 <code>import &quot;模块路径&quot; </code></li>
+</ul>
+<h2 id="默认导入导出"><a href="#默认导入导出" class="headerlink" title="默认导入导出"></a>默认导入导出</h2><p><img src="/images/%E6%A8%A1%E5%9D%97%E5%8C%96/ES6%E6%A8%A1%E5%9D%97%E5%8C%96-%E9%BB%98%E8%AE%A4%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA.jpg"></p>
+<h3 id="默认导出"><a href="#默认导出" class="headerlink" title="默认导出"></a>默认导出</h3><p>每个模块，除了允许有多个基本导出之外，还允许有一个默认导出</p>
+<p>默认导出类似于CommonJS中的<code>module.exports</code>，由于只有一个，因此无需具名</p>
+<p>具体的语法是</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> 默认导出的数据</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">例：</span><br><span class="line"><span class="keyword">const</span> name = <span class="string">&quot;xie&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> name;</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123;默认导出的数据 <span class="keyword">as</span> <span class="keyword">default</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于每个模块仅允许有一个默认导出，因此，每个模块不能出现多个默认导出语句</p>
+<h3 id="默认导入"><a href="#默认导入" class="headerlink" title="默认导入"></a>默认导入</h3><p>需要想要导入一个模块的默认导出，需要使用下面的语法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> 接收变量名 <span class="keyword">from</span> <span class="string">&quot;模块路径&quot;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">例：</span><br><span class="line"><span class="keyword">import</span> name <span class="keyword">from</span> <span class="string">&quot;./until.js&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(name())</span><br></pre></td></tr></table></figure>
+
+<p>类似于CommonJS中的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> 接收变量名 = <span class="built_in">require</span>(<span class="string">&quot;模块路径&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>由于默认导入时变量名是自行定义的，因此没有别名一说</p>
+<p>如果希望同时导入某个模块的默认导出和基本导出，可以使用下面的语法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> 接收默认导出的变量, &#123;接收基本导出的变量&#125; <span class="keyword">from</span> <span class="string">&quot;模块路径&quot;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">例：</span><br><span class="line"><span class="keyword">import</span> name, &#123; fn &#125; <span class="keyword">from</span> <span class="string">&quot;./until.js&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(name);</span><br><span class="line">fn();</span><br></pre></td></tr></table></figure>
+
+<p>注：如果使用*号，会将所有基本导出和默认导出聚合到一个对象中，默认导出会作为属性default存在</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> obj <span class="keyword">from</span> <span class="string">&quot;./until.js&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj.default)</span><br></pre></td></tr></table></figure>
+
+<h2 id="ES6模块化的其他细节"><a href="#ES6模块化的其他细节" class="headerlink" title="ES6模块化的其他细节"></a>ES6模块化的其他细节</h2><h3 id="1-尽量导出不可变值"><a href="#1-尽量导出不可变值" class="headerlink" title="1. 尽量导出不可变值"></a>1. <strong>尽量导出不可变值</strong></h3><p>当导出一个内容时，尽量保证该内容是不可变的（大部分情况都是如此）</p>
+<p>因为，虽然导入后，无法更改导入内容，但是在导入的模块内部却有可能发生更改，这将导致一些无法预料的事情发生</p>
+<h3 id="2-可以使用无绑定的导入用于执行一些初始化代码"><a href="#2-可以使用无绑定的导入用于执行一些初始化代码" class="headerlink" title="2. 可以使用无绑定的导入用于执行一些初始化代码"></a>2. <strong>可以使用无绑定的导入用于执行一些初始化代码</strong></h3><p>如果我们只是想执行模块中的一些代码，而不需要导入它的任何内容，可以使用无绑定的导入：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;模块路径&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-可以使用绑定再导出，来重新导出来自另一个模块的内容"><a href="#3-可以使用绑定再导出，来重新导出来自另一个模块的内容" class="headerlink" title="3. 可以使用绑定再导出，来重新导出来自另一个模块的内容"></a>3. <strong>可以使用绑定再导出，来重新导出来自另一个模块的内容</strong></h3><p>有的时候，我们可能需要用一个模块封装多个模块，然后有选择的将多个模块的内容分别导出，可以使用下面的语法轻松完成</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123;绑定的标识符&#125; <span class="keyword">from</span> <span class="string">&quot;模块路径&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/%E6%A8%A1%E5%9D%97%E5%8C%96/ES6%E6%A8%A1%E5%9D%97%E5%8C%96-%E6%B7%B7%E5%90%88%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA.jpg"></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-01-01T14:02:47+08:00"
-              content="2022-01-01">
-          01-01
-        </time>
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/135xyq.github.io/./images/wechatpay.png" alt="Ethan 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/135xyq.github.io/images/alipay.jpg" alt="Ethan 支付宝">
+        <span>支付宝</span>
       </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/135xyq.github.io/2022/01/01/Vue-%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE/" itemprop="url">
-            <span itemprop="name">数据与跨域</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-01-01T14:02:47+08:00"
-              content="2022-01-01">
-          01-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/135xyq.github.io/2022/01/01/Vue-%E8%B7%AF%E7%94%B1/" itemprop="url">
-            <span itemprop="name">vue2中的路由</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-
-    </div>
   </div>
-  
-  
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/135xyq.github.io/archives/2022/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/135xyq.github.io/archives/2022/">1</a><span class="space">&hellip;</span><a class="page-number" href="/135xyq.github.io/archives/2022/page/9/">9</a><span class="page-number current">10</span>
-  </nav>
+</div>
 
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/yongqiangxie1">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/135xyq.github.io/images/wechat_channel.png">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/135xyq.github.io/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/135xyq.github.io/tags/%E6%A8%A1%E5%9D%97%E5%8C%96/" rel="tag"><i class="fa fa-tag"></i> 模块化</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/135xyq.github.io/2021/04/15/%E5%B7%A5%E5%85%B7-git%E6%96%87%E6%A1%A3/" rel="prev" title="常用的git操作">
+                  <i class="fa fa-chevron-left"></i> 常用的git操作
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/135xyq.github.io/2021/05/20/%E6%A8%A1%E5%9D%97%E5%8C%96-AMD%E5%92%8CCMD/" rel="next" title="AMD和CMD">
+                  AMD和CMD <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS"></div>
 </div>
   </main>
 
