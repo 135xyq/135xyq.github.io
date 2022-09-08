@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://135xyq.github.io/135xyq.github.io/project/index.html</loc>
+    
+    <lastmod>2022-09-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://135xyq.github.io/135xyq.github.io/2022/08/12/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98-JavaScript-%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E4%BA%8C/</loc>
     
     <lastmod>2022-08-24</lastmod>
@@ -887,15 +896,6 @@
     <loc>https://135xyq.github.io/135xyq.github.io/2022/05/15/react-react%E5%9F%BA%E7%A1%80-CDN%E5%BC%95%E5%85%A5%E5%92%8C%E8%84%9A%E6%89%8B%E6%9E%B6%E6%90%AD%E5%BB%BA/</loc>
     
     <lastmod>2022-05-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://135xyq.github.io/135xyq.github.io/project/index.html</loc>
-    
-    <lastmod>2022-05-15</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
