@@ -625,7 +625,7 @@ setInterval("createtime()",250)
     const cancelBtn = document.getElementById("cancel");
     const confirmBtn = document.getElementById("confirm");
     const input = document.getElementById("inputLover");
-    const pinkboard = document.getElementById("pinkboard");
+    const mycanvas = document.getElementById("mycanvas");
     const name = document.getElementById("name");
 
     function alertOneInput() {
@@ -643,6 +643,7 @@ setInterval("createtime()",250)
       } else if (result === "黄双珍") {
         mycanvas.style.display = "block";
         showLover()
+        loop();
         name.style.display = "block"
         input.value = "";
         alertInput.style.display = "none";
@@ -843,7 +844,6 @@ setInterval("createtime()",250)
       timerTick++;
     }
   }
-  window.οnlοad=loop();
   </script>
 
     </div>
